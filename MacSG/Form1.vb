@@ -111,7 +111,244 @@ Public Class Form1
 
     End Sub
 
+    'Trackbar values
+    Private Sub stream1Trackbar_Scroll(sender As Object, e As EventArgs) Handles trkbrStream1.Scroll
 
+        strQuality1 = trkbrStream1.Value
+
+        Select Case strQuality1
+            Case 1
+                strQuality1 = " low "
+            Case 2
+                strQuality1 = " medium "
+            Case 3
+                strQuality1 = " high "
+            Case 4
+                strQuality1 = " source "
+        End Select
+    End Sub
+
+    Private Sub stream2Trackbar_Scroll(sender As Object, e As EventArgs) Handles trkbrStream2.Scroll
+        strQuality2 = trkbrStream1.Value
+
+        Select Case strQuality2
+            Case 1
+                strQuality2 = " low "
+            Case 2
+                strQuality2 = " medium "
+            Case 3
+                strQuality2 = " high "
+            Case 4
+                strQuality2 = " source "
+        End Select
+    End Sub
+
+    Private Sub stream3Trackbar_Scroll(sender As Object, e As EventArgs) Handles trkbrStream3.Scroll
+        strQuality3 = trkbrStream1.Value
+
+        Select Case strQuality3
+            Case 1
+                strQuality3 = " low "
+            Case 2
+                strQuality3 = " medium "
+            Case 3
+                strQuality3 = " high "
+            Case 4
+                strQuality3 = " source "
+        End Select
+    End Sub
+
+    Private Sub stream4Trackbar_Scroll(sender As Object, e As EventArgs) Handles trkbrStream4.Scroll
+        strQuality4 = trkbrStream1.Value
+
+        Select Case strQuality4
+            Case 1
+                strQuality4 = " low "
+            Case 2
+                strQuality4 = " medium "
+            Case 3
+                strQuality4 = " high "
+            Case 4
+                strQuality4 = " source "
+        End Select
+    End Sub
+
+
+    'Stream generation buttons
+    Private Sub btnStream1Gen_Click(sender As Object, e As EventArgs) Handles btnStream1Gen.Click
+
+        If txtStream1.Text.ToLower <> "" Then
+
+            'Checks if VLC window with same title exists - does nothing if it does, continues if it does not
+            On Error Resume Next
+            AppActivate("First - VLC Media Player")
+
+            If Err.Number <> 0 Then
+
+                'Create and start Livestreamer process
+                Dim strLivestreamerProcess As New ProcessStartInfo("cmd.exe", "/c title FirstCMD &" & strLiveStreamer1 + txtStream1.Text.ToLower + strQuality1 + "--player-args " + Chr(34) + "--config %AppData%\MacSG\1 {filename}" + Chr(34))
+                strLivestreamerProcess.WindowStyle = ProcessWindowStyle.Hidden
+                Process.Start(strLivestreamerProcess)
+
+                btnStream1Gen.Enabled = False
+
+                'Write racer name to file if it doesn't exist in file already
+                Dim swRacer1 As System.IO.StreamWriter
+                swRacer1 = My.Computer.FileSystem.OpenTextFileWriter(strPathtoName1, False)
+                swRacer1.WriteLine(txtStream1.Text.ToLower)
+                swRacer1.Close()
+
+
+                Dim listOfStrHash As List(Of String) = New List(Of String)(System.IO.File.ReadAllLines(My.Settings.streamerFileLocation))
+
+                If Not listOfStrHash.Contains(txtStream1.Text.ToLower) Then
+                    Dim w As New IO.StreamWriter(My.Settings.streamerFileLocation, True)
+                    w.WriteLine(txtStream1.Text.ToLower, True)
+                    w.Close()
+
+                    System.Threading.Thread.Sleep(1000)
+                    btnStream1Gen.Enabled = True
+                End If
+
+
+                btnStream1Gen.Enabled = True
+                Call Form1_Load(Me, e)
+            End If
+        End If
+    End Sub
+
+    Private Sub btnStream2Gen_Click(sender As Object, e As EventArgs) Handles btnStream2Gen.Click
+        If txtStream2.Text.ToLower <> "" Then
+            On Error Resume Next
+            AppActivate("Second - VLC Media Player")
+
+            If Err.Number <> 0 Then
+
+                Dim strLivestreamerProcess As New ProcessStartInfo("cmd.exe", "/c title SecondCMD &" & strLiveStreamer2 + txtStream2.Text.ToLower + strQuality2 + "--player-args " + Chr(34) + "--config %AppData%\MacSG\2 {filename}" + Chr(34))
+                strLivestreamerProcess.WindowStyle = ProcessWindowStyle.Hidden
+                Process.Start(strLivestreamerProcess)
+
+                btnStream2Gen.Enabled = False
+
+                Dim swRacer2 As System.IO.StreamWriter
+                swRacer2 = My.Computer.FileSystem.OpenTextFileWriter(strPathtoName2, False)
+                swRacer2.WriteLine(txtStream2.Text.ToLower)
+                swRacer2.Close()
+
+                Dim listOfStrHash As List(Of String) = New List(Of String)(System.IO.File.ReadAllLines(My.Settings.streamerFileLocation))
+
+                If Not listOfStrHash.Contains(txtStream2.Text.ToLower) Then
+                    Dim w As New IO.StreamWriter(My.Settings.streamerFileLocation, True)
+                    w.WriteLine(txtStream2.Text.ToLower, True)
+                    w.Close()
+
+                    System.Threading.Thread.Sleep(1000)
+                    btnStream2Gen.Enabled = True
+                End If
+                btnStream2Gen.Enabled = True
+                Call Form1_Load(Me, e)
+            End If
+        End If
+    End Sub
+
+    Private Sub btnStream3Gen_Click(sender As Object, e As EventArgs) Handles btnStream3Gen.Click
+        If txtStream3.Text.ToLower <> "" Then
+            On Error Resume Next
+            AppActivate("Third - VLC Media Player")
+
+            If Err.Number <> 0 Then
+
+                Dim strLivestreamerProcess As New ProcessStartInfo("cmd.exe", "/c title ThirdCMD &" & strLiveStreamer3 + txtStream3.Text.ToLower + strQuality3 + "--player-args " + Chr(34) + "--config %AppData%\MacSG\3 {filename}" + Chr(34))
+                strLivestreamerProcess.WindowStyle = ProcessWindowStyle.Hidden
+                Process.Start(strLivestreamerProcess)
+
+                btnStream3Gen.Enabled = False
+
+                Dim swRacer3 As System.IO.StreamWriter
+                swRacer3 = My.Computer.FileSystem.OpenTextFileWriter(strPathtoName3, False)
+                swRacer3.WriteLine(txtStream3.Text.ToLower)
+                swRacer3.Close()
+
+                Dim listOfStrHash As List(Of String) = New List(Of String)(System.IO.File.ReadAllLines(My.Settings.streamerFileLocation))
+
+                If Not listOfStrHash.Contains(txtStream3.Text.ToLower) Then
+                    Dim w As New IO.StreamWriter(My.Settings.streamerFileLocation, True)
+                    w.WriteLine(txtStream3.Text.ToLower, True)
+                    w.Close()
+
+                    System.Threading.Thread.Sleep(1000)
+                    btnStream3Gen.Enabled = True
+                End If
+                btnStream3Gen.Enabled = True
+                Call Form1_Load(Me, e)
+            End If
+        End If
+    End Sub
+
+    Private Sub btnStream4Gen_Click(sender As Object, e As EventArgs) Handles btnStream4Gen.Click
+        If txtStream4.Text.ToLower <> "" Then
+            On Error Resume Next
+            AppActivate("Fourth - VLC Media Player")
+
+            If Err.Number <> 0 Then
+                Dim strLivestreamerProcess As New ProcessStartInfo("cmd.exe", "/c title FourthCMD &" & strLiveStreamer4 + txtStream4.Text.ToLower + strQuality4 + "--player-args " + Chr(34) + "--config %AppData%\MacSG\4 {filename}" + Chr(34))
+                strLivestreamerProcess.WindowStyle = ProcessWindowStyle.Hidden
+                Process.Start(strLivestreamerProcess)
+
+                btnStream4Gen.Enabled = False
+
+                Dim swRacer4 As System.IO.StreamWriter
+                swRacer4 = My.Computer.FileSystem.OpenTextFileWriter(strPathtoName4, False)
+                swRacer4.WriteLine(txtStream4.Text.ToLower)
+                swRacer4.Close()
+
+                Dim listOfStrHash As List(Of String) = New List(Of String)(System.IO.File.ReadAllLines(My.Settings.streamerFileLocation))
+
+                If Not listOfStrHash.Contains(txtStream4.Text.ToLower) Then
+                    Dim w As New IO.StreamWriter(My.Settings.streamerFileLocation, True)
+                    w.WriteLine(txtStream4.Text.ToLower, True)
+                    w.Close()
+
+                    System.Threading.Thread.Sleep(1000)
+                    btnStream4Gen.Enabled = True
+                End If
+                btnStream4Gen.Enabled = True
+                Call Form1_Load(Me, e)
+            End If
+        End If
+    End Sub
+
+
+    'Move and resize all windows
+    Private Sub moveResize_Click(sender As Object, e As EventArgs) Handles btnMoveResize.Click
+        If My.Settings.windowSize = "" Then
+            My.Settings.windowSize = InputBox("You must define a window size for VLC - the default (for 1920x1080 ) is already entered below.  Enter the resolution as ""width height"".", "Define window size...", "877 518")
+            If My.Settings.windowSize Is "" Then My.Settings.windowSize = "877 518"
+        End If
+
+        Dim strXPos = My.Settings.windowSize.Split(" "c)(0)
+        Dim strYPos = My.Settings.windowSize.Split(" "c)(1)
+
+        Dim intXPos = Integer.Parse(strXPos) + 15
+        Dim intYPos = Integer.Parse(strYPos) - 15
+
+        Dim procCmdow1 As New ProcessStartInfo("cmd.exe", "/c %appdata%\MacSG\cmdow ""First - VLC media player"" /mov 5 5 /siz " & My.Settings.windowSize)
+        procCmdow1.WindowStyle = ProcessWindowStyle.Hidden
+        Process.Start(procCmdow1)
+
+        Dim procCmdow2 As New ProcessStartInfo("cmd.exe", "/c %appdata%\MacSG\cmdow ""Second - VLC media player"" /mov " & Convert.ToString(intXPos) & " 5 /siz " & My.Settings.windowSize)
+        procCmdow2.WindowStyle = ProcessWindowStyle.Hidden
+        Process.Start(procCmdow2)
+
+        Dim procCmdow3 As New ProcessStartInfo("cmd.exe", "/c %appdata%\MacSG\cmdow ""Third - VLC media player"" /mov 5 " & Convert.ToString(intYPos) & " /siz " & My.Settings.windowSize)
+        procCmdow3.WindowStyle = ProcessWindowStyle.Hidden
+        Process.Start(procCmdow3)
+
+        Dim procCmdow4 As New ProcessStartInfo("cmd.exe", "/c %appdata%\MacSG\cmdow ""Fourth - VLC media player"" /mov " & Convert.ToString(intXPos) & " " & Convert.ToString(intYPos) & " /siz " & My.Settings.windowSize)
+        procCmdow4.WindowStyle = ProcessWindowStyle.Hidden
+        Process.Start(procCmdow4)
+
+    End Sub
 
     'CLose all VLC windows
     Private Sub vlcKill_Click(sender As Object, e As EventArgs) Handles btnKillVLC.Click
@@ -122,8 +359,137 @@ Public Class Form1
 
     End Sub
 
+    'Select file to use as autocomplete source
+    Private Sub selectAutocompleteFile_Click(sender As Object, e As EventArgs) Handles selectAutocompleteFile.Click
+
+        Dim fd As OpenFileDialog = New OpenFileDialog()
+
+        fd.Title = "Select a file..."
+        fd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData + "\MacSG")
+        fd.Filter = "Text files (*.txt)|*.txt"
+        fd.RestoreDirectory = True
+
+        If fd.ShowDialog() = DialogResult.OK Then
+            My.Settings.streamerFileLocation = fd.FileName
+
+            Call Form1_Load(Me, e)
+
+            txtStream1.Text = ""
+            txtStream2.Text = ""
+            txtStream3.Text = ""
+            txtStream4.Text = ""
+        End If
+    End Sub
+
     'About this program
     Private Sub aboutCoNDORSGToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles aboutCoNDORSGToolStripMenuItem.Click
         MessageBox.Show("Version 0.5.3 - by MacKirby" & vbCrLf & vbCrLf & "This program is provided free of use for managing stream captures for tournaments on Twitch.  Got feedback?  Drop me an email - mac@mackirby.tv", "About MacSG", MessageBoxButtons.OK, MessageBoxIcon.Information)
+    End Sub
+
+    Private Sub ChangeWindowSizeToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ChangeWindowSizeToolStripMenuItem.Click
+        My.Settings.windowSize = InputBox("Define window size for VLC - enter the resolution as ""width height"".  Recommended sizes:" & vbCrLf & "1920x1080: 882x520" & vbCrLf & "1440x900: 642x385", "Define window size...", "882 520")
+    End Sub
+
+    Private Sub updStream1_ValueChanged(sender As Object, e As EventArgs) Handles updStream1.ValueChanged
+        Dim swScore1 As System.IO.StreamWriter
+        swScore1 = My.Computer.FileSystem.OpenTextFileWriter(strPathToScore1, False)
+        swScore1.WriteLine(updStream1.Value)
+        swScore1.Close()
+    End Sub
+
+    Private Sub updStream2_ValueChanged(sender As Object, e As EventArgs) Handles updStream2.ValueChanged
+        Dim swScore2 As System.IO.StreamWriter
+        swScore2 = My.Computer.FileSystem.OpenTextFileWriter(strPathToScore2, False)
+        swScore2.WriteLine(updStream2.Value)
+        swScore2.Close()
+    End Sub
+
+    Private Sub updStream3_ValueChanged(sender As Object, e As EventArgs) Handles updStream3.ValueChanged
+        Dim swScore3 As System.IO.StreamWriter
+        swScore3 = My.Computer.FileSystem.OpenTextFileWriter(strPathToScore3, False)
+        swScore3.WriteLine(updStream3.Value)
+        swScore3.Close()
+    End Sub
+
+    Private Sub updStream4_ValueChanged(sender As Object, e As EventArgs) Handles updStream4.ValueChanged
+        Dim swScore4 As System.IO.StreamWriter
+        swScore4 = My.Computer.FileSystem.OpenTextFileWriter(strPathToScore4, False)
+        swScore4.WriteLine(updStream4.Value)
+        swScore4.Close()
+    End Sub
+
+    Private Sub btnGenAll_Click(sender As Object, e As EventArgs) Handles btnGenAll.Click
+        btnStream1Gen_Click(btnStream1Gen, New EventArgs)
+        btnStream2Gen_Click(btnStream2Gen, New EventArgs)
+        btnStream3Gen_Click(btnStream3Gen, New EventArgs)
+        btnStream4Gen_Click(btnStream4Gen, New EventArgs)
+    End Sub
+
+    Private Sub ToggleSwitch1_CheckedChanged_1(sender As Object, e As EventArgs) Handles switchStream1.CheckedChanged
+        If switchStream1.Checked = True Then
+            strQuality1 = "/live best "
+
+            trkbrStream1.Enabled = False
+
+            strLiveStreamer1 = "livestreamer rtmp://rtmp.condorleague.tv/"
+        Else
+            strQuality1 = " source "
+
+            trkbrStream1.Enabled = True
+
+            strLiveStreamer1 = "livestreamer --hls-segment-threads 4 twitch.tv/"
+        End If
+    End Sub
+
+    Private Sub ToggleSwitch2_CheckedChanged_1(sender As Object, e As EventArgs) Handles switchStream2.CheckedChanged
+        If switchStream2.Checked = True Then
+            strQuality2 = "/live best "
+
+            trkbrStream2.Enabled = False
+
+            strLiveStreamer2 = "livestreamer rtmp://rtmp.condorleague.tv/"
+        Else
+            strQuality2 = " source "
+
+            trkbrStream2.Enabled = True
+
+            strLiveStreamer2 = "livestreamer --hls-segment-threads 4 twitch.tv/"
+        End If
+    End Sub
+
+    Private Sub ToggleSwitch3_CheckedChanged_1(sender As Object, e As EventArgs) Handles switchStream3.CheckedChanged
+        If switchStream3.Checked = True Then
+            strQuality3 = "/live best "
+
+            trkbrStream3.Enabled = False
+
+            strLiveStreamer3 = "livestreamer rtmp://rtmp.condorleague.tv/"
+        Else
+            strQuality3 = " source "
+
+            trkbrStream3.Enabled = True
+
+            strLiveStreamer3 = "livestreamer --hls-segment-threads 4 twitch.tv/"
+        End If
+    End Sub
+
+    Private Sub ToggleSwitch4_CheckedChanged_1(sender As Object, e As EventArgs) Handles switchStream4.CheckedChanged
+        If switchStream4.Checked = True Then
+            strQuality4 = "/live best "
+
+            trkbrStream4.Enabled = False
+
+            strLiveStreamer4 = "livestreamer rtmp://rtmp.condorleague.tv/"
+        Else
+            strQuality4 = " source "
+
+            trkbrStream4.Enabled = True
+
+            strLiveStreamer4 = "livestreamer --hls-segment-threads 4 twitch.tv/"
+        End If
+    End Sub
+
+    Private Sub EditAutocompleteFileToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EditAutocompleteFileToolStripMenuItem.Click
+        Process.Start("notepad.exe", My.Settings.streamerFileLocation)
     End Sub
 End Class
