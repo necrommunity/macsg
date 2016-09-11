@@ -383,7 +383,7 @@ Public Class Form1
 
     'About this program
     Private Sub aboutCoNDORSGToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles aboutCoNDORSGToolStripMenuItem.Click
-        MessageBox.Show("Version 0.5.3 - by MacKirby" & vbCrLf & vbCrLf & "This program is provided free of use for managing stream captures for tournaments on Twitch.  Got feedback?  Drop me an email - mac@mackirby.tv", "About MacSG", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        MessageBox.Show("Version 0.5 - by MacKirby" & vbCrLf & vbCrLf & "This program is provided free of use for managing stream captures for tournaments on Twitch.  Got feedback?  Drop me an email - mac@mackirby.tv", "About MacSG", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 
     Private Sub ChangeWindowSizeToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ChangeWindowSizeToolStripMenuItem.Click
