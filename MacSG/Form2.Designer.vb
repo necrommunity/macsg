@@ -31,7 +31,7 @@ Partial Class Form2
         'dgdStreamerList
         '
         Me.dgdStreamerList.AllowUserToResizeRows = False
-        Me.dgdStreamerList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgdStreamerList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.dgdStreamerList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.lblStreamerName})
         Me.dgdStreamerList.Location = New System.Drawing.Point(13, 13)
         Me.dgdStreamerList.MaximumSize = New System.Drawing.Size(249, 212)

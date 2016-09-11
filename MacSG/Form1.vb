@@ -23,20 +23,17 @@ Public Class Form1
     Dim strPathToScore3 As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\MacSG\score3.txt"
     Dim strPathToScore4 As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\MacSG\score4.txt"
 
-
     'Form load
     Public Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        If Not File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86) & "\Livestreamer\livestreamer.exe") Then
 
-            Dim boolLivestreamerInstall As Integer = MessageBox.Show("Livestreamer is not installed.  Would you like to install Livestreamer now?", "No Livestreamer isntallation detected", MessageBoxButtons.YesNo)
-            If boolLivestreamerInstall = DialogResult.No Then
-                Environment.Exit(0)
-            ElseIf boolLivestreamerInstall = DialogResult.Yes Then
-                Process.Start(Environment.SpecialFolder.ProgramFilesX86 + "\MacSG\MacSG\livestreamer-v1.12.2-win32-setup.exe")
-            End If
-        End If
+        setupLivestreamerCheck()
+        setupToggleSwitches()
+        setupAutocompleteFile()
+        setupAutocompleteSources()
 
+    End Sub
 
+    Private Sub setupToggleSwitches()
         'Set ToggleSwitch renderer
         Dim customizedMetroRenderer1 = New ToggleSwitchMetroRenderer()
         Dim customizedMetroRenderer2 = New ToggleSwitchMetroRenderer()
@@ -75,7 +72,21 @@ Public Class Form1
         switchStream2.SetRenderer(customizedMetroRenderer2)
         switchStream3.SetRenderer(customizedMetroRenderer3)
         switchStream4.SetRenderer(customizedMetroRenderer4)
+    End Sub
 
+    Public Sub setupLivestreamerCheck()
+        If Not File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86) & "\Livestreamer\livestreamer.exe") Then
+
+            Dim boolLivestreamerInstall As Integer = MessageBox.Show("Livestreamer is not installed.  Would you like to install Livestreamer now?", "No Livestreamer isntallation detected", MessageBoxButtons.YesNo)
+            If boolLivestreamerInstall = DialogResult.No Then
+                Environment.Exit(0)
+            ElseIf boolLivestreamerInstall = DialogResult.Yes Then
+                Process.Start(Environment.SpecialFolder.ProgramFilesX86 + "\MacSG\MacSG\livestreamer-v1.12.2-win32-setup.exe")
+            End If
+        End If
+    End Sub
+
+    Public Sub setupAutocompleteFile()
         'Generaete autocomplete file
         If My.Settings.strPathToStreamerFile = "" Or File.Exists(My.Settings.strPathToStreamerFile) = False Then
 
@@ -96,11 +107,7 @@ Public Class Form1
             End Select
 
         End If
-
-        setupAutocompleteSources()
-
     End Sub
-
 
     Public Sub setupAutocompleteSources()
 
@@ -495,7 +502,7 @@ Public Class Form1
         End If
     End Sub
 
-    Private Sub EditAutocompleteFileToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EditAutocompleteFileToolStripMenuItem.Click
+    Public Sub EditAutocompleteFileToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EditAutocompleteFileToolStripMenuItem.Click
         Dim frmEditStreamerList As New Form2()
         frmEditStreamerList.Show()
     End Sub
