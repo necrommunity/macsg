@@ -1,4 +1,6 @@
-﻿Public Class Form2
+﻿Imports System.IO
+
+Public Class Form2
     Dim lstStreamerList As New List(Of String)
 
     Public Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -22,6 +24,8 @@
         dgdStreamerList.SelectAll()
         IO.File.WriteAllText(My.Settings.strPathToStreamerFile, dgdStreamerList.GetClipboardContent().GetText.TrimEnd)
         dgdStreamerList.ClearSelection()
+
+        Form1.setupAutocompleteSources()
 
     End Sub
 

@@ -97,6 +97,13 @@ Public Class Form1
 
         End If
 
+        setupAutocompleteSources()
+
+    End Sub
+
+
+    Public Sub setupAutocompleteSources()
+
         Using reader As New StreamReader(My.Settings.strPathToStreamerFile)
             strColAutoCompleteList.Clear()
             While Not reader.EndOfStream
@@ -108,7 +115,6 @@ Public Class Form1
         txtStream2.AutoCompleteCustomSource = strColAutoCompleteList
         txtStream3.AutoCompleteCustomSource = strColAutoCompleteList
         txtStream4.AutoCompleteCustomSource = strColAutoCompleteList
-
     End Sub
 
     'Trackbar values
@@ -493,4 +499,5 @@ Public Class Form1
         Dim frmEditStreamerList As New Form2()
         frmEditStreamerList.Show()
     End Sub
+
 End Class

@@ -54,7 +54,6 @@ Partial Class Form1
         Me.fileToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.selectAutocompleteFile = New System.Windows.Forms.ToolStripMenuItem()
         Me.EditAutocompleteFileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ReloadAutocompleteFileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ChangeWindowSizeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.aboutCoNDORSGToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.stream1Group.SuspendLayout()
@@ -371,7 +370,7 @@ Partial Class Form1
         '
         'fileToolStripMenuItem1
         '
-        Me.fileToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.selectAutocompleteFile, Me.EditAutocompleteFileToolStripMenuItem, Me.ReloadAutocompleteFileToolStripMenuItem, Me.ChangeWindowSizeToolStripMenuItem, Me.aboutCoNDORSGToolStripMenuItem})
+        Me.fileToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.selectAutocompleteFile, Me.EditAutocompleteFileToolStripMenuItem, Me.ChangeWindowSizeToolStripMenuItem, Me.aboutCoNDORSGToolStripMenuItem})
         Me.fileToolStripMenuItem1.Name = "fileToolStripMenuItem1"
         Me.fileToolStripMenuItem1.Size = New System.Drawing.Size(37, 20)
         Me.fileToolStripMenuItem1.Text = "File"
@@ -387,12 +386,6 @@ Partial Class Form1
         Me.EditAutocompleteFileToolStripMenuItem.Name = "EditAutocompleteFileToolStripMenuItem"
         Me.EditAutocompleteFileToolStripMenuItem.Size = New System.Drawing.Size(210, 22)
         Me.EditAutocompleteFileToolStripMenuItem.Text = "Edit autocomplete file"
-        '
-        'ReloadAutocompleteFileToolStripMenuItem
-        '
-        Me.ReloadAutocompleteFileToolStripMenuItem.Name = "ReloadAutocompleteFileToolStripMenuItem"
-        Me.ReloadAutocompleteFileToolStripMenuItem.Size = New System.Drawing.Size(210, 22)
-        Me.ReloadAutocompleteFileToolStripMenuItem.Text = "Reload autocomplete file"
         '
         'ChangeWindowSizeToolStripMenuItem
         '
@@ -476,7 +469,6 @@ Partial Class Form1
     Private WithEvents fileToolStripMenuItem1 As ToolStripMenuItem
     Private WithEvents selectAutocompleteFile As ToolStripMenuItem
     Friend WithEvents EditAutocompleteFileToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ReloadAutocompleteFileToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ChangeWindowSizeToolStripMenuItem As ToolStripMenuItem
     Private WithEvents aboutCoNDORSGToolStripMenuItem As ToolStripMenuItem
 End Class
