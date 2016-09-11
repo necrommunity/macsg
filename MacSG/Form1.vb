@@ -77,7 +77,7 @@ Public Class Form1
         switchStream4.SetRenderer(customizedMetroRenderer4)
 
         'Generaete autocomplete file
-        If My.Settings.streamerFileLocation = "" Or File.Exists(My.Settings.streamerFileLocation) = False Then
+        If My.Settings.strPathToStreamerFile = "" Or File.Exists(My.Settings.strPathToStreamerFile) = False Then
 
             MsgBox("You must select an autocomplete file to use this program.  The file must be a text file with 1 username per line.")
 
@@ -92,12 +92,12 @@ Public Class Form1
                 Case DialogResult.Cancel
                     Close()
                 Case DialogResult.OK
-                    My.Settings.streamerFileLocation = fd.FileName
+                    My.Settings.strPathToStreamerFile = fd.FileName
             End Select
 
         End If
 
-        Using reader As New StreamReader(My.Settings.streamerFileLocation)
+        Using reader As New StreamReader(My.Settings.strPathToStreamerFile)
             strColAutoCompleteList.Clear()
             While Not reader.EndOfStream
                 strColAutoCompleteList.Add(reader.ReadLine())
@@ -199,10 +199,10 @@ Public Class Form1
                 swRacer1.Close()
 
 
-                Dim listOfStrHash As List(Of String) = New List(Of String)(System.IO.File.ReadAllLines(My.Settings.streamerFileLocation))
+                Dim listOfStrHash As List(Of String) = New List(Of String)(System.IO.File.ReadAllLines(My.Settings.strPathToStreamerFile))
 
                 If Not listOfStrHash.Contains(txtStream1.Text.ToLower) Then
-                    Dim w As New IO.StreamWriter(My.Settings.streamerFileLocation, True)
+                    Dim w As New IO.StreamWriter(My.Settings.strPathToStreamerFile, True)
                     w.WriteLine(txtStream1.Text.ToLower, True)
                     w.Close()
 
@@ -235,10 +235,10 @@ Public Class Form1
                 swRacer2.WriteLine(txtStream2.Text.ToLower)
                 swRacer2.Close()
 
-                Dim listOfStrHash As List(Of String) = New List(Of String)(System.IO.File.ReadAllLines(My.Settings.streamerFileLocation))
+                Dim listOfStrHash As List(Of String) = New List(Of String)(System.IO.File.ReadAllLines(My.Settings.strPathToStreamerFile))
 
                 If Not listOfStrHash.Contains(txtStream2.Text.ToLower) Then
-                    Dim w As New IO.StreamWriter(My.Settings.streamerFileLocation, True)
+                    Dim w As New IO.StreamWriter(My.Settings.strPathToStreamerFile, True)
                     w.WriteLine(txtStream2.Text.ToLower, True)
                     w.Close()
 
@@ -269,10 +269,10 @@ Public Class Form1
                 swRacer3.WriteLine(txtStream3.Text.ToLower)
                 swRacer3.Close()
 
-                Dim listOfStrHash As List(Of String) = New List(Of String)(System.IO.File.ReadAllLines(My.Settings.streamerFileLocation))
+                Dim listOfStrHash As List(Of String) = New List(Of String)(System.IO.File.ReadAllLines(My.Settings.strPathToStreamerFile))
 
                 If Not listOfStrHash.Contains(txtStream3.Text.ToLower) Then
-                    Dim w As New IO.StreamWriter(My.Settings.streamerFileLocation, True)
+                    Dim w As New IO.StreamWriter(My.Settings.strPathToStreamerFile, True)
                     w.WriteLine(txtStream3.Text.ToLower, True)
                     w.Close()
 
@@ -302,10 +302,10 @@ Public Class Form1
                 swRacer4.WriteLine(txtStream4.Text.ToLower)
                 swRacer4.Close()
 
-                Dim listOfStrHash As List(Of String) = New List(Of String)(System.IO.File.ReadAllLines(My.Settings.streamerFileLocation))
+                Dim listOfStrHash As List(Of String) = New List(Of String)(System.IO.File.ReadAllLines(My.Settings.strPathToStreamerFile))
 
                 If Not listOfStrHash.Contains(txtStream4.Text.ToLower) Then
-                    Dim w As New IO.StreamWriter(My.Settings.streamerFileLocation, True)
+                    Dim w As New IO.StreamWriter(My.Settings.strPathToStreamerFile, True)
                     w.WriteLine(txtStream4.Text.ToLower, True)
                     w.Close()
 
@@ -321,30 +321,30 @@ Public Class Form1
 
     'Move and resize all windows
     Private Sub moveResize_Click(sender As Object, e As EventArgs) Handles btnMoveResize.Click
-        If My.Settings.windowSize = "" Then
-            My.Settings.windowSize = InputBox("You must define a window size for VLC - the default (for 1920x1080 ) is already entered below.  Enter the resolution as ""width height"".", "Define window size...", "877 518")
-            If My.Settings.windowSize Is "" Then My.Settings.windowSize = "877 518"
+        If My.Settings.strWindowSize = "" Then
+            My.Settings.strWindowSize = InputBox("You must define a window size for VLC - the default (for 1920x1080 ) is already entered below.  Enter the resolution as ""width height"".", "Define window size...", "877 518")
+            If My.Settings.strWindowSize Is "" Then My.Settings.strWindowSize = "877 518"
         End If
 
-        Dim strXPos = My.Settings.windowSize.Split(" "c)(0)
-        Dim strYPos = My.Settings.windowSize.Split(" "c)(1)
+        Dim strXPos = My.Settings.strWindowSize.Split(" "c)(0)
+        Dim strYPos = My.Settings.strWindowSize.Split(" "c)(1)
 
         Dim intXPos = Integer.Parse(strXPos) + 15
         Dim intYPos = Integer.Parse(strYPos) - 15
 
-        Dim procCmdow1 As New ProcessStartInfo("cmd.exe", "/c %appdata%\MacSG\cmdow ""First - VLC media player"" /mov 5 5 /siz " & My.Settings.windowSize)
+        Dim procCmdow1 As New ProcessStartInfo("cmd.exe", "/c %appdata%\MacSG\cmdow ""First - VLC media player"" /mov 5 5 /siz " & My.Settings.strWindowSize)
         procCmdow1.WindowStyle = ProcessWindowStyle.Hidden
         Process.Start(procCmdow1)
 
-        Dim procCmdow2 As New ProcessStartInfo("cmd.exe", "/c %appdata%\MacSG\cmdow ""Second - VLC media player"" /mov " & Convert.ToString(intXPos) & " 5 /siz " & My.Settings.windowSize)
+        Dim procCmdow2 As New ProcessStartInfo("cmd.exe", "/c %appdata%\MacSG\cmdow ""Second - VLC media player"" /mov " & Convert.ToString(intXPos) & " 5 /siz " & My.Settings.strWindowSize)
         procCmdow2.WindowStyle = ProcessWindowStyle.Hidden
         Process.Start(procCmdow2)
 
-        Dim procCmdow3 As New ProcessStartInfo("cmd.exe", "/c %appdata%\MacSG\cmdow ""Third - VLC media player"" /mov 5 " & Convert.ToString(intYPos) & " /siz " & My.Settings.windowSize)
+        Dim procCmdow3 As New ProcessStartInfo("cmd.exe", "/c %appdata%\MacSG\cmdow ""Third - VLC media player"" /mov 5 " & Convert.ToString(intYPos) & " /siz " & My.Settings.strWindowSize)
         procCmdow3.WindowStyle = ProcessWindowStyle.Hidden
         Process.Start(procCmdow3)
 
-        Dim procCmdow4 As New ProcessStartInfo("cmd.exe", "/c %appdata%\MacSG\cmdow ""Fourth - VLC media player"" /mov " & Convert.ToString(intXPos) & " " & Convert.ToString(intYPos) & " /siz " & My.Settings.windowSize)
+        Dim procCmdow4 As New ProcessStartInfo("cmd.exe", "/c %appdata%\MacSG\cmdow ""Fourth - VLC media player"" /mov " & Convert.ToString(intXPos) & " " & Convert.ToString(intYPos) & " /siz " & My.Settings.strWindowSize)
         procCmdow4.WindowStyle = ProcessWindowStyle.Hidden
         Process.Start(procCmdow4)
 
@@ -370,7 +370,7 @@ Public Class Form1
         fd.RestoreDirectory = True
 
         If fd.ShowDialog() = DialogResult.OK Then
-            My.Settings.streamerFileLocation = fd.FileName
+            My.Settings.strPathToStreamerFile = fd.FileName
 
             Call Form1_Load(Me, e)
 
@@ -387,7 +387,7 @@ Public Class Form1
     End Sub
 
     Private Sub ChangeWindowSizeToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ChangeWindowSizeToolStripMenuItem.Click
-        My.Settings.windowSize = InputBox("Define window size for VLC - enter the resolution as ""width height"".  Recommended sizes:" & vbCrLf & "1920x1080: 882x520" & vbCrLf & "1440x900: 642x385", "Define window size...", "882 520")
+        My.Settings.strWindowSize = InputBox("Define window size for VLC - enter the resolution as ""width height"".  Recommended sizes:" & vbCrLf & "1920x1080: 882x520" & vbCrLf & "1440x900: 642x385", "Define window size...", "882 520")
     End Sub
 
     Private Sub updStream1_ValueChanged(sender As Object, e As EventArgs) Handles updStream1.ValueChanged
@@ -490,6 +490,7 @@ Public Class Form1
     End Sub
 
     Private Sub EditAutocompleteFileToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EditAutocompleteFileToolStripMenuItem.Click
-        Process.Start("notepad.exe", My.Settings.streamerFileLocation)
+        Dim frmEditStreamerList As New Form2()
+        frmEditStreamerList.Show()
     End Sub
 End Class

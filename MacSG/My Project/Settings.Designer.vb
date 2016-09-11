@@ -57,24 +57,24 @@ Namespace My
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("")>  _
-        Public Property streamerFileLocation() As String
+        Public Property strPathToStreamerFile() As String
             Get
-                Return CType(Me("streamerFileLocation"),String)
+                Return CType(Me("strPathToStreamerFile"),String)
             End Get
             Set
-                Me("streamerFileLocation") = value
+                Me("strPathToStreamerFile") = value
             End Set
         End Property
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("")>  _
-        Public Property windowSize() As String
+        Public Property strWindowSize() As String
             Get
-                Return CType(Me("windowSize"),String)
+                Return CType(Me("strWindowSize"),String)
             End Get
             Set
-                Me("windowSize") = value
+                Me("strWindowSize") = value
             End Set
         End Property
     End Class
