@@ -34,10 +34,10 @@ Partial Class Form2
         Me.dgdStreamerList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.dgdStreamerList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.lblStreamerName})
         Me.dgdStreamerList.Location = New System.Drawing.Point(13, 13)
-        Me.dgdStreamerList.MaximumSize = New System.Drawing.Size(249, 212)
-        Me.dgdStreamerList.MinimumSize = New System.Drawing.Size(249, 212)
+        Me.dgdStreamerList.MaximumSize = New System.Drawing.Size(328, 212)
+        Me.dgdStreamerList.MinimumSize = New System.Drawing.Size(328, 212)
         Me.dgdStreamerList.Name = "dgdStreamerList"
-        Me.dgdStreamerList.Size = New System.Drawing.Size(249, 212)
+        Me.dgdStreamerList.Size = New System.Drawing.Size(328, 212)
         Me.dgdStreamerList.TabIndex = 0
         '
         'lblStreamerName
@@ -51,7 +51,7 @@ Partial Class Form2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(274, 236)
+        Me.ClientSize = New System.Drawing.Size(353, 236)
         Me.Controls.Add(Me.dgdStreamerList)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Form2"

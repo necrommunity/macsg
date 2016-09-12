@@ -365,6 +365,7 @@ Partial Class Form1
         Me.menuStrip1.MaximumSize = New System.Drawing.Size(470, 24)
         Me.menuStrip1.MinimumSize = New System.Drawing.Size(470, 24)
         Me.menuStrip1.Name = "menuStrip1"
+        Me.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
         Me.menuStrip1.Size = New System.Drawing.Size(470, 24)
         Me.menuStrip1.TabIndex = 18
         '

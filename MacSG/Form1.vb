@@ -195,7 +195,6 @@ Public Class Form1
             'Checks if VLC window with same title exists - does nothing if it does, continues if it does not
             On Error Resume Next
             AppActivate("First - VLC Media Player")
-
             If Err.Number <> 0 Then
 
                 'Create and start Livestreamer process
@@ -211,7 +210,6 @@ Public Class Form1
                 swRacer1.WriteLine(txtStream1.Text.ToLower)
                 swRacer1.Close()
 
-
                 Dim listOfStrHash As List(Of String) = New List(Of String)(System.IO.File.ReadAllLines(My.Settings.strPathToStreamerFile))
 
                 If Not listOfStrHash.Contains(txtStream1.Text.ToLower) Then
@@ -223,9 +221,10 @@ Public Class Form1
                     btnStream1Gen.Enabled = True
                 End If
 
-
                 btnStream1Gen.Enabled = True
-                Call Form1_Load(Me, e)
+                Call setupAutocompleteFile()
+                Call setupAutocompleteSources()
+
             End If
         End If
     End Sub
