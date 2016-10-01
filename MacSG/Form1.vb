@@ -3,10 +3,10 @@ Imports JCS
 
 Public Class Form1
     Dim strColAutoCompleteList As New AutoCompleteStringCollection
-    Dim strLiveStreamer1 As String = "livestreamer --hls-segment-threads 4 twitch.tv/"
-    Dim strLiveStreamer2 As String = "livestreamer --hls-segment-threads 4 twitch.tv/"
-    Dim strLiveStreamer3 As String = "livestreamer --hls-segment-threads 4 twitch.tv/"
-    Dim strLiveStreamer4 As String = "livestreamer --hls-segment-threads 4 twitch.tv/"
+    Dim strLiveStreamer1 As String = "livestreamer --twitch-oauth-token " + My.Settings.strTwitchOAuthKey + " --hls-segment-threads 4 twitch.tv/"
+    Dim strLiveStreamer2 As String = "livestreamer --twitch-oauth-token " + My.Settings.strTwitchOAuthKey + " --hls-segment-threads 4 twitch.tv/"
+    Dim strLiveStreamer3 As String = "livestreamer --twitch-oauth-token " + My.Settings.strTwitchOAuthKey + " --hls-segment-threads 4 twitch.tv/"
+    Dim strLiveStreamer4 As String = "livestreamer --twitch-oauth-token " + My.Settings.strTwitchOAuthKey + " --hls-segment-threads 4 twitch.tv/"
 
     Dim strQuality1 As String = " source "
     Dim strQuality2 As String = " source "
@@ -30,6 +30,7 @@ Public Class Form1
         setupToggleSwitches()
         setupAutocompleteFile()
         setupAutocompleteSources()
+        setupTwitchOAuth()
 
     End Sub
 
@@ -81,7 +82,8 @@ Public Class Form1
             If boolLivestreamerInstall = DialogResult.No Then
                 Environment.Exit(0)
             ElseIf boolLivestreamerInstall = DialogResult.Yes Then
-                Process.Start(Environment.SpecialFolder.ProgramFilesX86 + "\MacSG\MacSG\livestreamer-v1.12.2-win32-setup.exe")
+                Dim procInstallLivestreamer As New ProcessStartInfo(Environment.SpecialFolder.ProgramFilesX86 + "\MacSG\MacSG\livestreamer-v1.12.2-win32-setup.exe")
+                Process.Start(procInstallLivestreamer)
             End If
         End If
     End Sub
@@ -122,6 +124,21 @@ Public Class Form1
         txtStream2.AutoCompleteCustomSource = strColAutoCompleteList
         txtStream3.AutoCompleteCustomSource = strColAutoCompleteList
         txtStream4.AutoCompleteCustomSource = strColAutoCompleteList
+    End Sub
+
+    Public Sub setupTwitchOAuth()
+        If My.Settings.strTwitchOAuthKey = "" Then
+            Dim resOAuth As DialogResult = MessageBox.Show("Due to Twitch API changes, you are required to generate an OAuth key to watch Twitch streams through Livestreamer.  Click ""OK"" to open up a web page where you can create an OAuth key.", "Twitch OAuth key required", MessageBoxButtons.OKCancel)
+            Dim strOAuthURL As String = "https://twitchapps.com/tmi/"
+
+            If resOAuth = DialogResult.OK Then
+                Process.Start(strOAuthURL)
+                My.Settings.strTwitchOAuthKey = InputBox("Enter Twitch OAuth code, without the leading ""oauth:""", "Input Twitch OAuth key").ToString
+            Else
+                MsgBox("You will be unable to watch Twitch streams unless you generate an OAuth key.")
+            End If
+
+        End If
     End Sub
 
     'Trackbar values
@@ -395,7 +412,7 @@ Public Class Form1
 
     'About this program
     Private Sub aboutCoNDORSGToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles aboutCoNDORSGToolStripMenuItem.Click
-        MessageBox.Show("Version 0.5 - by MacKirby" & vbCrLf & vbCrLf & "This program is provided free of use for managing stream captures for tournaments on Twitch.  Got feedback?  Drop me an email - mac@mackirby.tv", "About MacSG", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        MessageBox.Show("Version 0.5.1 - by MacKirby" & vbCrLf & vbCrLf & "This program is provided free of use for managing stream captures for tournaments on Twitch.  Got feedback?  Drop me an email - mac@mackirby.tv", "About MacSG", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 
     Private Sub ChangeWindowSizeToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ChangeWindowSizeToolStripMenuItem.Click
@@ -506,4 +523,16 @@ Public Class Form1
         frmEditStreamerList.Show()
     End Sub
 
+    Private Sub ChangeTwitchOAuthKeyToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ChangeTwitchOAuthKeyToolStripMenuItem.Click
+        Dim resOAuth As DialogResult = MessageBox.Show("Due to Twitch API changes, you require an OAuth key to watch Twitch streams through Livestreamer.  Click ""Yes"" to open up a web page where you can create an OAuth token.  If you already have a token, click ""No""", "Twitch OAuth key required", MessageBoxButtons.YesNoCancel
+                                                       )
+        Dim strOAuthURL As String = "https://twitchapps.com/tmi/"
+
+        If resOAuth = DialogResult.Yes Then
+            Process.Start(strOAuthURL)
+            My.Settings.strTwitchOAuthKey = InputBox("Enter Twitch OAuth key, without the leading ""oauth:""", "Input Twitch OAuth key").ToString
+        ElseIf resOAuth = DialogResult.No Then
+            My.Settings.strTwitchOAuthKey = InputBox("Enter Twitch OAuth key, without the leading ""oauth:""", "Input Twitch OAuth key", "Current key - " + My.Settings.strTwitchOAuthKey + "").ToString
+        End If
+    End Sub
 End Class
