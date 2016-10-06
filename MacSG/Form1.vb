@@ -1,4 +1,6 @@
-﻿Imports System.IO
+﻿Imports System.ComponentModel
+Imports System.IO
+Imports System.Net
 Imports JCS
 
 Public Class Form1
@@ -7,6 +9,7 @@ Public Class Form1
     Dim strLiveStreamer2 As String = "livestreamer --twitch-oauth-token " + My.Settings.strTwitchOAuthKey + " --hls-segment-threads 4 twitch.tv/"
     Dim strLiveStreamer3 As String = "livestreamer --twitch-oauth-token " + My.Settings.strTwitchOAuthKey + " --hls-segment-threads 4 twitch.tv/"
     Dim strLiveStreamer4 As String = "livestreamer --twitch-oauth-token " + My.Settings.strTwitchOAuthKey + " --hls-segment-threads 4 twitch.tv/"
+    Dim strLivestreamerInstaller As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\MacSG\livestreamer-v1.12.2-win32-setup.exe"
 
     Dim strQuality1 As String = " source "
     Dim strQuality2 As String = " source "
@@ -78,14 +81,34 @@ Public Class Form1
     Public Sub setupLivestreamerCheck()
         If Not File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86) & "\Livestreamer\livestreamer.exe") Then
 
-            Dim boolLivestreamerInstall As Integer = MessageBox.Show("Livestreamer is not installed.  Would you like to install Livestreamer now?", "No Livestreamer isntallation detected", MessageBoxButtons.YesNo)
+            Dim boolLivestreamerInstall As Integer = MessageBox.Show("Livestreamer is not installed.  Would you like to install Livestreamer now?", "No Livestreamer installation detected", MessageBoxButtons.YesNo)
             If boolLivestreamerInstall = DialogResult.No Then
-                Environment.Exit(0)
+                'Environment.Exit(0)
             ElseIf boolLivestreamerInstall = DialogResult.Yes Then
-                Dim procInstallLivestreamer As New ProcessStartInfo(Environment.SpecialFolder.ProgramFilesX86 + "\MacSG\MacSG\livestreamer-v1.12.2-win32-setup.exe")
-                Process.Start(procInstallLivestreamer)
+                Dim client As New WebClient()
+                AddHandler client.DownloadProgressChanged, AddressOf ShowDownloadProgress
+                AddHandler client.DownloadFileCompleted, AddressOf DownloadFileCompleted
+                client.DownloadFileAsync(New Uri("https://github.com/chrippa/livestreamer/releases/download/v1.12.2/livestreamer-v1.12.2-win32-setup.exe"), strLivestreamerInstaller)
+                Visible = False
             End If
         End If
+    End Sub
+
+    Private Sub ShowDownloadProgress(ByVal sender As Object, ByVal e As DownloadProgressChangedEventArgs)
+        ProgressBar1.Visible = True
+        ProgressBar1.Value = e.ProgressPercentage
+    End Sub
+
+    Public Sub DownloadFileCompleted(ByVal sender As Object, ByVal e As AsyncCompletedEventArgs)
+        If Not e.Cancelled AndAlso e.Error Is Nothing Then
+            MessageBox.Show("Downloaded")
+            ProgressBar1.Visible = False
+            Process.Start(strLivestreamerInstaller)
+        Else
+            MessageBox.Show("Fucked")
+            ProgressBar1.Visible = False
+        End If
+
     End Sub
 
     Public Sub setupAutocompleteFile()

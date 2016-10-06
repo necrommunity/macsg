@@ -55,8 +55,9 @@ Partial Class Form1
         Me.selectAutocompleteFile = New System.Windows.Forms.ToolStripMenuItem()
         Me.EditAutocompleteFileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ChangeWindowSizeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.aboutCoNDORSGToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ChangeTwitchOAuthKeyToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.aboutCoNDORSGToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
         Me.stream1Group.SuspendLayout()
         CType(Me.updStream1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.trkbrStream1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -395,23 +396,32 @@ Partial Class Form1
         Me.ChangeWindowSizeToolStripMenuItem.Size = New System.Drawing.Size(221, 22)
         Me.ChangeWindowSizeToolStripMenuItem.Text = "Change window size..."
         '
-        'aboutCoNDORSGToolStripMenuItem
-        '
-        Me.aboutCoNDORSGToolStripMenuItem.Name = "aboutCoNDORSGToolStripMenuItem"
-        Me.aboutCoNDORSGToolStripMenuItem.Size = New System.Drawing.Size(221, 22)
-        Me.aboutCoNDORSGToolStripMenuItem.Text = "About..."
-        '
         'ChangeTwitchOAuthKeyToolStripMenuItem
         '
         Me.ChangeTwitchOAuthKeyToolStripMenuItem.Name = "ChangeTwitchOAuthKeyToolStripMenuItem"
         Me.ChangeTwitchOAuthKeyToolStripMenuItem.Size = New System.Drawing.Size(221, 22)
         Me.ChangeTwitchOAuthKeyToolStripMenuItem.Text = "Change Twitch OAuth key..."
         '
+        'aboutCoNDORSGToolStripMenuItem
+        '
+        Me.aboutCoNDORSGToolStripMenuItem.Name = "aboutCoNDORSGToolStripMenuItem"
+        Me.aboutCoNDORSGToolStripMenuItem.Size = New System.Drawing.Size(221, 22)
+        Me.aboutCoNDORSGToolStripMenuItem.Text = "About..."
+        '
+        'ProgressBar1
+        '
+        Me.ProgressBar1.Location = New System.Drawing.Point(12, 322)
+        Me.ProgressBar1.Name = "ProgressBar1"
+        Me.ProgressBar1.Size = New System.Drawing.Size(348, 4)
+        Me.ProgressBar1.TabIndex = 19
+        Me.ProgressBar1.Visible = False
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(373, 329)
+        Me.Controls.Add(Me.ProgressBar1)
         Me.Controls.Add(Me.menuStrip1)
         Me.Controls.Add(Me.btnGenAll)
         Me.Controls.Add(Me.btnKillVLC)
@@ -480,4 +490,5 @@ Partial Class Form1
     Friend WithEvents ChangeWindowSizeToolStripMenuItem As ToolStripMenuItem
     Private WithEvents aboutCoNDORSGToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ChangeTwitchOAuthKeyToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ProgressBar1 As ProgressBar
 End Class
