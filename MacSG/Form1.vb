@@ -80,16 +80,22 @@ Public Class Form1
 
     Public Sub setupLivestreamerCheck()
         If Not File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86) & "\Livestreamer\livestreamer.exe") Then
+            Dim boolLivestreamerInstall As Integer = MessageBox.Show("Livestreamer is not installed, and is necessary for this program to run.  Would you like to download and install Livestreamer now?", "No Livestreamer installation detected", MessageBoxButtons.YesNo)
 
-            Dim boolLivestreamerInstall As Integer = MessageBox.Show("Livestreamer is not installed.  Would you like to install Livestreamer now?", "No Livestreamer installation detected", MessageBoxButtons.YesNo)
-            If boolLivestreamerInstall = DialogResult.No Then
-                'Environment.Exit(0)
+            If boolLivestreamerInstall = DialogResult.No Or boolLivestreamerInstall = DialogResult.Cancel Then
+                Close()
+
             ElseIf boolLivestreamerInstall = DialogResult.Yes Then
                 Dim client As New WebClient()
                 AddHandler client.DownloadProgressChanged, AddressOf ShowDownloadProgress
                 AddHandler client.DownloadFileCompleted, AddressOf DownloadFileCompleted
+
                 client.DownloadFileAsync(New Uri("https://github.com/chrippa/livestreamer/releases/download/v1.12.2/livestreamer-v1.12.2-win32-setup.exe"), strLivestreamerInstaller)
-                Visible = False
+
+                For Each ctrl In Me.Controls
+                    ctrl.Enabled = False
+                Next
+
             End If
         End If
     End Sub
@@ -101,14 +107,16 @@ Public Class Form1
 
     Public Sub DownloadFileCompleted(ByVal sender As Object, ByVal e As AsyncCompletedEventArgs)
         If Not e.Cancelled AndAlso e.Error Is Nothing Then
-            MessageBox.Show("Downloaded")
             ProgressBar1.Visible = False
             Process.Start(strLivestreamerInstaller)
+            For Each ctrl In Me.Controls
+                ctrl.Enabled = True
+            Next
+
         Else
             MessageBox.Show("Fucked")
             ProgressBar1.Visible = False
         End If
-
     End Sub
 
     Public Sub setupAutocompleteFile()
