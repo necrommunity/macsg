@@ -57,18 +57,6 @@ Namespace My
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("")>  _
-        Public Property strPathToStreamerFile() As String
-            Get
-                Return CType(Me("strPathToStreamerFile"),String)
-            End Get
-            Set
-                Me("strPathToStreamerFile") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
         Public Property strWindowSize() As String
             Get
                 Return CType(Me("strWindowSize"),String)
@@ -87,6 +75,19 @@ Namespace My
             End Get
             Set
                 Me("strTwitchOAuthKey") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + ""\MacSG\st"& _ 
+            "reamerlist.conf""")>  _
+        Public Property strPathToStreamerFile() As String
+            Get
+                Return CType(Me("strPathToStreamerFile"),String)
+            End Get
+            Set
+                Me("strPathToStreamerFile") = value
             End Set
         End Property
     End Class

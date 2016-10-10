@@ -28,13 +28,10 @@ Public Class Form1
 
     'Form load
     Public Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
         setupLivestreamerCheck()
         setupToggleSwitches()
-        setupAutocompleteFile()
         setupAutocompleteSources()
         setupTwitchOAuth()
-
     End Sub
 
     Private Sub setupToggleSwitches()
@@ -80,7 +77,7 @@ Public Class Form1
 
     Public Sub setupLivestreamerCheck()
         If Not File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86) & "\Livestreamer\livestreamer.exe") Then
-            Dim boolLivestreamerInstall As Integer = MessageBox.Show("Livestreamer is not installed, and is necessary for this program to run.  Would you like to download and install Livestreamer now?", "No Livestreamer installation detected", MessageBoxButtons.YesNo)
+            Dim boolLivestreamerInstall As Integer = MessageBox.Show("Livestreamer is not installed, and is necessary for this program to run.  Would you like to download and install Livestreamer now?", "No Livestreamer installation detected", MessageBoxButtons.YesNoCancel)
 
             If boolLivestreamerInstall = DialogResult.No Or boolLivestreamerInstall = DialogResult.Cancel Then
                 Close()
@@ -98,6 +95,7 @@ Public Class Form1
 
             End If
         End If
+
     End Sub
 
     Private Sub ShowDownloadProgress(ByVal sender As Object, ByVal e As DownloadProgressChangedEventArgs)
@@ -119,29 +117,6 @@ Public Class Form1
         End If
     End Sub
 
-    Public Sub setupAutocompleteFile()
-        'Generaete autocomplete file
-        If My.Settings.strPathToStreamerFile = "" Or File.Exists(My.Settings.strPathToStreamerFile) = False Then
-
-            MsgBox("You must select an autocomplete file to use this program.  The file must be a text file with 1 username per line.")
-
-            Dim fd As OpenFileDialog = New OpenFileDialog()
-
-            fd.Title = "Select a file..."
-            fd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\MacSG"
-            fd.Filter = "Text files (*.txt)|*.txt"
-            fd.RestoreDirectory = True
-
-            Select Case fd.ShowDialog
-                Case DialogResult.Cancel
-                    Close()
-                Case DialogResult.OK
-                    My.Settings.strPathToStreamerFile = fd.FileName
-            End Select
-
-        End If
-    End Sub
-
     Public Sub setupAutocompleteSources()
 
         Using reader As New StreamReader(My.Settings.strPathToStreamerFile)
@@ -155,6 +130,7 @@ Public Class Form1
         txtStream2.AutoCompleteCustomSource = strColAutoCompleteList
         txtStream3.AutoCompleteCustomSource = strColAutoCompleteList
         txtStream4.AutoCompleteCustomSource = strColAutoCompleteList
+
     End Sub
 
     Public Sub setupTwitchOAuth()
@@ -166,7 +142,7 @@ Public Class Form1
                 Process.Start(strOAuthURL)
                 My.Settings.strTwitchOAuthKey = InputBox("Enter Twitch OAuth code, without the leading ""oauth:""", "Input Twitch OAuth key").ToString
             Else
-                MsgBox("You will be unable to watch Twitch streams unless you generate an OAuth key.")
+                MsgBox("You will be unable to watch Twitch streams unless you generate an OAuth key.  You may enter an OAuth key at any time via ""File"" > ""Change Twitch OAuth key...""")
             End If
 
         End If
@@ -270,7 +246,6 @@ Public Class Form1
                 End If
 
                 btnStream1Gen.Enabled = True
-                Call setupAutocompleteFile()
                 Call setupAutocompleteSources()
 
             End If
@@ -426,7 +401,7 @@ Public Class Form1
 
         fd.Title = "Select a file..."
         fd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData + "\MacSG")
-        fd.Filter = "Text files (*.txt)|*.txt"
+        fd.Filter = "Config files (*.conf)|*.conf"
         fd.RestoreDirectory = True
 
         If fd.ShowDialog() = DialogResult.OK Then
