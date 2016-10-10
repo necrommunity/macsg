@@ -405,7 +405,7 @@ Public Class Form1
         Dim fd As OpenFileDialog = New OpenFileDialog()
 
         fd.Title = "Select a file..."
-        fd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData + "\MacSG")
+        fd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\MacSG"
         fd.Filter = "Config files (*.conf)|*.conf"
         fd.RestoreDirectory = True
 

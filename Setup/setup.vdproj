@@ -39,6 +39,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_4F791D21F54643DAB8C44BC2F65D2CE9"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_4F87E18FAA4346559439BF1097BAA84A"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -57,6 +63,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_6F3E33F0954E41319543985F4039E524"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_77C27DB0B46F4F1BA45C7372020E9059"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -64,6 +76,12 @@
         "Entry"
         {
         "MsmKey" = "8:_99B72B1280414A7282B8B54E3BC94A9B"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_9BC37C12FBEC4710B495892C30C8ED1F"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -81,6 +99,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_AF6984AB428A44429851C58D54C0866A"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_B263703588D34448C3B7A371FF368B65"
         "OwnerKey" = "8:_A38FA8D2B5B2481A94686E5F29DF5CC7"
         "MsmSig" = "8:_UNDEFINED"
@@ -93,8 +117,8 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_5FF2E6AA0FB51A16A537283ECA4A8137"
+        "MsmKey" = "8:_E82F4E53278E4812A9791E1D68962A03"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -107,6 +131,12 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_B263703588D34448C3B7A371FF368B65"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_5FF2E6AA0FB51A16A537283ECA4A8137"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -127,6 +157,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
         "Release"
         {
@@ -143,6 +181,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.5"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.5 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.5"
+                    }
+                }
+            }
         }
     }
     "Deployable"
@@ -177,7 +231,7 @@
             "SourcePath" = "8:..\\..\\Installer files\\racer4.txt"
             "TargetName" = "8:racer4.txt"
             "Tag" = "8:"
-            "Folder" = "8:_76E389910B4E4864A8697C95A3D9BBB0"
+            "Folder" = "8:_2DD3CA1AFA814DD8B2F35074342525E5"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -197,7 +251,7 @@
             "SourcePath" = "8:..\\..\\Installer files\\racer2.txt"
             "TargetName" = "8:racer2.txt"
             "Tag" = "8:"
-            "Folder" = "8:_76E389910B4E4864A8697C95A3D9BBB0"
+            "Folder" = "8:_2DD3CA1AFA814DD8B2F35074342525E5"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -237,7 +291,27 @@
             "SourcePath" = "8:..\\..\\Installer files\\racer3.txt"
             "TargetName" = "8:racer3.txt"
             "Tag" = "8:"
-            "Folder" = "8:_76E389910B4E4864A8697C95A3D9BBB0"
+            "Folder" = "8:_2DD3CA1AFA814DD8B2F35074342525E5"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4F791D21F54643DAB8C44BC2F65D2CE9"
+            {
+            "SourcePath" = "8:..\\..\\Installer files\\1"
+            "TargetName" = "8:1"
+            "Tag" = "8:"
+            "Folder" = "8:_2DD3CA1AFA814DD8B2F35074342525E5"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -257,7 +331,7 @@
             "SourcePath" = "8:..\\..\\Installer files\\score1.txt"
             "TargetName" = "8:score1.txt"
             "Tag" = "8:"
-            "Folder" = "8:_76E389910B4E4864A8697C95A3D9BBB0"
+            "Folder" = "8:_2DD3CA1AFA814DD8B2F35074342525E5"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -308,7 +382,27 @@
             "SourcePath" = "8:..\\..\\Installer files\\score3.txt"
             "TargetName" = "8:score3.txt"
             "Tag" = "8:"
-            "Folder" = "8:_76E389910B4E4864A8697C95A3D9BBB0"
+            "Folder" = "8:_2DD3CA1AFA814DD8B2F35074342525E5"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6F3E33F0954E41319543985F4039E524"
+            {
+            "SourcePath" = "8:..\\..\\Installer files\\3"
+            "TargetName" = "8:3"
+            "Tag" = "8:"
+            "Folder" = "8:_2DD3CA1AFA814DD8B2F35074342525E5"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -328,7 +422,7 @@
             "SourcePath" = "8:..\\..\\Installer files\\streamerlist.conf"
             "TargetName" = "8:streamerlist.conf"
             "Tag" = "8:"
-            "Folder" = "8:_76E389910B4E4864A8697C95A3D9BBB0"
+            "Folder" = "8:_2DD3CA1AFA814DD8B2F35074342525E5"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -348,7 +442,27 @@
             "SourcePath" = "8:..\\..\\Installer files\\score2.txt"
             "TargetName" = "8:score2.txt"
             "Tag" = "8:"
-            "Folder" = "8:_76E389910B4E4864A8697C95A3D9BBB0"
+            "Folder" = "8:_2DD3CA1AFA814DD8B2F35074342525E5"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9BC37C12FBEC4710B495892C30C8ED1F"
+            {
+            "SourcePath" = "8:..\\..\\Installer files\\4"
+            "TargetName" = "8:4"
+            "Tag" = "8:"
+            "Folder" = "8:_2DD3CA1AFA814DD8B2F35074342525E5"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -368,7 +482,27 @@
             "SourcePath" = "8:..\\..\\Installer files\\score4.txt"
             "TargetName" = "8:score4.txt"
             "Tag" = "8:"
-            "Folder" = "8:_76E389910B4E4864A8697C95A3D9BBB0"
+            "Folder" = "8:_2DD3CA1AFA814DD8B2F35074342525E5"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_AF6984AB428A44429851C58D54C0866A"
+            {
+            "SourcePath" = "8:..\\..\\..\\BrainSG\\cmdow.exe"
+            "TargetName" = "8:cmdow.exe"
+            "Tag" = "8:"
+            "Folder" = "8:_EC4AA43B10F54FB5878F7CBE3982D4DF"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -419,7 +553,27 @@
             "SourcePath" = "8:..\\..\\Installer files\\racer1.txt"
             "TargetName" = "8:racer1.txt"
             "Tag" = "8:"
-            "Folder" = "8:_76E389910B4E4864A8697C95A3D9BBB0"
+            "Folder" = "8:_2DD3CA1AFA814DD8B2F35074342525E5"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E82F4E53278E4812A9791E1D68962A03"
+            {
+            "SourcePath" = "8:..\\..\\Installer files\\2"
+            "TargetName" = "8:2"
+            "Tag" = "8:"
+            "Folder" = "8:_2DD3CA1AFA814DD8B2F35074342525E5"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -465,12 +619,23 @@
             "{1525181F-901A-416C-8A58-119130FE478E}:_76E389910B4E4864A8697C95A3D9BBB0"
             {
             "Name" = "8:#1915"
-            "AlwaysCreate" = "11:FALSE"
+            "AlwaysCreate" = "11:TRUE"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Property" = "8:AppDataFolder"
                 "Folders"
                 {
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_2DD3CA1AFA814DD8B2F35074342525E5"
+                    {
+                    "Name" = "8:MacSG"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_85E2C8FEA06A456A948EEBD121B66D8A"
+                        "Folders"
+                        {
+                        }
+                    }
                 }
             }
             "{3C67513D-01DD-4637-8A68-80971EB9504F}:_EC4AA43B10F54FB5878F7CBE3982D4DF"
@@ -502,7 +667,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:MacSG"
         "ProductCode" = "8:{E983DC26-6399-44E2-8FD5-1312E6DD4225}"
-        "PackageCode" = "8:{BB967906-130E-4112-8337-FAEF584CEB4B}"
+        "PackageCode" = "8:{C4DE89D7-F4CF-44A0-B61F-E690EA3C92EC}"
         "UpgradeCode" = "8:{F9DAE7D5-8776-4DF4-9CC8-0FFDE4CFCFC4}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -1051,7 +1216,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_A38FA8D2B5B2481A94686E5F29DF5CC7"
             {
-            "SourcePath" = "8:..\\MacSG\\obj\\Debug\\MacSG.exe"
+            "SourcePath" = "8:..\\MacSG\\obj\\Release\\MacSG.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_EC4AA43B10F54FB5878F7CBE3982D4DF"
