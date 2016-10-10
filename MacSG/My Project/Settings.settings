@@ -9,7 +9,7 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="strPathToStreamerFile" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\MacSG\streamerlist.conf"</Value>
+      <Value Profile="(Default)" />
     </Setting>
   </Settings>
 </SettingsFile>

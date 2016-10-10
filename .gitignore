@@ -242,6 +242,5 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
-/macsgsetup/Release/setup.exe
+/Setup/Release/setup.exe
 
-/MacSG/livestreamer-v1.12.2-win32-setup.exe

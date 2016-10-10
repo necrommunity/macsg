@@ -80,8 +80,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + ""\MacSG\st"& _ 
-            "reamerlist.conf""")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
         Public Property strPathToStreamerFile() As String
             Get
                 Return CType(Me("strPathToStreamerFile"),String)
