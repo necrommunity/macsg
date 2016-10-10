@@ -29,14 +29,9 @@ Public Class Form1
     'Form load
     Public Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        MsgBox("Entered form load")
-
         If My.Settings.strPathToStreamerFile = "" Then
-            My.Settings.strPathToStreamerFile = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData + "\MacSG\streamerlist.conf").ToString
-            MsgBox("Defined streamer list location")
+            My.Settings.strPathToStreamerFile = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\MacSG\streamerlist.conf"
         End If
-
-
 
         setupLivestreamerCheck()
         setupToggleSwitches()

@@ -502,7 +502,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:MacSG"
         "ProductCode" = "8:{E983DC26-6399-44E2-8FD5-1312E6DD4225}"
-        "PackageCode" = "8:{51E67310-03E0-474E-AD51-1E67C080F381}"
+        "PackageCode" = "8:{BB967906-130E-4112-8337-FAEF584CEB4B}"
         "UpgradeCode" = "8:{F9DAE7D5-8776-4DF4-9CC8-0FFDE4CFCFC4}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -633,7 +633,7 @@
             "Target" = "8:_A38FA8D2B5B2481A94686E5F29DF5CC7"
             "Folder" = "8:_5D04E64F013E48CB922AFA72C20A1EDC"
             "WorkingFolder" = "8:_EC4AA43B10F54FB5878F7CBE3982D4DF"
-            "Icon" = "8:"
+            "Icon" = "8:_3DB8C8E102294ED4957869932E931D25"
             "Feature" = "8:"
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_A8A6A3D7385B416D95BA93CD8BEF9B1A"
@@ -647,7 +647,7 @@
             "Target" = "8:_A38FA8D2B5B2481A94686E5F29DF5CC7"
             "Folder" = "8:_74459C64FC35429C92282887FA26070A"
             "WorkingFolder" = "8:_EC4AA43B10F54FB5878F7CBE3982D4DF"
-            "Icon" = "8:"
+            "Icon" = "8:_3DB8C8E102294ED4957869932E931D25"
             "Feature" = "8:"
             }
         }
@@ -1051,7 +1051,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_A38FA8D2B5B2481A94686E5F29DF5CC7"
             {
-            "SourcePath" = "8:..\\MacSG\\obj\\Release\\MacSG.exe"
+            "SourcePath" = "8:..\\MacSG\\obj\\Debug\\MacSG.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_EC4AA43B10F54FB5878F7CBE3982D4DF"
