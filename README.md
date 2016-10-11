@@ -1,5 +1,5 @@
 # MacSG
-GUI frontend for Livestreamer.  Developed for the NecroDancer racing community.  You can grab the latest version of the installer by clicking [here](http://rtmp.condorleague.tv/macsg.msi)
+GUI frontend for Livestreamer.  Developed for the NecroDancer racing community.  You can grab the latest version of the installer by clicking [here](https://github.com/MacKirby/MacSG/blob/master/Setup/Release/setup.msi)
 
 Feel free to use the [Issues](https://github.com/MacKirby/MacSG/issues) tab to request features.  There are a number of planned features, including:
 
