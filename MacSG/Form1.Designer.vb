@@ -52,11 +52,11 @@ Partial Class Form1
         Me.btnStream4Gen = New System.Windows.Forms.Button()
         Me.menuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.fileToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.selectAutocompleteFile = New System.Windows.Forms.ToolStripMenuItem()
-        Me.EditAutocompleteFileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ChangeWindowSizeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ChangeTwitchOAuthKeyToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.aboutCoNDORSGToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.tsmiSelectAutocompleteFile = New System.Windows.Forms.ToolStripMenuItem()
+        Me.tsmiEditAutocompleteFile = New System.Windows.Forms.ToolStripMenuItem()
+        Me.tsmiChangeVLCWindowSize = New System.Windows.Forms.ToolStripMenuItem()
+        Me.tsmiChangeTwitchOAuthKey = New System.Windows.Forms.ToolStripMenuItem()
+        Me.tsmiAbout = New System.Windows.Forms.ToolStripMenuItem()
         Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
         Me.stream1Group.SuspendLayout()
         CType(Me.updStream1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -373,40 +373,40 @@ Partial Class Form1
         '
         'fileToolStripMenuItem1
         '
-        Me.fileToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.selectAutocompleteFile, Me.EditAutocompleteFileToolStripMenuItem, Me.ChangeWindowSizeToolStripMenuItem, Me.ChangeTwitchOAuthKeyToolStripMenuItem, Me.aboutCoNDORSGToolStripMenuItem})
+        Me.fileToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmiSelectAutocompleteFile, Me.tsmiEditAutocompleteFile, Me.tsmiChangeVLCWindowSize, Me.tsmiChangeTwitchOAuthKey, Me.tsmiAbout})
         Me.fileToolStripMenuItem1.Name = "fileToolStripMenuItem1"
         Me.fileToolStripMenuItem1.Size = New System.Drawing.Size(37, 20)
         Me.fileToolStripMenuItem1.Text = "File"
         '
-        'selectAutocompleteFile
+        'tsmiSelectAutocompleteFile
         '
-        Me.selectAutocompleteFile.Name = "selectAutocompleteFile"
-        Me.selectAutocompleteFile.Size = New System.Drawing.Size(221, 22)
-        Me.selectAutocompleteFile.Text = "Select autocomplete file..."
+        Me.tsmiSelectAutocompleteFile.Name = "tsmiSelectAutocompleteFile"
+        Me.tsmiSelectAutocompleteFile.Size = New System.Drawing.Size(221, 22)
+        Me.tsmiSelectAutocompleteFile.Text = "Select autocomplete file..."
         '
-        'EditAutocompleteFileToolStripMenuItem
+        'tsmiEditAutocompleteFile
         '
-        Me.EditAutocompleteFileToolStripMenuItem.Name = "EditAutocompleteFileToolStripMenuItem"
-        Me.EditAutocompleteFileToolStripMenuItem.Size = New System.Drawing.Size(221, 22)
-        Me.EditAutocompleteFileToolStripMenuItem.Text = "Edit autocomplete file..."
+        Me.tsmiEditAutocompleteFile.Name = "tsmiEditAutocompleteFile"
+        Me.tsmiEditAutocompleteFile.Size = New System.Drawing.Size(221, 22)
+        Me.tsmiEditAutocompleteFile.Text = "Edit autocomplete file..."
         '
-        'ChangeWindowSizeToolStripMenuItem
+        'tsmiChangeVLCWindowSize
         '
-        Me.ChangeWindowSizeToolStripMenuItem.Name = "ChangeWindowSizeToolStripMenuItem"
-        Me.ChangeWindowSizeToolStripMenuItem.Size = New System.Drawing.Size(221, 22)
-        Me.ChangeWindowSizeToolStripMenuItem.Text = "Change window size..."
+        Me.tsmiChangeVLCWindowSize.Name = "tsmiChangeVLCWindowSize"
+        Me.tsmiChangeVLCWindowSize.Size = New System.Drawing.Size(221, 22)
+        Me.tsmiChangeVLCWindowSize.Text = "Change window size..."
         '
-        'ChangeTwitchOAuthKeyToolStripMenuItem
+        'tsmiChangeTwitchOAuthKey
         '
-        Me.ChangeTwitchOAuthKeyToolStripMenuItem.Name = "ChangeTwitchOAuthKeyToolStripMenuItem"
-        Me.ChangeTwitchOAuthKeyToolStripMenuItem.Size = New System.Drawing.Size(221, 22)
-        Me.ChangeTwitchOAuthKeyToolStripMenuItem.Text = "Change Twitch OAuth key..."
+        Me.tsmiChangeTwitchOAuthKey.Name = "tsmiChangeTwitchOAuthKey"
+        Me.tsmiChangeTwitchOAuthKey.Size = New System.Drawing.Size(221, 22)
+        Me.tsmiChangeTwitchOAuthKey.Text = "Change Twitch OAuth key..."
         '
-        'aboutCoNDORSGToolStripMenuItem
+        'tsmiAbout
         '
-        Me.aboutCoNDORSGToolStripMenuItem.Name = "aboutCoNDORSGToolStripMenuItem"
-        Me.aboutCoNDORSGToolStripMenuItem.Size = New System.Drawing.Size(221, 22)
-        Me.aboutCoNDORSGToolStripMenuItem.Text = "About..."
+        Me.tsmiAbout.Name = "tsmiAbout"
+        Me.tsmiAbout.Size = New System.Drawing.Size(221, 22)
+        Me.tsmiAbout.Text = "About..."
         '
         'ProgressBar1
         '
@@ -487,10 +487,10 @@ Partial Class Form1
     Private WithEvents btnStream4Gen As Button
     Private WithEvents menuStrip1 As MenuStrip
     Private WithEvents fileToolStripMenuItem1 As ToolStripMenuItem
-    Private WithEvents selectAutocompleteFile As ToolStripMenuItem
-    Friend WithEvents EditAutocompleteFileToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ChangeWindowSizeToolStripMenuItem As ToolStripMenuItem
-    Private WithEvents aboutCoNDORSGToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ChangeTwitchOAuthKeyToolStripMenuItem As ToolStripMenuItem
+    Private WithEvents tsmiSelectAutocompleteFile As ToolStripMenuItem
+    Friend WithEvents tsmiEditAutocompleteFile As ToolStripMenuItem
+    Friend WithEvents tsmiChangeVLCWindowSize As ToolStripMenuItem
+    Private WithEvents tsmiAbout As ToolStripMenuItem
+    Friend WithEvents tsmiChangeTwitchOAuthKey As ToolStripMenuItem
     Friend WithEvents ProgressBar1 As ProgressBar
 End Class
