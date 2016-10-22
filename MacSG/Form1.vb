@@ -2,13 +2,21 @@
 Imports System.IO
 Imports System.Net
 Imports JCS
+Imports System.Text.RegularExpressions
+
+Module Module1
+    Public txtArray() As TextBox = {Form1.txtStream1, Form1.txtStream2, Form1.txtStream3, Form1.txtStream4}
+    Public switchArray() As JCS.ToggleSwitch = {Form1.switchStream1, Form1.switchStream2, Form1.switchStream3, Form1.switchStream4}
+    Public trkbrArray() As TrackBar = {Form1.trkbrStream1, Form1.trkbrStream2, Form1.trkbrStream3, Form1.trkbrStream4}
+End Module
 
 Public Class Form1
     Dim strColAutoCompleteList As New AutoCompleteStringCollection
 
-
     'Form load
     Public Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        My.Settings.strPathToStreamerFile = ""
 
         If My.Settings.strPathToStreamerFile = "" Then
             My.Settings.strPathToStreamerFile = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\MacSG\streamerlist.conf"
@@ -19,7 +27,6 @@ Public Class Form1
         setupAutocompleteSources()
         setupTwitchOAuth()
     End Sub
-
 
     'Set up toggle sitch controls on Form1 
     Private Sub setupToggleSwitches()
@@ -143,158 +150,6 @@ Public Class Form1
 
 
 
-    'Stream generation buttons
-    Private Sub btnStream1Gen_Click(sender As Object, e As EventArgs) Handles btnStream1Gen.Click
-        If txtStream1.Text.ToLower <> "" Then
-
-            Dim strSource1 As String = ""
-            Dim strQuality1 As String = ""
-            Dim intFileIndex As Integer = 1
-            Dim strWindowTitle As String = "First"
-
-            If trkbrStream1.Enabled = True Then
-                Select Case trkbrStream1.Value
-                    Case 1
-                        strQuality1 = " low "
-                    Case 2
-                        strQuality1 = " medium "
-                    Case 3
-                        strQuality1 = " high "
-                    Case 4
-                        strQuality1 = " source "
-                End Select
-
-            ElseIf trkbrStream1.Enabled = False Then
-                strQuality1 = "/live best "
-            End If
-
-            Select Case switchStream1.Checked
-                Case True
-                    strSource1 = "livestreamer rtmp://rtmp.condorleague.tv/"
-                Case False
-                    strSource1 = "livestreamer --twitch-oauth-token " & My.Settings.strTwitchOAuthKey & " twitch.tv/"
-            End Select
-
-            genStream(racer:=txtStream1.Text, quality:=strQuality1, source:=strSource1, windowTitle:=strWindowTitle, configFile:=intFileIndex)
-            writeNameToFile(racer:=txtStream1.Text, file:=intFileIndex)
-            writeNameToAutocomplete(racer:=txtStream1.Text)
-
-        End If
-    End Sub
-
-    Private Sub btnStream2Gen_Click(sender As Object, e As EventArgs) Handles btnStream2Gen.Click
-        If txtStream2.Text.ToLower <> "" Then
-
-            Dim strSource2 As String = ""
-            Dim strQuality2 As String = ""
-            Dim intFileIndex As Integer = 2
-            Dim strWindowTitle As String = "Second"
-
-            If trkbrStream2.Enabled = True Then
-                Select Case trkbrStream2.Value
-                    Case 1
-                        strQuality2 = " low "
-                    Case 2
-                        strQuality2 = " medium "
-                    Case 3
-                        strQuality2 = " high "
-                    Case 4
-                        strQuality2 = " source "
-                End Select
-
-            ElseIf trkbrStream2.Enabled = False Then
-                strQuality2 = "/live best "
-            End If
-
-            Select Case switchStream2.Checked
-                Case True
-                    strSource2 = "livestreamer rtmp://rtmp.condorleague.tv/"
-                Case False
-                    strSource2 = "livestreamer --twitch-oauth-token " & My.Settings.strTwitchOAuthKey & " twitch.tv/"
-            End Select
-
-            genStream(racer:=txtStream2.Text, quality:=strQuality2, source:=strSource2, windowTitle:=strWindowTitle, configFile:=intFileIndex)
-            writeNameToFile(racer:=txtStream2.Text, file:=intFileIndex)
-            writeNameToAutocomplete(racer:=txtStream2.Text)
-        End If
-    End Sub
-
-    Private Sub btnStream3Gen_Click(sender As Object, e As EventArgs) Handles btnStream3Gen.Click
-        If txtStream3.Text.ToLower <> "" Then
-
-            Dim strSource3 As String = ""
-            Dim strQuality3 As String = ""
-            Dim intFileIndex As Integer = 3
-            Dim strWindowTitle As String = "Third"
-
-            If trkbrStream3.Enabled = True Then
-                Select Case trkbrStream3.Value
-                    Case 1
-                        strQuality3 = " low "
-                    Case 2
-                        strQuality3 = " medium "
-                    Case 3
-                        strQuality3 = " high "
-                    Case 4
-                        strQuality3 = " source "
-                End Select
-
-            ElseIf trkbrStream3.Enabled = False Then
-                strQuality3 = "/live best "
-            End If
-
-            Select Case switchStream3.Checked
-                Case True
-                    strSource3 = "livestreamer rtmp://rtmp.condorleague.tv/"
-                Case False
-                    strSource3 = "livestreamer --twitch-oauth-token " & My.Settings.strTwitchOAuthKey & " twitch.tv/"
-            End Select
-
-            genStream(racer:=txtStream3.Text, quality:=strQuality3, source:=strSource3, windowTitle:=strWindowTitle, configFile:=intFileIndex)
-            writeNameToFile(racer:=txtStream3.Text, file:=intFileIndex)
-            writeNameToAutocomplete(racer:=txtStream3.Text)
-        End If
-    End Sub
-
-    Private Sub btnStream4Gen_Click(sender As Object, e As EventArgs) Handles btnStream4Gen.Click
-        If txtStream4.Text.ToLower <> "" Then
-
-            Dim strSource4 As String = ""
-            Dim strQuality4 As String = ""
-            Dim intFileIndex As Integer = 4
-            Dim strWindowTitle As String = "Fourth"
-
-            If trkbrStream4.Enabled = True Then
-                Select Case trkbrStream4.Value
-                    Case 1
-                        strQuality4 = " low "
-                    Case 2
-                        strQuality4 = " medium "
-                    Case 3
-                        strQuality4 = " high "
-                    Case 4
-                        strQuality4 = " source "
-                End Select
-
-            ElseIf trkbrStream4.Enabled = False Then
-                strQuality4 = "/live best "
-            End If
-
-            Select Case switchStream4.Checked
-                Case True
-                    strSource4 = "livestreamer rtmp://rtmp.condorleague.tv/"
-                Case False
-                    strSource4 = "livestreamer --twitch-oauth-token " & My.Settings.strTwitchOAuthKey & " twitch.tv/"
-            End Select
-
-            genStream(racer:=txtStream4.Text, quality:=strQuality4, source:=strSource4, windowTitle:=strWindowTitle, configFile:=intFileIndex)
-            writeNameToFile(racer:=txtStream4.Text, file:=intFileIndex)
-            writeNameToAutocomplete(racer:=txtStream4.Text)
-        End If
-    End Sub
-
-
-
     'Move and resize all windows
     Private Sub moveResize_Click(sender As Object, e As EventArgs) Handles btnMoveResize.Click
         If My.Settings.strWindowSize = "" Then
@@ -335,12 +190,13 @@ Public Class Form1
 
     End Sub
 
-    'Generate all streams by calling the 4 subs
+    'Generate all streams by "clicking" the 4 buttons
     Private Sub btnGenAll_Click(sender As Object, e As EventArgs) Handles btnGenAll.Click
-        btnStream1Gen_Click(btnStream1Gen, New EventArgs)
-        btnStream2Gen_Click(btnStream2Gen, New EventArgs)
-        btnStream3Gen_Click(btnStream3Gen, New EventArgs)
-        btnStream4Gen_Click(btnStream4Gen, New EventArgs)
+        btnStream1Gen.PerformClick()
+        btnStream2Gen.PerformClick()
+        btnStream3Gen.PerformClick()
+        btnStream4Gen.PerformClick()
+
     End Sub
 
 
@@ -397,21 +253,8 @@ Public Class Form1
 
 
 
-    'Write udStream control values to text files
-    Function updControls_Changed(sender As Object, e As EventArgs) Handles updStream1.ValueChanged, updStream2.ValueChanged, updStream3.ValueChanged, updStream4.ValueChanged
-        Dim updIndex As String = DirectCast(sender, Control).Name.Remove(0, 9)
-
-        Using swScore As StreamWriter = New StreamWriter(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\MacSG\score" & updIndex & ".txt")
-            swScore.Write(DirectCast(sender, NumericUpDown).Value)
-        End Using
-
-        Return Nothing
-    End Function
-
-
-
     'Functions
-    Public Function genStream(racer As String, quality As String, source As String, windowTitle As String, configFile As Integer)
+    Public Function genStream(racer As String, quality As String, source As String, windowTitle As String, configFile As String)
 
         Dim strLivestreamerProcess As New ProcessStartInfo("cmd.exe", "/k echo title " & windowTitle & " & " & source & racer & quality & "--player-args "" --config %AppData%\MacSG\" & configFile & " {filename}""")
         strLivestreamerProcess.WindowStyle = ProcessWindowStyle.Hidden
@@ -420,7 +263,7 @@ Public Class Form1
 
     End Function
 
-    Public Function writeNameToFile(racer As String, file As Integer)
+    Public Function writeNameToFile(racer As String, file As String)
 
         Dim strPathtoName As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\MacSG\racer" & file & ".txt"
         Dim swRacer As System.IO.StreamWriter
@@ -445,5 +288,70 @@ Public Class Form1
         Return Nothing
 
     End Function
+
+    'Write udStream control values to text files
+    Function updControls_Changed(sender As Object, e As EventArgs) Handles updStream1.ValueChanged, updStream2.ValueChanged, updStream3.ValueChanged, updStream4.ValueChanged
+        Dim updIndex As String = DirectCast(sender, Control).Name.Remove(0, 9)
+
+        Using swScore As StreamWriter = New StreamWriter(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\MacSG\score" & updIndex & ".txt")
+            swScore.Write(DirectCast(sender, NumericUpDown).Value)
+        End Using
+
+        Return Nothing
+    End Function
+
+    'Generate streams
+    Function streamButton_Clicked(sender As Object, e As EventArgs) Handles btnStream1Gen.Click, btnStream2Gen.Click, btnStream3Gen.Click, btnStream4Gen.Click
+        Dim ctrlIndex As String = Regex.Replace(DirectCast(sender, Button).Name, "[^1-4]", "")
+        If txtStream1.Text.ToLower <> "" Then
+
+            Dim strSource As String = ""
+            Dim strQuality As String = ""
+            Dim strWindowTitle As String = ""
+
+            If Nothing Then
+            End If
+
+            Select Case ctrlIndex
+                Case 1
+                    strWindowTitle = "First"
+                Case 2
+                    strWindowTitle = "Second"
+                Case 3
+                    strWindowTitle = "Third"
+                Case 4
+                    strWindowTitle = "Fourth"
+            End Select
+
+            If trkbrArray(ctrlIndex - 1).Enabled = True Then
+                Select Case trkbrArray(ctrlIndex - 1).Value
+                    Case 1
+                        strQuality = " low "
+                    Case 2
+                        strQuality = " medium "
+                    Case 3
+                        strQuality = " high "
+                    Case 4
+                        strQuality = " source "
+                End Select
+
+            ElseIf trkbrArray(ctrlIndex - 1).Enabled = False Then
+                strQuality = "/live best "
+            End If
+
+            Select Case switchArray(ctrlIndex - 1).Checked
+                Case True
+                    strSource = "livestreamer rtmp://rtmp.condorleague.tv/"
+                Case False
+                    strSource = "livestreamer --twitch-oauth-token " & My.Settings.strTwitchOAuthKey & " twitch.tv/"
+            End Select
+
+            genStream(racer:=txtArray(ctrlIndex - 1).Text, quality:=strQuality, source:=strSource, windowTitle:=strWindowTitle, configFile:=ctrlIndex)
+            writeNameToFile(racer:=txtArray(ctrlIndex - 1).Text, file:=ctrlIndex)
+            writeNameToAutocomplete(racer:=txtArray(ctrlIndex - 1).Text)
+
+        End If
+    End Function
+
 
 End Class

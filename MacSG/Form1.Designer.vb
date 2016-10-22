@@ -463,7 +463,7 @@ Partial Class Form1
     Private WithEvents btnMoveResize As Button
     Private WithEvents stream1Group As GroupBox
     Friend WithEvents updStream1 As NumericUpDown
-    Private WithEvents trkbrStream1 As TrackBar
+    Friend WithEvents trkbrStream1 As TrackBar
     Friend WithEvents switchStream1 As JCS.ToggleSwitch
     Friend WithEvents txtStream1 As TextBox
     Private WithEvents btnStream1Gen As Button
@@ -471,19 +471,19 @@ Partial Class Form1
     Friend WithEvents updStream2 As NumericUpDown
     Friend WithEvents switchStream2 As JCS.ToggleSwitch
     Friend WithEvents txtStream2 As TextBox
-    Private WithEvents trkbrStream2 As TrackBar
+    Friend WithEvents trkbrStream2 As TrackBar
     Private WithEvents btnStream2Gen As Button
     Private WithEvents stream3Group As GroupBox
     Friend WithEvents updStream3 As NumericUpDown
     Friend WithEvents switchStream3 As JCS.ToggleSwitch
     Friend WithEvents txtStream3 As TextBox
-    Private WithEvents trkbrStream3 As TrackBar
+    Friend WithEvents trkbrStream3 As TrackBar
     Private WithEvents btnStream3Gen As Button
     Private WithEvents stream4Group As GroupBox
     Friend WithEvents updStream4 As NumericUpDown
     Friend WithEvents switchStream4 As JCS.ToggleSwitch
     Friend WithEvents txtStream4 As TextBox
-    Private WithEvents trkbrStream4 As TrackBar
+    Friend WithEvents trkbrStream4 As TrackBar
     Private WithEvents btnStream4Gen As Button
     Private WithEvents menuStrip1 As MenuStrip
     Private WithEvents fileToolStripMenuItem1 As ToolStripMenuItem
