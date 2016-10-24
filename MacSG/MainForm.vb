@@ -91,7 +91,7 @@ Public Class MainForm
 
                 client.DownloadFileAsync(New Uri("https://github.com/chrippa/livestreamer/releases/download/v1.12.2/livestreamer-v1.12.2-win32-setup.exe"), Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\MacSG\livestreamer-v1.12.2-win32-setup.exe")
 
-                For Each ctrl In Me.Controls
+                For Each ctrl As Control In Me.Controls
                     ctrl.Enabled = False
                 Next
 
@@ -111,7 +111,7 @@ Public Class MainForm
         If Not e.Cancelled AndAlso e.Error Is Nothing Then
             ProgressBar1.Visible = False
             Process.Start(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\MacSG\livestreamer-v1.12.2-win32-setup.exe")
-            For Each ctrl In Me.Controls
+            For Each ctrl As Control In Me.Controls
                 ctrl.Enabled = True
             Next
 
@@ -303,7 +303,10 @@ Public Class MainForm
 
     'Generate streams
     Sub streamButton_Clicked(sender As Object, e As EventArgs) Handles btnStream1Gen.Click, btnStream2Gen.Click, btnStream3Gen.Click, btnStream4Gen.Click
-        Dim ctrlIndex As String = Regex.Replace(DirectCast(sender, Button).Name, "[^1-4]", "")
+        Dim ctrlIndex As Integer =
+            Integer.Parse(
+                Regex.Replace(DirectCast(sender, Button).Name, "[^1-4]", "")
+            )
         If txtStream1.Text.ToLower <> "" Then
 
             Dim strSource As String = ""
@@ -347,8 +350,8 @@ Public Class MainForm
                     strSource = "livestreamer --twitch-oauth-token " & My.Settings.strTwitchOAuthKey & " twitch.tv/"
             End Select
 
-            genStream(racer:=txtArray(ctrlIndex - 1).Text, quality:=strQuality, source:=strSource, windowTitle:=strWindowTitle, configFile:=ctrlIndex)
-            writeNameToFile(racer:=txtArray(ctrlIndex - 1).Text, file:=ctrlIndex)
+            genStream(racer:=txtArray(ctrlIndex - 1).Text, quality:=strQuality, source:=strSource, windowTitle:=strWindowTitle, configFile:=ctrlIndex.ToString())
+            writeNameToFile(racer:=txtArray(ctrlIndex - 1).Text, file:=ctrlIndex.ToString())
             writeNameToAutocomplete(racer:=txtArray(ctrlIndex - 1).Text)
 
         End If
