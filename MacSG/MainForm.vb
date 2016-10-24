@@ -280,15 +280,15 @@ Public Class MainForm
 
     Public Sub writeNameToAutocomplete(racer As String)
 
-        Dim listOfStrHash As List(Of String) = New List(Of String)(System.IO.File.ReadAllLines(My.Settings.strPathToStreamerFile))
+        Dim streamers = File.ReadLines(My.Settings.strPathToStreamerFile)
 
-        If Not listOfStrHash.Contains(racer.ToLower) Then
-            Dim w As New StreamWriter(My.Settings.strPathToStreamerFile)
-            w.WriteLine(racer.ToLower, True)
-            w.Close()
+        If Not streamers.Contains(racer.ToLower) Then
+            Using w As New StreamWriter(My.Settings.strPathToStreamerFile, append:=True)
+                w.WriteLine(racer.ToLower())
+            End Using
         End If
 
-        Call setupAutocompleteSources()
+        setupAutocompleteSources()
 
     End Sub
 
