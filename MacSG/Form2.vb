@@ -28,7 +28,7 @@ Public Class Form2
         dgdStreamerList.ClipboardCopyMode = DataGridViewClipboardCopyMode.EnableWithoutHeaderText
 
         For i = 0 To dgdStreamerList.Rows.Count - 2
-            If dgdStreamerList.Rows(i) Is Nothing Or dgdStreamerList.Rows(i).ToString = "" Then
+            If dgdStreamerList.Rows(i).ToString = "" Then
                 dgdStreamerList.Rows.Remove(dgdStreamerList.Rows(i))
             End If
         Next
