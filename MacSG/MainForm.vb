@@ -160,7 +160,7 @@ Public Class MainForm
     Private Sub moveResize_Click(sender As Object, e As EventArgs) Handles btnMoveResize.Click
         If My.Settings.strWindowSize = "" Then
             My.Settings.strWindowSize = InputBox("You must define a window size for VLC - the default (for 1920x1080 ) is already entered below.  Enter the resolution as ""width height"".", "Define window size...", "877 518")
-            If My.Settings.strWindowSize Is "" Then My.Settings.strWindowSize = "877 518"
+            If My.Settings.strWindowSize = "" Then My.Settings.strWindowSize = "877 518"
         End If
 
         Dim strXPos = My.Settings.strWindowSize.Split(" "c)(0)
@@ -296,7 +296,7 @@ Public Class MainForm
     Sub updControls_Changed(sender As Object, e As EventArgs) Handles updStream1.ValueChanged, updStream2.ValueChanged, updStream3.ValueChanged, updStream4.ValueChanged
         Dim updIndex As String = DirectCast(sender, Control).Name.Remove(0, 9)
 
-        Using swScore As StreamWriter = New StreamWriter(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\MacSG\score" & updIndex & ".txt")
+        Using swScore As New StreamWriter(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\MacSG\score" & updIndex & ".txt")
             swScore.Write(DirectCast(sender, NumericUpDown).Value)
         End Using
     End Sub
@@ -307,14 +307,11 @@ Public Class MainForm
             Integer.Parse(
                 Regex.Replace(DirectCast(sender, Button).Name, "[^1-4]", "")
             )
-        If txtStream1.Text.ToLower <> "" Then
+        If txtStream1.Text <> "" Then
 
             Dim strSource As String = ""
             Dim strQuality As String = ""
             Dim strWindowTitle As String = ""
-
-            If Nothing Then
-            End If
 
             Select Case ctrlIndex
                 Case 1
@@ -327,7 +324,7 @@ Public Class MainForm
                     strWindowTitle = "Fourth"
             End Select
 
-            If trkbrArray(ctrlIndex - 1).Enabled = True Then
+            If trkbrArray(ctrlIndex - 1).Enabled Then
                 Select Case trkbrArray(ctrlIndex - 1).Value
                     Case 1
                         strQuality = " low "
@@ -338,17 +335,15 @@ Public Class MainForm
                     Case 4
                         strQuality = " source "
                 End Select
-
-            ElseIf trkbrArray(ctrlIndex - 1).Enabled = False Then
+            Else
                 strQuality = "/live best "
             End If
 
-            Select Case switchArray(ctrlIndex - 1).Checked
-                Case True
-                    strSource = "livestreamer rtmp://rtmp.condorleague.tv/"
-                Case False
-                    strSource = "livestreamer --twitch-oauth-token " & My.Settings.strTwitchOAuthKey & " twitch.tv/"
-            End Select
+            If switchArray(ctrlIndex - 1).Checked Then
+                strSource = "livestreamer rtmp://rtmp.condorleague.tv/"
+            Else
+                strSource = "livestreamer --twitch-oauth-token " & My.Settings.strTwitchOAuthKey & " twitch.tv/"
+            End If
 
             genStream(racer:=txtArray(ctrlIndex - 1).Text, quality:=strQuality, source:=strSource, windowTitle:=strWindowTitle, configFile:=ctrlIndex.ToString())
             writeNameToFile(racer:=txtArray(ctrlIndex - 1).Text, file:=ctrlIndex.ToString())
