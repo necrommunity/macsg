@@ -4,14 +4,20 @@ Imports System.Net
 Imports JCS
 Imports System.Text.RegularExpressions
 
-Module Module1
-    Public txtArray() As TextBox = {Form1.txtStream1, Form1.txtStream2, Form1.txtStream3, Form1.txtStream4}
-    Public switchArray() As JCS.ToggleSwitch = {Form1.switchStream1, Form1.switchStream2, Form1.switchStream3, Form1.switchStream4}
-    Public trkbrArray() As TrackBar = {Form1.trkbrStream1, Form1.trkbrStream2, Form1.trkbrStream3, Form1.trkbrStream4}
-End Module
-
 Public Class Form1
     Dim strColAutoCompleteList As New AutoCompleteStringCollection
+
+    Private txtArray As TextBox()
+    Private switchArray As JCS.ToggleSwitch()
+    Private trkbrArray As TrackBar()
+
+    Public Sub New()
+        Me.InitializeComponent()
+
+        Me.txtArray = {Me.txtStream1, Me.txtStream2, Me.txtStream3, Me.txtStream4}
+        Me.switchArray = {Me.switchStream1, Me.switchStream2, Me.switchStream3, Me.switchStream4}
+        Me.trkbrArray = {Me.trkbrStream1, Me.trkbrStream2, Me.trkbrStream3, Me.trkbrStream4}
+    End Sub
 
     'Form load
     Public Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
