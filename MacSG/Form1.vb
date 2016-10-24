@@ -254,27 +254,25 @@ Public Class Form1
 
 
     'Functions
-    Public Function genStream(racer As String, quality As String, source As String, windowTitle As String, configFile As String)
+    Public Sub genStream(racer As String, quality As String, source As String, windowTitle As String, configFile As String)
 
         Dim strLivestreamerProcess As New ProcessStartInfo("cmd.exe", "/k echo title " & windowTitle & " & " & source & racer & quality & "--player-args "" --config %AppData%\MacSG\" & configFile & " {filename}""")
         strLivestreamerProcess.WindowStyle = ProcessWindowStyle.Hidden
         Process.Start(strLivestreamerProcess)
-        Return Nothing
 
-    End Function
+    End Sub
 
-    Public Function writeNameToFile(racer As String, file As String)
+    Public Sub writeNameToFile(racer As String, file As String)
 
         Dim strPathtoName As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\MacSG\racer" & file & ".txt"
         Dim swRacer As System.IO.StreamWriter
         swRacer = My.Computer.FileSystem.OpenTextFileWriter(strPathtoName, False)
         swRacer.WriteLine(racer.ToLower)
         swRacer.Close()
-        Return Nothing
 
-    End Function
+    End Sub
 
-    Public Function writeNameToAutocomplete(racer As String)
+    Public Sub writeNameToAutocomplete(racer As String)
 
         Dim listOfStrHash As List(Of String) = New List(Of String)(System.IO.File.ReadAllLines(My.Settings.strPathToStreamerFile))
 
@@ -285,23 +283,20 @@ Public Class Form1
         End If
 
         Call setupAutocompleteSources()
-        Return Nothing
 
-    End Function
+    End Sub
 
     'Write udStream control values to text files
-    Function updControls_Changed(sender As Object, e As EventArgs) Handles updStream1.ValueChanged, updStream2.ValueChanged, updStream3.ValueChanged, updStream4.ValueChanged
+    Sub updControls_Changed(sender As Object, e As EventArgs) Handles updStream1.ValueChanged, updStream2.ValueChanged, updStream3.ValueChanged, updStream4.ValueChanged
         Dim updIndex As String = DirectCast(sender, Control).Name.Remove(0, 9)
 
         Using swScore As StreamWriter = New StreamWriter(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\MacSG\score" & updIndex & ".txt")
             swScore.Write(DirectCast(sender, NumericUpDown).Value)
         End Using
-
-        Return Nothing
-    End Function
+    End Sub
 
     'Generate streams
-    Function streamButton_Clicked(sender As Object, e As EventArgs) Handles btnStream1Gen.Click, btnStream2Gen.Click, btnStream3Gen.Click, btnStream4Gen.Click
+    Sub streamButton_Clicked(sender As Object, e As EventArgs) Handles btnStream1Gen.Click, btnStream2Gen.Click, btnStream3Gen.Click, btnStream4Gen.Click
         Dim ctrlIndex As String = Regex.Replace(DirectCast(sender, Button).Name, "[^1-4]", "")
         If txtStream1.Text.ToLower <> "" Then
 
@@ -351,7 +346,7 @@ Public Class Form1
             writeNameToAutocomplete(racer:=txtArray(ctrlIndex - 1).Text)
 
         End If
-    End Function
+    End Sub
 
 
 End Class
