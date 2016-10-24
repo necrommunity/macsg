@@ -4,7 +4,7 @@ Imports System.Net
 Imports JCS
 Imports System.Text.RegularExpressions
 
-Public Class Form1
+Public Class MainForm
     Dim strColAutoCompleteList As New AutoCompleteStringCollection
 
     Private txtArray As TextBox()
@@ -240,7 +240,7 @@ Public Class Form1
     End Sub
 
     Public Sub tsmiEditAutocompleteFile_Click(sender As Object, e As EventArgs) Handles tsmiEditAutocompleteFile.Click
-        Dim frmEditStreamerList As New Form2()
+        Dim frmEditStreamerList As New StreamListEditForm()
         frmEditStreamerList.Show()
     End Sub
 
