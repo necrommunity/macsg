@@ -4,14 +4,14 @@ Imports System.Net
 Imports JCS
 Imports System.Text.RegularExpressions
 
-Public Class MainForm
+Public Class frmMain
     Dim strColAutoCompleteList As New AutoCompleteStringCollection
 
     Private txtArray As TextBox()
     Private switchArray As JCS.ToggleSwitch()
     Private trkbrArray As TrackBar()
 
-    Public Sub New()
+    Public Sub ControlArrayItems()
         Me.InitializeComponent()
 
         Me.txtArray = {Me.txtStream1, Me.txtStream2, Me.txtStream3, Me.txtStream4}
@@ -20,11 +20,9 @@ Public Class MainForm
     End Sub
 
     'Form load
-    Public Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Public Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        My.Settings.strPathToStreamerFile = ""
-
-        If My.Settings.strPathToStreamerFile = "" Then
+        If My.Settings.strPathToStreamerFile <> "*.conf" Then
             My.Settings.strPathToStreamerFile = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\MacSG\streamerlist.conf"
         End If
 
@@ -220,7 +218,7 @@ Public Class MainForm
         If fd.ShowDialog() = DialogResult.OK Then
             My.Settings.strPathToStreamerFile = fd.FileName
 
-            Call Form1_Load(Me, e)
+            Call frmMain_Load(Me, e)
 
             txtStream1.Text = ""
             txtStream2.Text = ""
@@ -231,7 +229,7 @@ Public Class MainForm
 
     'About this program
     Private Sub tsmiAbout_Click(sender As Object, e As EventArgs) Handles tsmiAbout.Click
-        MessageBox.Show("Version 0.5.1 - by MacKirby" & vbCrLf & vbCrLf & "This program is provided free of use for managing stream captures for tournaments on Twitch.  Got feedback?  Drop me an email - mac@mackirby.tv", "About MacSG", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        MessageBox.Show("Version " + GetType(String).Assembly.GetName().Version.ToString + " - by MacKirby" & vbCrLf & vbCrLf & "This program is provided free of use for managing stream captures for tournaments on Twitch.  Got feedback?  Drop me an email - mac@mackirby.tv", "About MacSG", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 
     'Change window size for CMDOW
@@ -240,7 +238,7 @@ Public Class MainForm
     End Sub
 
     Public Sub tsmiEditAutocompleteFile_Click(sender As Object, e As EventArgs) Handles tsmiEditAutocompleteFile.Click
-        Dim frmEditStreamerList As New StreamListEditForm()
+        Dim frmEditStreamerList As New frmEditStreamerList()
         frmEditStreamerList.Show()
     End Sub
 
@@ -260,31 +258,31 @@ Public Class MainForm
 
 
     'Functions
-    Public Sub genStream(racer As String, quality As String, source As String, windowTitle As String, configFile As String)
+    Public Sub genStream(streamer As String, quality As String, source As String, windowTitle As String, configFile As String)
 
-        Dim strLivestreamerProcess As New ProcessStartInfo("cmd.exe", "/k echo title " & windowTitle & " & " & source & racer & quality & "--player-args "" --config %AppData%\MacSG\" & configFile & " {filename}""")
+        Dim strLivestreamerProcess As New ProcessStartInfo("cmd.exe", "/k echo title " & windowTitle & " & " & source & streamer & quality & "--player-args "" --config %AppData%\MacSG\" & configFile & " {filename}""")
         strLivestreamerProcess.WindowStyle = ProcessWindowStyle.Hidden
         Process.Start(strLivestreamerProcess)
 
     End Sub
 
-    Public Sub writeNameToFile(racer As String, file As String)
+    Public Sub writeNameToFile(streamer As String, file As String)
 
-        Dim strPathtoName As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\MacSG\racer" & file & ".txt"
-        Dim swRacer As System.IO.StreamWriter
-        swRacer = My.Computer.FileSystem.OpenTextFileWriter(strPathtoName, False)
-        swRacer.WriteLine(racer.ToLower)
-        swRacer.Close()
+        Dim strPathtoName As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\MacSG\streamer" & file & ".txt"
+        Dim swstreamer As System.IO.StreamWriter
+        swstreamer = My.Computer.FileSystem.OpenTextFileWriter(strPathtoName, False)
+        swstreamer.WriteLine(streamer.ToLower)
+        swstreamer.Close()
 
     End Sub
 
-    Public Sub writeNameToAutocomplete(racer As String)
+    Public Sub writeNameToAutocomplete(streamer As String)
 
         Dim streamers = File.ReadLines(My.Settings.strPathToStreamerFile)
 
-        If Not streamers.Contains(racer.ToLower) Then
+        If Not streamers.Contains(streamer.ToLower) Then
             Using w As New StreamWriter(My.Settings.strPathToStreamerFile, append:=True)
-                w.WriteLine(racer.ToLower())
+                w.WriteLine(streamer.ToLower())
             End Using
         End If
 
@@ -345,9 +343,9 @@ Public Class MainForm
                 strSource = "livestreamer --twitch-oauth-token " & My.Settings.strTwitchOAuthKey & " twitch.tv/"
             End If
 
-            genStream(racer:=txtArray(ctrlIndex - 1).Text, quality:=strQuality, source:=strSource, windowTitle:=strWindowTitle, configFile:=ctrlIndex.ToString())
-            writeNameToFile(racer:=txtArray(ctrlIndex - 1).Text, file:=ctrlIndex.ToString())
-            writeNameToAutocomplete(racer:=txtArray(ctrlIndex - 1).Text)
+            genStream(streamer:=txtArray(ctrlIndex - 1).Text, quality:=strQuality, source:=strSource, windowTitle:=strWindowTitle, configFile:=ctrlIndex.ToString())
+            writeNameToFile(streamer:=txtArray(ctrlIndex - 1).Text, file:=ctrlIndex.ToString())
+            writeNameToAutocomplete(streamer:=txtArray(ctrlIndex - 1).Text)
 
         End If
     End Sub

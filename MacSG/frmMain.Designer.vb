@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class MainForm
+Partial Class frmMain
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -22,7 +22,7 @@ Partial Class MainForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MainForm))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
         Me.btnGenAll = New System.Windows.Forms.Button()
         Me.btnKillVLC = New System.Windows.Forms.Button()
         Me.btnMoveResize = New System.Windows.Forms.Button()
@@ -416,7 +416,7 @@ Partial Class MainForm
         Me.ProgressBar1.TabIndex = 19
         Me.ProgressBar1.Visible = False
         '
-        'Form1
+        'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -433,7 +433,7 @@ Partial Class MainForm
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximumSize = New System.Drawing.Size(381, 357)
         Me.MinimumSize = New System.Drawing.Size(381, 357)
-        Me.Name = "Form1"
+        Me.Name = "frmMain"
         Me.Text = "MacSG"
         Me.stream1Group.ResumeLayout(False)
         Me.stream1Group.PerformLayout()

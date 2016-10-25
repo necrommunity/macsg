@@ -100,17 +100,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationEvents.vb" />
-    <Compile Include="MainForm.vb">
+    <Compile Include="frmMain.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.vb">
-      <DependentUpon>MainForm.vb</DependentUpon>
+    <Compile Include="frmMain.Designer.vb">
+      <DependentUpon>frmMain.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="StreamListEditForm.Designer.vb">
-      <DependentUpon>StreamListEditForm.vb</DependentUpon>
+    <Compile Include="frmEditStreamerList.Designer.vb">
+      <DependentUpon>frmEditStreamerList.vb</DependentUpon>
     </Compile>
-    <Compile Include="StreamListEditForm.vb">
+    <Compile Include="frmEditStreamerList.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -130,11 +130,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="MainForm.resx">
-      <DependentUpon>MainForm.vb</DependentUpon>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="StreamListEditForm.resx">
-      <DependentUpon>StreamListEditForm.vb</DependentUpon>
+    <EmbeddedResource Include="frmEditStreamerList.resx">
+      <DependentUpon>frmEditStreamerList.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>

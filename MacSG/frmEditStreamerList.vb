@@ -1,12 +1,12 @@
 ﻿Imports System.IO
 
-Public Class StreamListEditForm
+Public Class frmEditStreamerList
     Dim lstStreamerList As New List(Of String)
 
     Public Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         Dim p As Point
-        p = MainForm.Location
+        p = frmMain.Location
 
         Me.Location = New Point(p.X + 10, p.Y + 10)
 
@@ -38,7 +38,7 @@ Public Class StreamListEditForm
         IO.File.WriteAllText(My.Settings.strPathToStreamerFile, dgdStreamerList.GetClipboardContent().GetText.TrimEnd)
         dgdStreamerList.ClearSelection()
 
-        MainForm.setupAutocompleteSources()
+        frmMain.setupAutocompleteSources()
 
     End Sub
 

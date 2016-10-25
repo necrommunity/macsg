@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class StreamListEditForm
+Partial Class frmEditStreamerList
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -22,7 +22,7 @@ Partial Class StreamListEditForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(StreamListEditForm))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmEditStreamerList))
         Me.dgdStreamerList = New System.Windows.Forms.DataGridView()
         Me.lblStreamerName = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.dgdStreamerList, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -47,14 +47,14 @@ Partial Class StreamListEditForm
         Me.lblStreamerName.Name = "lblStreamerName"
         Me.lblStreamerName.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         '
-        'Form2
+        'frmEditRacerList
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(353, 236)
         Me.Controls.Add(Me.dgdStreamerList)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Name = "Form2"
+        Me.Name = "frmEditRacerList"
         Me.Text = "Edit streamer file"
         CType(Me.dgdStreamerList, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
