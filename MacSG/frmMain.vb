@@ -12,11 +12,9 @@ Public Class frmMain
     Private trkbrArray As TrackBar()
 
     Public Sub ControlArrayItems()
-        Me.InitializeComponent()
-
-        Me.txtArray = {Me.txtStream1, Me.txtStream2, Me.txtStream3, Me.txtStream4}
-        Me.switchArray = {Me.switchStream1, Me.switchStream2, Me.switchStream3, Me.switchStream4}
-        Me.trkbrArray = {Me.trkbrStream1, Me.trkbrStream2, Me.trkbrStream3, Me.trkbrStream4}
+        txtArray = {txtStream1, txtStream2, txtStream3, txtStream4}
+        switchArray = {switchStream1, switchStream2, switchStream3, switchStream4}
+        trkbrArray = {trkbrStream1, trkbrStream2, trkbrStream3, trkbrStream4}
     End Sub
 
     'Form load
@@ -30,6 +28,8 @@ Public Class frmMain
         setupToggleSwitches()
         setupAutocompleteSources()
         setupTwitchOAuth()
+        ControlArrayItems()
+
     End Sub
 
     'Set up toggle sitch controls on Form1 
@@ -89,7 +89,7 @@ Public Class frmMain
 
                 client.DownloadFileAsync(New Uri("https://github.com/chrippa/livestreamer/releases/download/v1.12.2/livestreamer-v1.12.2-win32-setup.exe"), Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\MacSG\livestreamer-v1.12.2-win32-setup.exe")
 
-                For Each ctrl As Control In Me.Controls
+                For Each ctrl As Control In Controls
                     ctrl.Enabled = False
                 Next
 
@@ -109,7 +109,7 @@ Public Class frmMain
         If Not e.Cancelled AndAlso e.Error Is Nothing Then
             ProgressBar1.Visible = False
             Process.Start(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\MacSG\livestreamer-v1.12.2-win32-setup.exe")
-            For Each ctrl As Control In Me.Controls
+            For Each ctrl As Control In Controls
                 ctrl.Enabled = True
             Next
 
@@ -260,7 +260,7 @@ Public Class frmMain
     'Functions
     Public Sub genStream(streamer As String, quality As String, source As String, windowTitle As String, configFile As String)
 
-        Dim strLivestreamerProcess As New ProcessStartInfo("cmd.exe", "/k echo title " & windowTitle & " & " & source & streamer & quality & "--player-args "" --config %AppData%\MacSG\" & configFile & " {filename}""")
+        Dim strLivestreamerProcess As New ProcessStartInfo("cmd.exe", "/k title " & windowTitle & " & " & source & streamer & quality & "--player-args "" --config %AppData%\MacSG\" & configFile & " {filename}"" > %AppData%\MacSG\" + configFile + ".log")
         strLivestreamerProcess.WindowStyle = ProcessWindowStyle.Hidden
         Process.Start(strLivestreamerProcess)
 
@@ -301,11 +301,9 @@ Public Class frmMain
 
     'Generate streams
     Sub streamButton_Clicked(sender As Object, e As EventArgs) Handles btnStream1Gen.Click, btnStream2Gen.Click, btnStream3Gen.Click, btnStream4Gen.Click
-        Dim ctrlIndex As Integer =
-            Integer.Parse(
-                Regex.Replace(DirectCast(sender, Button).Name, "[^1-4]", "")
-            )
-        If txtStream1.Text <> "" Then
+        Dim ctrlIndex = Integer.Parse(Regex.Replace(DirectCast(sender, Button).Name, "[^1-4]", ""))
+
+        If txtArray(ctrlIndex - 1).Text <> "" Then
 
             Dim strSource As String = ""
             Dim strQuality As String = ""
@@ -322,7 +320,7 @@ Public Class frmMain
                     strWindowTitle = "Fourth"
             End Select
 
-            If trkbrArray(ctrlIndex - 1).Enabled Then
+            If trkbrArray(ctrlIndex - 1).Enabled = True Then
                 Select Case trkbrArray(ctrlIndex - 1).Value
                     Case 1
                         strQuality = " low "
@@ -333,7 +331,8 @@ Public Class frmMain
                     Case 4
                         strQuality = " source "
                 End Select
-            Else
+            ElseIf trkbrArray(ctrlIndex - 1).Enabled = False Then
+                MsgBox("Set to RTMP")
                 strQuality = "/live best "
             End If
 
@@ -350,5 +349,17 @@ Public Class frmMain
         End If
     End Sub
 
+    Private Sub switchStream_Checked(sender As Object, e As EventArgs) Handles switchStream1.CheckedChanged, switchStream2.CheckedChanged, switchStream3.CheckedChanged, switchStream4.CheckedChanged
 
+        If DirectCast(sender, JCS.ToggleSwitch).Checked = True Then
+            Dim ctrlIndex = Integer.Parse(Regex.Replace(DirectCast(sender, JCS.ToggleSwitch).Name, "[^1-4]", ""))
+            trkbrArray(ctrlIndex - 1).Enabled = False
+        ElseIf DirectCast(sender, JCS.ToggleSwitch).Checked = False Then
+            Dim ctrlIndex = Integer.Parse(Regex.Replace(DirectCast(sender, JCS.ToggleSwitch).Name, "[^1-4]", ""))
+            trkbrArray(ctrlIndex - 1).Enabled = True
+        End If
+
+
+    End Sub
 End Class
+

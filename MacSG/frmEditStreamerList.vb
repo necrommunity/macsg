@@ -8,7 +8,7 @@ Public Class frmEditStreamerList
         Dim p As Point
         p = frmMain.Location
 
-        Me.Location = New Point(p.X + 10, p.Y + 10)
+        Location = New Point(p.X + 10, p.Y + 10)
 
         Using srReader As IO.StreamReader = New IO.StreamReader(My.Settings.strPathToStreamerFile)
             Dim line As String
