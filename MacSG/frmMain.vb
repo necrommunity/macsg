@@ -332,7 +332,6 @@ Public Class frmMain
                         strQuality = " source "
                 End Select
             ElseIf trkbrArray(ctrlIndex - 1).Enabled = False Then
-                MsgBox("Set to RTMP")
                 strQuality = "/live best "
             End If
 
