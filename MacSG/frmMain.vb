@@ -30,9 +30,39 @@ Public Class frmMain
         setupTwitchOAuth()
         ControlArrayItems()
 
+        If Environment.GetCommandLineArgs.Length > 1 Then
+
+            Dim strArgs As String = Environment.GetCommandLineArgs(1).Remove(0, 6)
+            Dim cliArgs() As String = strArgs.Split(New Char() {","c})
+
+            If cliArgs.Length > 5 Then
+                ReDim Preserve cliArgs(4)
+            End If
+
+            If cliArgs(0) = "rtmp" Then
+                For i = 0 To (cliArgs.Length - 2)
+                    switchArray(i).Checked = True
+                Next
+
+            ElseIf cliArgs(0) = "twitch" Then
+
+            ElseIf cliArgs(0) <> "rtmp" AndAlso cliArgs(0) <> "twitch" Then
+                MsgBox("Invalid command line arguments, exiting...")
+                Application.Exit()
+                Exit Sub
+            End If
+
+            For i = 1 To (cliArgs.Length - 1)
+                If cliArgs(i) <> Nothing Then
+                    txtArray(i - 1).Text = cliArgs(i)
+                End If
+            Next
+            btnGenAll_Click(sender, e)
+        End If
+
     End Sub
 
-    'Set up toggle sitch controls on Form1 
+    'Set up toggle switch controls on Form1 
     Private Sub setupToggleSwitches()
         'Set ToggleSwitch renderer
         Dim customizedMetroRenderer1 = New ToggleSwitchMetroRenderer()
@@ -353,11 +383,11 @@ Public Class frmMain
         If DirectCast(sender, JCS.ToggleSwitch).Checked = True Then
             Dim ctrlIndex = Integer.Parse(Regex.Replace(DirectCast(sender, JCS.ToggleSwitch).Name, "[^1-4]", ""))
             trkbrArray(ctrlIndex - 1).Enabled = False
+
         ElseIf DirectCast(sender, JCS.ToggleSwitch).Checked = False Then
             Dim ctrlIndex = Integer.Parse(Regex.Replace(DirectCast(sender, JCS.ToggleSwitch).Name, "[^1-4]", ""))
             trkbrArray(ctrlIndex - 1).Enabled = True
         End If
-
 
     End Sub
 End Class
