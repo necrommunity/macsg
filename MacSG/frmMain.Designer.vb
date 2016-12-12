@@ -56,6 +56,7 @@ Partial Class frmMain
         Me.tsmiEditAutocompleteFile = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmiChangeVLCWindowSize = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmiChangeTwitchOAuthKey = New System.Windows.Forms.ToolStripMenuItem()
+        Me.InstallMacsgHandlerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmiAbout = New System.Windows.Forms.ToolStripMenuItem()
         Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
         Me.stream1Group.SuspendLayout()
@@ -136,6 +137,7 @@ Partial Class frmMain
         '
         'switchStream1
         '
+        Me.switchStream1.Checked = True
         Me.switchStream1.Location = New System.Drawing.Point(6, 43)
         Me.switchStream1.Name = "switchStream1"
         Me.switchStream1.OffFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -188,6 +190,7 @@ Partial Class frmMain
         '
         'switchStream2
         '
+        Me.switchStream2.Checked = True
         Me.switchStream2.Location = New System.Drawing.Point(6, 42)
         Me.switchStream2.MinimumSize = New System.Drawing.Size(67, 21)
         Me.switchStream2.Name = "switchStream2"
@@ -253,6 +256,7 @@ Partial Class frmMain
         '
         'switchStream3
         '
+        Me.switchStream3.Checked = True
         Me.switchStream3.Location = New System.Drawing.Point(6, 42)
         Me.switchStream3.Name = "switchStream3"
         Me.switchStream3.OffFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold)
@@ -317,6 +321,7 @@ Partial Class frmMain
         '
         'switchStream4
         '
+        Me.switchStream4.Checked = True
         Me.switchStream4.Location = New System.Drawing.Point(6, 44)
         Me.switchStream4.Name = "switchStream4"
         Me.switchStream4.OffFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -373,7 +378,7 @@ Partial Class frmMain
         '
         'fileToolStripMenuItem1
         '
-        Me.fileToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmiSelectAutocompleteFile, Me.tsmiEditAutocompleteFile, Me.tsmiChangeVLCWindowSize, Me.tsmiChangeTwitchOAuthKey, Me.tsmiAbout})
+        Me.fileToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmiSelectAutocompleteFile, Me.tsmiEditAutocompleteFile, Me.tsmiChangeVLCWindowSize, Me.tsmiChangeTwitchOAuthKey, Me.InstallMacsgHandlerToolStripMenuItem, Me.tsmiAbout})
         Me.fileToolStripMenuItem1.Name = "fileToolStripMenuItem1"
         Me.fileToolStripMenuItem1.Size = New System.Drawing.Size(37, 20)
         Me.fileToolStripMenuItem1.Text = "File"
@@ -402,6 +407,12 @@ Partial Class frmMain
         Me.tsmiChangeTwitchOAuthKey.Size = New System.Drawing.Size(221, 22)
         Me.tsmiChangeTwitchOAuthKey.Text = "Change Twitch OAuth key..."
         '
+        'InstallMacsgHandlerToolStripMenuItem
+        '
+        Me.InstallMacsgHandlerToolStripMenuItem.Name = "InstallMacsgHandlerToolStripMenuItem"
+        Me.InstallMacsgHandlerToolStripMenuItem.Size = New System.Drawing.Size(221, 22)
+        Me.InstallMacsgHandlerToolStripMenuItem.Text = "Install macsg: handler"
+        '
         'tsmiAbout
         '
         Me.tsmiAbout.Name = "tsmiAbout"
@@ -420,7 +431,7 @@ Partial Class frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(373, 329)
+        Me.ClientSize = New System.Drawing.Size(373, 341)
         Me.Controls.Add(Me.ProgressBar1)
         Me.Controls.Add(Me.menuStrip1)
         Me.Controls.Add(Me.btnGenAll)
@@ -431,8 +442,8 @@ Partial Class frmMain
         Me.Controls.Add(Me.stream3Group)
         Me.Controls.Add(Me.stream4Group)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.MaximumSize = New System.Drawing.Size(381, 357)
-        Me.MinimumSize = New System.Drawing.Size(381, 357)
+        Me.MaximumSize = New System.Drawing.Size(381, 369)
+        Me.MinimumSize = New System.Drawing.Size(381, 369)
         Me.Name = "frmMain"
         Me.Text = "MacSG"
         Me.stream1Group.ResumeLayout(False)
@@ -493,4 +504,5 @@ Partial Class frmMain
     Private WithEvents tsmiAbout As ToolStripMenuItem
     Friend WithEvents tsmiChangeTwitchOAuthKey As ToolStripMenuItem
     Friend WithEvents ProgressBar1 As ProgressBar
+    Friend WithEvents InstallMacsgHandlerToolStripMenuItem As ToolStripMenuItem
 End Class
