@@ -59,6 +59,8 @@ Partial Class frmMain
         Me.InstallMacsgHandlerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmiAbout = New System.Windows.Forms.ToolStripMenuItem()
         Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
+        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
+        Me.statusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.stream1Group.SuspendLayout()
         CType(Me.updStream1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.trkbrStream1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -72,6 +74,7 @@ Partial Class frmMain
         CType(Me.updStream4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.trkbrStream4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.menuStrip1.SuspendLayout()
+        Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'btnGenAll
@@ -427,11 +430,28 @@ Partial Class frmMain
         Me.ProgressBar1.TabIndex = 19
         Me.ProgressBar1.Visible = False
         '
+        'StatusStrip1
+        '
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.statusLabel1})
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 331)
+        Me.StatusStrip1.Name = "StatusStrip1"
+        Me.StatusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
+        Me.StatusStrip1.Size = New System.Drawing.Size(373, 22)
+        Me.StatusStrip1.TabIndex = 21
+        Me.StatusStrip1.Text = "StatusStrip1"
+        '
+        'statusLabel1
+        '
+        Me.statusLabel1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
+        Me.statusLabel1.Name = "statusLabel1"
+        Me.statusLabel1.Size = New System.Drawing.Size(0, 17)
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(373, 341)
+        Me.ClientSize = New System.Drawing.Size(373, 353)
+        Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.ProgressBar1)
         Me.Controls.Add(Me.menuStrip1)
         Me.Controls.Add(Me.btnGenAll)
@@ -442,8 +462,8 @@ Partial Class frmMain
         Me.Controls.Add(Me.stream3Group)
         Me.Controls.Add(Me.stream4Group)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.MaximumSize = New System.Drawing.Size(381, 369)
-        Me.MinimumSize = New System.Drawing.Size(381, 369)
+        Me.MaximumSize = New System.Drawing.Size(381, 381)
+        Me.MinimumSize = New System.Drawing.Size(381, 381)
         Me.Name = "frmMain"
         Me.Text = "MacSG"
         Me.stream1Group.ResumeLayout(False)
@@ -464,6 +484,8 @@ Partial Class frmMain
         CType(Me.trkbrStream4, System.ComponentModel.ISupportInitialize).EndInit()
         Me.menuStrip1.ResumeLayout(False)
         Me.menuStrip1.PerformLayout()
+        Me.StatusStrip1.ResumeLayout(False)
+        Me.StatusStrip1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -475,24 +497,20 @@ Partial Class frmMain
     Private WithEvents stream1Group As GroupBox
     Friend WithEvents updStream1 As NumericUpDown
     Friend WithEvents trkbrStream1 As TrackBar
-    Friend WithEvents switchStream1 As JCS.ToggleSwitch
     Friend WithEvents txtStream1 As TextBox
     Private WithEvents btnStream1Gen As Button
     Private WithEvents stream2Group As GroupBox
     Friend WithEvents updStream2 As NumericUpDown
-    Friend WithEvents switchStream2 As JCS.ToggleSwitch
     Friend WithEvents txtStream2 As TextBox
     Friend WithEvents trkbrStream2 As TrackBar
     Private WithEvents btnStream2Gen As Button
     Private WithEvents stream3Group As GroupBox
     Friend WithEvents updStream3 As NumericUpDown
-    Friend WithEvents switchStream3 As JCS.ToggleSwitch
     Friend WithEvents txtStream3 As TextBox
     Friend WithEvents trkbrStream3 As TrackBar
     Private WithEvents btnStream3Gen As Button
     Private WithEvents stream4Group As GroupBox
     Friend WithEvents updStream4 As NumericUpDown
-    Friend WithEvents switchStream4 As JCS.ToggleSwitch
     Friend WithEvents txtStream4 As TextBox
     Friend WithEvents trkbrStream4 As TrackBar
     Private WithEvents btnStream4Gen As Button
@@ -505,4 +523,10 @@ Partial Class frmMain
     Friend WithEvents tsmiChangeTwitchOAuthKey As ToolStripMenuItem
     Friend WithEvents ProgressBar1 As ProgressBar
     Friend WithEvents InstallMacsgHandlerToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents switchStream1 As JCS.ToggleSwitch
+    Friend WithEvents switchStream2 As JCS.ToggleSwitch
+    Friend WithEvents switchStream3 As JCS.ToggleSwitch
+    Friend WithEvents switchStream4 As JCS.ToggleSwitch
+    Friend WithEvents StatusStrip1 As StatusStrip
+    Friend WithEvents statusLabel1 As ToolStripStatusLabel
 End Class

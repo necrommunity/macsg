@@ -17,34 +17,21 @@ Public Class frmMain
 
     Public Event StartupNextInstance(sender As Object, e As StartupNextInstanceEventArgs)
 
-    Public Sub ControlArrayItems()
-        txtArray = {txtStream1, txtStream2, txtStream3, txtStream4}
-        switchArray = {switchStream1, switchStream2, switchStream3, switchStream4}
-        trkbrArray = {trkbrStream1, trkbrStream2, trkbrStream3, trkbrStream4}
-        btnArray = {btnStream1Gen, btnStream2Gen, btnStream3Gen, btnStream4Gen}
-    End Sub
-
-    'Capture arguments from other instances
-    '   Private Sub MyApplication_StartupNextInstance(sender As Object,
-    '               e As ApplicationServices.StartupNextInstanceEventArgs) Handles Me.StartupNextInstance
-    '
-    '    Dim f = frmMain
-    '    '  use YOUR actual form class name:
-    '    If f.GetType Is GetType(frmMain) Then
-    '    CType(f, frmMain).NewArgumentsReceived(e.CommandLine.ToArray)
-    '    End If
-    '
-    '    End Sub
-
     'Form load
     Public Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        If My.Application.CommandLineArgs.Count > 0 Then
+            For Each arg As String In My.Application.CommandLineArgs
+                MsgBox(arg)
+            Next
+        End If
 
         If My.Settings.strPathToStreamerFile <> "*.conf" Then
             My.Settings.strPathToStreamerFile = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\MacSG\streamerlist.conf"
         End If
 
-        Dim x As Integer = Screen.PrimaryScreen.WorkingArea.Width - 381
-        Dim y As Integer = Screen.PrimaryScreen.WorkingArea.Height - 369
+        Dim x As Integer = Screen.PrimaryScreen.WorkingArea.Width - Height
+        Dim y As Integer = Screen.PrimaryScreen.WorkingArea.Height - Width
         Location = New Point(x, y)
 
         setupLivestreamerCheck()
@@ -96,6 +83,14 @@ Public Class frmMain
         switchStream2.SetRenderer(customizedMetroRenderer2)
         switchStream3.SetRenderer(customizedMetroRenderer3)
         switchStream4.SetRenderer(customizedMetroRenderer4)
+
+    End Sub
+
+    Public Sub ControlArrayItems()
+        txtArray = {txtStream1, txtStream2, txtStream3, txtStream4}
+        switchArray = {switchStream1, switchStream2, switchStream3, switchStream4}
+        trkbrArray = {trkbrStream1, trkbrStream2, trkbrStream3, trkbrStream4}
+        btnArray = {btnStream1Gen, btnStream2Gen, btnStream3Gen, btnStream4Gen}
     End Sub
 
     'Check that livestreamer is installed in the Program Files (x86) folder
@@ -163,22 +158,17 @@ Public Class frmMain
     'Requests value for My.Settings.strTwitchOAuthKey
     Public Sub setupTwitchOAuth()
         If My.Settings.strTwitchOAuthKey = "" Then
-            Dim resOAuth As DialogResult = MessageBox.Show("Due to Twitch API changes, you are required to generate an OAuth key to watch Twitch streams through Livestreamer.  Click ""OK"" to open up a web page where you can create an OAuth key.", "Twitch OAuth key required", MessageBoxButtons.OKCancel)
-            Dim strOAuthURL As String = "https://twitchapps.com/tmi/"
-
-            If resOAuth = DialogResult.OK Then
-                Process.Start(strOAuthURL)
-                My.Settings.strTwitchOAuthKey = InputBox("Enter Twitch OAuth code, without the leading ""oauth:""", "Input Twitch OAuth key").ToString
-            Else
-                MsgBox("You will be unable to watch Twitch streams unless you generate an OAuth key.  You may enter an OAuth key at any time via ""File"" > ""Change Twitch OAuth key...""")
-            End If
-
+            statusLabel1.Text = "Twitch playback disabled - click here to enter key."
+        Else
+            statusLabel1.Text = "Twitch playback enabled"
         End If
     End Sub
 
     'Handles macsg protocol startup
     Public Sub cliStartup()
         If Environment.GetCommandLineArgs.Length > 1 Then
+
+            btnKillVLC.PerformClick()
 
             Dim strArgs As String = Environment.GetCommandLineArgs(1).Remove(0, 6)
             Dim cliArgs() As String = strArgs.Split(New Char() {","c})
@@ -207,8 +197,15 @@ Public Class frmMain
         End If
     End Sub
 
+    Private Sub frmMain_Shown(sender As Object, e As EventArgs) Handles Me.Shown
+        If statusLabel1.Text = "Twitch playback disabled - click here to enter key." Then
 
+            For i = 0 To 3
+                switchArray(i).AllowUserChange = False
+            Next
 
+        End If
+    End Sub
 
     'Move and resize all windows
     Private Sub moveResize_Click(sender As Object, e As EventArgs) Handles btnMoveResize.Click
@@ -248,6 +245,15 @@ Public Class frmMain
         procKillVLC.WindowStyle = ProcessWindowStyle.Hidden
         Process.Start(procKillVLC)
 
+    End Sub
+
+    Public Sub NewArgumentsReceived(args As String())
+
+        MsgBox(args.ToString)
+        ' e.g. add them to a list box
+        'If cliArgs.Length > 0 Then
+        'MsgBox(cliArgs)
+        'End If
     End Sub
 
     'Generate all streams by "clicking" the 4 buttons
@@ -301,16 +307,18 @@ Public Class frmMain
 
     'Change Twitch OAuth key
     Private Sub tsmiChangeTwitchOAuthKey_Click(sender As Object, e As EventArgs) Handles tsmiChangeTwitchOAuthKey.Click
-        Dim resOAuth As DialogResult = MessageBox.Show("Due to Twitch API changes, you require an OAuth key to watch Twitch streams through Livestreamer.  Click ""Yes"" to open up a web page where you can create an OAuth token.  If you already have a token, click ""No""", "Twitch OAuth key required", MessageBoxButtons.YesNoCancel
-                                                       )
+        Dim resOAuth As DialogResult = MessageBox.Show("Due to Twitch API changes, you require an OAuth key to watch Twitch streams through Livestreamer.  Click ""Yes"" to open a web page where you can create an OAuth token.  If you already have a token, click ""No""", "Twitch OAuth key required", MessageBoxButtons.YesNoCancel)
         Dim strOAuthURL As String = "https://twitchapps.com/tmi/"
 
         If resOAuth = DialogResult.Yes Then
             Process.Start(strOAuthURL)
             My.Settings.strTwitchOAuthKey = InputBox("Enter Twitch OAuth key, without the leading ""oauth:""", "Input Twitch OAuth key").ToString
         ElseIf resOAuth = DialogResult.No Then
-            My.Settings.strTwitchOAuthKey = InputBox("Enter Twitch OAuth key, without the leading ""oauth:""", "Input Twitch OAuth key", "Current key - " + My.Settings.strTwitchOAuthKey + "").ToString
+            My.Settings.strTwitchOAuthKey = InputBox("Enter Twitch OAuth key, without the leading ""oauth:""", "Input Twitch OAuth key", My.Settings.strTwitchOAuthKey).ToString
         End If
+
+        setupTwitchOAuth()
+
     End Sub
 
 
@@ -400,14 +408,14 @@ Public Class frmMain
                 strSource = "livestreamer --twitch-oauth-token " & My.Settings.strTwitchOAuthKey & " twitch.tv/"
             End If
 
-            genStream(streamer:=txtArray(ctrlIndex - 1).Text, quality:=strQuality, source:=strSource, windowTitle:=strWindowTitle, configFile:=ctrlIndex.ToString())
+            genStream(streamer:=txtArray(ctrlIndex - 1).Text.ToLower, quality:=strQuality, source:=strSource, windowTitle:=strWindowTitle, configFile:=ctrlIndex.ToString())
             writeNameToFile(streamer:=txtArray(ctrlIndex - 1).Text, file:=ctrlIndex.ToString())
             writeNameToAutocomplete(streamer:=txtArray(ctrlIndex - 1).Text)
 
         End If
     End Sub
 
-    Private Sub switchStream_Checked(sender As Object, e As EventArgs) Handles switchStream1.CheckedChanged, switchStream2.CheckedChanged, switchStream3.CheckedChanged, switchStream4.CheckedChanged
+    Private Sub switchStream_Checked(sender As Object, e As EventArgs) Handles switchStream4.CheckedChanged, switchStream3.CheckedChanged, switchStream2.CheckedChanged, switchStream1.CheckedChanged
 
         If DirectCast(sender, JCS.ToggleSwitch).Checked = True Then
             Try
@@ -456,5 +464,10 @@ Public Class frmMain
 
     End Sub
 
+    Private Sub StatusStrip1_ItemClicked(sender As Object, e As ToolStripItemClickedEventArgs) Handles StatusStrip1.ItemClicked
+        If My.Settings.strTwitchOAuthKey = "" Then
+            tsmiChangeTwitchOAuthKey_Click(sender, e)
+        End If
+    End Sub
 End Class
 
