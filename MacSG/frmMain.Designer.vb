@@ -29,24 +29,24 @@ Partial Class frmMain
         Me.stream1Group = New System.Windows.Forms.GroupBox()
         Me.updStream1 = New System.Windows.Forms.NumericUpDown()
         Me.trkbrStream1 = New System.Windows.Forms.TrackBar()
-        Me.switchStream1 = New JCS.ToggleSwitch()
         Me.txtStream1 = New System.Windows.Forms.TextBox()
+        Me.chkStream1 = New System.Windows.Forms.CheckBox()
         Me.btnStream1Gen = New System.Windows.Forms.Button()
         Me.stream2Group = New System.Windows.Forms.GroupBox()
         Me.updStream2 = New System.Windows.Forms.NumericUpDown()
-        Me.switchStream2 = New JCS.ToggleSwitch()
         Me.txtStream2 = New System.Windows.Forms.TextBox()
+        Me.chkStream2 = New System.Windows.Forms.CheckBox()
         Me.trkbrStream2 = New System.Windows.Forms.TrackBar()
         Me.btnStream2Gen = New System.Windows.Forms.Button()
         Me.stream3Group = New System.Windows.Forms.GroupBox()
         Me.updStream3 = New System.Windows.Forms.NumericUpDown()
-        Me.switchStream3 = New JCS.ToggleSwitch()
+        Me.chkStream3 = New System.Windows.Forms.CheckBox()
         Me.txtStream3 = New System.Windows.Forms.TextBox()
         Me.trkbrStream3 = New System.Windows.Forms.TrackBar()
         Me.btnStream3Gen = New System.Windows.Forms.Button()
         Me.stream4Group = New System.Windows.Forms.GroupBox()
+        Me.chkStream4 = New System.Windows.Forms.CheckBox()
         Me.updStream4 = New System.Windows.Forms.NumericUpDown()
-        Me.switchStream4 = New JCS.ToggleSwitch()
         Me.txtStream4 = New System.Windows.Forms.TextBox()
         Me.trkbrStream4 = New System.Windows.Forms.TrackBar()
         Me.btnStream4Gen = New System.Windows.Forms.Button()
@@ -108,8 +108,8 @@ Partial Class frmMain
         '
         Me.stream1Group.Controls.Add(Me.updStream1)
         Me.stream1Group.Controls.Add(Me.trkbrStream1)
-        Me.stream1Group.Controls.Add(Me.switchStream1)
         Me.stream1Group.Controls.Add(Me.txtStream1)
+        Me.stream1Group.Controls.Add(Me.chkStream1)
         Me.stream1Group.Controls.Add(Me.btnStream1Gen)
         Me.stream1Group.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.stream1Group.Location = New System.Drawing.Point(12, 27)
@@ -138,20 +138,6 @@ Partial Class frmMain
         Me.trkbrStream1.TabStop = False
         Me.trkbrStream1.Value = 4
         '
-        'switchStream1
-        '
-        Me.switchStream1.Checked = True
-        Me.switchStream1.Location = New System.Drawing.Point(6, 43)
-        Me.switchStream1.Name = "switchStream1"
-        Me.switchStream1.OffFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.switchStream1.OffForeColor = System.Drawing.Color.White
-        Me.switchStream1.OffText = "Twitch"
-        Me.switchStream1.OnFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.switchStream1.OnForeColor = System.Drawing.Color.White
-        Me.switchStream1.OnText = "RTMP"
-        Me.switchStream1.Size = New System.Drawing.Size(67, 21)
-        Me.switchStream1.TabIndex = 9
-        '
         'txtStream1
         '
         Me.txtStream1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append
@@ -160,6 +146,19 @@ Partial Class frmMain
         Me.txtStream1.Name = "txtStream1"
         Me.txtStream1.Size = New System.Drawing.Size(150, 20)
         Me.txtStream1.TabIndex = 0
+        '
+        'chkStream1
+        '
+        Me.chkStream1.AutoSize = True
+        Me.chkStream1.BackColor = System.Drawing.Color.FromArgb(CType(CType(59, Byte), Integer), CType(CType(123, Byte), Integer), CType(CType(179, Byte), Integer))
+        Me.chkStream1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.chkStream1.ForeColor = System.Drawing.SystemColors.HighlightText
+        Me.chkStream1.Location = New System.Drawing.Point(8, 45)
+        Me.chkStream1.Name = "chkStream1"
+        Me.chkStream1.Size = New System.Drawing.Size(61, 17)
+        Me.chkStream1.TabIndex = 22
+        Me.chkStream1.Text = "RTMP"
+        Me.chkStream1.UseVisualStyleBackColor = False
         '
         'btnStream1Gen
         '
@@ -173,8 +172,8 @@ Partial Class frmMain
         'stream2Group
         '
         Me.stream2Group.Controls.Add(Me.updStream2)
-        Me.stream2Group.Controls.Add(Me.switchStream2)
         Me.stream2Group.Controls.Add(Me.txtStream2)
+        Me.stream2Group.Controls.Add(Me.chkStream2)
         Me.stream2Group.Controls.Add(Me.trkbrStream2)
         Me.stream2Group.Controls.Add(Me.btnStream2Gen)
         Me.stream2Group.Location = New System.Drawing.Point(12, 102)
@@ -191,21 +190,6 @@ Partial Class frmMain
         Me.updStream2.Size = New System.Drawing.Size(38, 20)
         Me.updStream2.TabIndex = 11
         '
-        'switchStream2
-        '
-        Me.switchStream2.Checked = True
-        Me.switchStream2.Location = New System.Drawing.Point(6, 42)
-        Me.switchStream2.MinimumSize = New System.Drawing.Size(67, 21)
-        Me.switchStream2.Name = "switchStream2"
-        Me.switchStream2.OffFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.switchStream2.OffForeColor = System.Drawing.Color.White
-        Me.switchStream2.OffText = "Twitch"
-        Me.switchStream2.OnFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.switchStream2.OnForeColor = System.Drawing.Color.White
-        Me.switchStream2.OnText = "RTMP"
-        Me.switchStream2.Size = New System.Drawing.Size(67, 21)
-        Me.switchStream2.TabIndex = 10
-        '
         'txtStream2
         '
         Me.txtStream2.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append
@@ -214,6 +198,19 @@ Partial Class frmMain
         Me.txtStream2.Name = "txtStream2"
         Me.txtStream2.Size = New System.Drawing.Size(150, 20)
         Me.txtStream2.TabIndex = 0
+        '
+        'chkStream2
+        '
+        Me.chkStream2.AutoSize = True
+        Me.chkStream2.BackColor = System.Drawing.Color.FromArgb(CType(CType(59, Byte), Integer), CType(CType(123, Byte), Integer), CType(CType(179, Byte), Integer))
+        Me.chkStream2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.chkStream2.ForeColor = System.Drawing.SystemColors.HighlightText
+        Me.chkStream2.Location = New System.Drawing.Point(8, 44)
+        Me.chkStream2.Name = "chkStream2"
+        Me.chkStream2.Size = New System.Drawing.Size(61, 17)
+        Me.chkStream2.TabIndex = 23
+        Me.chkStream2.Text = "RTMP"
+        Me.chkStream2.UseVisualStyleBackColor = False
         '
         'trkbrStream2
         '
@@ -239,7 +236,7 @@ Partial Class frmMain
         'stream3Group
         '
         Me.stream3Group.Controls.Add(Me.updStream3)
-        Me.stream3Group.Controls.Add(Me.switchStream3)
+        Me.stream3Group.Controls.Add(Me.chkStream3)
         Me.stream3Group.Controls.Add(Me.txtStream3)
         Me.stream3Group.Controls.Add(Me.trkbrStream3)
         Me.stream3Group.Controls.Add(Me.btnStream3Gen)
@@ -257,19 +254,18 @@ Partial Class frmMain
         Me.updStream3.Size = New System.Drawing.Size(38, 20)
         Me.updStream3.TabIndex = 12
         '
-        'switchStream3
+        'chkStream3
         '
-        Me.switchStream3.Checked = True
-        Me.switchStream3.Location = New System.Drawing.Point(6, 42)
-        Me.switchStream3.Name = "switchStream3"
-        Me.switchStream3.OffFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.switchStream3.OffForeColor = System.Drawing.Color.White
-        Me.switchStream3.OffText = "Twitch"
-        Me.switchStream3.OnFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.switchStream3.OnForeColor = System.Drawing.Color.White
-        Me.switchStream3.OnText = "RTMP"
-        Me.switchStream3.Size = New System.Drawing.Size(67, 21)
-        Me.switchStream3.TabIndex = 12
+        Me.chkStream3.AutoSize = True
+        Me.chkStream3.BackColor = System.Drawing.Color.FromArgb(CType(CType(59, Byte), Integer), CType(CType(123, Byte), Integer), CType(CType(179, Byte), Integer))
+        Me.chkStream3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.chkStream3.ForeColor = System.Drawing.SystemColors.HighlightText
+        Me.chkStream3.Location = New System.Drawing.Point(8, 44)
+        Me.chkStream3.Name = "chkStream3"
+        Me.chkStream3.Size = New System.Drawing.Size(61, 17)
+        Me.chkStream3.TabIndex = 24
+        Me.chkStream3.Text = "RTMP"
+        Me.chkStream3.UseVisualStyleBackColor = False
         '
         'txtStream3
         '
@@ -303,8 +299,8 @@ Partial Class frmMain
         '
         'stream4Group
         '
+        Me.stream4Group.Controls.Add(Me.chkStream4)
         Me.stream4Group.Controls.Add(Me.updStream4)
-        Me.stream4Group.Controls.Add(Me.switchStream4)
         Me.stream4Group.Controls.Add(Me.txtStream4)
         Me.stream4Group.Controls.Add(Me.trkbrStream4)
         Me.stream4Group.Controls.Add(Me.btnStream4Gen)
@@ -315,26 +311,25 @@ Partial Class frmMain
         Me.stream4Group.TabStop = False
         Me.stream4Group.Text = "Stream 4"
         '
+        'chkStream4
+        '
+        Me.chkStream4.AutoSize = True
+        Me.chkStream4.BackColor = System.Drawing.Color.FromArgb(CType(CType(59, Byte), Integer), CType(CType(123, Byte), Integer), CType(CType(179, Byte), Integer))
+        Me.chkStream4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.chkStream4.ForeColor = System.Drawing.SystemColors.HighlightText
+        Me.chkStream4.Location = New System.Drawing.Point(8, 46)
+        Me.chkStream4.Name = "chkStream4"
+        Me.chkStream4.Size = New System.Drawing.Size(61, 17)
+        Me.chkStream4.TabIndex = 25
+        Me.chkStream4.Text = "RTMP"
+        Me.chkStream4.UseVisualStyleBackColor = False
+        '
         'updStream4
         '
         Me.updStream4.Location = New System.Drawing.Point(180, 45)
         Me.updStream4.Name = "updStream4"
         Me.updStream4.Size = New System.Drawing.Size(38, 20)
         Me.updStream4.TabIndex = 13
-        '
-        'switchStream4
-        '
-        Me.switchStream4.Checked = True
-        Me.switchStream4.Location = New System.Drawing.Point(6, 44)
-        Me.switchStream4.Name = "switchStream4"
-        Me.switchStream4.OffFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.switchStream4.OffForeColor = System.Drawing.Color.White
-        Me.switchStream4.OffText = "Twitch"
-        Me.switchStream4.OnFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.switchStream4.OnForeColor = System.Drawing.Color.White
-        Me.switchStream4.OnText = "RTMP"
-        Me.switchStream4.Size = New System.Drawing.Size(67, 21)
-        Me.switchStream4.TabIndex = 13
         '
         'txtStream4
         '
@@ -523,10 +518,10 @@ Partial Class frmMain
     Friend WithEvents tsmiChangeTwitchOAuthKey As ToolStripMenuItem
     Friend WithEvents ProgressBar1 As ProgressBar
     Friend WithEvents InstallMacsgHandlerToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents switchStream1 As JCS.ToggleSwitch
-    Friend WithEvents switchStream2 As JCS.ToggleSwitch
-    Friend WithEvents switchStream3 As JCS.ToggleSwitch
-    Friend WithEvents switchStream4 As JCS.ToggleSwitch
     Friend WithEvents StatusStrip1 As StatusStrip
     Friend WithEvents statusLabel1 As ToolStripStatusLabel
+    Friend WithEvents chkStream1 As CheckBox
+    Friend WithEvents chkStream2 As CheckBox
+    Friend WithEvents chkStream3 As CheckBox
+    Friend WithEvents chkStream4 As CheckBox
 End Class

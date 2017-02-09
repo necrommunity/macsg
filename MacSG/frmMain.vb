@@ -1,11 +1,11 @@
 ﻿Imports System.ComponentModel
 Imports System.IO
 Imports System.Net
-Imports JCS
 Imports System.Text.RegularExpressions
 Imports Microsoft.Win32
 Imports System.Security.Principal
 Imports Microsoft.VisualBasic.ApplicationServices
+
 
 Public Class frmMain
     Dim strColAutoCompleteList As New AutoCompleteStringCollection
@@ -14,17 +14,13 @@ Public Class frmMain
     Private switchArray As JCS.ToggleSwitch()
     Private trkbrArray As TrackBar()
     Private btnArray As Button()
+    Private chkArray As CheckBox()
+    Public boolFirstLoad As Boolean = True
 
     Public Event StartupNextInstance(sender As Object, e As StartupNextInstanceEventArgs)
 
     'Form load
     Public Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-        If My.Application.CommandLineArgs.Count > 0 Then
-            For Each arg As String In My.Application.CommandLineArgs
-                MsgBox(arg)
-            Next
-        End If
 
         If My.Settings.strPathToStreamerFile <> "*.conf" Then
             My.Settings.strPathToStreamerFile = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\MacSG\streamerlist.conf"
@@ -35,62 +31,19 @@ Public Class frmMain
         Location = New Point(x, y)
 
         setupLivestreamerCheck()
-        setupToggleSwitches()
+        'setupToggleSwitches()
         setupAutocompleteSources()
         setupTwitchOAuth()
         ControlArrayItems()
-        cliStartup()
-
-    End Sub
-
-    'Set up toggle switch controls on Form1 
-    Private Sub setupToggleSwitches()
-        'Set ToggleSwitch renderer
-        Dim customizedMetroRenderer1 = New ToggleSwitchMetroRenderer()
-        Dim customizedMetroRenderer2 = New ToggleSwitchMetroRenderer()
-        Dim customizedMetroRenderer3 = New ToggleSwitchMetroRenderer()
-        Dim customizedMetroRenderer4 = New ToggleSwitchMetroRenderer()
-
-        customizedMetroRenderer1.LeftSideColor = Color.FromArgb(59, 123, 179)
-        customizedMetroRenderer1.LeftSideColorHovered = Color.FromArgb(72, 149, 217)
-        customizedMetroRenderer1.LeftSideColorPressed = Color.FromArgb(84, 175, 255)
-        customizedMetroRenderer1.RightSideColor = Color.FromArgb(100, 65, 165)
-        customizedMetroRenderer1.RightSideColorHovered = Color.FromArgb(131, 85, 217)
-        customizedMetroRenderer1.RightSideColorPressed = Color.FromArgb(155, 100, 255)
-
-        customizedMetroRenderer2.LeftSideColor = Color.FromArgb(59, 123, 179)
-        customizedMetroRenderer2.LeftSideColorHovered = Color.FromArgb(72, 149, 217)
-        customizedMetroRenderer2.LeftSideColorPressed = Color.FromArgb(84, 175, 255)
-        customizedMetroRenderer2.RightSideColor = Color.FromArgb(100, 65, 165)
-        customizedMetroRenderer2.RightSideColorHovered = Color.FromArgb(131, 85, 217)
-        customizedMetroRenderer2.RightSideColorPressed = Color.FromArgb(155, 100, 255)
-
-        customizedMetroRenderer3.LeftSideColor = Color.FromArgb(59, 123, 179)
-        customizedMetroRenderer3.LeftSideColorHovered = Color.FromArgb(72, 149, 217)
-        customizedMetroRenderer3.LeftSideColorPressed = Color.FromArgb(84, 175, 255)
-        customizedMetroRenderer3.RightSideColor = Color.FromArgb(100, 65, 165)
-        customizedMetroRenderer3.RightSideColorHovered = Color.FromArgb(131, 85, 217)
-        customizedMetroRenderer3.RightSideColorPressed = Color.FromArgb(155, 100, 255)
-
-        customizedMetroRenderer4.LeftSideColor = Color.FromArgb(59, 123, 179)
-        customizedMetroRenderer4.LeftSideColorHovered = Color.FromArgb(72, 149, 217)
-        customizedMetroRenderer4.LeftSideColorPressed = Color.FromArgb(84, 175, 255)
-        customizedMetroRenderer4.RightSideColor = Color.FromArgb(100, 65, 165)
-        customizedMetroRenderer4.RightSideColorHovered = Color.FromArgb(131, 85, 217)
-        customizedMetroRenderer4.RightSideColorPressed = Color.FromArgb(155, 100, 255)
-
-        switchStream1.SetRenderer(customizedMetroRenderer1)
-        switchStream2.SetRenderer(customizedMetroRenderer2)
-        switchStream3.SetRenderer(customizedMetroRenderer3)
-        switchStream4.SetRenderer(customizedMetroRenderer4)
+        'cliStartup()
 
     End Sub
 
     Public Sub ControlArrayItems()
         txtArray = {txtStream1, txtStream2, txtStream3, txtStream4}
-        switchArray = {switchStream1, switchStream2, switchStream3, switchStream4}
         trkbrArray = {trkbrStream1, trkbrStream2, trkbrStream3, trkbrStream4}
         btnArray = {btnStream1Gen, btnStream2Gen, btnStream3Gen, btnStream4Gen}
+        chkArray = {chkStream1, chkStream2, chkStream3, chkStream4}
     End Sub
 
     'Check that livestreamer is installed in the Program Files (x86) folder
@@ -165,12 +118,12 @@ Public Class frmMain
     End Sub
 
     'Handles macsg protocol startup
-    Public Sub cliStartup()
-        If Environment.GetCommandLineArgs.Length > 1 Then
 
+    Private Sub frmMain_Shown(sender As Object, e As EventArgs) Handles Me.Shown
+        If Environment.GetCommandLineArgs.Length > 1 Then
             btnKillVLC.PerformClick()
 
-            Dim strArgs As String = Environment.GetCommandLineArgs(1).Remove(0, 6)
+            Dim strArgs As String = Environment.GetCommandLineArgs(1).Replace("macsg:", "")
             Dim cliArgs() As String = strArgs.Split(New Char() {","c})
 
             If cliArgs.Length > 5 Then
@@ -179,7 +132,12 @@ Public Class frmMain
 
             If cliArgs(0) = "twitch" Then
                 For i = 0 To (cliArgs.Length - 2)
-                    switchArray(i).Checked = False
+                    chkArray(i).Checked = True
+                Next
+
+            ElseIf cliArgs(0) = "rtmp" Then
+                For i = 0 To (cliArgs.Length - 2)
+                    chkArray(i).Checked = False
                 Next
 
             Else
@@ -194,17 +152,47 @@ Public Class frmMain
                     btnArray(i - 1).PerformClick()
                 End If
             Next
+            'btnGenAll.PerformClick()
         End If
     End Sub
 
-    Private Sub frmMain_Shown(sender As Object, e As EventArgs) Handles Me.Shown
-        If statusLabel1.Text = "Twitch playback disabled - click here to enter key." Then
+    Public Sub NewArgumentsReceived(args As String())
 
-            For i = 0 To 3
-                switchArray(i).AllowUserChange = False
+        btnKillVLC.PerformClick()
+
+        If args.Length > 0 Then
+
+            Dim splitArgs As String() = args(0).Split(New Char() {","c})
+            splitArgs(0) = splitArgs(0).Replace("macsg:", "")
+
+            If splitArgs.Length > 5 Then
+                ReDim Preserve splitArgs(4)
+            End If
+
+            If splitArgs(0) = "twitch" Then
+                For i = 0 To (splitArgs.Length - 2)
+                    chkArray(i).Checked = True
+                Next
+
+            ElseIf splitArgs(0) = "rtmp" Then
+                For i = 0 To (splitArgs.Length - 2)
+                    chkArray(i).Checked = False
+                Next
+
+            Else
+                MsgBox("Invalid command line arguments, exiting...")
+                Application.Exit()
+                Exit Sub
+            End If
+
+            For i = 1 To (splitArgs.Length - 1)
+                If splitArgs(i) <> Nothing Then
+                    txtArray(i - 1).Text = splitArgs(i).ToLower
+                    btnArray(i - 1).PerformClick()
+                End If
             Next
-
         End If
+
     End Sub
 
     'Move and resize all windows
@@ -245,15 +233,6 @@ Public Class frmMain
         procKillVLC.WindowStyle = ProcessWindowStyle.Hidden
         Process.Start(procKillVLC)
 
-    End Sub
-
-    Public Sub NewArgumentsReceived(args As String())
-
-        MsgBox(args.ToString)
-        ' e.g. add them to a list box
-        'If cliArgs.Length > 0 Then
-        'MsgBox(cliArgs)
-        'End If
     End Sub
 
     'Generate all streams by "clicking" the 4 buttons
@@ -321,7 +300,12 @@ Public Class frmMain
 
     End Sub
 
-
+    Public Sub writeLog(logText As String)
+        Dim swLog As System.IO.StreamWriter
+        swLog = My.Computer.FileSystem.OpenTextFileWriter(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\macsg\log.txt", False)
+        swLog.WriteLine(logText)
+        swLog.Close()
+    End Sub
 
     'Unattached subs
     Public Sub genStream(streamer As String, quality As String, source As String, windowTitle As String, configFile As String)
@@ -368,7 +352,6 @@ Public Class frmMain
     'Generate streams
     Sub streamButton_Clicked(sender As Object, e As EventArgs) Handles btnStream1Gen.Click, btnStream2Gen.Click, btnStream3Gen.Click, btnStream4Gen.Click
         Dim ctrlIndex = Integer.Parse(Regex.Replace(DirectCast(sender, Button).Name, "[^1-4]", ""))
-        'btnArray(ctrlIndex - 1).BackColor = Color.Green
 
         If txtArray(ctrlIndex - 1).Text <> "" Then
 
@@ -402,7 +385,7 @@ Public Class frmMain
                 strQuality = "/live best "
             End If
 
-            If switchArray(ctrlIndex - 1).Checked Then
+            If chkArray(ctrlIndex - 1).Checked = False Then
                 strSource = "livestreamer rtmp://rtmp.condorleague.tv/"
             Else
                 strSource = "livestreamer --twitch-oauth-token " & My.Settings.strTwitchOAuthKey & " twitch.tv/"
@@ -410,27 +393,32 @@ Public Class frmMain
 
             genStream(streamer:=txtArray(ctrlIndex - 1).Text.ToLower, quality:=strQuality, source:=strSource, windowTitle:=strWindowTitle, configFile:=ctrlIndex.ToString())
             writeNameToFile(streamer:=txtArray(ctrlIndex - 1).Text, file:=ctrlIndex.ToString())
-            writeNameToAutocomplete(streamer:=txtArray(ctrlIndex - 1).Text)
+            writeNameToAutocomplete(streamer:=txtArray(ctrlIndex - 1).Text.ToLower)
+            writeLog(logText:="Opening " + strWindowTitle + " with URL " + strSource + strQuality)
 
         End If
     End Sub
 
-    Private Sub switchStream_Checked(sender As Object, e As EventArgs) Handles switchStream4.CheckedChanged, switchStream3.CheckedChanged, switchStream2.CheckedChanged, switchStream1.CheckedChanged
+    Private Sub chkStream_CheckChanged(sender As Object, e As EventArgs) Handles chkStream1.CheckedChanged, chkStream2.CheckedChanged, chkStream3.CheckedChanged, chkStream4.CheckedChanged
 
-        If DirectCast(sender, JCS.ToggleSwitch).Checked = True Then
+        If DirectCast(sender, CheckBox).Checked = True Then
             Try
-                Dim ctrlIndex = Integer.Parse(Regex.Replace(DirectCast(sender, JCS.ToggleSwitch).Name, "[^1-4]", ""))
-                trkbrArray(ctrlIndex - 1).Enabled = False
+                Dim ctrlIndex = Integer.Parse(Regex.Replace(DirectCast(sender, CheckBox).Name, "[^1-4]", ""))
+                trkbrArray(ctrlIndex - 1).Enabled = True
+                chkArray(ctrlIndex - 1).BackColor = Color.FromArgb(100, 65, 165)
+                chkArray(ctrlIndex - 1).Text = "Twitch"
             Catch ex As Exception
-                MessageBox.Show(ex.Message)
+                MessageBox.Show(ex.Message + "  Handling set to Twitch")
             End Try
 
-        ElseIf DirectCast(sender, JCS.ToggleSwitch).Checked = False Then
+        ElseIf DirectCast(sender, CheckBox).Checked = False Then
             Try
-                Dim ctrlIndex = Integer.Parse(Regex.Replace(DirectCast(sender, JCS.ToggleSwitch).Name, "[^1-4]", ""))
-                trkbrArray(ctrlIndex - 1).Enabled = True
+                Dim ctrlIndex = Integer.Parse(Regex.Replace(DirectCast(sender, CheckBox).Name, "[^1-4]", ""))
+                trkbrArray(ctrlIndex - 1).Enabled = False
+                chkArray(ctrlIndex - 1).BackColor = Color.FromArgb(59, 123, 179)
+                chkArray(ctrlIndex - 1).Text = "RTMP"
             Catch ex As Exception
-                MessageBox.Show(ex.Message)
+                MessageBox.Show(ex.Message + "  Handling set to RTMP")
             End Try
         End If
 
@@ -469,5 +457,6 @@ Public Class frmMain
             tsmiChangeTwitchOAuthKey_Click(sender, e)
         End If
     End Sub
+
 End Class
 
