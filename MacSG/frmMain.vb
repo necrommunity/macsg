@@ -237,6 +237,7 @@ Public Class frmMain
 
     'Generate all streams by "clicking" the 4 buttons
     Private Sub btnGenAll_Click(sender As Object, e As EventArgs) Handles btnGenAll.Click
+
         btnStream1Gen.PerformClick()
         btnStream2Gen.PerformClick()
         btnStream3Gen.PerformClick()
@@ -352,50 +353,66 @@ Public Class frmMain
     'Generate streams
     Sub streamButton_Clicked(sender As Object, e As EventArgs) Handles btnStream1Gen.Click, btnStream2Gen.Click, btnStream3Gen.Click, btnStream4Gen.Click
         Dim ctrlIndex = Integer.Parse(Regex.Replace(DirectCast(sender, Button).Name, "[^1-4]", ""))
+        Dim procProcesses() As Process = Process.GetProcessesByName("vlc.exe")
+        Dim openWindow As Boolean
+        ListBox1.Items.Clear()
 
-        If txtArray(ctrlIndex - 1).Text <> "" Then
+        For Each p As Process In procProcesses
+            If p.MainWindowTitle <> "" Then
+                ListBox1.Items.Add(p.MainWindowTitle)
+                If p.MainWindowTitle.Contains("VLC") Then
+                    openWindow = True
+                Else
+                    openWindow = False
+                End If
+            End If
+        Next
 
-            Dim strSource As String = ""
-            Dim strQuality As String = ""
-            Dim strWindowTitle As String = ""
+        If openWindow = False Then
+            If txtArray(ctrlIndex - 1).Text <> "" Then
 
-            Select Case ctrlIndex
-                Case 1
-                    strWindowTitle = "First"
-                Case 2
-                    strWindowTitle = "Second"
-                Case 3
-                    strWindowTitle = "Third"
-                Case 4
-                    strWindowTitle = "Fourth"
-            End Select
+                Dim strSource As String = ""
+                Dim strQuality As String = ""
+                Dim strWindowTitle As String = ""
 
-            If trkbrArray(ctrlIndex - 1).Enabled = True Then
-                Select Case trkbrArray(ctrlIndex - 1).Value
+                Select Case ctrlIndex
                     Case 1
-                        strQuality = " low "
+                        strWindowTitle = "First"
                     Case 2
-                        strQuality = " medium "
+                        strWindowTitle = "Second"
                     Case 3
-                        strQuality = " high "
+                        strWindowTitle = "Third"
                     Case 4
-                        strQuality = " source "
+                        strWindowTitle = "Fourth"
                 End Select
-            ElseIf trkbrArray(ctrlIndex - 1).Enabled = False Then
-                strQuality = "/live best "
+
+                If trkbrArray(ctrlIndex - 1).Enabled = True Then
+                    Select Case trkbrArray(ctrlIndex - 1).Value
+                        Case 1
+                            strQuality = " low "
+                        Case 2
+                            strQuality = " medium "
+                        Case 3
+                            strQuality = " high "
+                        Case 4
+                            strQuality = " source "
+                    End Select
+                ElseIf trkbrArray(ctrlIndex - 1).Enabled = False Then
+                    strQuality = "/live best "
+                End If
+
+                If chkArray(ctrlIndex - 1).Checked = False Then
+                    strSource = "livestreamer rtmp://rtmp.condorleague.tv/"
+                Else
+                    strSource = "livestreamer --http-header Client-ID=jzkbprff40iqj646a697cyrvl0zt2m6 twitch.tv/"
+                End If
+
+                genStream(streamer:=txtArray(ctrlIndex - 1).Text.ToLower, quality:=strQuality, source:=strSource, windowTitle:=strWindowTitle, configFile:=ctrlIndex.ToString())
+                writeNameToFile(streamer:=txtArray(ctrlIndex - 1).Text, file:=ctrlIndex.ToString())
+                writeNameToAutocomplete(streamer:=txtArray(ctrlIndex - 1).Text.ToLower)
+                writeLog(logText:="Opening " + strWindowTitle + " with URL " + strSource + txtArray(ctrlIndex - 1).Text + strQuality)
+
             End If
-
-            If chkArray(ctrlIndex - 1).Checked = False Then
-                strSource = "livestreamer rtmp://rtmp.condorleague.tv/"
-            Else
-                strSource = "livestreamer --twitch-oauth-token " & My.Settings.strTwitchOAuthKey & " twitch.tv/"
-            End If
-
-            genStream(streamer:=txtArray(ctrlIndex - 1).Text.ToLower, quality:=strQuality, source:=strSource, windowTitle:=strWindowTitle, configFile:=ctrlIndex.ToString())
-            writeNameToFile(streamer:=txtArray(ctrlIndex - 1).Text, file:=ctrlIndex.ToString())
-            writeNameToAutocomplete(streamer:=txtArray(ctrlIndex - 1).Text.ToLower)
-            writeLog(logText:="Opening " + strWindowTitle + " with URL " + strSource + strQuality)
-
         End If
     End Sub
 
@@ -457,6 +474,29 @@ Public Class frmMain
             tsmiChangeTwitchOAuthKey_Click(sender, e)
         End If
     End Sub
+
+    Public Function processChecker() As Boolean
+
+        Dim procProcesses() As Process = Process.GetProcesses
+        Dim openWindow As Boolean
+
+        For Each p As Process In procProcesses
+            Select Case p.MainWindowTitle
+                Case "First - VLC Media Player"
+                    openWindow = True
+                Case "Second - VLC Media Player"
+                    openWindow = True
+                Case "Third - VLC Media Player"
+                    openWindow = True
+                Case "Fourth - VLC Media Player"
+                    openWindow = True
+            End Select
+        Next
+
+        Return openWindow
+
+    End Function
+
 
 End Class
 

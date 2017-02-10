@@ -61,6 +61,7 @@ Partial Class frmMain
         Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.statusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ListBox1 = New System.Windows.Forms.ListBox()
         Me.stream1Group.SuspendLayout()
         CType(Me.updStream1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.trkbrStream1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -401,6 +402,7 @@ Partial Class frmMain
         '
         'tsmiChangeTwitchOAuthKey
         '
+        Me.tsmiChangeTwitchOAuthKey.Enabled = False
         Me.tsmiChangeTwitchOAuthKey.Name = "tsmiChangeTwitchOAuthKey"
         Me.tsmiChangeTwitchOAuthKey.Size = New System.Drawing.Size(221, 22)
         Me.tsmiChangeTwitchOAuthKey.Text = "Change Twitch OAuth key..."
@@ -431,7 +433,7 @@ Partial Class frmMain
         Me.StatusStrip1.Location = New System.Drawing.Point(0, 331)
         Me.StatusStrip1.Name = "StatusStrip1"
         Me.StatusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
-        Me.StatusStrip1.Size = New System.Drawing.Size(373, 22)
+        Me.StatusStrip1.Size = New System.Drawing.Size(592, 22)
         Me.StatusStrip1.TabIndex = 21
         Me.StatusStrip1.Text = "StatusStrip1"
         '
@@ -441,11 +443,20 @@ Partial Class frmMain
         Me.statusLabel1.Name = "statusLabel1"
         Me.statusLabel1.Size = New System.Drawing.Size(0, 17)
         '
+        'ListBox1
+        '
+        Me.ListBox1.FormattingEnabled = True
+        Me.ListBox1.Location = New System.Drawing.Point(259, 136)
+        Me.ListBox1.Name = "ListBox1"
+        Me.ListBox1.Size = New System.Drawing.Size(321, 186)
+        Me.ListBox1.TabIndex = 22
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(373, 353)
+        Me.ClientSize = New System.Drawing.Size(592, 353)
+        Me.Controls.Add(Me.ListBox1)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.ProgressBar1)
         Me.Controls.Add(Me.menuStrip1)
@@ -457,7 +468,7 @@ Partial Class frmMain
         Me.Controls.Add(Me.stream3Group)
         Me.Controls.Add(Me.stream4Group)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.MaximumSize = New System.Drawing.Size(381, 381)
+        Me.MaximumSize = New System.Drawing.Size(600, 381)
         Me.MinimumSize = New System.Drawing.Size(381, 381)
         Me.Name = "frmMain"
         Me.Text = "MacSG"
@@ -524,4 +535,5 @@ Partial Class frmMain
     Friend WithEvents chkStream2 As CheckBox
     Friend WithEvents chkStream3 As CheckBox
     Friend WithEvents chkStream4 As CheckBox
+    Friend WithEvents ListBox1 As ListBox
 End Class
