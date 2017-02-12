@@ -1,8 +1,11 @@
 ﻿Imports System.ComponentModel
 Imports System.IO
 Imports System.Net
-Imports JCS
 Imports System.Text.RegularExpressions
+Imports Microsoft.Win32
+Imports System.Security.Principal
+Imports Microsoft.VisualBasic.ApplicationServices
+
 
 Public Class frmMain
     Dim strColAutoCompleteList As New AutoCompleteStringCollection
@@ -10,12 +13,12 @@ Public Class frmMain
     Private txtArray As TextBox()
     Private switchArray As JCS.ToggleSwitch()
     Private trkbrArray As TrackBar()
+    Private btnArray As Button()
+    Private chkArray As CheckBox()
+    Public boolFirstLoad As Boolean = True
+    Dim minuteCount As Integer = 0
 
-    Public Sub ControlArrayItems()
-        txtArray = {txtStream1, txtStream2, txtStream3, txtStream4}
-        switchArray = {switchStream1, switchStream2, switchStream3, switchStream4}
-        trkbrArray = {trkbrStream1, trkbrStream2, trkbrStream3, trkbrStream4}
-    End Sub
+    Public Event StartupNextInstance(sender As Object, e As StartupNextInstanceEventArgs)
 
     'Form load
     Public Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -24,84 +27,28 @@ Public Class frmMain
             My.Settings.strPathToStreamerFile = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\MacSG\streamerlist.conf"
         End If
 
+        Dim x As Integer = Screen.PrimaryScreen.WorkingArea.Width - Height
+        Dim y As Integer = Screen.PrimaryScreen.WorkingArea.Height - Width
+        Location = New Point(x, y)
+
         setupLivestreamerCheck()
-        setupToggleSwitches()
         setupAutocompleteSources()
         setupTwitchOAuth()
         ControlArrayItems()
 
-        If Environment.GetCommandLineArgs.Length > 1 Then
-
-            Dim strArgs As String = Environment.GetCommandLineArgs(1).Remove(0, 6)
-            Dim cliArgs() As String = strArgs.Split(New Char() {","c})
-
-            If cliArgs.Length > 5 Then
-                ReDim Preserve cliArgs(4)
-            End If
-
-            If cliArgs(0) = "rtmp" Then
-                For i = 0 To (cliArgs.Length - 2)
-                    switchArray(i).Checked = True
-                Next
-
-            ElseIf cliArgs(0) = "twitch" Then
-
-            ElseIf cliArgs(0) <> "rtmp" AndAlso cliArgs(0) <> "twitch" Then
-                MsgBox("Invalid command line arguments, exiting...")
-                Application.Exit()
-                Exit Sub
-            End If
-
-            For i = 1 To (cliArgs.Length - 1)
-                If cliArgs(i) <> Nothing Then
-                    txtArray(i - 1).Text = cliArgs(i)
-                End If
-            Next
-            btnGenAll_Click(sender, e)
+        Dim args As String() = Environment.GetCommandLineArgs
+        If args.Length > 1 Then
+            args(0) = args(1)
+            cliStartup(args:=args)
         End If
 
     End Sub
 
-    'Set up toggle switch controls on Form1 
-    Private Sub setupToggleSwitches()
-        'Set ToggleSwitch renderer
-        Dim customizedMetroRenderer1 = New ToggleSwitchMetroRenderer()
-        Dim customizedMetroRenderer2 = New ToggleSwitchMetroRenderer()
-        Dim customizedMetroRenderer3 = New ToggleSwitchMetroRenderer()
-        Dim customizedMetroRenderer4 = New ToggleSwitchMetroRenderer()
-
-        customizedMetroRenderer1.LeftSideColor = Color.FromArgb(59, 123, 179)
-        customizedMetroRenderer1.LeftSideColorHovered = Color.FromArgb(72, 149, 217)
-        customizedMetroRenderer1.LeftSideColorPressed = Color.FromArgb(84, 175, 255)
-        customizedMetroRenderer1.RightSideColor = Color.FromArgb(100, 65, 165)
-        customizedMetroRenderer1.RightSideColorHovered = Color.FromArgb(131, 85, 217)
-        customizedMetroRenderer1.RightSideColorPressed = Color.FromArgb(155, 100, 255)
-
-        customizedMetroRenderer2.LeftSideColor = Color.FromArgb(59, 123, 179)
-        customizedMetroRenderer2.LeftSideColorHovered = Color.FromArgb(72, 149, 217)
-        customizedMetroRenderer2.LeftSideColorPressed = Color.FromArgb(84, 175, 255)
-        customizedMetroRenderer2.RightSideColor = Color.FromArgb(100, 65, 165)
-        customizedMetroRenderer2.RightSideColorHovered = Color.FromArgb(131, 85, 217)
-        customizedMetroRenderer2.RightSideColorPressed = Color.FromArgb(155, 100, 255)
-
-        customizedMetroRenderer3.LeftSideColor = Color.FromArgb(59, 123, 179)
-        customizedMetroRenderer3.LeftSideColorHovered = Color.FromArgb(72, 149, 217)
-        customizedMetroRenderer3.LeftSideColorPressed = Color.FromArgb(84, 175, 255)
-        customizedMetroRenderer3.RightSideColor = Color.FromArgb(100, 65, 165)
-        customizedMetroRenderer3.RightSideColorHovered = Color.FromArgb(131, 85, 217)
-        customizedMetroRenderer3.RightSideColorPressed = Color.FromArgb(155, 100, 255)
-
-        customizedMetroRenderer4.LeftSideColor = Color.FromArgb(59, 123, 179)
-        customizedMetroRenderer4.LeftSideColorHovered = Color.FromArgb(72, 149, 217)
-        customizedMetroRenderer4.LeftSideColorPressed = Color.FromArgb(84, 175, 255)
-        customizedMetroRenderer4.RightSideColor = Color.FromArgb(100, 65, 165)
-        customizedMetroRenderer4.RightSideColorHovered = Color.FromArgb(131, 85, 217)
-        customizedMetroRenderer4.RightSideColorPressed = Color.FromArgb(155, 100, 255)
-
-        switchStream1.SetRenderer(customizedMetroRenderer1)
-        switchStream2.SetRenderer(customizedMetroRenderer2)
-        switchStream3.SetRenderer(customizedMetroRenderer3)
-        switchStream4.SetRenderer(customizedMetroRenderer4)
+    Public Sub ControlArrayItems()
+        txtArray = {txtStream1, txtStream2, txtStream3, txtStream4}
+        trkbrArray = {trkbrStream1, trkbrStream2, trkbrStream3, trkbrStream4}
+        btnArray = {btnStream1Gen, btnStream2Gen, btnStream3Gen, btnStream4Gen}
+        chkArray = {chkStream1, chkStream2, chkStream3, chkStream4}
     End Sub
 
     'Check that livestreamer is installed in the Program Files (x86) folder
@@ -134,7 +81,7 @@ Public Class frmMain
         ProgressBar1.Value = e.ProgressPercentage
     End Sub
 
-    'Runs Livestreamer after it has fniished downloading; throws error if download fails.
+    'Runs Livestreamer after it has finished downloading; throws error if download fails.
     Public Sub DownloadFileCompleted(ByVal sender As Object, ByVal e As AsyncCompletedEventArgs)
         If Not e.Cancelled AndAlso e.Error Is Nothing Then
             ProgressBar1.Visible = False
@@ -168,17 +115,10 @@ Public Class frmMain
 
     'Requests value for My.Settings.strTwitchOAuthKey
     Public Sub setupTwitchOAuth()
-        If My.Settings.strTwitchOAuthKey = "" Then
-            Dim resOAuth As DialogResult = MessageBox.Show("Due to Twitch API changes, you are required to generate an OAuth key to watch Twitch streams through Livestreamer.  Click ""OK"" to open up a web page where you can create an OAuth key.", "Twitch OAuth key required", MessageBoxButtons.OKCancel)
-            Dim strOAuthURL As String = "https://twitchapps.com/tmi/"
-
-            If resOAuth = DialogResult.OK Then
-                Process.Start(strOAuthURL)
-                My.Settings.strTwitchOAuthKey = InputBox("Enter Twitch OAuth code, without the leading ""oauth:""", "Input Twitch OAuth key").ToString
-            Else
-                MsgBox("You will be unable to watch Twitch streams unless you generate an OAuth key.  You may enter an OAuth key at any time via ""File"" > ""Change Twitch OAuth key...""")
-            End If
-
+        If My.Settings.strTwitchClientID = "Client-ID=jzkbprff40iqj646a697cyrvl0zt2m6" Then
+            statusLabel1.Text = "Twitch playback enabled with Livestreamer Client ID."
+        Else
+            statusLabel1.Text = "Twitch playback disabled"
         End If
     End Sub
 
@@ -215,7 +155,7 @@ Public Class frmMain
 
     End Sub
 
-    'CLose all VLC windows
+    'Close all VLC windows
     Private Sub vlcKill_Click(sender As Object, e As EventArgs) Handles btnKillVLC.Click
 
         Dim procKillVLC As New ProcessStartInfo("cmd.exe", "/c taskkill  /f /fi ""WindowTitle eq First - VLC Media Player"" & taskkill /f /fi ""WindowTitle eq Second - VLC Media Player"" & taskkill /f /fi ""WindowTitle eq Third - VLC Media Player"" & taskkill /f /fi ""WindowTitle eq Fourth - VLC Media Player""")
@@ -226,6 +166,7 @@ Public Class frmMain
 
     'Generate all streams by "clicking" the 4 buttons
     Private Sub btnGenAll_Click(sender As Object, e As EventArgs) Handles btnGenAll.Click
+
         btnStream1Gen.PerformClick()
         btnStream2Gen.PerformClick()
         btnStream3Gen.PerformClick()
@@ -259,7 +200,7 @@ Public Class frmMain
 
     'About this program
     Private Sub tsmiAbout_Click(sender As Object, e As EventArgs) Handles tsmiAbout.Click
-        MessageBox.Show("Version 0.6 - by MacKirby" & vbCrLf & vbCrLf & "This program is provided free of use for managing stream captures for tournaments on Twitch.  Got feedback?  Drop me an email - mac@mackirby.tv", "About MacSG", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        MessageBox.Show("Version 0.9 - by MacKirby" & vbCrLf & vbCrLf & "This program is provided free of use for managing stream captures for tournaments on Twitch.  Got feedback?  Drop me an email - mac@mackirby.tv", "About MacSG", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 
     'Change window size for CMDOW
@@ -267,30 +208,18 @@ Public Class frmMain
         My.Settings.strWindowSize = InputBox("Define window size for VLC - enter the resolution as ""width height"".  Recommended sizes:" & vbCrLf & "1920x1080: 882x520" & vbCrLf & "1440x900: 642x385", "Define window size...", "882 520")
     End Sub
 
+    'Edit autcomplete file
     Public Sub tsmiEditAutocompleteFile_Click(sender As Object, e As EventArgs) Handles tsmiEditAutocompleteFile.Click
         Dim frmEditStreamerList As New frmEditStreamerList()
         frmEditStreamerList.Show()
     End Sub
 
-    Private Sub tsmiChangeTwitchOAuthKey_Click(sender As Object, e As EventArgs) Handles tsmiChangeTwitchOAuthKey.Click
-        Dim resOAuth As DialogResult = MessageBox.Show("Due to Twitch API changes, you require an OAuth key to watch Twitch streams through Livestreamer.  Click ""Yes"" to open up a web page where you can create an OAuth token.  If you already have a token, click ""No""", "Twitch OAuth key required", MessageBoxButtons.YesNoCancel
-                                                       )
-        Dim strOAuthURL As String = "https://twitchapps.com/tmi/"
-
-        If resOAuth = DialogResult.Yes Then
-            Process.Start(strOAuthURL)
-            My.Settings.strTwitchOAuthKey = InputBox("Enter Twitch OAuth key, without the leading ""oauth:""", "Input Twitch OAuth key").ToString
-        ElseIf resOAuth = DialogResult.No Then
-            My.Settings.strTwitchOAuthKey = InputBox("Enter Twitch OAuth key, without the leading ""oauth:""", "Input Twitch OAuth key", "Current key - " + My.Settings.strTwitchOAuthKey + "").ToString
-        End If
-    End Sub
 
 
-
-    'Functions
+    'Unattached subs
     Public Sub genStream(streamer As String, quality As String, source As String, windowTitle As String, configFile As String)
 
-        Dim strLivestreamerProcess As New ProcessStartInfo("cmd.exe", "/k title " & windowTitle & " & " & source & streamer & quality & "--player-args "" --config %AppData%\MacSG\" & configFile & " {filename}"" > %AppData%\MacSG\" + configFile + ".log")
+        Dim strLivestreamerProcess As New ProcessStartInfo("cmd.exe", "/k title " & windowTitle & " & " & source & streamer & quality & "--player-args "" --config %AppData%\MacSG\" & configFile & " {filename}")
         strLivestreamerProcess.WindowStyle = ProcessWindowStyle.Hidden
         Process.Start(strLivestreamerProcess)
 
@@ -322,73 +251,192 @@ Public Class frmMain
 
     'Write udStream control values to text files
     Sub updControls_Changed(sender As Object, e As EventArgs) Handles updStream1.ValueChanged, updStream2.ValueChanged, updStream3.ValueChanged, updStream4.ValueChanged
+
         Dim updIndex As String = DirectCast(sender, Control).Name.Remove(0, 9)
 
         Using swScore As New StreamWriter(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\MacSG\score" & updIndex & ".txt")
             swScore.Write(DirectCast(sender, NumericUpDown).Value)
         End Using
+
     End Sub
+
+    'Handles CLI startup
+    Public Sub cliStartup(args As String())
+        btnKillVLC.PerformClick()
+
+        If args.Length > 0 Then
+
+            Dim splitArgs As String() = args(0).Split(New Char() {","c})
+            splitArgs(0) = splitArgs(0).Replace("macsg:", "")
+
+            If splitArgs.Length > 5 Then
+                ReDim Preserve splitArgs(4)
+            End If
+
+            If splitArgs(0) = "twitch" Then
+                For i = 0 To (splitArgs.Length - 2)
+                    chkArray(i).Checked = True
+                Next
+
+            ElseIf splitArgs(0) = "rtmp" Then
+                For i = 0 To (splitArgs.Length - 2)
+                    chkArray(i).Checked = False
+                Next
+
+            Else
+                MsgBox("Invalid command line arguments, exiting...")
+                Application.Exit()
+                Exit Sub
+            End If
+
+            For i = 1 To (splitArgs.Length - 1)
+                If splitArgs(i) <> Nothing Then
+                    txtArray(i - 1).Text = splitArgs(i).ToLower
+                    btnArray(i - 1).PerformClick()
+                End If
+            Next
+        End If
+    End Sub
+
 
     'Generate streams
     Sub streamButton_Clicked(sender As Object, e As EventArgs) Handles btnStream1Gen.Click, btnStream2Gen.Click, btnStream3Gen.Click, btnStream4Gen.Click
+
         Dim ctrlIndex = Integer.Parse(Regex.Replace(DirectCast(sender, Button).Name, "[^1-4]", ""))
 
-        If txtArray(ctrlIndex - 1).Text <> "" Then
+        'Dim openWindow As Boolean
+        Dim strWindowTitle As String = ""
 
-            Dim strSource As String = ""
-            Dim strQuality As String = ""
-            Dim strWindowTitle As String = ""
+        Select Case ctrlIndex
+            Case 1
+                strWindowTitle = "First"
+            Case 2
+                strWindowTitle = "Second"
+            Case 3
+                strWindowTitle = "Third"
+            Case 4
+                strWindowTitle = "Fourth"
+        End Select
 
-            Select Case ctrlIndex
-                Case 1
-                    strWindowTitle = "First"
-                Case 2
-                    strWindowTitle = "Second"
-                Case 3
-                    strWindowTitle = "Third"
-                Case 4
-                    strWindowTitle = "Fourth"
-            End Select
+        If processChecker(sender:=btnArray(ctrlIndex - 1), ctrlIndex:=ctrlIndex) = False Then
+            If txtArray(ctrlIndex - 1).Text <> "" Then
+                Dim strSource As String = ""
+                Dim strQuality As String = ""
 
-            If trkbrArray(ctrlIndex - 1).Enabled = True Then
-                Select Case trkbrArray(ctrlIndex - 1).Value
-                    Case 1
-                        strQuality = " low "
-                    Case 2
-                        strQuality = " medium "
-                    Case 3
-                        strQuality = " high "
-                    Case 4
-                        strQuality = " source "
-                End Select
-            ElseIf trkbrArray(ctrlIndex - 1).Enabled = False Then
-                strQuality = "/live best "
+                If trkbrArray(ctrlIndex - 1).Enabled = True Then
+                    Select Case trkbrArray(ctrlIndex - 1).Value
+                        Case 1
+                            strQuality = " low "
+                        Case 2
+                            strQuality = " medium "
+                        Case 3
+                            strQuality = " high "
+                        Case 4
+                            strQuality = " source "
+                    End Select
+                ElseIf trkbrArray(ctrlIndex - 1).Enabled = False Then
+                    strQuality = "/live best "
+                End If
+
+                If chkArray(ctrlIndex - 1).Checked = False Then
+                    strSource = "livestreamer rtmp://rtmp.condorleague.tv/"
+                Else
+                    strSource = "livestreamer --http-header " + My.Settings.strTwitchClientID + " twitch.tv/"
+                End If
+
+                genStream(streamer:=txtArray(ctrlIndex - 1).Text.ToLower, quality:=strQuality, source:=strSource, windowTitle:=strWindowTitle, configFile:=ctrlIndex.ToString())
+                writeNameToFile(streamer:=txtArray(ctrlIndex - 1).Text, file:=ctrlIndex.ToString())
+                writeNameToAutocomplete(streamer:=txtArray(ctrlIndex - 1).Text.ToLower)
             End If
+        End If
 
-            If switchArray(ctrlIndex - 1).Checked Then
-                strSource = "livestreamer rtmp://rtmp.condorleague.tv/"
+    End Sub
+
+    Private Sub chkStream_CheckChanged(sender As Object, e As EventArgs) Handles chkStream1.CheckedChanged, chkStream2.CheckedChanged, chkStream3.CheckedChanged, chkStream4.CheckedChanged
+
+        If DirectCast(sender, CheckBox).Checked = True Then
+            Try
+                Dim ctrlIndex = Integer.Parse(Regex.Replace(DirectCast(sender, CheckBox).Name, "[^1-4]", ""))
+                trkbrArray(ctrlIndex - 1).Enabled = True
+                chkArray(ctrlIndex - 1).BackColor = Color.FromArgb(100, 65, 165)
+                chkArray(ctrlIndex - 1).Text = "Twitch"
+            Catch ex As Exception
+                MessageBox.Show(ex.Message + "  Handling set to Twitch")
+            End Try
+
+        ElseIf DirectCast(sender, CheckBox).Checked = False Then
+            Try
+                Dim ctrlIndex = Integer.Parse(Regex.Replace(DirectCast(sender, CheckBox).Name, "[^1-4]", ""))
+                trkbrArray(ctrlIndex - 1).Enabled = False
+                chkArray(ctrlIndex - 1).BackColor = Color.FromArgb(59, 123, 179)
+                chkArray(ctrlIndex - 1).Text = "RTMP"
+            Catch ex As Exception
+                MessageBox.Show(ex.Message + "  Handling set to RTMP")
+            End Try
+        End If
+
+    End Sub
+
+    Private Sub InstallMacsgHandlerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles InstallMacsgHandlerToolStripMenuItem.Click
+
+        Dim identity = WindowsIdentity.GetCurrent()
+        Dim principal = New WindowsPrincipal(identity)
+        Dim isElevated As Boolean = principal.IsInRole(WindowsBuiltInRole.Administrator)
+
+        If isElevated = True Then
+
+            Dim regMacSG As RegistryKey = Registry.ClassesRoot.CreateSubKey("macsg")
+            regMacSG.SetValue("", "URL:MacSG Protocol")
+            regMacSG.SetValue("URL Protocol", "")
+
+            Dim regDefaultIcon As RegistryKey = regMacSG.CreateSubKey("DefaultIcon")
+            regDefaultIcon.SetValue("", Path.GetFileName(Application.ExecutablePath))
+
+            Dim regShell As RegistryKey = regMacSG.CreateSubKey("shell")
+            Dim regOpen As RegistryKey = regShell.CreateSubKey("open")
+            Dim regCommand As RegistryKey = regOpen.CreateSubKey("Command")
+            regCommand.SetValue("", Application.ExecutablePath + " %1")
+
+            MsgBox("To finish enabling the protocol, you must reboot your PC.")
+
+        Else
+            MsgBox("MacSG must be running with Administrator privileges to install the custom protocol.  Please relaunch MacSG as an Administrator.")
+        End If
+
+    End Sub
+
+
+    Public Function processChecker(sender As Button, ctrlIndex As Integer) As Boolean
+
+        Dim procProcesses() As Process = Process.GetProcesses
+        Dim openWindow As Boolean
+        Dim strWindowTitle As String = ""
+
+        Select Case ctrlIndex
+            Case 1
+                strWindowTitle = "First"
+            Case 2
+                strWindowTitle = "Second"
+            Case 3
+                strWindowTitle = "Third"
+            Case 4
+                strWindowTitle = "Fourth"
+        End Select
+
+        For Each p As Process In procProcesses
+            If p.MainWindowTitle.Contains(strWindowTitle) Then
+                openWindow = True
+                MsgBox("Already open")
+                Exit For
             Else
-                strSource = "livestreamer --twitch-oauth-token " & My.Settings.strTwitchOAuthKey & " twitch.tv/"
+                openWindow = False
             End If
 
-            genStream(streamer:=txtArray(ctrlIndex - 1).Text, quality:=strQuality, source:=strSource, windowTitle:=strWindowTitle, configFile:=ctrlIndex.ToString())
-            writeNameToFile(streamer:=txtArray(ctrlIndex - 1).Text, file:=ctrlIndex.ToString())
-            writeNameToAutocomplete(streamer:=txtArray(ctrlIndex - 1).Text)
+        Next
 
-        End If
-    End Sub
+        Return openWindow
 
-    Private Sub switchStream_Checked(sender As Object, e As EventArgs) Handles switchStream1.CheckedChanged, switchStream2.CheckedChanged, switchStream3.CheckedChanged, switchStream4.CheckedChanged
+    End Function
 
-        If DirectCast(sender, JCS.ToggleSwitch).Checked = True Then
-            Dim ctrlIndex = Integer.Parse(Regex.Replace(DirectCast(sender, JCS.ToggleSwitch).Name, "[^1-4]", ""))
-            trkbrArray(ctrlIndex - 1).Enabled = False
-
-        ElseIf DirectCast(sender, JCS.ToggleSwitch).Checked = False Then
-            Dim ctrlIndex = Integer.Parse(Regex.Replace(DirectCast(sender, JCS.ToggleSwitch).Name, "[^1-4]", ""))
-            trkbrArray(ctrlIndex - 1).Enabled = True
-        End If
-
-    End Sub
 End Class
 

@@ -5,8 +5,8 @@
     <Setting Name="strWindowSize" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="strTwitchOAuthKey" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+    <Setting Name="strTwitchClientID" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Client-ID=jzkbprff40iqj646a697cyrvl0zt2m6</Value>
     </Setting>
     <Setting Name="strPathToStreamerFile" Type="System.String" Scope="User">
       <Value Profile="(Default)" />

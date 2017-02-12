@@ -15,25 +15,13 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_186831EA6BA54AA39BFFF39225CE3777"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_36A702834668443A9D4B80B2E068AD07"
+        "MsmKey" = "8:_0EB56962CF994ABB8D5F41833CE17E13"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_3DB8C8E102294ED4957869932E931D25"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_4B5A7A68CE054D5E83E9C5848FEECB6E"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -75,6 +63,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_7FED50F315464F53925D44119269D428"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_99B72B1280414A7282B8B54E3BC94A9B"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -105,13 +99,19 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_AFE7144B6FBF4A8A9A5A63BE433EE5E8"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_B263703588D34448C3B7A371FF368B65"
         "OwnerKey" = "8:_A38FA8D2B5B2481A94686E5F29DF5CC7"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_E3485BF2E78C49BBA26EFA1D7D5CE8A8"
+        "MsmKey" = "8:_CBEF5D43027643528E3906E949634FC8"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -130,13 +130,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_5FF2E6AA0FB51A16A537283ECA4A8137"
+        "OwnerKey" = "8:_B263703588D34448C3B7A371FF368B65"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_B263703588D34448C3B7A371FF368B65"
+        "OwnerKey" = "8:_5FF2E6AA0FB51A16A537283ECA4A8137"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -234,30 +234,10 @@
         }
         "File"
         {
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_186831EA6BA54AA39BFFF39225CE3777"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0EB56962CF994ABB8D5F41833CE17E13"
             {
-            "SourcePath" = "8:..\\..\\Installer files\\racer4.txt"
-            "TargetName" = "8:racer4.txt"
-            "Tag" = "8:"
-            "Folder" = "8:_2DD3CA1AFA814DD8B2F35074342525E5"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_36A702834668443A9D4B80B2E068AD07"
-            {
-            "SourcePath" = "8:..\\..\\Installer files\\racer2.txt"
-            "TargetName" = "8:racer2.txt"
+            "SourcePath" = "8:..\\..\\Installer files\\streamer2.txt"
+            "TargetName" = "8:streamer2.txt"
             "Tag" = "8:"
             "Folder" = "8:_2DD3CA1AFA814DD8B2F35074342525E5"
             "Condition" = "8:"
@@ -280,26 +260,6 @@
             "TargetName" = "8:Mac Logo.fw.ico"
             "Tag" = "8:"
             "Folder" = "8:_EC4AA43B10F54FB5878F7CBE3982D4DF"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4B5A7A68CE054D5E83E9C5848FEECB6E"
-            {
-            "SourcePath" = "8:..\\..\\Installer files\\racer3.txt"
-            "TargetName" = "8:racer3.txt"
-            "Tag" = "8:"
-            "Folder" = "8:_2DD3CA1AFA814DD8B2F35074342525E5"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -361,6 +321,11 @@
             "AssemblyAsmDisplayName" = "8:System.Net.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
                 "ScatterAssemblies"
                 {
+                    "_5FF2E6AA0FB51A16A537283ECA4A8137"
+                    {
+                    "Name" = "8:System.Net.Http.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:System.Net.Http.dll"
             "TargetName" = "8:"
@@ -424,6 +389,26 @@
             {
             "SourcePath" = "8:..\\..\\Installer files\\streamerlist.conf"
             "TargetName" = "8:streamerlist.conf"
+            "Tag" = "8:"
+            "Folder" = "8:_2DD3CA1AFA814DD8B2F35074342525E5"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7FED50F315464F53925D44119269D428"
+            {
+            "SourcePath" = "8:..\\..\\Installer files\\streamer1.txt"
+            "TargetName" = "8:streamer1.txt"
             "Tag" = "8:"
             "Folder" = "8:_2DD3CA1AFA814DD8B2F35074342525E5"
             "Condition" = "8:"
@@ -520,6 +505,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_AFE7144B6FBF4A8A9A5A63BE433EE5E8"
+            {
+            "SourcePath" = "8:..\\..\\Installer files\\streamer3.txt"
+            "TargetName" = "8:streamer3.txt"
+            "Tag" = "8:"
+            "Folder" = "8:_2DD3CA1AFA814DD8B2F35074342525E5"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_B263703588D34448C3B7A371FF368B65"
             {
             "AssemblyRegister" = "3:1"
@@ -527,6 +532,11 @@
             "AssemblyAsmDisplayName" = "8:ToggleSwitch, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_B263703588D34448C3B7A371FF368B65"
+                    {
+                    "Name" = "8:ToggleSwitch.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:ToggleSwitch.dll"
             "TargetName" = "8:"
@@ -546,10 +556,10 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E3485BF2E78C49BBA26EFA1D7D5CE8A8"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CBEF5D43027643528E3906E949634FC8"
             {
-            "SourcePath" = "8:..\\..\\Installer files\\racer1.txt"
-            "TargetName" = "8:racer1.txt"
+            "SourcePath" = "8:..\\..\\Installer files\\streamer4.txt"
+            "TargetName" = "8:streamer4.txt"
             "Tag" = "8:"
             "Folder" = "8:_2DD3CA1AFA814DD8B2F35074342525E5"
             "Condition" = "8:"
@@ -665,7 +675,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:MacSG"
         "ProductCode" = "8:{0B36AFB2-A11F-4D1C-9BC8-862B004FB490}"
-        "PackageCode" = "8:{3F60BFF9-E5E9-42ED-B476-4646AA4C1A03}"
+        "PackageCode" = "8:{715AA290-2AFA-46C1-B31E-2A01003C9084}"
         "UpgradeCode" = "8:{F9DAE7D5-8776-4DF4-9CC8-0FFDE4CFCFC4}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -765,146 +775,6 @@
             {
                 "Keys"
                 {
-                    "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_429C56A5C74A4FFDA97F20384F3A4AB2"
-                    {
-                    "Name" = "8:macsg"
-                    "Condition" = "8:"
-                    "AlwaysCreate" = "11:FALSE"
-                    "DeleteAtUninstall" = "11:FALSE"
-                    "Transitive" = "11:FALSE"
-                        "Keys"
-                        {
-                            "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_6BD02A556377411E8D69F9EC61C4D4E8"
-                            {
-                            "Name" = "8:URL Protocol"
-                            "Condition" = "8:"
-                            "AlwaysCreate" = "11:FALSE"
-                            "DeleteAtUninstall" = "11:FALSE"
-                            "Transitive" = "11:FALSE"
-                                "Keys"
-                                {
-                                }
-                                "Values"
-                                {
-                                    "{ADCFDA98-8FDD-45E4-90BC-E3D20B029870}:_8C22038C8B1D4C0493C94CCE20EA9616"
-                                    {
-                                    "Name" = "8:(Default)"
-                                    "Condition" = "8:"
-                                    "Transitive" = "11:FALSE"
-                                    "ValueTypes" = "3:1"
-                                    "Value" = "8:"
-                                    }
-                                }
-                            }
-                            "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_9F965BE36E764E8ABA4E95DCFCFC5539"
-                            {
-                            "Name" = "8:DefaultIcon"
-                            "Condition" = "8:"
-                            "AlwaysCreate" = "11:FALSE"
-                            "DeleteAtUninstall" = "11:FALSE"
-                            "Transitive" = "11:FALSE"
-                                "Keys"
-                                {
-                                }
-                                "Values"
-                                {
-                                    "{ADCFDA98-8FDD-45E4-90BC-E3D20B029870}:_8089DA7FF8F340408E50D09864295DD6"
-                                    {
-                                    "Name" = "8:(Default)"
-                                    "Condition" = "8:"
-                                    "Transitive" = "11:FALSE"
-                                    "ValueTypes" = "3:1"
-                                    "Value" = "8:macsg.exe,1"
-                                    }
-                                }
-                            }
-                            "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_ED6A45CEDA38476FA3F2E20B2E21425F"
-                            {
-                            "Name" = "8:shell"
-                            "Condition" = "8:"
-                            "AlwaysCreate" = "11:FALSE"
-                            "DeleteAtUninstall" = "11:FALSE"
-                            "Transitive" = "11:FALSE"
-                                "Keys"
-                                {
-                                    "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_CF42BECF8BDB42258170FC8C6C61033E"
-                                    {
-                                    "Name" = "8:open"
-                                    "Condition" = "8:"
-                                    "AlwaysCreate" = "11:FALSE"
-                                    "DeleteAtUninstall" = "11:FALSE"
-                                    "Transitive" = "11:FALSE"
-                                        "Keys"
-                                        {
-                                            "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_AD31EF52115B46D2BF9E188FA742DBE7"
-                                            {
-                                            "Name" = "8:command"
-                                            "Condition" = "8:"
-                                            "AlwaysCreate" = "11:FALSE"
-                                            "DeleteAtUninstall" = "11:FALSE"
-                                            "Transitive" = "11:FALSE"
-                                                "Keys"
-                                                {
-                                                }
-                                                "Values"
-                                                {
-                                                    "{ADCFDA98-8FDD-45E4-90BC-E3D20B029870}:_1D4CBCFA7E3B41A8A96E33D7BB40A6D2"
-                                                    {
-                                                    "Name" = "8:(Default)"
-                                                    "Condition" = "8:"
-                                                    "Transitive" = "11:FALSE"
-                                                    "ValueTypes" = "3:1"
-                                                    "Value" = "8:\"C:\\Program Files (x86)\\MacSG\\MacSG.exe %1\""
-                                                    }
-                                                }
-                                            }
-                                        }
-                                        "Values"
-                                        {
-                                            "{ADCFDA98-8FDD-45E4-90BC-E3D20B029870}:_6FDDE97A9A0A444CB325B048C48FC748"
-                                            {
-                                            "Name" = "8:(Default)"
-                                            "Condition" = "8:"
-                                            "Transitive" = "11:FALSE"
-                                            "ValueTypes" = "3:1"
-                                            "Value" = "8:"
-                                            }
-                                        }
-                                    }
-                                }
-                                "Values"
-                                {
-                                    "{ADCFDA98-8FDD-45E4-90BC-E3D20B029870}:_D6E09FA3F30D4E4E96DE447A69BD44C3"
-                                    {
-                                    "Name" = "8:(Default)"
-                                    "Condition" = "8:"
-                                    "Transitive" = "11:FALSE"
-                                    "ValueTypes" = "3:1"
-                                    "Value" = "8:"
-                                    }
-                                }
-                            }
-                        }
-                        "Values"
-                        {
-                            "{ADCFDA98-8FDD-45E4-90BC-E3D20B029870}:_E79F253CC9F3403981EF85C29E38B7B4"
-                            {
-                            "Name" = "8:URL Protocol"
-                            "Condition" = "8:"
-                            "Transitive" = "11:FALSE"
-                            "ValueTypes" = "3:1"
-                            "Value" = "8:"
-                            }
-                            "{ADCFDA98-8FDD-45E4-90BC-E3D20B029870}:_E7DDA9B1BCCB44D787657650CD5078AD"
-                            {
-                            "Name" = "8:(Default)"
-                            "Condition" = "8:"
-                            "Transitive" = "11:FALSE"
-                            "ValueTypes" = "3:1"
-                            "Value" = "8:URL: MacSG Protocol"
-                            }
-                        }
-                    }
                 }
             }
             "HKU"
