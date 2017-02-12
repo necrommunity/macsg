@@ -68,13 +68,13 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
-        Public Property strTwitchOAuthKey() As String
+         Global.System.Configuration.DefaultSettingValueAttribute("Client-ID=jzkbprff40iqj646a697cyrvl0zt2m6")>  _
+        Public Property strTwitchClientID() As String
             Get
-                Return CType(Me("strTwitchOAuthKey"),String)
+                Return CType(Me("strTwitchClientID"),String)
             End Get
             Set
-                Me("strTwitchOAuthKey") = value
+                Me("strTwitchClientID") = value
             End Set
         End Property
         

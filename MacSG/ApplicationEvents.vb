@@ -7,7 +7,7 @@ Namespace My
             Dim f = Application.MainForm
             '  use YOUR actual form class name:
             If f.GetType Is GetType(frmMain) Then
-                CType(f, frmMain).NewArgumentsReceived(e.CommandLine.ToArray)
+                CType(f, frmMain).cliStartup(e.CommandLine.ToArray)
             End If
         End Sub
 
