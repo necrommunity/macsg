@@ -162,6 +162,8 @@ Public Class frmMain
         procKillVLC.WindowStyle = ProcessWindowStyle.Hidden
         Process.Start(procKillVLC)
 
+        System.Threading.Thread.Sleep(300)
+
     End Sub
 
     'Generate all streams by "clicking" the 4 buttons
@@ -199,7 +201,7 @@ Public Class frmMain
     End Sub
 
     'About this program
-    Private Sub tsmiAbout_Click(sender As Object, e As EventArgs) Handles tsmiAbout.Click
+    Private Sub tsmiAbout_Click(sender As Object, e As EventArgs)
         MessageBox.Show("Version 0.9 - by MacKirby" & vbCrLf & vbCrLf & "This program is provided free of use for managing stream captures for tournaments on Twitch.  Got feedback?  Drop me an email - mac@mackirby.tv", "About MacSG", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 
@@ -262,6 +264,7 @@ Public Class frmMain
 
     'Handles CLI startup
     Public Sub cliStartup(args As String())
+
         btnKillVLC.PerformClick()
 
         If args.Length > 0 Then
@@ -323,7 +326,7 @@ Public Class frmMain
                 Dim strSource As String = ""
                 Dim strQuality As String = ""
 
-                If trkbrArray(ctrlIndex - 1).Enabled = True Then
+                If chkArray(ctrlIndex - 1).Checked = True Then
                     Select Case trkbrArray(ctrlIndex - 1).Value
                         Case 1
                             strQuality = " low "
@@ -334,14 +337,11 @@ Public Class frmMain
                         Case 4
                             strQuality = " source "
                     End Select
-                ElseIf trkbrArray(ctrlIndex - 1).Enabled = False Then
-                    strQuality = "/live best "
-                End If
-
-                If chkArray(ctrlIndex - 1).Checked = False Then
-                    strSource = "livestreamer rtmp://rtmp.condorleague.tv/"
-                Else
                     strSource = "livestreamer --http-header " + My.Settings.strTwitchClientID + " twitch.tv/"
+
+                ElseIf chkArray(ctrlIndex - 1).Checked = False Then
+                    strQuality = "/live best "
+                    strSource = "livestreamer rtmp://rtmp.condorleague.tv/"
                 End If
 
                 genStream(streamer:=txtArray(ctrlIndex - 1).Text.ToLower, quality:=strQuality, source:=strSource, windowTitle:=strWindowTitle, configFile:=ctrlIndex.ToString())
@@ -361,7 +361,7 @@ Public Class frmMain
                 chkArray(ctrlIndex - 1).BackColor = Color.FromArgb(100, 65, 165)
                 chkArray(ctrlIndex - 1).Text = "Twitch"
             Catch ex As Exception
-                MessageBox.Show(ex.Message + "  Handling set to Twitch")
+                MessageBox.Show(ex.Message)
             End Try
 
         ElseIf DirectCast(sender, CheckBox).Checked = False Then
@@ -371,7 +371,7 @@ Public Class frmMain
                 chkArray(ctrlIndex - 1).BackColor = Color.FromArgb(59, 123, 179)
                 chkArray(ctrlIndex - 1).Text = "RTMP"
             Catch ex As Exception
-                MessageBox.Show(ex.Message + "  Handling set to RTMP")
+                MessageBox.Show(ex.Message)
             End Try
         End If
 
@@ -426,7 +426,6 @@ Public Class frmMain
         For Each p As Process In procProcesses
             If p.MainWindowTitle.Contains(strWindowTitle) Then
                 openWindow = True
-                MsgBox("Already open")
                 Exit For
             Else
                 openWindow = False

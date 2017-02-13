@@ -56,7 +56,6 @@ Partial Class frmMain
         Me.tsmiEditAutocompleteFile = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmiChangeVLCWindowSize = New System.Windows.Forms.ToolStripMenuItem()
         Me.InstallMacsgHandlerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.tsmiAbout = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmiSeason5 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
@@ -128,6 +127,7 @@ Partial Class frmMain
         '
         'trkbrStream1
         '
+        Me.trkbrStream1.Enabled = False
         Me.trkbrStream1.LargeChange = 1
         Me.trkbrStream1.Location = New System.Drawing.Point(169, 13)
         Me.trkbrStream1.Maximum = 4
@@ -214,6 +214,7 @@ Partial Class frmMain
         '
         'trkbrStream2
         '
+        Me.trkbrStream2.Enabled = False
         Me.trkbrStream2.LargeChange = 1
         Me.trkbrStream2.Location = New System.Drawing.Point(169, 13)
         Me.trkbrStream2.Maximum = 4
@@ -278,6 +279,7 @@ Partial Class frmMain
         '
         'trkbrStream3
         '
+        Me.trkbrStream3.Enabled = False
         Me.trkbrStream3.LargeChange = 1
         Me.trkbrStream3.Location = New System.Drawing.Point(169, 13)
         Me.trkbrStream3.Maximum = 4
@@ -342,6 +344,7 @@ Partial Class frmMain
         '
         'trkbrStream4
         '
+        Me.trkbrStream4.Enabled = False
         Me.trkbrStream4.LargeChange = 1
         Me.trkbrStream4.Location = New System.Drawing.Point(169, 15)
         Me.trkbrStream4.Maximum = 4
@@ -376,7 +379,7 @@ Partial Class frmMain
         '
         'fileToolStripMenuItem1
         '
-        Me.fileToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmiSelectAutocompleteFile, Me.tsmiEditAutocompleteFile, Me.tsmiChangeVLCWindowSize, Me.InstallMacsgHandlerToolStripMenuItem, Me.tsmiAbout})
+        Me.fileToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmiSelectAutocompleteFile, Me.tsmiEditAutocompleteFile, Me.tsmiChangeVLCWindowSize, Me.InstallMacsgHandlerToolStripMenuItem})
         Me.fileToolStripMenuItem1.Name = "fileToolStripMenuItem1"
         Me.fileToolStripMenuItem1.Size = New System.Drawing.Size(37, 20)
         Me.fileToolStripMenuItem1.Text = "File"
@@ -405,18 +408,14 @@ Partial Class frmMain
         Me.InstallMacsgHandlerToolStripMenuItem.Size = New System.Drawing.Size(210, 22)
         Me.InstallMacsgHandlerToolStripMenuItem.Text = "Install macsg: handler"
         '
-        'tsmiAbout
-        '
-        Me.tsmiAbout.Name = "tsmiAbout"
-        Me.tsmiAbout.Size = New System.Drawing.Size(210, 22)
-        Me.tsmiAbout.Text = "About..."
-        '
         'tsmiSeason5
         '
+        Me.tsmiSeason5.AutoToolTip = True
         Me.tsmiSeason5.Enabled = False
         Me.tsmiSeason5.Name = "tsmiSeason5"
         Me.tsmiSeason5.Size = New System.Drawing.Size(65, 20)
         Me.tsmiSeason5.Text = "Season 5"
+        Me.tsmiSeason5.ToolTipText = "Coming soon..."
         '
         'ProgressBar1
         '
@@ -515,7 +514,6 @@ Partial Class frmMain
     Private WithEvents tsmiSelectAutocompleteFile As ToolStripMenuItem
     Friend WithEvents tsmiEditAutocompleteFile As ToolStripMenuItem
     Friend WithEvents tsmiChangeVLCWindowSize As ToolStripMenuItem
-    Private WithEvents tsmiAbout As ToolStripMenuItem
     Friend WithEvents ProgressBar1 As ProgressBar
     Friend WithEvents InstallMacsgHandlerToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents StatusStrip1 As StatusStrip
