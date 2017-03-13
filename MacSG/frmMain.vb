@@ -5,6 +5,7 @@ Imports System.Text.RegularExpressions
 Imports Microsoft.Win32
 Imports System.Security.Principal
 Imports Microsoft.VisualBasic.ApplicationServices
+Imports MySql.Data.MySqlClient
 
 
 Public Class frmMain
@@ -437,5 +438,9 @@ Public Class frmMain
 
     End Function
 
+    Private Sub tsmiSeason5_Click(sender As Object, e As EventArgs) Handles tsmiSeason5.Click
+        Dim frmSchedule As New frmSchedule()
+        frmSchedule.Show()
+    End Sub
 End Class
 

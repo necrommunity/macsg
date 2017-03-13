@@ -406,12 +406,11 @@ Partial Class frmMain
         '
         Me.InstallMacsgHandlerToolStripMenuItem.Name = "InstallMacsgHandlerToolStripMenuItem"
         Me.InstallMacsgHandlerToolStripMenuItem.Size = New System.Drawing.Size(210, 22)
-        Me.InstallMacsgHandlerToolStripMenuItem.Text = "Install macsg: handler"
+        Me.InstallMacsgHandlerToolStripMenuItem.Text = "Install macsg: protocol"
         '
         'tsmiSeason5
         '
         Me.tsmiSeason5.AutoToolTip = True
-        Me.tsmiSeason5.Enabled = False
         Me.tsmiSeason5.Name = "tsmiSeason5"
         Me.tsmiSeason5.Size = New System.Drawing.Size(65, 20)
         Me.tsmiSeason5.Text = "Season 5"
