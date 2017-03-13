@@ -89,6 +89,17 @@ Namespace My
                 Me("strPathToStreamerFile") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("server=condor.host;user id=necrobot-read;password=necrobot-read;persistsecurityin"& _ 
+            "fo=True;database=condor_s5")>  _
+        Public ReadOnly Property condor_s5ConnectionString() As String
+            Get
+                Return CType(Me("condor_s5ConnectionString"),String)
+            End Get
+        End Property
     End Class
 End Namespace
 
