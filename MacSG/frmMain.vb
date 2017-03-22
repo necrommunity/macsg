@@ -51,6 +51,10 @@ Public Class frmMain
     'Check that livestreamer is installed in the Program Files (x86) folder
     Public Sub setupLivestreamerCheck()
 
+        If File.Exists("C:\Program Files (x86)\Streamlink\bin\streamlink.exe") Then
+            My.Settings.streamlinkDir = "C:\Program Files (x86)\Streamlink\bin\streamlink.exe"
+        End If
+
         If Not File.Exists(My.Settings.streamlinkDir) Then
             Dim boolStreamlink As Integer = MessageBox.Show("Streamlink was not found in its default directory.  Click Yes to download the latest version from GitHub, or No to specify streamlink.exe's location.", "Streamlink not found", MessageBoxButtons.YesNo)
 
@@ -94,9 +98,11 @@ Public Class frmMain
         If Not e.Cancelled AndAlso e.Error Is Nothing Then
             ProgressBar1.Visible = False
             Process.Start(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\MacSG\streamlink-0.4.0.exe")
-            For Each ctrl As Control In Controls
-                ctrl.Enabled = True
-            Next
+            Me.Close()
+
+            'For Each ctrl As Control In Controls
+            '    ctrl.Enabled = True
+            'Next
 
         Else
             MessageBox.Show("There was an error downloading Streamlink.  Please try running the application as an Administrator and try again.")
