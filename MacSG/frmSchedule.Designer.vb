@@ -24,14 +24,14 @@ Partial Class frmSchedule
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSchedule))
         Me.dgvSchedule = New System.Windows.Forms.DataGridView()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.btnFilter = New System.Windows.Forms.Button()
-        Me.txtFilter = New System.Windows.Forms.TextBox()
         Me.timestamp = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.racer_1_rtmp_name = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.racer_2_rtmp_name = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.league = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.btnFilter = New System.Windows.Forms.Button()
+        Me.txtFilter = New System.Windows.Forms.TextBox()
         CType(Me.dgvSchedule, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -48,44 +48,6 @@ Partial Class frmSchedule
         Me.dgvSchedule.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgvSchedule.Size = New System.Drawing.Size(480, 242)
         Me.dgvSchedule.TabIndex = 0
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(12, 13)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(406, 13)
-        Me.Label1.TabIndex = 2
-        Me.Label1.Text = "All times are in UTC.  Double click the left most column to automatically open a " &
-    "race. "
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(12, 29)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(200, 13)
-        Me.Label2.TabIndex = 3
-        Me.Label2.Text = "Use the search box below to filter results."
-        '
-        'btnFilter
-        '
-        Me.btnFilter.Location = New System.Drawing.Point(368, 52)
-        Me.btnFilter.Name = "btnFilter"
-        Me.btnFilter.Size = New System.Drawing.Size(124, 20)
-        Me.btnFilter.TabIndex = 4
-        Me.btnFilter.Text = "Filter schedule..."
-        Me.btnFilter.UseVisualStyleBackColor = True
-        '
-        'txtFilter
-        '
-        Me.txtFilter.AcceptsReturn = True
-        Me.txtFilter.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append
-        Me.txtFilter.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource
-        Me.txtFilter.Location = New System.Drawing.Point(12, 52)
-        Me.txtFilter.Name = "txtFilter"
-        Me.txtFilter.Size = New System.Drawing.Size(350, 20)
-        Me.txtFilter.TabIndex = 5
         '
         'timestamp
         '
@@ -118,6 +80,42 @@ Partial Class frmSchedule
         Me.league.Name = "league"
         Me.league.ReadOnly = True
         '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(12, 13)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(406, 13)
+        Me.Label1.TabIndex = 2
+        Me.Label1.Text = "All times are in UTC.  Double click the left most column to automatically open a " &
+    "race. "
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(12, 29)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(200, 13)
+        Me.Label2.TabIndex = 3
+        Me.Label2.Text = "Use the search box below to filter results."
+        '
+        'btnFilter
+        '
+        Me.btnFilter.Location = New System.Drawing.Point(368, 52)
+        Me.btnFilter.Name = "btnFilter"
+        Me.btnFilter.Size = New System.Drawing.Size(124, 20)
+        Me.btnFilter.TabIndex = 4
+        Me.btnFilter.Text = "Filter schedule..."
+        Me.btnFilter.UseVisualStyleBackColor = True
+        '
+        'txtFilter
+        '
+        Me.txtFilter.AcceptsReturn = True
+        Me.txtFilter.Location = New System.Drawing.Point(12, 52)
+        Me.txtFilter.Name = "txtFilter"
+        Me.txtFilter.Size = New System.Drawing.Size(350, 20)
+        Me.txtFilter.TabIndex = 5
+        '
         'frmSchedule
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -141,9 +139,9 @@ Partial Class frmSchedule
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents btnFilter As Button
-    Friend WithEvents txtFilter As TextBox
     Friend WithEvents timestamp As DataGridViewTextBoxColumn
     Friend WithEvents racer_1_rtmp_name As DataGridViewTextBoxColumn
     Friend WithEvents racer_2_rtmp_name As DataGridViewTextBoxColumn
     Friend WithEvents league As DataGridViewTextBoxColumn
+    Friend WithEvents txtFilter As TextBox
 End Class

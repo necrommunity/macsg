@@ -1,7 +1,8 @@
 ﻿Imports MySql.Data.MySqlClient
-Imports System.Globalization
+Imports System.IO
 
 Public Class frmSchedule
+
     Dim epoch As New DateTime(1970, 1, 1)
     Dim week1Start As New DateTime(2017, 2, 25, 23, 0, 0)
     Dim week2Start As New DateTime(2017, 3, 4, 23, 0, 0)
@@ -13,6 +14,11 @@ Public Class frmSchedule
 
     Private Sub frmSchedule_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
+        Dim frmMainLocation As Point = frmMain.Location
+        Me.Location = New Point((frmMainLocation.X - (Me.Width - frmMain.Width)), (frmMainLocation.Y))
+
+        Me.AcceptButton = btnFilter
+        txtFilter.Select()
         sqlCall()
 
     End Sub
@@ -37,19 +43,28 @@ Public Class frmSchedule
         Dim bSource As New BindingSource
 
         Dim sqlconn = New MySqlConnection("server=condor.host;userid=necrobot-read;password=necrobot-read;database=condor_s5;")
+        Dim filterText As String = txtFilter.Text
 
         Try
             sqlconn.Open()
             Dim query As String
-            If txtFilter.Text = "" Then
-                query = "SELECT FROM_UNIXTIME(timestamp, '%d/%m/%y %T') AS timestamp, a.rtmp_name AS racer_1_rtmp_name, b.rtmp_name AS racer_2_rtmp_name, CASE WHEN league = 1 THEN ""Blood"" WHEN league = 2 THEN ""Titanium"" WHEN league = 3 THEN ""Obsidian"" WHEN league = 4 THEN ""Crystal"" WHEN league = 0 THEN ""Playoffs"" END AS league FROM condor_s5.match_data JOIN condor_s5.user_data a ON a.racer_id=racer_1_id JOIN condor_s5.user_data b ON b.racer_id=racer_2_id WHERE week_number = @weekNumber AND flags & 8 !=0 AND flags & 16 != 0;"
-            Else
-                query = "SELECT FROM_UNIXTIME(timestamp, '%d/%m/%y %T') AS timestamp, a.rtmp_name AS racer_1_rtmp_name, b.rtmp_name AS racer_2_rtmp_name, CASE WHEN league = 1 THEN ""Blood"" WHEN league = 2 THEN ""Titanium"" WHEN league = 3 THEN ""Obsidian"" WHEN league = 4 THEN ""Crystal"" WHEN league = 0 THEN ""Playoffs"" END AS league FROM condor_s5.match_data JOIN condor_s5.user_data a ON a.racer_id=racer_1_id JOIN condor_s5.user_data b ON b.racer_id=racer_2_id WHERE week_number = @weekNumber AND (a.rtmp_name = @filter OR b.rtmp_name = @filter OR league = @filter) AND flags & 8 !=0 AND flags & 16 != 0;"
-            End If
+            Select Case txtFilter.Text.ToLower
+                Case "blood"
+                    filterText = "1"
+                Case "titanium"
+                    filterText = "2"
+                Case "obsidian"
+                    filterText = "3"
+                Case "crystal"
+                    filterText = "4"
+                Case "playoffs"
+                    filterText = "5"
+            End Select
+            query = "call schedule(" + weekNumber.ToString + ",""" + filterText + """);"
 
             Dim sqlcommand = New MySqlCommand(query, sqlconn)
             sqlcommand.Parameters.Add("@weekNumber", MySqlDbType.Int16).Value = weekNumber
-            sqlcommand.Parameters.Add("@filter", MySqlDbType.VarChar).Value = txtFilter.Text
+            sqlcommand.Parameters.Add("@filter", MySqlDbType.VarChar).Value = filterText
             sqlDataAdapter.SelectCommand = sqlcommand
             sqlDataAdapter.Fill(dt)
             bSource.DataSource = dt
@@ -64,7 +79,7 @@ Public Class frmSchedule
             sqlconn.Close()
             dgvSchedule.DataSource = bSource
 
-            dgvSchedule.Sort(timestamp, System.ComponentModel.ListSortDirection.Descending)
+            dgvSchedule.Sort(timestamp, System.ComponentModel.ListSortDirection.Ascending)
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         Finally
@@ -77,10 +92,13 @@ Public Class frmSchedule
         Dim index As Integer = e.RowIndex
         Dim selectedRow As DataGridViewRow = dgvSchedule.Rows(index)
 
+        changeOverlay(league:=selectedRow.Cells(3).Value.ToString)
         frmMain.txtStream1.Text = selectedRow.Cells(1).Value.ToString
         frmMain.txtStream2.Text = selectedRow.Cells(2).Value.ToString
 
         frmMain.btnGenAll.PerformClick()
+
+        Me.Close()
 
     End Sub
 
@@ -104,6 +122,22 @@ Public Class frmSchedule
                 row.DefaultCellStyle.BackColor = Color.FromArgb(255, 229, 153)
             End If
         Next
+    End Sub
+
+    Private Sub changeOverlay(league As String)
+        Dim currentOverlay As String = (Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\MacSG\overlays\current.png")
+        Dim overlayFolder As String = (Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\MacSG\overlays\")
+
+        Select Case league
+            Case "Blood"
+                File.Copy(overlayFolder + "blood.png", currentOverlay, True)
+            Case "Titanium"
+                File.Copy(overlayFolder + "titanium.png", currentOverlay, True)
+            Case "Obsidian"
+                File.Copy(overlayFolder + "obsidian.png", currentOverlay, True)
+            Case "Crystal"
+                File.Copy(overlayFolder + "crystal.png", currentOverlay, True)
+        End Select
     End Sub
 
 End Class

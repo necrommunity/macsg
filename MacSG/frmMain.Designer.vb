@@ -27,12 +27,14 @@ Partial Class frmMain
         Me.btnKillVLC = New System.Windows.Forms.Button()
         Me.btnMoveResize = New System.Windows.Forms.Button()
         Me.stream1Group = New System.Windows.Forms.GroupBox()
+        Me.btnReplay1 = New System.Windows.Forms.Button()
         Me.updStream1 = New System.Windows.Forms.NumericUpDown()
         Me.trkbrStream1 = New System.Windows.Forms.TrackBar()
         Me.txtStream1 = New System.Windows.Forms.TextBox()
         Me.chkStream1 = New System.Windows.Forms.CheckBox()
         Me.btnStream1Gen = New System.Windows.Forms.Button()
         Me.stream2Group = New System.Windows.Forms.GroupBox()
+        Me.btnReplay2 = New System.Windows.Forms.Button()
         Me.updStream2 = New System.Windows.Forms.NumericUpDown()
         Me.txtStream2 = New System.Windows.Forms.TextBox()
         Me.chkStream2 = New System.Windows.Forms.CheckBox()
@@ -40,11 +42,13 @@ Partial Class frmMain
         Me.btnStream2Gen = New System.Windows.Forms.Button()
         Me.stream3Group = New System.Windows.Forms.GroupBox()
         Me.updStream3 = New System.Windows.Forms.NumericUpDown()
+        Me.btnReplay3 = New System.Windows.Forms.Button()
         Me.chkStream3 = New System.Windows.Forms.CheckBox()
         Me.txtStream3 = New System.Windows.Forms.TextBox()
         Me.trkbrStream3 = New System.Windows.Forms.TrackBar()
         Me.btnStream3Gen = New System.Windows.Forms.Button()
         Me.stream4Group = New System.Windows.Forms.GroupBox()
+        Me.btnReplay4 = New System.Windows.Forms.Button()
         Me.chkStream4 = New System.Windows.Forms.CheckBox()
         Me.updStream4 = New System.Windows.Forms.NumericUpDown()
         Me.txtStream4 = New System.Windows.Forms.TextBox()
@@ -56,7 +60,11 @@ Partial Class frmMain
         Me.tsmiEditAutocompleteFile = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmiChangeVLCWindowSize = New System.Windows.Forms.ToolStripMenuItem()
         Me.InstallMacsgHandlerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.tsmiOpenAppData = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmiSeason5 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.StreamlinkToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.tsmiEditStreamlinkConfig = New System.Windows.Forms.ToolStripMenuItem()
+        Me.tsmiResetStreamlinkPath = New System.Windows.Forms.ToolStripMenuItem()
         Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.statusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
@@ -105,6 +113,7 @@ Partial Class frmMain
         '
         'stream1Group
         '
+        Me.stream1Group.Controls.Add(Me.btnReplay1)
         Me.stream1Group.Controls.Add(Me.updStream1)
         Me.stream1Group.Controls.Add(Me.trkbrStream1)
         Me.stream1Group.Controls.Add(Me.txtStream1)
@@ -117,6 +126,15 @@ Partial Class frmMain
         Me.stream1Group.TabIndex = 11
         Me.stream1Group.TabStop = False
         Me.stream1Group.Text = "Stream 1"
+        '
+        'btnReplay1
+        '
+        Me.btnReplay1.Location = New System.Drawing.Point(143, 43)
+        Me.btnReplay1.Name = "btnReplay1"
+        Me.btnReplay1.Size = New System.Drawing.Size(20, 21)
+        Me.btnReplay1.TabIndex = 22
+        Me.btnReplay1.Text = "R"
+        Me.btnReplay1.UseVisualStyleBackColor = True
         '
         'updStream1
         '
@@ -144,7 +162,7 @@ Partial Class frmMain
         Me.txtStream1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource
         Me.txtStream1.Location = New System.Drawing.Point(6, 16)
         Me.txtStream1.Name = "txtStream1"
-        Me.txtStream1.Size = New System.Drawing.Size(150, 20)
+        Me.txtStream1.Size = New System.Drawing.Size(157, 20)
         Me.txtStream1.TabIndex = 0
         '
         'chkStream1
@@ -164,13 +182,14 @@ Partial Class frmMain
         '
         Me.btnStream1Gen.Location = New System.Drawing.Point(79, 43)
         Me.btnStream1Gen.Name = "btnStream1Gen"
-        Me.btnStream1Gen.Size = New System.Drawing.Size(77, 21)
+        Me.btnStream1Gen.Size = New System.Drawing.Size(60, 21)
         Me.btnStream1Gen.TabIndex = 1
         Me.btnStream1Gen.Text = "Generate"
         Me.btnStream1Gen.UseVisualStyleBackColor = True
         '
         'stream2Group
         '
+        Me.stream2Group.Controls.Add(Me.btnReplay2)
         Me.stream2Group.Controls.Add(Me.updStream2)
         Me.stream2Group.Controls.Add(Me.txtStream2)
         Me.stream2Group.Controls.Add(Me.chkStream2)
@@ -182,6 +201,15 @@ Partial Class frmMain
         Me.stream2Group.TabIndex = 12
         Me.stream2Group.TabStop = False
         Me.stream2Group.Text = "Stream 2"
+        '
+        'btnReplay2
+        '
+        Me.btnReplay2.Location = New System.Drawing.Point(143, 42)
+        Me.btnReplay2.Name = "btnReplay2"
+        Me.btnReplay2.Size = New System.Drawing.Size(20, 21)
+        Me.btnReplay2.TabIndex = 23
+        Me.btnReplay2.Text = "R"
+        Me.btnReplay2.UseVisualStyleBackColor = True
         '
         'updStream2
         '
@@ -229,7 +257,7 @@ Partial Class frmMain
         '
         Me.btnStream2Gen.Location = New System.Drawing.Point(79, 42)
         Me.btnStream2Gen.Name = "btnStream2Gen"
-        Me.btnStream2Gen.Size = New System.Drawing.Size(77, 21)
+        Me.btnStream2Gen.Size = New System.Drawing.Size(60, 21)
         Me.btnStream2Gen.TabIndex = 1
         Me.btnStream2Gen.Text = "Generate"
         Me.btnStream2Gen.UseVisualStyleBackColor = True
@@ -237,6 +265,7 @@ Partial Class frmMain
         'stream3Group
         '
         Me.stream3Group.Controls.Add(Me.updStream3)
+        Me.stream3Group.Controls.Add(Me.btnReplay3)
         Me.stream3Group.Controls.Add(Me.chkStream3)
         Me.stream3Group.Controls.Add(Me.txtStream3)
         Me.stream3Group.Controls.Add(Me.trkbrStream3)
@@ -254,6 +283,15 @@ Partial Class frmMain
         Me.updStream3.Name = "updStream3"
         Me.updStream3.Size = New System.Drawing.Size(38, 20)
         Me.updStream3.TabIndex = 12
+        '
+        'btnReplay3
+        '
+        Me.btnReplay3.Location = New System.Drawing.Point(143, 42)
+        Me.btnReplay3.Name = "btnReplay3"
+        Me.btnReplay3.Size = New System.Drawing.Size(20, 21)
+        Me.btnReplay3.TabIndex = 24
+        Me.btnReplay3.Text = "R"
+        Me.btnReplay3.UseVisualStyleBackColor = True
         '
         'chkStream3
         '
@@ -294,13 +332,14 @@ Partial Class frmMain
         '
         Me.btnStream3Gen.Location = New System.Drawing.Point(79, 42)
         Me.btnStream3Gen.Name = "btnStream3Gen"
-        Me.btnStream3Gen.Size = New System.Drawing.Size(77, 21)
+        Me.btnStream3Gen.Size = New System.Drawing.Size(60, 21)
         Me.btnStream3Gen.TabIndex = 1
         Me.btnStream3Gen.Text = "Generate"
         Me.btnStream3Gen.UseVisualStyleBackColor = True
         '
         'stream4Group
         '
+        Me.stream4Group.Controls.Add(Me.btnReplay4)
         Me.stream4Group.Controls.Add(Me.chkStream4)
         Me.stream4Group.Controls.Add(Me.updStream4)
         Me.stream4Group.Controls.Add(Me.txtStream4)
@@ -312,6 +351,15 @@ Partial Class frmMain
         Me.stream4Group.TabIndex = 14
         Me.stream4Group.TabStop = False
         Me.stream4Group.Text = "Stream 4"
+        '
+        'btnReplay4
+        '
+        Me.btnReplay4.Location = New System.Drawing.Point(143, 44)
+        Me.btnReplay4.Name = "btnReplay4"
+        Me.btnReplay4.Size = New System.Drawing.Size(20, 21)
+        Me.btnReplay4.TabIndex = 25
+        Me.btnReplay4.Text = "R"
+        Me.btnReplay4.UseVisualStyleBackColor = True
         '
         'chkStream4
         '
@@ -360,14 +408,14 @@ Partial Class frmMain
         Me.btnStream4Gen.Location = New System.Drawing.Point(79, 44)
         Me.btnStream4Gen.Name = "btnStream4Gen"
         Me.btnStream4Gen.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.btnStream4Gen.Size = New System.Drawing.Size(77, 21)
+        Me.btnStream4Gen.Size = New System.Drawing.Size(60, 21)
         Me.btnStream4Gen.TabIndex = 1
         Me.btnStream4Gen.Text = "Generate"
         Me.btnStream4Gen.UseVisualStyleBackColor = True
         '
         'menuStrip1
         '
-        Me.menuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.fileToolStripMenuItem1, Me.tsmiSeason5})
+        Me.menuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.fileToolStripMenuItem1, Me.tsmiSeason5, Me.StreamlinkToolStripMenuItem})
         Me.menuStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow
         Me.menuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.menuStrip1.MaximumSize = New System.Drawing.Size(470, 24)
@@ -379,7 +427,7 @@ Partial Class frmMain
         '
         'fileToolStripMenuItem1
         '
-        Me.fileToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmiSelectAutocompleteFile, Me.tsmiEditAutocompleteFile, Me.tsmiChangeVLCWindowSize, Me.InstallMacsgHandlerToolStripMenuItem})
+        Me.fileToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmiSelectAutocompleteFile, Me.tsmiEditAutocompleteFile, Me.tsmiChangeVLCWindowSize, Me.InstallMacsgHandlerToolStripMenuItem, Me.tsmiOpenAppData})
         Me.fileToolStripMenuItem1.Name = "fileToolStripMenuItem1"
         Me.fileToolStripMenuItem1.Size = New System.Drawing.Size(37, 20)
         Me.fileToolStripMenuItem1.Text = "File"
@@ -408,6 +456,12 @@ Partial Class frmMain
         Me.InstallMacsgHandlerToolStripMenuItem.Size = New System.Drawing.Size(210, 22)
         Me.InstallMacsgHandlerToolStripMenuItem.Text = "Install macsg: protocol"
         '
+        'tsmiOpenAppData
+        '
+        Me.tsmiOpenAppData.Name = "tsmiOpenAppData"
+        Me.tsmiOpenAppData.Size = New System.Drawing.Size(210, 22)
+        Me.tsmiOpenAppData.Text = "Open AppData folder..."
+        '
         'tsmiSeason5
         '
         Me.tsmiSeason5.AutoToolTip = True
@@ -416,9 +470,29 @@ Partial Class frmMain
         Me.tsmiSeason5.Text = "Season 5"
         Me.tsmiSeason5.ToolTipText = "Coming soon..."
         '
+        'StreamlinkToolStripMenuItem
+        '
+        Me.StreamlinkToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmiEditStreamlinkConfig, Me.tsmiResetStreamlinkPath})
+        Me.StreamlinkToolStripMenuItem.Name = "StreamlinkToolStripMenuItem"
+        Me.StreamlinkToolStripMenuItem.Size = New System.Drawing.Size(75, 20)
+        Me.StreamlinkToolStripMenuItem.Text = "Streamlink"
+        '
+        'tsmiEditStreamlinkConfig
+        '
+        Me.tsmiEditStreamlinkConfig.Name = "tsmiEditStreamlinkConfig"
+        Me.tsmiEditStreamlinkConfig.Size = New System.Drawing.Size(159, 22)
+        Me.tsmiEditStreamlinkConfig.Text = "Edit config file..."
+        '
+        'tsmiResetStreamlinkPath
+        '
+        Me.tsmiResetStreamlinkPath.BackColor = System.Drawing.SystemColors.Control
+        Me.tsmiResetStreamlinkPath.Name = "tsmiResetStreamlinkPath"
+        Me.tsmiResetStreamlinkPath.Size = New System.Drawing.Size(159, 22)
+        Me.tsmiResetStreamlinkPath.Text = "Reset path"
+        '
         'ProgressBar1
         '
-        Me.ProgressBar1.Location = New System.Drawing.Point(12, 322)
+        Me.ProgressBar1.Location = New System.Drawing.Point(12, 22)
         Me.ProgressBar1.Name = "ProgressBar1"
         Me.ProgressBar1.Size = New System.Drawing.Size(348, 4)
         Me.ProgressBar1.TabIndex = 19
@@ -522,4 +596,12 @@ Partial Class frmMain
     Friend WithEvents chkStream3 As CheckBox
     Friend WithEvents chkStream4 As CheckBox
     Friend WithEvents tsmiSeason5 As ToolStripMenuItem
+    Friend WithEvents btnReplay1 As Button
+    Friend WithEvents btnReplay2 As Button
+    Friend WithEvents btnReplay3 As Button
+    Friend WithEvents btnReplay4 As Button
+    Friend WithEvents tsmiOpenAppData As ToolStripMenuItem
+    Friend WithEvents StreamlinkToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents tsmiEditStreamlinkConfig As ToolStripMenuItem
+    Friend WithEvents tsmiResetStreamlinkPath As ToolStripMenuItem
 End Class
