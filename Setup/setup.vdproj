@@ -15,13 +15,19 @@
     {
         "Entry"
         {
+        "MsmKey" = "8:_0C888F35862241FC8CB15CA98CEFBB67"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_0EB56962CF994ABB8D5F41833CE17E13"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_1089BE5DCE464EEBAA0692652A9F577C"
+        "MsmKey" = "8:_1918C70A04D3442A83A6A2D132158528"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -34,6 +40,12 @@
         "Entry"
         {
         "MsmKey" = "8:_1E67DC259DBD428499D15C7A36002864"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_2839245BA60D4B1291ACD8199F2326E2"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -69,12 +81,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_4581E4FA331A4C7F9D512ACA1339F699"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_4F791D21F54643DAB8C44BC2F65D2CE9"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -93,12 +99,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_60C4771AE5614C4BB80209F8A46EA209"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_63E7A7827BE241D3BFAE8D4A1D3E6169"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -112,6 +112,18 @@
         "Entry"
         {
         "MsmKey" = "8:_6F3E33F0954E41319543985F4039E524"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_70B0B559F3E6C12D8977A995F55C8A31"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_76797A5AC21F416D879AFF7A883CF807"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -135,7 +147,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_8EEED40FAC584BB192D2AE86BA208AE1"
+        "MsmKey" = "8:_8EF458CFB6624998B568916A19A7B7D3"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -201,12 +213,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_B836620B94D3C1090EC73AC7A0A5CBC8"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_C6CC7857E0CFDAE6B968814600F786C7"
         "OwnerKey" = "8:_A38FA8D2B5B2481A94686E5F29DF5CC7"
         "MsmSig" = "8:_UNDEFINED"
@@ -226,12 +232,6 @@
         "Entry"
         {
         "MsmKey" = "8:_E82F4E53278E4812A9791E1D68962A03"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_EF294B641337451186E8A0BE9B8967AD"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -292,7 +292,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_B836620B94D3C1090EC73AC7A0A5CBC8"
+        "OwnerKey" = "8:_70B0B559F3E6C12D8977A995F55C8A31"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -402,6 +402,26 @@
         }
         "File"
         {
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0C888F35862241FC8CB15CA98CEFBB67"
+            {
+            "SourcePath" = "8:..\\..\\Installer files\\overlays\\titanium.png"
+            "TargetName" = "8:titanium.png"
+            "Tag" = "8:"
+            "Folder" = "8:_529687D4390A4DCAAEB12A593E032110"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0EB56962CF994ABB8D5F41833CE17E13"
             {
             "SourcePath" = "8:..\\..\\Installer files\\streamer2.txt"
@@ -422,9 +442,9 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1089BE5DCE464EEBAA0692652A9F577C"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1918C70A04D3442A83A6A2D132158528"
             {
-            "SourcePath" = "8:..\\..\\..\\..\\AppData\\Roaming\\MacSG\\overlays\\current.png"
+            "SourcePath" = "8:..\\..\\Installer files\\overlays\\current.png"
             "TargetName" = "8:current.png"
             "Tag" = "8:"
             "Folder" = "8:_529687D4390A4DCAAEB12A593E032110"
@@ -479,6 +499,26 @@
             "TargetName" = "8:r1"
             "Tag" = "8:"
             "Folder" = "8:_2DD3CA1AFA814DD8B2F35074342525E5"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2839245BA60D4B1291ACD8199F2326E2"
+            {
+            "SourcePath" = "8:..\\..\\Installer files\\overlays\\obsidian.png"
+            "TargetName" = "8:obsidian.png"
+            "Tag" = "8:"
+            "Folder" = "8:_529687D4390A4DCAAEB12A593E032110"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -575,26 +615,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4581E4FA331A4C7F9D512ACA1339F699"
-            {
-            "SourcePath" = "8:..\\..\\..\\..\\AppData\\Roaming\\MacSG\\overlays\\titanium.png"
-            "TargetName" = "8:titanium.png"
-            "Tag" = "8:"
-            "Folder" = "8:_529687D4390A4DCAAEB12A593E032110"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4F791D21F54643DAB8C44BC2F65D2CE9"
             {
             "SourcePath" = "8:..\\..\\Installer files\\1"
@@ -666,26 +686,6 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_60C4771AE5614C4BB80209F8A46EA209"
-            {
-            "SourcePath" = "8:..\\..\\..\\..\\AppData\\Roaming\\MacSG\\overlays\\obsidian.png"
-            "TargetName" = "8:obsidian.png"
-            "Tag" = "8:"
-            "Folder" = "8:_529687D4390A4DCAAEB12A593E032110"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_63E7A7827BE241D3BFAE8D4A1D3E6169"
             {
             "SourcePath" = "8:..\\..\\Installer files\\r4"
@@ -732,6 +732,57 @@
             "TargetName" = "8:3"
             "Tag" = "8:"
             "Folder" = "8:_2DD3CA1AFA814DD8B2F35074342525E5"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_70B0B559F3E6C12D8977A995F55C8A31"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_70B0B559F3E6C12D8977A995F55C8A31"
+                    {
+                    "Name" = "8:Newtonsoft.Json.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Newtonsoft.Json.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_EC4AA43B10F54FB5878F7CBE3982D4DF"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_76797A5AC21F416D879AFF7A883CF807"
+            {
+            "SourcePath" = "8:..\\..\\Installer files\\overlays\\crystal.png"
+            "TargetName" = "8:crystal.png"
+            "Tag" = "8:"
+            "Folder" = "8:_529687D4390A4DCAAEB12A593E032110"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -806,9 +857,9 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8EEED40FAC584BB192D2AE86BA208AE1"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8EF458CFB6624998B568916A19A7B7D3"
             {
-            "SourcePath" = "8:..\\..\\..\\..\\AppData\\Roaming\\MacSG\\overlays\\blood.png"
+            "SourcePath" = "8:..\\..\\Installer files\\overlays\\blood.png"
             "TargetName" = "8:blood.png"
             "Tag" = "8:"
             "Folder" = "8:_529687D4390A4DCAAEB12A593E032110"
@@ -988,37 +1039,6 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_B836620B94D3C1090EC73AC7A0A5CBC8"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_B836620B94D3C1090EC73AC7A0A5CBC8"
-                    {
-                    "Name" = "8:Newtonsoft.Json.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Newtonsoft.Json.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_EC4AA43B10F54FB5878F7CBE3982D4DF"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_C6CC7857E0CFDAE6B968814600F786C7"
             {
             "AssemblyRegister" = "3:1"
@@ -1096,26 +1116,6 @@
             "TargetName" = "8:2"
             "Tag" = "8:"
             "Folder" = "8:_2DD3CA1AFA814DD8B2F35074342525E5"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_EF294B641337451186E8A0BE9B8967AD"
-            {
-            "SourcePath" = "8:..\\..\\..\\..\\AppData\\Roaming\\MacSG\\overlays\\crystal.png"
-            "TargetName" = "8:crystal.png"
-            "Tag" = "8:"
-            "Folder" = "8:_529687D4390A4DCAAEB12A593E032110"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1251,7 +1251,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:MacSG"
         "ProductCode" = "8:{0B36AFB2-A11F-4D1C-9BC8-862B004FB490}"
-        "PackageCode" = "8:{715AA290-2AFA-46C1-B31E-2A01003C9084}"
+        "PackageCode" = "8:{BD43ED22-CAE1-4CEB-8215-DC77B6C934D6}"
         "UpgradeCode" = "8:{F9DAE7D5-8776-4DF4-9CC8-0FFDE4CFCFC4}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -1800,7 +1800,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_A38FA8D2B5B2481A94686E5F29DF5CC7"
             {
-            "SourcePath" = "8:..\\MacSG\\obj\\Debug\\MacSG.exe"
+            "SourcePath" = "8:..\\MacSG\\obj\\Release\\MacSG.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_EC4AA43B10F54FB5878F7CBE3982D4DF"

@@ -93,6 +93,8 @@ Public Class frmSchedule
         Dim selectedRow As DataGridViewRow = dgvSchedule.Rows(index)
 
         changeOverlay(league:=selectedRow.Cells(3).Value.ToString)
+        frmMain.chkStream1.Checked = False
+        frmMain.chkStream2.Checked = False
         frmMain.txtStream1.Text = selectedRow.Cells(1).Value.ToString
         frmMain.txtStream2.Text = selectedRow.Cells(2).Value.ToString
 
