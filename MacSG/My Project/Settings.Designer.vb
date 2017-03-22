@@ -100,6 +100,18 @@ Namespace My
                 Return CType(Me("condor_s5ConnectionString"),String)
             End Get
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property streamlinkDir() As String
+            Get
+                Return CType(Me("streamlinkDir"),String)
+            End Get
+            Set
+                Me("streamlinkDir") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

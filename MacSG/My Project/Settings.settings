@@ -19,5 +19,8 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">server=condor.host;user id=necrobot-read;password=necrobot-read;persistsecurityinfo=True;database=condor_s5</Value>
     </Setting>
+    <Setting Name="streamlinkDir" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>

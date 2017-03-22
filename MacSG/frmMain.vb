@@ -5,8 +5,6 @@ Imports System.Text.RegularExpressions
 Imports Microsoft.Win32
 Imports System.Security.Principal
 Imports Microsoft.VisualBasic.ApplicationServices
-Imports MySql.Data.MySqlClient
-
 
 Public Class frmMain
     Dim strColAutoCompleteList As New AutoCompleteStringCollection
@@ -16,8 +14,6 @@ Public Class frmMain
     Private trkbrArray As TrackBar()
     Private btnArray As Button()
     Private chkArray As CheckBox()
-    Public boolFirstLoad As Boolean = True
-    Dim minuteCount As Integer = 0
 
     Public Event StartupNextInstance(sender As Object, e As StartupNextInstanceEventArgs)
 
@@ -54,45 +50,56 @@ Public Class frmMain
 
     'Check that livestreamer is installed in the Program Files (x86) folder
     Public Sub setupLivestreamerCheck()
-        If Not File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86) & "\Livestreamer\livestreamer.exe") Then
-            Dim boolLivestreamerInstall As Integer = MessageBox.Show("Livestreamer is not installed, and is necessary for this program to run.  Would you like to download and install Livestreamer now?", "No Livestreamer installation detected", MessageBoxButtons.YesNoCancel)
 
-            If boolLivestreamerInstall = DialogResult.No Or boolLivestreamerInstall = DialogResult.Cancel Then
-                Close()
+        If Not File.Exists(My.Settings.streamlinkDir) Then
+            Dim boolStreamlink As Integer = MessageBox.Show("Streamlink was not found in its default directory.  Click Yes to download the latest version from GitHub, or No to specify streamlink.exe's location.", "Streamlink not found", MessageBoxButtons.YesNo)
 
-            ElseIf boolLivestreamerInstall = DialogResult.Yes Then
-                Dim client As New WebClient()
-                AddHandler client.DownloadProgressChanged, AddressOf ShowDownloadProgress
-                AddHandler client.DownloadFileCompleted, AddressOf DownloadFileCompleted
-
-                client.DownloadFileAsync(New Uri("https://github.com/chrippa/livestreamer/releases/download/v1.12.2/livestreamer-v1.12.2-win32-setup.exe"), Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\MacSG\livestreamer-v1.12.2-win32-setup.exe")
-
+            If boolStreamlink = DialogResult.Yes Then
                 For Each ctrl As Control In Controls
                     ctrl.Enabled = False
                 Next
 
+                Dim client As New WebClient()
+                AddHandler client.DownloadProgressChanged, AddressOf ShowDownloadProgress
+                AddHandler client.DownloadFileCompleted, AddressOf DownloadFileCompleted
+
+                client.DownloadFileAsync(New Uri("https://streamlink-builds.s3.amazonaws.com/nightly/windows/streamlink-latest.exe"), Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\MacSG\streamlink-0.4.0.exe")
+            ElseIf boolStreamlink = DialogResult.No Then
+                Dim fd As OpenFileDialog = New OpenFileDialog()
+
+                fd.Title = "Select a file..."
+                fd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86)
+                fd.Filter = "Streamlink executable (*.exe)|*.exe"
+                fd.RestoreDirectory = True
+
+                If fd.ShowDialog = DialogResult.OK Then
+                    My.Settings.streamlinkDir = fd.FileName.ToString
+                Else
+                    For Each ctrl As Control In Controls
+                        ctrl.Enabled = False
+                    Next
+                End If
             End If
         End If
-
     End Sub
 
-    'Handler for Livestreamer download progress bar
+    'Handler for Streamlink download progress bar
     Private Sub ShowDownloadProgress(ByVal sender As Object, ByVal e As DownloadProgressChangedEventArgs)
         ProgressBar1.Visible = True
         ProgressBar1.Value = e.ProgressPercentage
     End Sub
 
-    'Runs Livestreamer after it has finished downloading; throws error if download fails.
+    'Runs Streamlink after it has finished downloading; throws error if download fails.
     Public Sub DownloadFileCompleted(ByVal sender As Object, ByVal e As AsyncCompletedEventArgs)
         If Not e.Cancelled AndAlso e.Error Is Nothing Then
             ProgressBar1.Visible = False
-            Process.Start(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\MacSG\livestreamer-v1.12.2-win32-setup.exe")
+            Process.Start(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\MacSG\streamlink-0.4.0.exe")
             For Each ctrl As Control In Controls
                 ctrl.Enabled = True
             Next
 
         Else
-            MessageBox.Show("There was an error downloading Livestreamer.  Please try running the application as an Administrator and try again.")
+            MessageBox.Show("There was an error downloading Streamlink.  Please try running the application as an Administrator and try again.")
             ProgressBar1.Visible = False
         End If
     End Sub
@@ -135,18 +142,18 @@ Public Class frmMain
         Dim strXPos = My.Settings.strWindowSize.Split(" "c)(0)
         Dim strYPos = My.Settings.strWindowSize.Split(" "c)(1)
 
-        Dim intXPos = Integer.Parse(strXPos) + 15
-        Dim intYPos = Integer.Parse(strYPos) - 15
+        Dim intXPos = Integer.Parse(strXPos) + 5
+        Dim intYPos = Integer.Parse(strYPos) - 5
 
-        Dim procCmdow1 As New ProcessStartInfo("cmd.exe", "/c %appdata%\MacSG\cmdow ""First - VLC media player"" /mov 5 5 /siz " & My.Settings.strWindowSize)
+        Dim procCmdow1 As New ProcessStartInfo("cmd.exe", "/c %appdata%\MacSG\cmdow ""First - VLC media player"" /mov 0 0 /siz " & My.Settings.strWindowSize)
         procCmdow1.WindowStyle = ProcessWindowStyle.Hidden
         Process.Start(procCmdow1)
 
-        Dim procCmdow2 As New ProcessStartInfo("cmd.exe", "/c %appdata%\MacSG\cmdow ""Second - VLC media player"" /mov " & Convert.ToString(intXPos) & " 5 /siz " & My.Settings.strWindowSize)
+        Dim procCmdow2 As New ProcessStartInfo("cmd.exe", "/c %appdata%\MacSG\cmdow ""Second - VLC media player"" /mov " & Convert.ToString(intXPos) & " 0 /siz " & My.Settings.strWindowSize)
         procCmdow2.WindowStyle = ProcessWindowStyle.Hidden
         Process.Start(procCmdow2)
 
-        Dim procCmdow3 As New ProcessStartInfo("cmd.exe", "/c %appdata%\MacSG\cmdow ""Third - VLC media player"" /mov 5 " & Convert.ToString(intYPos) & " /siz " & My.Settings.strWindowSize)
+        Dim procCmdow3 As New ProcessStartInfo("cmd.exe", "/c %appdata%\MacSG\cmdow ""Third - VLC media player"" /mov 0 " & Convert.ToString(intYPos) & " /siz " & My.Settings.strWindowSize)
         procCmdow3.WindowStyle = ProcessWindowStyle.Hidden
         Process.Start(procCmdow3)
 
@@ -159,7 +166,7 @@ Public Class frmMain
     'Close all VLC windows
     Private Sub vlcKill_Click(sender As Object, e As EventArgs) Handles btnKillVLC.Click
 
-        Dim procKillVLC As New ProcessStartInfo("cmd.exe", "/c taskkill  /f /fi ""WindowTitle eq First - VLC Media Player"" & taskkill /f /fi ""WindowTitle eq Second - VLC Media Player"" & taskkill /f /fi ""WindowTitle eq Third - VLC Media Player"" & taskkill /f /fi ""WindowTitle eq Fourth - VLC Media Player""")
+        Dim procKillVLC As New ProcessStartInfo("cmd.exe", "/c taskkill  /fi ""WindowTitle eq First - VLC media player"" & taskkill /fi ""WindowTitle eq Second - VLC media player"" & taskkill /fi ""WindowTitle eq Third - VLC media player"" & taskkill /fi ""WindowTitle eq Fourth - VLC media player""")
         procKillVLC.WindowStyle = ProcessWindowStyle.Hidden
         Process.Start(procKillVLC)
 
@@ -201,11 +208,6 @@ Public Class frmMain
         End If
     End Sub
 
-    'About this program
-    Private Sub tsmiAbout_Click(sender As Object, e As EventArgs)
-        MessageBox.Show("Version 0.9 - by MacKirby" & vbCrLf & vbCrLf & "This program is provided free of use for managing stream captures for tournaments on Twitch.  Got feedback?  Drop me an email - mac@mackirby.tv", "About MacSG", MessageBoxButtons.OK, MessageBoxIcon.Information)
-    End Sub
-
     'Change window size for CMDOW
     Private Sub tsmiChangeVLCWindowSize_Click(sender As Object, e As EventArgs) Handles tsmiChangeVLCWindowSize.Click
         My.Settings.strWindowSize = InputBox("Define window size for VLC - enter the resolution as ""width height"".  Recommended sizes:" & vbCrLf & "1920x1080: 882x520" & vbCrLf & "1440x900: 642x385", "Define window size...", "882 520")
@@ -222,7 +224,7 @@ Public Class frmMain
     'Unattached subs
     Public Sub genStream(streamer As String, quality As String, source As String, windowTitle As String, configFile As String)
 
-        Dim strLivestreamerProcess As New ProcessStartInfo("cmd.exe", "/k title " & windowTitle & " & " & source & streamer & quality & "--player-args "" --config %AppData%\MacSG\" & configFile & " {filename}")
+        Dim strLivestreamerProcess As New ProcessStartInfo("cmd.exe", "/c title " & windowTitle & " & " & source & streamer & quality & "--player-args "" --config %AppData%\MacSG\" & configFile & " {filename}")
         strLivestreamerProcess.WindowStyle = ProcessWindowStyle.Hidden
         Process.Start(strLivestreamerProcess)
 
@@ -313,13 +315,13 @@ Public Class frmMain
 
         Select Case ctrlIndex
             Case 1
-                strWindowTitle = "First"
+                strWindowTitle = "FirstCMD"
             Case 2
-                strWindowTitle = "Second"
+                strWindowTitle = "SecondCMD"
             Case 3
-                strWindowTitle = "Third"
+                strWindowTitle = "ThirdCMD"
             Case 4
-                strWindowTitle = "Fourth"
+                strWindowTitle = "FourthCMD"
         End Select
 
         If processChecker(sender:=btnArray(ctrlIndex - 1), ctrlIndex:=ctrlIndex) = False Then
@@ -338,11 +340,11 @@ Public Class frmMain
                         Case 4
                             strQuality = " source "
                     End Select
-                    strSource = "livestreamer --http-header " + My.Settings.strTwitchClientID + " twitch.tv/"
+                    strSource = "streamlink twitch.tv/"
 
                 ElseIf chkArray(ctrlIndex - 1).Checked = False Then
                     strQuality = "/live best "
-                    strSource = "livestreamer rtmp://rtmp.condorleague.tv/"
+                    strSource = "streamlink rtmp://rtmp.condorleague.tv/"
                 End If
 
                 genStream(streamer:=txtArray(ctrlIndex - 1).Text.ToLower, quality:=strQuality, source:=strSource, windowTitle:=strWindowTitle, configFile:=ctrlIndex.ToString())
@@ -442,5 +444,53 @@ Public Class frmMain
         Dim frmSchedule As New frmSchedule()
         frmSchedule.Show()
     End Sub
-End Class
 
+    Private Sub btnReplay1_Click(sender As Object, e As EventArgs) Handles btnReplay1.Click
+        Dim strQuality = "/live best "
+        Dim strSource = "streamlink rtmp://rtmp.condorleague.tv/"
+        Dim strWindowTitle = "REPLAY_First"
+        Dim configFile = "r1"
+        genStream(streamer:=txtStream1.Text.ToLower, quality:=strQuality, source:=strSource, windowTitle:=strWindowTitle, configFile:=configFile)
+    End Sub
+
+    Private Sub btnReplay2_Click(sender As Object, e As EventArgs) Handles btnReplay2.Click
+        Dim strQuality = "/live best "
+        Dim strSource = "streamlink rtmp://rtmp.condorleague.tv/"
+        Dim strWindowTitle = "REPLAY_Second"
+        Dim configFile = "r2"
+        genStream(streamer:=txtStream2.Text.ToLower, quality:=strQuality, source:=strSource, windowTitle:=strWindowTitle, configFile:=configFile)
+    End Sub
+
+    Private Sub btnReplay3_Click(sender As Object, e As EventArgs) Handles btnReplay3.Click
+        Dim strQuality = "/live best "
+        Dim strSource = "streamlink rtmp://rtmp.condorleague.tv/"
+        Dim strWindowTitle = "REPLAY_Third"
+        Dim configFile = "r3"
+        genStream(streamer:=txtStream3.Text.ToLower, quality:=strQuality, source:=strSource, windowTitle:=strWindowTitle, configFile:=configFile)
+    End Sub
+
+    Private Sub btnReplay4_Click(sender As Object, e As EventArgs) Handles btnReplay4.Click
+        Dim strQuality = "/live best "
+        Dim strSource = "streamlink rtmp://rtmp.condorleague.tv/"
+        Dim strWindowTitle = "REPLAY_Fourth"
+        Dim configFile = "r4"
+        genStream(streamer:=txtStream4.Text.ToLower, quality:=strQuality, source:=strSource, windowTitle:=strWindowTitle, configFile:=configFile)
+    End Sub
+
+    Private Sub tsmiOpenAppData_Click(sender As Object, e As EventArgs) Handles tsmiOpenAppData.Click
+        Process.Start(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\MacSG")
+    End Sub
+
+    Private Sub tsmiEditStreamlinkConfig_Click(sender As Object, e As EventArgs) Handles tsmiEditStreamlinkConfig.Click
+        Process.Start("notepad.exe", Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\streamlink\streamlinkrc")
+    End Sub
+
+    Private Sub ResetStreamlinkPathToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles tsmiResetStreamlinkPath.Click
+        Dim boolResetStreamlinkPath As Integer = MessageBox.Show("Reset the path to Streamlink?  Current path: " + vbNewLine + My.Settings.streamlinkDir, "Reset Streamlink path", MessageBoxButtons.YesNo)
+
+        If boolResetStreamlinkPath = DialogResult.Yes Then
+            My.Settings.streamlinkDir = "Not set"
+            setupLivestreamerCheck()
+        End If
+    End Sub
+End Class
