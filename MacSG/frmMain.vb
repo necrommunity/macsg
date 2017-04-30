@@ -344,7 +344,7 @@ Public Class frmMain
                         Case 3
                             strQuality = " high "
                         Case 4
-                            strQuality = " source "
+                            strQuality = " best "
                     End Select
                     strSource = "streamlink twitch.tv/"
 
@@ -446,7 +446,7 @@ Public Class frmMain
 
     End Function
 
-    Private Sub tsmiSeason5_Click(sender As Object, e As EventArgs) Handles tsmiSeason5.Click
+    Private Sub tsmiSeason5_Click(sender As Object, e As EventArgs) Handles tsmiCondorRaces.Click
         Dim frmSchedule As New frmSchedule()
         frmSchedule.Show()
     End Sub

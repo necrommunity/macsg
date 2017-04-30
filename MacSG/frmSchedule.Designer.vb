@@ -42,11 +42,12 @@ Partial Class frmSchedule
         Me.dgvSchedule.AllowUserToResizeColumns = False
         Me.dgvSchedule.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvSchedule.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.timestamp, Me.racer_1_rtmp_name, Me.racer_2_rtmp_name, Me.league})
-        Me.dgvSchedule.Location = New System.Drawing.Point(12, 88)
+        Me.dgvSchedule.Location = New System.Drawing.Point(12, 78)
         Me.dgvSchedule.Name = "dgvSchedule"
         Me.dgvSchedule.ReadOnly = True
+        Me.dgvSchedule.RowHeadersVisible = False
         Me.dgvSchedule.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvSchedule.Size = New System.Drawing.Size(480, 242)
+        Me.dgvSchedule.Size = New System.Drawing.Size(480, 252)
         Me.dgvSchedule.TabIndex = 0
         '
         'timestamp
@@ -79,6 +80,7 @@ Partial Class frmSchedule
         Me.league.HeaderText = "Division"
         Me.league.Name = "league"
         Me.league.ReadOnly = True
+        Me.league.Width = 120
         '
         'Label1
         '
@@ -121,11 +123,11 @@ Partial Class frmSchedule
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(504, 342)
+        Me.Controls.Add(Me.dgvSchedule)
         Me.Controls.Add(Me.txtFilter)
         Me.Controls.Add(Me.btnFilter)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.dgvSchedule)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmSchedule"
         Me.Text = "Schedule"
@@ -139,9 +141,9 @@ Partial Class frmSchedule
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents btnFilter As Button
+    Friend WithEvents txtFilter As TextBox
     Friend WithEvents timestamp As DataGridViewTextBoxColumn
     Friend WithEvents racer_1_rtmp_name As DataGridViewTextBoxColumn
     Friend WithEvents racer_2_rtmp_name As DataGridViewTextBoxColumn
     Friend WithEvents league As DataGridViewTextBoxColumn
-    Friend WithEvents txtFilter As TextBox
 End Class

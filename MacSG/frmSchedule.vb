@@ -25,45 +25,19 @@ Public Class frmSchedule
 
     Public Sub sqlCall()
 
-        Select Case weekCurrent
-            Case Is < week2Start
-                weekNumber = 1
-            Case Is < week3Start
-                weekNumber = 2
-            Case Is < week4Start
-                weekNumber = 3
-            Case Is < week5Start
-                weekNumber = 4
-            Case Is < (week5Start.AddDays(7))
-                weekNumber = 5
-        End Select
-
         Dim sqlDataAdapter As New MySqlDataAdapter
         Dim dt As New DataTable
         Dim bSource As New BindingSource
 
-        Dim sqlconn = New MySqlConnection("server=condor.host;userid=necrobot-read;password=necrobot-read;database=condor_s5;")
+        Dim sqlconn = New MySqlConnection("server=condor.host;userid=necrobot-read;password=necrobot-read;database=conduit_19;")
         Dim filterText As String = txtFilter.Text
 
         Try
             sqlconn.Open()
             Dim query As String
-            Select Case txtFilter.Text.ToLower
-                Case "blood"
-                    filterText = "1"
-                Case "titanium"
-                    filterText = "2"
-                Case "obsidian"
-                    filterText = "3"
-                Case "crystal"
-                    filterText = "4"
-                Case "playoffs"
-                    filterText = "5"
-            End Select
-            query = "call schedule(" + weekNumber.ToString + ",""" + filterText + """);"
+            query = "call schedule(""" + filterText + """);"
 
             Dim sqlcommand = New MySqlCommand(query, sqlconn)
-            sqlcommand.Parameters.Add("@weekNumber", MySqlDbType.Int16).Value = weekNumber
             sqlcommand.Parameters.Add("@filter", MySqlDbType.VarChar).Value = filterText
             sqlDataAdapter.SelectCommand = sqlcommand
             sqlDataAdapter.Fill(dt)
@@ -92,7 +66,6 @@ Public Class frmSchedule
         Dim index As Integer = e.RowIndex
         Dim selectedRow As DataGridViewRow = dgvSchedule.Rows(index)
 
-        changeOverlay(league:=selectedRow.Cells(3).Value.ToString)
         frmMain.chkStream1.Checked = False
         frmMain.chkStream2.Checked = False
         frmMain.txtStream1.Text = selectedRow.Cells(1).Value.ToString
@@ -114,32 +87,11 @@ Public Class frmSchedule
         For Each row As DataGridViewRow In dgvSchedule.Rows
             If row.Cells("league").Value.Equals("Blood") Then
                 row.DefaultCellStyle.BackColor = Color.FromArgb(234, 153, 153)
-            ElseIf row.Cells("league").Value.Equals("Titanium") Then
-                row.DefaultCellStyle.BackColor = Color.FromArgb(243, 243, 243)
-            ElseIf row.Cells("league").Value.Equals("Obsidian") Then
-                row.DefaultCellStyle.BackColor = Color.FromArgb(217, 210, 233)
-            ElseIf row.Cells("league").Value.Equals("Crystal") Then
-                row.DefaultCellStyle.BackColor = Color.FromArgb(207, 226, 243)
-            ElseIf row.Cells("league").Value.Equals("Playoffs") Then
-                row.DefaultCellStyle.BackColor = Color.FromArgb(255, 229, 153)
             End If
         Next
     End Sub
 
-    Private Sub changeOverlay(league As String)
-        Dim currentOverlay As String = (Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\MacSG\overlays\current.png")
-        Dim overlayFolder As String = (Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\MacSG\overlays\")
+    Private Sub colourRows(sender As Object, e As EventArgs) Handles dgvSchedule.Sorted
 
-        Select Case league
-            Case "Blood"
-                File.Copy(overlayFolder + "blood.png", currentOverlay, True)
-            Case "Titanium"
-                File.Copy(overlayFolder + "titanium.png", currentOverlay, True)
-            Case "Obsidian"
-                File.Copy(overlayFolder + "obsidian.png", currentOverlay, True)
-            Case "Crystal"
-                File.Copy(overlayFolder + "crystal.png", currentOverlay, True)
-        End Select
     End Sub
-
 End Class
