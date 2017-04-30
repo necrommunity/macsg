@@ -61,7 +61,7 @@ Partial Class frmMain
         Me.tsmiChangeVLCWindowSize = New System.Windows.Forms.ToolStripMenuItem()
         Me.InstallMacsgHandlerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmiOpenAppData = New System.Windows.Forms.ToolStripMenuItem()
-        Me.tsmiSeason5 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.tsmiCondorRaces = New System.Windows.Forms.ToolStripMenuItem()
         Me.StreamlinkToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmiEditStreamlinkConfig = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmiResetStreamlinkPath = New System.Windows.Forms.ToolStripMenuItem()
@@ -415,7 +415,7 @@ Partial Class frmMain
         '
         'menuStrip1
         '
-        Me.menuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.fileToolStripMenuItem1, Me.tsmiSeason5, Me.StreamlinkToolStripMenuItem})
+        Me.menuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.fileToolStripMenuItem1, Me.tsmiCondorRaces, Me.StreamlinkToolStripMenuItem})
         Me.menuStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow
         Me.menuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.menuStrip1.MaximumSize = New System.Drawing.Size(470, 24)
@@ -462,13 +462,13 @@ Partial Class frmMain
         Me.tsmiOpenAppData.Size = New System.Drawing.Size(210, 22)
         Me.tsmiOpenAppData.Text = "Open AppData folder..."
         '
-        'tsmiSeason5
+        'tsmiCondorRaces
         '
-        Me.tsmiSeason5.AutoToolTip = True
-        Me.tsmiSeason5.Name = "tsmiSeason5"
-        Me.tsmiSeason5.Size = New System.Drawing.Size(65, 20)
-        Me.tsmiSeason5.Text = "Season 5"
-        Me.tsmiSeason5.ToolTipText = "Coming soon..."
+        Me.tsmiCondorRaces.AutoToolTip = True
+        Me.tsmiCondorRaces.Enabled = False
+        Me.tsmiCondorRaces.Name = "tsmiCondorRaces"
+        Me.tsmiCondorRaces.Size = New System.Drawing.Size(100, 20)
+        Me.tsmiCondorRaces.Text = "CoNDOR Races"
         '
         'StreamlinkToolStripMenuItem
         '
@@ -595,7 +595,7 @@ Partial Class frmMain
     Friend WithEvents chkStream2 As CheckBox
     Friend WithEvents chkStream3 As CheckBox
     Friend WithEvents chkStream4 As CheckBox
-    Friend WithEvents tsmiSeason5 As ToolStripMenuItem
+    Friend WithEvents tsmiCondorRaces As ToolStripMenuItem
     Friend WithEvents btnReplay1 As Button
     Friend WithEvents btnReplay2 As Button
     Friend WithEvents btnReplay3 As Button
