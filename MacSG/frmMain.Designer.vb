@@ -465,7 +465,6 @@ Partial Class frmMain
         'tsmiCondorRaces
         '
         Me.tsmiCondorRaces.AutoToolTip = True
-        Me.tsmiCondorRaces.Enabled = False
         Me.tsmiCondorRaces.Name = "tsmiCondorRaces"
         Me.tsmiCondorRaces.Size = New System.Drawing.Size(100, 20)
         Me.tsmiCondorRaces.Text = "CoNDOR Races"

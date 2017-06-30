@@ -24,14 +24,13 @@ Partial Class frmSchedule
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSchedule))
         Me.dgvSchedule = New System.Windows.Forms.DataGridView()
-        Me.timestamp = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.racer_1_rtmp_name = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.racer_2_rtmp_name = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.league = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.btnFilter = New System.Windows.Forms.Button()
         Me.txtFilter = New System.Windows.Forms.TextBox()
+        Me.timestamp = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.racer_1_rtmp_name = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.racer_2_rtmp_name = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.dgvSchedule, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -41,7 +40,7 @@ Partial Class frmSchedule
         Me.dgvSchedule.AllowUserToDeleteRows = False
         Me.dgvSchedule.AllowUserToResizeColumns = False
         Me.dgvSchedule.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvSchedule.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.timestamp, Me.racer_1_rtmp_name, Me.racer_2_rtmp_name, Me.league})
+        Me.dgvSchedule.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.timestamp, Me.racer_1_rtmp_name, Me.racer_2_rtmp_name})
         Me.dgvSchedule.Location = New System.Drawing.Point(12, 78)
         Me.dgvSchedule.Name = "dgvSchedule"
         Me.dgvSchedule.ReadOnly = True
@@ -49,38 +48,6 @@ Partial Class frmSchedule
         Me.dgvSchedule.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgvSchedule.Size = New System.Drawing.Size(480, 252)
         Me.dgvSchedule.TabIndex = 0
-        '
-        'timestamp
-        '
-        Me.timestamp.Frozen = True
-        Me.timestamp.HeaderText = "Timestamp"
-        Me.timestamp.Name = "timestamp"
-        Me.timestamp.ReadOnly = True
-        Me.timestamp.Width = 115
-        '
-        'racer_1_rtmp_name
-        '
-        Me.racer_1_rtmp_name.Frozen = True
-        Me.racer_1_rtmp_name.HeaderText = "Racer 1"
-        Me.racer_1_rtmp_name.Name = "racer_1_rtmp_name"
-        Me.racer_1_rtmp_name.ReadOnly = True
-        Me.racer_1_rtmp_name.Width = 115
-        '
-        'racer_2_rtmp_name
-        '
-        Me.racer_2_rtmp_name.Frozen = True
-        Me.racer_2_rtmp_name.HeaderText = "Racer 2"
-        Me.racer_2_rtmp_name.Name = "racer_2_rtmp_name"
-        Me.racer_2_rtmp_name.ReadOnly = True
-        Me.racer_2_rtmp_name.Width = 115
-        '
-        'league
-        '
-        Me.league.Frozen = True
-        Me.league.HeaderText = "Division"
-        Me.league.Name = "league"
-        Me.league.ReadOnly = True
-        Me.league.Width = 120
         '
         'Label1
         '
@@ -118,6 +85,30 @@ Partial Class frmSchedule
         Me.txtFilter.Size = New System.Drawing.Size(350, 20)
         Me.txtFilter.TabIndex = 5
         '
+        'timestamp
+        '
+        Me.timestamp.Frozen = True
+        Me.timestamp.HeaderText = "Timestamp"
+        Me.timestamp.Name = "timestamp"
+        Me.timestamp.ReadOnly = True
+        Me.timestamp.Width = 150
+        '
+        'racer_1_rtmp_name
+        '
+        Me.racer_1_rtmp_name.Frozen = True
+        Me.racer_1_rtmp_name.HeaderText = "Racer 1"
+        Me.racer_1_rtmp_name.Name = "racer_1_rtmp_name"
+        Me.racer_1_rtmp_name.ReadOnly = True
+        Me.racer_1_rtmp_name.Width = 115
+        '
+        'racer_2_rtmp_name
+        '
+        Me.racer_2_rtmp_name.Frozen = True
+        Me.racer_2_rtmp_name.HeaderText = "Racer 2"
+        Me.racer_2_rtmp_name.Name = "racer_2_rtmp_name"
+        Me.racer_2_rtmp_name.ReadOnly = True
+        Me.racer_2_rtmp_name.Width = 115
+        '
         'frmSchedule
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -145,5 +136,4 @@ Partial Class frmSchedule
     Friend WithEvents timestamp As DataGridViewTextBoxColumn
     Friend WithEvents racer_1_rtmp_name As DataGridViewTextBoxColumn
     Friend WithEvents racer_2_rtmp_name As DataGridViewTextBoxColumn
-    Friend WithEvents league As DataGridViewTextBoxColumn
 End Class
