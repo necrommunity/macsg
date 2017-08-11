@@ -15,19 +15,7 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_0C888F35862241FC8CB15CA98CEFBB67"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_0EB56962CF994ABB8D5F41833CE17E13"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_1918C70A04D3442A83A6A2D132158528"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -45,12 +33,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_2839245BA60D4B1291ACD8199F2326E2"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_307712EDCAEA2155F98CD637DF86A199"
         "OwnerKey" = "8:_A38FA8D2B5B2481A94686E5F29DF5CC7"
         "MsmSig" = "8:_UNDEFINED"
@@ -58,13 +40,13 @@
         "Entry"
         {
         "MsmKey" = "8:_307712EDCAEA2155F98CD637DF86A199"
-        "OwnerKey" = "8:_1D997D4B0C4F365700DF3EFE0EB8CC19"
+        "OwnerKey" = "8:_36305B07DCAC75DC10318E193C67FB83"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_307712EDCAEA2155F98CD637DF86A199"
-        "OwnerKey" = "8:_36305B07DCAC75DC10318E193C67FB83"
+        "OwnerKey" = "8:_1D997D4B0C4F365700DF3EFE0EB8CC19"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -123,12 +105,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_76797A5AC21F416D879AFF7A883CF807"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_77C27DB0B46F4F1BA45C7372020E9059"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -142,12 +118,6 @@
         "Entry"
         {
         "MsmKey" = "8:_83F91D607C9E45449F5A7ED558BCD957"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_8EF458CFB6624998B568916A19A7B7D3"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -172,13 +142,13 @@
         "Entry"
         {
         "MsmKey" = "8:_9F142BF4F3838076A3048F35A2F59800"
-        "OwnerKey" = "8:_36305B07DCAC75DC10318E193C67FB83"
+        "OwnerKey" = "8:_FAC3BBA159AD3562B87806328AB11E3E"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_9F142BF4F3838076A3048F35A2F59800"
-        "OwnerKey" = "8:_FAC3BBA159AD3562B87806328AB11E3E"
+        "OwnerKey" = "8:_36305B07DCAC75DC10318E193C67FB83"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -190,12 +160,6 @@
         "Entry"
         {
         "MsmKey" = "8:_AE2FE92975724932B72675CBFB7959C6"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_AF6984AB428A44429851C58D54C0866A"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -250,43 +214,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_B263703588D34448C3B7A371FF368B65"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_C6CC7857E0CFDAE6B968814600F786C7"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_1D997D4B0C4F365700DF3EFE0EB8CC19"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_36305B07DCAC75DC10318E193C67FB83"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_FAC3BBA159AD3562B87806328AB11E3E"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_9F142BF4F3838076A3048F35A2F59800"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_307712EDCAEA2155F98CD637DF86A199"
+        "OwnerKey" = "8:_5FF2E6AA0FB51A16A537283ECA4A8137"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -298,13 +226,43 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_A38FA8D2B5B2481A94686E5F29DF5CC7"
+        "OwnerKey" = "8:_307712EDCAEA2155F98CD637DF86A199"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_5FF2E6AA0FB51A16A537283ECA4A8137"
+        "OwnerKey" = "8:_9F142BF4F3838076A3048F35A2F59800"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_FAC3BBA159AD3562B87806328AB11E3E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_36305B07DCAC75DC10318E193C67FB83"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_1D997D4B0C4F365700DF3EFE0EB8CC19"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_C6CC7857E0CFDAE6B968814600F786C7"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_B263703588D34448C3B7A371FF368B65"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -402,52 +360,12 @@
         }
         "File"
         {
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0C888F35862241FC8CB15CA98CEFBB67"
-            {
-            "SourcePath" = "8:..\\..\\Installer files\\overlays\\titanium.png"
-            "TargetName" = "8:titanium.png"
-            "Tag" = "8:"
-            "Folder" = "8:_529687D4390A4DCAAEB12A593E032110"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0EB56962CF994ABB8D5F41833CE17E13"
             {
             "SourcePath" = "8:..\\..\\Installer files\\streamer2.txt"
             "TargetName" = "8:streamer2.txt"
             "Tag" = "8:"
             "Folder" = "8:_2DD3CA1AFA814DD8B2F35074342525E5"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1918C70A04D3442A83A6A2D132158528"
-            {
-            "SourcePath" = "8:..\\..\\Installer files\\overlays\\current.png"
-            "TargetName" = "8:current.png"
-            "Tag" = "8:"
-            "Folder" = "8:_529687D4390A4DCAAEB12A593E032110"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -469,11 +387,6 @@
             "AssemblyAsmDisplayName" = "8:MySql.Web, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_1D997D4B0C4F365700DF3EFE0EB8CC19"
-                    {
-                    "Name" = "8:MySql.Web.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:MySql.Web.dll"
             "TargetName" = "8:"
@@ -513,26 +426,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2839245BA60D4B1291ACD8199F2326E2"
-            {
-            "SourcePath" = "8:..\\..\\Installer files\\overlays\\obsidian.png"
-            "TargetName" = "8:obsidian.png"
-            "Tag" = "8:"
-            "Folder" = "8:_529687D4390A4DCAAEB12A593E032110"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_307712EDCAEA2155F98CD637DF86A199"
             {
             "AssemblyRegister" = "3:1"
@@ -540,11 +433,6 @@
             "AssemblyAsmDisplayName" = "8:MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_307712EDCAEA2155F98CD637DF86A199"
-                    {
-                    "Name" = "8:MySql.Data.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:MySql.Data.dll"
             "TargetName" = "8:"
@@ -571,11 +459,6 @@
             "AssemblyAsmDisplayName" = "8:MySql.Data.Entity.EF6, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_36305B07DCAC75DC10318E193C67FB83"
-                    {
-                    "Name" = "8:MySql.Data.Entity.EF6.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:MySql.Data.Entity.EF6.dll"
             "TargetName" = "8:"
@@ -662,11 +545,6 @@
             "AssemblyAsmDisplayName" = "8:System.Net.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
                 "ScatterAssemblies"
                 {
-                    "_5FF2E6AA0FB51A16A537283ECA4A8137"
-                    {
-                    "Name" = "8:System.Net.Http.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:System.Net.Http.dll"
             "TargetName" = "8:"
@@ -750,7 +628,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_70B0B559F3E6C12D8977A995F55C8A31"
@@ -775,26 +653,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_76797A5AC21F416D879AFF7A883CF807"
-            {
-            "SourcePath" = "8:..\\..\\Installer files\\overlays\\crystal.png"
-            "TargetName" = "8:crystal.png"
-            "Tag" = "8:"
-            "Folder" = "8:_529687D4390A4DCAAEB12A593E032110"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_77C27DB0B46F4F1BA45C7372020E9059"
@@ -857,26 +715,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8EF458CFB6624998B568916A19A7B7D3"
-            {
-            "SourcePath" = "8:..\\..\\Installer files\\overlays\\blood.png"
-            "TargetName" = "8:blood.png"
-            "Tag" = "8:"
-            "Folder" = "8:_529687D4390A4DCAAEB12A593E032110"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_99B72B1280414A7282B8B54E3BC94A9B"
             {
             "SourcePath" = "8:..\\..\\Installer files\\score2.txt"
@@ -924,11 +762,6 @@
             "AssemblyAsmDisplayName" = "8:EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_9F142BF4F3838076A3048F35A2F59800"
-                    {
-                    "Name" = "8:EntityFramework.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:EntityFramework.dll"
             "TargetName" = "8:"
@@ -952,26 +785,6 @@
             {
             "SourcePath" = "8:..\\..\\Installer files\\score4.txt"
             "TargetName" = "8:score4.txt"
-            "Tag" = "8:"
-            "Folder" = "8:_2DD3CA1AFA814DD8B2F35074342525E5"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_AF6984AB428A44429851C58D54C0866A"
-            {
-            "SourcePath" = "8:..\\..\\..\\BrainSG\\cmdow.exe"
-            "TargetName" = "8:cmdow.exe"
             "Tag" = "8:"
             "Folder" = "8:_2DD3CA1AFA814DD8B2F35074342525E5"
             "Condition" = "8:"
@@ -1015,11 +828,6 @@
             "AssemblyAsmDisplayName" = "8:ToggleSwitch, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_B263703588D34448C3B7A371FF368B65"
-                    {
-                    "Name" = "8:ToggleSwitch.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:ToggleSwitch.dll"
             "TargetName" = "8:"
@@ -1046,11 +854,6 @@
             "AssemblyAsmDisplayName" = "8:Zlib.Portable, Version=1.11.0.0, Culture=neutral, PublicKeyToken=431cba815f6a8b5b, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_C6CC7857E0CFDAE6B968814600F786C7"
-                    {
-                    "Name" = "8:Zlib.Portable.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:Zlib.Portable.dll"
             "TargetName" = "8:"
@@ -1137,11 +940,6 @@
             "AssemblyAsmDisplayName" = "8:EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_FAC3BBA159AD3562B87806328AB11E3E"
-                    {
-                    "Name" = "8:EntityFramework.SqlServer.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:EntityFramework.SqlServer.dll"
             "TargetName" = "8:"

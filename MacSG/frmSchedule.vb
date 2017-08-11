@@ -14,7 +14,7 @@ Public Class frmSchedule
 
     End Sub
 
-    Public Sub sqlCall()
+    Public Sub sqlCall() Handles btnFilter.Click
 
         Dim sqlDataAdapter As New MySqlDataAdapter
         Dim dt As New DataTable
@@ -22,6 +22,7 @@ Public Class frmSchedule
 
         Dim sqlconn = New MySqlConnection("server=condor.host;userid=necrobot-read;password=necrobot-read;database=necrobot;")
         Dim filterText As String = txtFilter.Text
+        'MsgBox(System.TimeZoneInfo.Local.BaseUtcOffset.ToString)
 
         Try
             sqlconn.Open()
@@ -33,7 +34,7 @@ Public Class frmSchedule
             sqlDataAdapter.SelectCommand = sqlcommand
             sqlDataAdapter.Fill(dt)
             bSource.DataSource = dt
-            dgvSchedule.Columns(0).DataPropertyName = "Time"
+            dgvSchedule.Columns(0).DataPropertyName = "Start time"
             dgvSchedule.Columns(1).DataPropertyName = "Racer 1"
             dgvSchedule.Columns(2).DataPropertyName = "Racer 2"
 
@@ -64,12 +65,6 @@ Public Class frmSchedule
         frmMain.btnGenAll.PerformClick()
 
         Me.Close()
-
-    End Sub
-
-    Private Sub btnFilter_Click(sender As Object, e As EventArgs) Handles btnFilter.Click
-
-        sqlCall()
 
     End Sub
 

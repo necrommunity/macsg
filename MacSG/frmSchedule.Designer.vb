@@ -46,7 +46,7 @@ Partial Class frmSchedule
         Me.dgvSchedule.ReadOnly = True
         Me.dgvSchedule.RowHeadersVisible = False
         Me.dgvSchedule.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvSchedule.Size = New System.Drawing.Size(480, 252)
+        Me.dgvSchedule.Size = New System.Drawing.Size(393, 252)
         Me.dgvSchedule.TabIndex = 0
         '
         'Label1
@@ -70,9 +70,9 @@ Partial Class frmSchedule
         '
         'btnFilter
         '
-        Me.btnFilter.Location = New System.Drawing.Point(368, 52)
+        Me.btnFilter.Location = New System.Drawing.Point(306, 52)
         Me.btnFilter.Name = "btnFilter"
-        Me.btnFilter.Size = New System.Drawing.Size(124, 20)
+        Me.btnFilter.Size = New System.Drawing.Size(99, 20)
         Me.btnFilter.TabIndex = 4
         Me.btnFilter.Text = "Filter schedule..."
         Me.btnFilter.UseVisualStyleBackColor = True
@@ -82,7 +82,7 @@ Partial Class frmSchedule
         Me.txtFilter.AcceptsReturn = True
         Me.txtFilter.Location = New System.Drawing.Point(12, 52)
         Me.txtFilter.Name = "txtFilter"
-        Me.txtFilter.Size = New System.Drawing.Size(350, 20)
+        Me.txtFilter.Size = New System.Drawing.Size(288, 20)
         Me.txtFilter.TabIndex = 5
         '
         'timestamp
@@ -99,7 +99,7 @@ Partial Class frmSchedule
         Me.racer_1_rtmp_name.HeaderText = "Racer 1"
         Me.racer_1_rtmp_name.Name = "racer_1_rtmp_name"
         Me.racer_1_rtmp_name.ReadOnly = True
-        Me.racer_1_rtmp_name.Width = 115
+        Me.racer_1_rtmp_name.Width = 120
         '
         'racer_2_rtmp_name
         '
@@ -107,13 +107,13 @@ Partial Class frmSchedule
         Me.racer_2_rtmp_name.HeaderText = "Racer 2"
         Me.racer_2_rtmp_name.Name = "racer_2_rtmp_name"
         Me.racer_2_rtmp_name.ReadOnly = True
-        Me.racer_2_rtmp_name.Width = 115
+        Me.racer_2_rtmp_name.Width = 120
         '
         'frmSchedule
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(504, 342)
+        Me.ClientSize = New System.Drawing.Size(417, 342)
         Me.Controls.Add(Me.dgvSchedule)
         Me.Controls.Add(Me.txtFilter)
         Me.Controls.Add(Me.btnFilter)

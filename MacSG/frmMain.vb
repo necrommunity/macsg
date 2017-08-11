@@ -5,6 +5,7 @@ Imports System.Text.RegularExpressions
 Imports Microsoft.Win32
 Imports System.Security.Principal
 Imports Microsoft.VisualBasic.ApplicationServices
+Imports Newtonsoft.Json.Linq
 
 Public Class frmMain
     Dim strColAutoCompleteList As New AutoCompleteStringCollection
@@ -62,12 +63,11 @@ Public Class frmMain
                 For Each ctrl As Control In Controls
                     ctrl.Enabled = False
                 Next
-
                 Dim client As New WebClient()
                 AddHandler client.DownloadProgressChanged, AddressOf ShowDownloadProgress
                 AddHandler client.DownloadFileCompleted, AddressOf DownloadFileCompleted
 
-                client.DownloadFileAsync(New Uri("https://streamlink-builds.s3.amazonaws.com/nightly/windows/streamlink-latest.exe"), Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\MacSG\streamlink-0.4.0.exe")
+                client.DownloadFileAsync(New Uri("https://github.com/streamlink/streamlink/releases/download/0.7.0/streamlink-0.7.0.exe"), Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\MacSG\streamlink-0.4.0.exe")
             ElseIf boolStreamlink = DialogResult.No Then
                 Dim fd As OpenFileDialog = New OpenFileDialog()
 
@@ -99,10 +99,6 @@ Public Class frmMain
             ProgressBar1.Visible = False
             Process.Start(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\MacSG\streamlink-0.4.0.exe")
             Me.Close()
-
-            'For Each ctrl As Control In Controls
-            '    ctrl.Enabled = True
-            'Next
 
         Else
             MessageBox.Show("There was an error downloading Streamlink.  Please try running the application as an Administrator and try again.")
@@ -175,6 +171,10 @@ Public Class frmMain
         Dim procKillVLC As New ProcessStartInfo("cmd.exe", "/c taskkill  /fi ""WindowTitle eq First - VLC media player"" & taskkill /fi ""WindowTitle eq Second - VLC media player"" & taskkill /fi ""WindowTitle eq Third - VLC media player"" & taskkill /fi ""WindowTitle eq Fourth - VLC media player""")
         procKillVLC.WindowStyle = ProcessWindowStyle.Hidden
         Process.Start(procKillVLC)
+
+        For i = 0 To 3
+            txtArray(i).Text = ""
+        Next
 
         System.Threading.Thread.Sleep(300)
 
@@ -447,8 +447,10 @@ Public Class frmMain
     End Function
 
     Private Sub tsmiSeason5_Click(sender As Object, e As EventArgs) Handles tsmiCondorRaces.Click
-        Dim frmSchedule As New frmSchedule()
-        frmSchedule.Show()
+        Process.Start("https://condor.host/schedule")
+
+        'Dim frmSchedule As New frmSchedule()
+        'frmSchedule.Show()
     End Sub
 
     Private Sub btnReplay1_Click(sender As Object, e As EventArgs) Handles btnReplay1.Click
@@ -499,4 +501,5 @@ Public Class frmMain
             setupLivestreamerCheck()
         End If
     End Sub
+
 End Class
