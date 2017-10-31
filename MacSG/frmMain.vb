@@ -5,7 +5,6 @@ Imports System.Text.RegularExpressions
 Imports Microsoft.Win32
 Imports System.Security.Principal
 Imports Microsoft.VisualBasic.ApplicationServices
-Imports Newtonsoft.Json.Linq
 
 Public Class frmMain
     Dim strColAutoCompleteList As New AutoCompleteStringCollection
@@ -30,8 +29,8 @@ Public Class frmMain
         Location = New Point(x, y)
 
         setupLivestreamerCheck()
+
         setupAutocompleteSources()
-        setupTwitchOAuth()
         ControlArrayItems()
 
         Dim args As String() = Environment.GetCommandLineArgs
@@ -39,6 +38,8 @@ Public Class frmMain
             args(0) = args(1)
             cliStartup(args:=args)
         End If
+
+        ToolStripStatusLabel1.Text = "Version " + [GetType].Assembly.GetName.Version.ToString
 
     End Sub
 
@@ -123,19 +124,16 @@ Public Class frmMain
 
     End Sub
 
-    'Requests value for My.Settings.strTwitchOAuthKey
-    Public Sub setupTwitchOAuth()
-        If My.Settings.strTwitchClientID = "Client-ID=jzkbprff40iqj646a697cyrvl0zt2m6" Then
-            statusLabel1.Text = "Twitch playback enabled with Livestreamer Client ID."
-        Else
-            statusLabel1.Text = "Twitch playback disabled"
-        End If
-    End Sub
-
-
-
     'Move and resize all windows
     Private Sub moveResize_Click(sender As Object, e As EventArgs) Handles btnMoveResize.Click
+
+        If Not File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\MacSG\cmdow.exe") Then
+            MsgBox("Cmdow appears to be missing from your appdata folder.  A link has been copied to your clipboard - please download the file and place it inside the window that opens.")
+            Process.Start(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\MacSG")
+            My.Computer.Clipboard.SetText("https://github.com/ritchielawrence/cmdow/blob/master/bin/Release/cmdow.exe")
+            Exit Sub
+        End If
+
         If My.Settings.strWindowSize = "" Then
             My.Settings.strWindowSize = InputBox("You must define a window size for VLC - the default (for 1920x1080 ) is already entered below.  Enter the resolution as ""width height"".", "Define window size...", "877 518")
             If My.Settings.strWindowSize = "" Then My.Settings.strWindowSize = "877 518"
