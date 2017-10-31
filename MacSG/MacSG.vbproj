@@ -165,12 +165,6 @@
     <Compile Include="frmEditStreamerList.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmSchedule.Designer.vb">
-      <DependentUpon>frmSchedule.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmSchedule.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -193,9 +187,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmEditStreamerList.resx">
       <DependentUpon>frmEditStreamerList.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmSchedule.resx">
-      <DependentUpon>frmSchedule.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
