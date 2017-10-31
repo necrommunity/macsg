@@ -5,6 +5,7 @@ Imports System.Text.RegularExpressions
 Imports Microsoft.Win32
 Imports System.Security.Principal
 Imports Microsoft.VisualBasic.ApplicationServices
+Imports System.Runtime.InteropServices
 
 Public Class frmMain
     Dim strColAutoCompleteList As New AutoCompleteStringCollection
@@ -15,13 +16,28 @@ Public Class frmMain
     Private btnArray As Button()
     Private chkArray As CheckBox()
 
+    Dim appdataFolder As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\macsg"
+
     Public Event StartupNextInstance(sender As Object, e As StartupNextInstanceEventArgs)
+
+    <DllImport("user32.dll", SetLastError:=True, CharSet:=CharSet.Auto)>
+    Public Shared Function SetWindowText(hWnd As IntPtr, lpString As String) As Boolean
+    End Function
+
+    <DllImport("user32.dll", SetLastError:=True)>
+    Private Shared Function MoveWindow(hWnd As IntPtr, X As Integer, Y As Integer, nWidth As Integer, nHeight As Integer, bRepaint As Boolean) As Boolean
+    End Function
+
+    Private Declare Auto Function FindWindow Lib "user32.dll" (ByVal lpClassName As String, ByVal lpWindowName As String) As IntPtr
+    Private Declare Auto Function PostMessage Lib "user32.dll" (ByVal hwnd As Integer, ByVal message As UInteger, ByVal wParam As Integer, ByVal lParam As Integer) As Boolean
+    Dim WM_QUIT As UInteger = &H12
+    Dim WM_CLOSE As UInteger = &H10
 
     'Form load
     Public Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         If My.Settings.strPathToStreamerFile <> "*.conf" Then
-            My.Settings.strPathToStreamerFile = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\MacSG\streamerlist.conf"
+            My.Settings.strPathToStreamerFile = appdataFolder + "\streamerlist.conf"
         End If
 
         Dim x As Integer = Screen.PrimaryScreen.WorkingArea.Width - Height
@@ -127,13 +143,6 @@ Public Class frmMain
     'Move and resize all windows
     Private Sub moveResize_Click(sender As Object, e As EventArgs) Handles btnMoveResize.Click
 
-        If Not File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\MacSG\cmdow.exe") Then
-            MsgBox("Cmdow appears to be missing from your appdata folder.  A link has been copied to your clipboard - please download the file and place it inside the window that opens.")
-            Process.Start(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\MacSG")
-            My.Computer.Clipboard.SetText("https://github.com/ritchielawrence/cmdow/blob/master/bin/Release/cmdow.exe")
-            Exit Sub
-        End If
-
         If My.Settings.strWindowSize = "" Then
             My.Settings.strWindowSize = InputBox("You must define a window size for VLC - the default (for 1920x1080 ) is already entered below.  Enter the resolution as ""width height"".", "Define window size...", "877 518")
             If My.Settings.strWindowSize = "" Then My.Settings.strWindowSize = "877 518"
@@ -144,37 +153,37 @@ Public Class frmMain
 
         Dim intXPos = Integer.Parse(strXPos) + 5
         Dim intYPos = Integer.Parse(strYPos) - 5
+        Dim hWnd As IntPtr
 
-        Dim procCmdow1 As New ProcessStartInfo("cmd.exe", "/c %appdata%\MacSG\cmdow ""First - VLC media player"" /mov 0 0 /siz " & My.Settings.strWindowSize)
-        procCmdow1.WindowStyle = ProcessWindowStyle.Hidden
-        Process.Start(procCmdow1)
+        hWnd = FindWindow(Nothing, "First - VLC Media Player")
+        MoveWindow(hWnd, 0, 0, CInt(strXPos), CInt(strYPos), True)
 
-        Dim procCmdow2 As New ProcessStartInfo("cmd.exe", "/c %appdata%\MacSG\cmdow ""Second - VLC media player"" /mov " & Convert.ToString(intXPos) & " 0 /siz " & My.Settings.strWindowSize)
-        procCmdow2.WindowStyle = ProcessWindowStyle.Hidden
-        Process.Start(procCmdow2)
+        hWnd = FindWindow(Nothing, "Second - VLC Media Player")
+        MoveWindow(hWnd, intXPos, 0, CInt(strXPos), CInt(strYPos), True)
 
-        Dim procCmdow3 As New ProcessStartInfo("cmd.exe", "/c %appdata%\MacSG\cmdow ""Third - VLC media player"" /mov 0 " & Convert.ToString(intYPos) & " /siz " & My.Settings.strWindowSize)
-        procCmdow3.WindowStyle = ProcessWindowStyle.Hidden
-        Process.Start(procCmdow3)
+        hWnd = FindWindow(Nothing, "Third - VLC Media Player")
+        MoveWindow(hWnd, 0, intYPos, CInt(strXPos), CInt(strYPos), True)
 
-        Dim procCmdow4 As New ProcessStartInfo("cmd.exe", "/c %appdata%\MacSG\cmdow ""Fourth - VLC media player"" /mov " & Convert.ToString(intXPos) & " " & Convert.ToString(intYPos) & " /siz " & My.Settings.strWindowSize)
-        procCmdow4.WindowStyle = ProcessWindowStyle.Hidden
-        Process.Start(procCmdow4)
+        hWnd = FindWindow(Nothing, "Fourth - VLC Media Player")
+        MoveWindow(hWnd, intXPos, intYPos, CInt(strXPos), CInt(strYPos), True)
 
     End Sub
 
     'Close all VLC windows
     Private Sub vlcKill_Click(sender As Object, e As EventArgs) Handles btnKillVLC.Click
 
-        Dim procKillVLC As New ProcessStartInfo("cmd.exe", "/c taskkill  /fi ""WindowTitle eq First - VLC media player"" & taskkill /fi ""WindowTitle eq Second - VLC media player"" & taskkill /fi ""WindowTitle eq Third - VLC media player"" & taskkill /fi ""WindowTitle eq Fourth - VLC media player""")
-        procKillVLC.WindowStyle = ProcessWindowStyle.Hidden
-        Process.Start(procKillVLC)
+        Dim hWnd As IntPtr
+        hWnd = FindWindow(Nothing, "First - VLC Media Player")
+        PostMessage(CInt(hWnd), WM_CLOSE, 0, 0)
 
-        For i = 0 To 3
-            txtArray(i).Text = ""
-        Next
+        hWnd = FindWindow(Nothing, "Second - VLC Media Player")
+        PostMessage(CInt(hWnd), WM_CLOSE, 0, 0)
 
-        System.Threading.Thread.Sleep(300)
+        hWnd = FindWindow(Nothing, "Third - VLC Media Player")
+        PostMessage(CInt(hWnd), WM_CLOSE, 0, 0)
+
+        hWnd = FindWindow(Nothing, "Fourth - VLC Media Player")
+        PostMessage(CInt(hWnd), WM_CLOSE, 0, 0)
 
     End Sub
 
