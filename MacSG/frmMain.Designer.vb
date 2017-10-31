@@ -69,6 +69,7 @@ Partial Class frmMain
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.statusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ConfigureToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.stream1Group.SuspendLayout()
         CType(Me.updStream1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.trkbrStream1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -428,7 +429,7 @@ Partial Class frmMain
         '
         'fileToolStripMenuItem1
         '
-        Me.fileToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmiSelectAutocompleteFile, Me.tsmiEditAutocompleteFile, Me.tsmiChangeVLCWindowSize, Me.InstallMacsgHandlerToolStripMenuItem, Me.tsmiOpenAppData})
+        Me.fileToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmiSelectAutocompleteFile, Me.tsmiEditAutocompleteFile, Me.tsmiChangeVLCWindowSize, Me.InstallMacsgHandlerToolStripMenuItem, Me.tsmiOpenAppData, Me.ConfigureToolStripMenuItem})
         Me.fileToolStripMenuItem1.Name = "fileToolStripMenuItem1"
         Me.fileToolStripMenuItem1.Size = New System.Drawing.Size(37, 20)
         Me.fileToolStripMenuItem1.Text = "File"
@@ -516,9 +517,15 @@ Partial Class frmMain
         'ToolStripStatusLabel1
         '
         Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
-        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(120, 17)
-        Me.ToolStripStatusLabel1.Text = "ToolStripStatusLabel1"
-        Me.ToolStripStatusLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(0, 17)
+        Me.ToolStripStatusLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'ConfigureToolStripMenuItem
+        '
+        Me.ConfigureToolStripMenuItem.Enabled = False
+        Me.ConfigureToolStripMenuItem.Name = "ConfigureToolStripMenuItem"
+        Me.ConfigureToolStripMenuItem.Size = New System.Drawing.Size(210, 22)
+        Me.ConfigureToolStripMenuItem.Text = "Configure..."
         '
         'frmMain
         '
@@ -611,4 +618,5 @@ Partial Class frmMain
     Friend WithEvents tsmiEditStreamlinkConfig As ToolStripMenuItem
     Friend WithEvents tsmiResetStreamlinkPath As ToolStripMenuItem
     Friend WithEvents ToolStripStatusLabel1 As ToolStripStatusLabel
+    Friend WithEvents ConfigureToolStripMenuItem As ToolStripMenuItem
 End Class
