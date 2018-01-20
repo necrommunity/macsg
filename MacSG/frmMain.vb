@@ -357,7 +357,7 @@ Public Class frmMain
 
                 ElseIf chkArray(ctrlIndex - 1).Checked = False Then
                     strQuality = "/live best "
-                    strSource = "streamlink rtmp://rtmp.condorleague.tv/"
+                    strSource = "streamlink rtmp://condor.live/"
                 End If
 
                 genStream(streamer:=txtArray(ctrlIndex - 1).Text.ToLower, quality:=strQuality, source:=strSource, windowTitle:=strWindowTitle, configFile:=ctrlIndex.ToString())
@@ -462,7 +462,7 @@ Public Class frmMain
 
     Private Sub btnReplay1_Click(sender As Object, e As EventArgs) Handles btnReplay1.Click
         Dim strQuality = "/live best "
-        Dim strSource = "streamlink rtmp://rtmp.condorleague.tv/"
+        Dim strSource = "streamlink rtmp://condor.live/"
         Dim strWindowTitle = "REPLAY_First"
         Dim configFile = "r1"
         genStream(streamer:=txtStream1.Text.ToLower, quality:=strQuality, source:=strSource, windowTitle:=strWindowTitle, configFile:=configFile)
@@ -470,7 +470,7 @@ Public Class frmMain
 
     Private Sub btnReplay2_Click(sender As Object, e As EventArgs) Handles btnReplay2.Click
         Dim strQuality = "/live best "
-        Dim strSource = "streamlink rtmp://rtmp.condorleague.tv/"
+        Dim strSource = "streamlink rtmp://condor.live/"
         Dim strWindowTitle = "REPLAY_Second"
         Dim configFile = "r2"
         genStream(streamer:=txtStream2.Text.ToLower, quality:=strQuality, source:=strSource, windowTitle:=strWindowTitle, configFile:=configFile)
@@ -478,7 +478,7 @@ Public Class frmMain
 
     Private Sub btnReplay3_Click(sender As Object, e As EventArgs) Handles btnReplay3.Click
         Dim strQuality = "/live best "
-        Dim strSource = "streamlink rtmp://rtmp.condorleague.tv/"
+        Dim strSource = "streamlink rtmp://condor.live/"
         Dim strWindowTitle = "REPLAY_Third"
         Dim configFile = "r3"
         genStream(streamer:=txtStream3.Text.ToLower, quality:=strQuality, source:=strSource, windowTitle:=strWindowTitle, configFile:=configFile)
@@ -486,7 +486,7 @@ Public Class frmMain
 
     Private Sub btnReplay4_Click(sender As Object, e As EventArgs) Handles btnReplay4.Click
         Dim strQuality = "/live best "
-        Dim strSource = "streamlink rtmp://rtmp.condorleague.tv/"
+        Dim strSource = "streamlink rtmp://condor.live/"
         Dim strWindowTitle = "REPLAY_Fourth"
         Dim configFile = "r4"
         genStream(streamer:=txtStream4.Text.ToLower, quality:=strQuality, source:=strSource, windowTitle:=strWindowTitle, configFile:=configFile)
