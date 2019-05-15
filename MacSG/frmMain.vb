@@ -84,7 +84,7 @@ Public Class frmMain
                 AddHandler client.DownloadProgressChanged, AddressOf ShowDownloadProgress
                 AddHandler client.DownloadFileCompleted, AddressOf DownloadFileCompleted
 
-                client.DownloadFileAsync(New Uri("https://github.com/streamlink/streamlink/releases/download/0.7.0/streamlink-0.7.0.exe"), Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\MacSG\streamlink-0.4.0.exe")
+                client.DownloadFileAsync(New Uri("https://github.com/streamlink/streamlink/releases/download/1.1.1/streamlink-1.1.1.exe"), Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\MacSG\streamlink-1.1.1.exe")
             ElseIf boolStreamlink = DialogResult.No Then
                 Dim fd As OpenFileDialog = New OpenFileDialog()
 
@@ -114,7 +114,7 @@ Public Class frmMain
     Public Sub DownloadFileCompleted(ByVal sender As Object, ByVal e As AsyncCompletedEventArgs)
         If Not e.Cancelled AndAlso e.Error Is Nothing Then
             ProgressBar1.Visible = False
-            Process.Start(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\MacSG\streamlink-0.4.0.exe")
+            Process.Start(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\MacSG\streamlink-1.1.1.exe")
             Me.Close()
 
         Else
@@ -236,8 +236,9 @@ Public Class frmMain
 
     'Unattached subs
     Public Sub genStream(streamer As String, quality As String, source As String, windowTitle As String, configFile As String)
-
-        Dim strLivestreamerProcess As New ProcessStartInfo("cmd.exe", "/c title " & windowTitle & " & " & source & streamer & quality & "--player-args "" --config %AppData%\MacSG\" & configFile & " {filename}")
+        Dim runningProcess = "/c title " & windowTitle & " & " & source & "-p ""c:\program files\videolan\vlc\vlc.exe --config %AppData%\MacSG\" & configFile & " "" twitch.tv/" & streamer & quality
+        Dim strLivestreamerProcess As New ProcessStartInfo("cmd.exe", runningProcess)
+        'MessageBox.Show(runningProcess)
         strLivestreamerProcess.WindowStyle = ProcessWindowStyle.Hidden
         Process.Start(strLivestreamerProcess)
 
@@ -353,7 +354,7 @@ Public Class frmMain
                         Case 4
                             strQuality = " best "
                     End Select
-                    strSource = "streamlink twitch.tv/"
+                    strSource = "streamlink "
 
                 ElseIf chkArray(ctrlIndex - 1).Checked = False Then
                     strQuality = "/live best "
