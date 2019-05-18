@@ -81,10 +81,13 @@ Public Class frmMain
                     ctrl.Enabled = False
                 Next
                 Dim client As New WebClient()
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12
                 AddHandler client.DownloadProgressChanged, AddressOf ShowDownloadProgress
                 AddHandler client.DownloadFileCompleted, AddressOf DownloadFileCompleted
 
-                client.DownloadFileAsync(New Uri("https://github.com/streamlink/streamlink/releases/download/1.1.1/streamlink-1.1.1.exe"), Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\MacSG\streamlink-1.1.1.exe")
+                Dim streamLinkDownloadLink As New Uri("https://github.com/streamlink/streamlink/releases/download/1.1.1/streamlink-1.1.1.exe")
+
+                client.DownloadFileAsync(streamLinkDownloadLink, Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\MacSG\streamlink-1.1.1.exe")
             ElseIf boolStreamlink = DialogResult.No Then
                 Dim fd As OpenFileDialog = New OpenFileDialog()
 
@@ -238,7 +241,7 @@ Public Class frmMain
     Public Sub genStream(streamer As String, quality As String, source As String, windowTitle As String, configFile As String, racerNumber As String)
         Dim runningProcess = "/c title " & windowTitle & " & " & source & "-a "" --config %AppData%\MacSG\vlcrc --width 877 --height 518 -"" " & " --title " & racerNumber & " --hls-live-edge 1 twitch.tv/" & streamer & quality
         Dim strLivestreamerProcess As New ProcessStartInfo("cmd.exe", runningProcess)
-        'MessageBox.Show(runningProcess)
+
         strLivestreamerProcess.WindowStyle = ProcessWindowStyle.Hidden
         Process.Start(strLivestreamerProcess)
 
