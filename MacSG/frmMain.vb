@@ -84,7 +84,7 @@ Public Class frmMain
                 AddHandler client.DownloadProgressChanged, AddressOf ShowDownloadProgress
                 AddHandler client.DownloadFileCompleted, AddressOf DownloadFileCompleted
 
-                client.DownloadFileAsync(New Uri("https://github.com/streamlink/streamlink/releases/download/0.7.0/streamlink-0.7.0.exe"), Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\MacSG\streamlink-0.4.0.exe")
+                client.DownloadFileAsync(New Uri("https://github.com/streamlink/streamlink/releases/download/1.1.1/streamlink-1.1.1.exe"), Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\MacSG\streamlink-1.1.1.exe")
             ElseIf boolStreamlink = DialogResult.No Then
                 Dim fd As OpenFileDialog = New OpenFileDialog()
 
@@ -114,7 +114,7 @@ Public Class frmMain
     Public Sub DownloadFileCompleted(ByVal sender As Object, ByVal e As AsyncCompletedEventArgs)
         If Not e.Cancelled AndAlso e.Error Is Nothing Then
             ProgressBar1.Visible = False
-            Process.Start(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\MacSG\streamlink-0.4.0.exe")
+            Process.Start(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\MacSG\streamlink-1.1.1.exe")
             Me.Close()
 
         Else
@@ -235,9 +235,10 @@ Public Class frmMain
 
 
     'Unattached subs
-    Public Sub genStream(streamer As String, quality As String, source As String, windowTitle As String, configFile As String)
-
-        Dim strLivestreamerProcess As New ProcessStartInfo("cmd.exe", "/c title " & windowTitle & " & " & source & streamer & quality & "--player-args "" --config %AppData%\MacSG\" & configFile & " {filename}")
+    Public Sub genStream(streamer As String, quality As String, source As String, windowTitle As String, configFile As String, racerNumber As String)
+        Dim runningProcess = "/c title " & windowTitle & " & " & source & "-a "" --config %AppData%\MacSG\vlcrc --width 877 --height 518 -"" " & " --title " & racerNumber & " --hls-live-edge 1 twitch.tv/" & streamer & quality
+        Dim strLivestreamerProcess As New ProcessStartInfo("cmd.exe", runningProcess)
+        
         strLivestreamerProcess.WindowStyle = ProcessWindowStyle.Hidden
         Process.Start(strLivestreamerProcess)
 
@@ -325,16 +326,21 @@ Public Class frmMain
 
         'Dim openWindow As Boolean
         Dim strWindowTitle As String = ""
+        Dim vlcWindowTitle As String = ""
 
         Select Case ctrlIndex
             Case 1
                 strWindowTitle = "FirstCMD"
+                vlcWindowTitle = "First"
             Case 2
                 strWindowTitle = "SecondCMD"
+                vlcWindowTitle = "Second"
             Case 3
                 strWindowTitle = "ThirdCMD"
+                vlcWindowTitle = "Third"
             Case 4
                 strWindowTitle = "FourthCMD"
+                vlcWindowTitle = "Fourth"
         End Select
 
         If processChecker(sender:=btnArray(ctrlIndex - 1), ctrlIndex:=ctrlIndex) = False Then
@@ -353,14 +359,14 @@ Public Class frmMain
                         Case 4
                             strQuality = " best "
                     End Select
-                    strSource = "streamlink twitch.tv/"
+                    strSource = "streamlink "
 
                 ElseIf chkArray(ctrlIndex - 1).Checked = False Then
                     strQuality = "/live best "
                     strSource = "streamlink rtmp://condor.live/"
                 End If
 
-                genStream(streamer:=txtArray(ctrlIndex - 1).Text.ToLower, quality:=strQuality, source:=strSource, windowTitle:=strWindowTitle, configFile:=ctrlIndex.ToString())
+                genStream(streamer:=txtArray(ctrlIndex - 1).Text.ToLower, quality:=strQuality, source:=strSource, windowTitle:=strWindowTitle, configFile:=ctrlIndex.ToString(), racerNumber:=vlcWindowTitle)
                 writeNameToFile(streamer:=txtArray(ctrlIndex - 1).Text, file:=ctrlIndex.ToString())
                 writeNameToAutocomplete(streamer:=txtArray(ctrlIndex - 1).Text.ToLower)
             End If
@@ -465,7 +471,8 @@ Public Class frmMain
         Dim strSource = "streamlink rtmp://condor.live/"
         Dim strWindowTitle = "REPLAY_First"
         Dim configFile = "r1"
-        genStream(streamer:=txtStream1.Text.ToLower, quality:=strQuality, source:=strSource, windowTitle:=strWindowTitle, configFile:=configFile)
+        Dim racerNumber = "First"
+        genStream(streamer:=txtStream1.Text.ToLower, quality:=strQuality, source:=strSource, windowTitle:=strWindowTitle, configFile:=configFile, racerNumber:=racerNumber)
     End Sub
 
     Private Sub btnReplay2_Click(sender As Object, e As EventArgs) Handles btnReplay2.Click
@@ -473,7 +480,8 @@ Public Class frmMain
         Dim strSource = "streamlink rtmp://condor.live/"
         Dim strWindowTitle = "REPLAY_Second"
         Dim configFile = "r2"
-        genStream(streamer:=txtStream2.Text.ToLower, quality:=strQuality, source:=strSource, windowTitle:=strWindowTitle, configFile:=configFile)
+        Dim racerNumber = "Second"
+        genStream(streamer:=txtStream2.Text.ToLower, quality:=strQuality, source:=strSource, windowTitle:=strWindowTitle, configFile:=configFile, racerNumber:=racerNumber)
     End Sub
 
     Private Sub btnReplay3_Click(sender As Object, e As EventArgs) Handles btnReplay3.Click
@@ -481,7 +489,8 @@ Public Class frmMain
         Dim strSource = "streamlink rtmp://condor.live/"
         Dim strWindowTitle = "REPLAY_Third"
         Dim configFile = "r3"
-        genStream(streamer:=txtStream3.Text.ToLower, quality:=strQuality, source:=strSource, windowTitle:=strWindowTitle, configFile:=configFile)
+        Dim racerNumber = "Third"
+        genStream(streamer:=txtStream3.Text.ToLower, quality:=strQuality, source:=strSource, windowTitle:=strWindowTitle, configFile:=configFile, racerNumber:=racerNumber)
     End Sub
 
     Private Sub btnReplay4_Click(sender As Object, e As EventArgs) Handles btnReplay4.Click
@@ -489,7 +498,8 @@ Public Class frmMain
         Dim strSource = "streamlink rtmp://condor.live/"
         Dim strWindowTitle = "REPLAY_Fourth"
         Dim configFile = "r4"
-        genStream(streamer:=txtStream4.Text.ToLower, quality:=strQuality, source:=strSource, windowTitle:=strWindowTitle, configFile:=configFile)
+        Dim racerNumber = "Fourth"
+        genStream(streamer:=txtStream4.Text.ToLower, quality:=strQuality, source:=strSource, windowTitle:=strWindowTitle, configFile:=configFile, racerNumber:=racerNumber)
     End Sub
 
     Private Sub tsmiOpenAppData_Click(sender As Object, e As EventArgs) Handles tsmiOpenAppData.Click
