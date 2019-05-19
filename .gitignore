@@ -242,5 +242,5 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
-/Setup/Release/setup.exe
-
+Setup/Release/*
+Setup/Debug/*
