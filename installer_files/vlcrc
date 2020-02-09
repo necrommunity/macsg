@@ -3972,7 +3972,7 @@ qt-privacy-ask=0
 [core] # core program
 
 # Enable audio (boolean)
-audio=0
+audio=1
 
 # Audio gain (float)
 #gain=1.000000
@@ -4161,7 +4161,7 @@ embedded-video=1
 #spu=1
 
 # On Screen Display (boolean)
-#osd=1
+osd=0
 
 # Text rendering module (string)
 #text-renderer=
