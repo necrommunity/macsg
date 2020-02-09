@@ -61,6 +61,7 @@ Partial Class frmMain
         Me.tsmiChangeVLCWindowSize = New System.Windows.Forms.ToolStripMenuItem()
         Me.InstallMacsgHandlerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmiOpenAppData = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ConfigureToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmiCondorRaces = New System.Windows.Forms.ToolStripMenuItem()
         Me.StreamlinkToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmiEditStreamlinkConfig = New System.Windows.Forms.ToolStripMenuItem()
@@ -69,7 +70,6 @@ Partial Class frmMain
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.statusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.ConfigureToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.stream1Group.SuspendLayout()
         CType(Me.updStream1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.trkbrStream1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -153,7 +153,7 @@ Partial Class frmMain
         Me.trkbrStream1.Maximum = 4
         Me.trkbrStream1.Minimum = 1
         Me.trkbrStream1.Name = "trkbrStream1"
-        Me.trkbrStream1.Size = New System.Drawing.Size(60, 42)
+        Me.trkbrStream1.Size = New System.Drawing.Size(60, 45)
         Me.trkbrStream1.TabIndex = 3
         Me.trkbrStream1.TabStop = False
         Me.trkbrStream1.Value = 4
@@ -250,7 +250,7 @@ Partial Class frmMain
         Me.trkbrStream2.Maximum = 4
         Me.trkbrStream2.Minimum = 1
         Me.trkbrStream2.Name = "trkbrStream2"
-        Me.trkbrStream2.Size = New System.Drawing.Size(60, 42)
+        Me.trkbrStream2.Size = New System.Drawing.Size(60, 45)
         Me.trkbrStream2.TabIndex = 3
         Me.trkbrStream2.TabStop = False
         Me.trkbrStream2.Value = 4
@@ -325,7 +325,7 @@ Partial Class frmMain
         Me.trkbrStream3.Maximum = 4
         Me.trkbrStream3.Minimum = 1
         Me.trkbrStream3.Name = "trkbrStream3"
-        Me.trkbrStream3.Size = New System.Drawing.Size(60, 42)
+        Me.trkbrStream3.Size = New System.Drawing.Size(60, 45)
         Me.trkbrStream3.TabIndex = 3
         Me.trkbrStream3.TabStop = False
         Me.trkbrStream3.Value = 4
@@ -400,7 +400,7 @@ Partial Class frmMain
         Me.trkbrStream4.Maximum = 4
         Me.trkbrStream4.Minimum = 1
         Me.trkbrStream4.Name = "trkbrStream4"
-        Me.trkbrStream4.Size = New System.Drawing.Size(60, 42)
+        Me.trkbrStream4.Size = New System.Drawing.Size(60, 45)
         Me.trkbrStream4.TabIndex = 3
         Me.trkbrStream4.TabStop = False
         Me.trkbrStream4.Value = 4
@@ -464,6 +464,13 @@ Partial Class frmMain
         Me.tsmiOpenAppData.Size = New System.Drawing.Size(210, 22)
         Me.tsmiOpenAppData.Text = "Open AppData folder..."
         '
+        'ConfigureToolStripMenuItem
+        '
+        Me.ConfigureToolStripMenuItem.Enabled = False
+        Me.ConfigureToolStripMenuItem.Name = "ConfigureToolStripMenuItem"
+        Me.ConfigureToolStripMenuItem.Size = New System.Drawing.Size(210, 22)
+        Me.ConfigureToolStripMenuItem.Text = "Configure..."
+        '
         'tsmiCondorRaces
         '
         Me.tsmiCondorRaces.AutoToolTip = True
@@ -502,7 +509,7 @@ Partial Class frmMain
         'StatusStrip1
         '
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.statusLabel1, Me.ToolStripStatusLabel1})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 331)
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 320)
         Me.StatusStrip1.Name = "StatusStrip1"
         Me.StatusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
         Me.StatusStrip1.Size = New System.Drawing.Size(373, 22)
@@ -520,18 +527,11 @@ Partial Class frmMain
         Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(0, 17)
         Me.ToolStripStatusLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
-        'ConfigureToolStripMenuItem
-        '
-        Me.ConfigureToolStripMenuItem.Enabled = False
-        Me.ConfigureToolStripMenuItem.Name = "ConfigureToolStripMenuItem"
-        Me.ConfigureToolStripMenuItem.Size = New System.Drawing.Size(210, 22)
-        Me.ConfigureToolStripMenuItem.Text = "Configure..."
-        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(373, 353)
+        Me.ClientSize = New System.Drawing.Size(373, 342)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.ProgressBar1)
         Me.Controls.Add(Me.menuStrip1)

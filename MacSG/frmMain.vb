@@ -48,6 +48,11 @@ Public Class frmMain
 
         setupAutocompleteSources()
         ControlArrayItems()
+        For i = 0 To (chkArray.Length - 1)
+            chkArray(i).Checked = True
+
+        Next
+
 
         Dim args As String() = Environment.GetCommandLineArgs
         If args.Length > 1 Then
@@ -85,9 +90,9 @@ Public Class frmMain
                 AddHandler client.DownloadProgressChanged, AddressOf ShowDownloadProgress
                 AddHandler client.DownloadFileCompleted, AddressOf DownloadFileCompleted
 
-                Dim streamLinkDownloadLink As New Uri("https://github.com/streamlink/streamlink/releases/download/1.1.1/streamlink-1.1.1.exe")
+                Dim streamLinkDownloadLink As New Uri("https://github.com/streamlink/streamlink/releases/download/1.3.1/streamlink-1.3.1.exe")
 
-                client.DownloadFileAsync(streamLinkDownloadLink, Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\MacSG\streamlink-1.1.1.exe")
+                client.DownloadFileAsync(streamLinkDownloadLink, Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\MacSG\streamlink-1.3.1.exe")
             ElseIf boolStreamlink = DialogResult.No Then
                 Dim fd As OpenFileDialog = New OpenFileDialog()
 
@@ -117,7 +122,7 @@ Public Class frmMain
     Public Sub DownloadFileCompleted(ByVal sender As Object, ByVal e As AsyncCompletedEventArgs)
         If Not e.Cancelled AndAlso e.Error Is Nothing Then
             ProgressBar1.Visible = False
-            Process.Start(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\MacSG\streamlink-1.1.1.exe")
+            Process.Start(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\MacSG\streamlink-1.3.1.exe")
             Me.Close()
 
         Else
@@ -239,7 +244,7 @@ Public Class frmMain
 
     'Unattached subs
     Public Sub genStream(streamer As String, quality As String, source As String, windowTitle As String, configFile As String, racerNumber As String)
-        Dim runningProcess = "/c title " & windowTitle & " & " & source & "-a "" --config %AppData%\MacSG\vlcrc --width 877 --height 518 -"" " & " --title " & racerNumber & " --hls-live-edge 1 twitch.tv/" & streamer & quality
+        Dim runningProcess = "/c title " & windowTitle & " & " & source & "-a "" --config %AppData%\MacSG\vlcrc --width 877 --height 518 -"" " & " --title " & racerNumber & " twitch.tv/" & streamer & quality
         Dim strLivestreamerProcess As New ProcessStartInfo("cmd.exe", runningProcess)
 
         strLivestreamerProcess.WindowStyle = ProcessWindowStyle.Hidden

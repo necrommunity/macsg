@@ -243,4 +243,4 @@ ModelManifest.xml
 # FAKE - F# Make
 .fake/
 Setup/Release/*
-Setup/Debug/*
+Setup/Debug/*   

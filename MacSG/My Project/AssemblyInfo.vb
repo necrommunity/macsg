@@ -10,7 +10,7 @@ Imports System.Runtime.InteropServices
 
 <Assembly: AssemblyTitle("MacSG")>
 <Assembly: AssemblyDescription("A Streamlink GUI for manging tournament captures")>
-<Assembly: AssemblyCompany("")>
+<Assembly: AssemblyCompany("CoNDOR")>
 <Assembly: AssemblyProduct("MacSG")>
 <Assembly: AssemblyCopyright("")>
 <Assembly: AssemblyTrademark("")>
@@ -31,4 +31,4 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("0.9.3.4")>
+<Assembly: AssemblyVersion("0.9.3.5")>

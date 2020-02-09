@@ -87,18 +87,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_5FF2E6AA0FB51A16A537283ECA4A8137"
-        "OwnerKey" = "8:_A38FA8D2B5B2481A94686E5F29DF5CC7"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_5FF2E6AA0FB51A16A537283ECA4A8137"
-        "OwnerKey" = "8:_D4E8ABE9F43216E74C68490755825AC0"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_6BF06342558CCB5DD6614D093B50FD53"
         "OwnerKey" = "8:_A38FA8D2B5B2481A94686E5F29DF5CC7"
         "MsmSig" = "8:_UNDEFINED"
@@ -147,20 +135,8 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_95AD97FF7DFE4925819544BE2E77D519"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_A38FA8D2B5B2481A94686E5F29DF5CC7"
         "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_AE768969C8CC84AEE0554FEF58F81281"
-        "OwnerKey" = "8:_A38FA8D2B5B2481A94686E5F29DF5CC7"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -189,14 +165,20 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_UNDEFINED"
+        "MsmKey" = "8:_FE4E45182806241F0B8BC59DEC8D2B96"
         "OwnerKey" = "8:_A38FA8D2B5B2481A94686E5F29DF5CC7"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
+        "MsmKey" = "8:_FE4E45182806241F0B8BC59DEC8D2B96"
+        "OwnerKey" = "8:_D4E8ABE9F43216E74C68490755825AC0"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_70B0B559F3E6C12D8977A995F55C8A31"
+        "OwnerKey" = "8:_A38FA8D2B5B2481A94686E5F29DF5CC7"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -214,7 +196,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_AE768969C8CC84AEE0554FEF58F81281"
+        "OwnerKey" = "8:_70B0B559F3E6C12D8977A995F55C8A31"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_A38FA8D2B5B2481A94686E5F29DF5CC7"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -256,7 +244,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_5FF2E6AA0FB51A16A537283ECA4A8137"
+        "OwnerKey" = "8:_FE4E45182806241F0B8BC59DEC8D2B96"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -576,37 +564,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_5FF2E6AA0FB51A16A537283ECA4A8137"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:System.Net.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
-                "ScatterAssemblies"
-                {
-                    "_5FF2E6AA0FB51A16A537283ECA4A8137"
-                    {
-                    "Name" = "8:System.Net.Http.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:System.Net.Http.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_EC4AA43B10F54FB5878F7CBE3982D4DF"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_6BF06342558CCB5DD6614D093B50FD53"
             {
             "AssemblyRegister" = "3:1"
@@ -782,57 +739,6 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_95AD97FF7DFE4925819544BE2E77D519"
-            {
-            "SourcePath" = "8:..\\installer_files\\twitch.py"
-            "TargetName" = "8:twitch.py"
-            "Tag" = "8:"
-            "Folder" = "8:_29DD2CBDD16D4C07B723C724EAA97F48"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_AE768969C8CC84AEE0554FEF58F81281"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_AE768969C8CC84AEE0554FEF58F81281"
-                    {
-                    "Name" = "8:Newtonsoft.Json.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Newtonsoft.Json.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_EC4AA43B10F54FB5878F7CBE3982D4DF"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_D4E8ABE9F43216E74C68490755825AC0"
             {
             "AssemblyRegister" = "3:1"
@@ -935,6 +841,37 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_FE4E45182806241F0B8BC59DEC8D2B96"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:System.Net.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+                "ScatterAssemblies"
+                {
+                    "_FE4E45182806241F0B8BC59DEC8D2B96"
+                    {
+                    "Name" = "8:System.Net.Http.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:System.Net.Http.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_EC4AA43B10F54FB5878F7CBE3982D4DF"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
         }
         "FileType"
         {
@@ -981,28 +918,6 @@
                     "Property" = "8:_85E2C8FEA06A456A948EEBD121B66D8A"
                         "Folders"
                         {
-                        }
-                    }
-                    "{9EF0B969-E518-4E46-987F-47570745A589}:_45D3710EA2174F4692C88C1B8342A268"
-                    {
-                    "Name" = "8:streamlink"
-                    "AlwaysCreate" = "11:FALSE"
-                    "Condition" = "8:"
-                    "Transitive" = "11:FALSE"
-                    "Property" = "8:_E48598A9176A40E180ED976AEBF73B28"
-                        "Folders"
-                        {
-                            "{9EF0B969-E518-4E46-987F-47570745A589}:_29DD2CBDD16D4C07B723C724EAA97F48"
-                            {
-                            "Name" = "8:plugins"
-                            "AlwaysCreate" = "11:FALSE"
-                            "Condition" = "8:"
-                            "Transitive" = "11:FALSE"
-                            "Property" = "8:_DD0E91027E644D9DA4DDCE6860057DFA"
-                                "Folders"
-                                {
-                                }
-                            }
                         }
                     }
                 }
