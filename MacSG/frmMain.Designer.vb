@@ -70,6 +70,7 @@ Partial Class frmMain
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.statusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.UpdateStreamlinkToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.stream1Group.SuspendLayout()
         CType(Me.updStream1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.trkbrStream1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -480,7 +481,7 @@ Partial Class frmMain
         '
         'StreamlinkToolStripMenuItem
         '
-        Me.StreamlinkToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmiEditStreamlinkConfig, Me.tsmiResetStreamlinkPath})
+        Me.StreamlinkToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmiEditStreamlinkConfig, Me.tsmiResetStreamlinkPath, Me.UpdateStreamlinkToolStripMenuItem})
         Me.StreamlinkToolStripMenuItem.Name = "StreamlinkToolStripMenuItem"
         Me.StreamlinkToolStripMenuItem.Size = New System.Drawing.Size(75, 20)
         Me.StreamlinkToolStripMenuItem.Text = "Streamlink"
@@ -488,14 +489,14 @@ Partial Class frmMain
         'tsmiEditStreamlinkConfig
         '
         Me.tsmiEditStreamlinkConfig.Name = "tsmiEditStreamlinkConfig"
-        Me.tsmiEditStreamlinkConfig.Size = New System.Drawing.Size(159, 22)
+        Me.tsmiEditStreamlinkConfig.Size = New System.Drawing.Size(180, 22)
         Me.tsmiEditStreamlinkConfig.Text = "Edit config file..."
         '
         'tsmiResetStreamlinkPath
         '
         Me.tsmiResetStreamlinkPath.BackColor = System.Drawing.SystemColors.Control
         Me.tsmiResetStreamlinkPath.Name = "tsmiResetStreamlinkPath"
-        Me.tsmiResetStreamlinkPath.Size = New System.Drawing.Size(159, 22)
+        Me.tsmiResetStreamlinkPath.Size = New System.Drawing.Size(180, 22)
         Me.tsmiResetStreamlinkPath.Text = "Reset path"
         '
         'ProgressBar1
@@ -526,6 +527,12 @@ Partial Class frmMain
         Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
         Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(0, 17)
         Me.ToolStripStatusLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'UpdateStreamlinkToolStripMenuItem
+        '
+        Me.UpdateStreamlinkToolStripMenuItem.Name = "UpdateStreamlinkToolStripMenuItem"
+        Me.UpdateStreamlinkToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.UpdateStreamlinkToolStripMenuItem.Text = "Update Streamlink"
         '
         'frmMain
         '
@@ -619,4 +626,5 @@ Partial Class frmMain
     Friend WithEvents tsmiResetStreamlinkPath As ToolStripMenuItem
     Friend WithEvents ToolStripStatusLabel1 As ToolStripStatusLabel
     Friend WithEvents ConfigureToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents UpdateStreamlinkToolStripMenuItem As ToolStripMenuItem
 End Class

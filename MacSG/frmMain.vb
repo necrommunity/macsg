@@ -6,6 +6,7 @@ Imports Microsoft.Win32
 Imports System.Security.Principal
 Imports Microsoft.VisualBasic.ApplicationServices
 Imports System.Runtime.InteropServices
+Imports Newtonsoft.Json
 
 Public Class frmMain
     Dim strColAutoCompleteList As New AutoCompleteStringCollection
@@ -79,39 +80,53 @@ Public Class frmMain
         End If
 
         If Not File.Exists(My.Settings.streamlinkDir) Then
-            Dim boolStreamlink As Integer = MessageBox.Show("Streamlink was not found in its default directory.  Click Yes to download the latest version from GitHub, or No to specify streamlink.exe's location.", "Streamlink not found", MessageBoxButtons.YesNo)
+            doStreamlinkCheck()
+        End If
+    End Sub
+    Public Sub doStreamlinkCheck()
+        Dim boolStreamlink As Integer = MessageBox.Show("Streamlink was not found in its default directory.  Click Yes to download the latest version from GitHub, or No to specify streamlink.exe's location.", "Streamlink not found", MessageBoxButtons.YesNo)
+        Dim streamlinkLatestVersion As String = getLatestStreamlinkVersion()
 
-            If boolStreamlink = DialogResult.Yes Then
+        If boolStreamlink = DialogResult.Yes Then
+            For Each ctrl As Control In Controls
+                ctrl.Enabled = False
+            Next
+            Dim client As New WebClient()
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12
+            AddHandler client.DownloadProgressChanged, AddressOf ShowDownloadProgress
+            AddHandler client.DownloadFileCompleted, AddressOf DownloadFileCompleted
+
+
+            Dim streamLinkDownloadLink As New Uri("https://github.com/streamlink/streamlink/releases/download/" + streamlinkLatestVersion + "/streamlink-" + streamlinkLatestVersion + ".exe")
+
+            client.DownloadFileAsync(streamLinkDownloadLink, Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\MacSG\streamlink-" + streamlinkLatestVersion + ".exe")
+        ElseIf boolStreamlink = DialogResult.No Then
+            Dim fd As OpenFileDialog = New OpenFileDialog()
+
+            fd.Title = "Select a file..."
+            fd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86)
+            fd.Filter = "Streamlink executable (*.exe)|*.exe"
+            fd.RestoreDirectory = True
+
+            If fd.ShowDialog = DialogResult.OK Then
+                My.Settings.streamlinkDir = fd.FileName.ToString
+            Else
                 For Each ctrl As Control In Controls
                     ctrl.Enabled = False
                 Next
-                Dim client As New WebClient()
-                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12
-                AddHandler client.DownloadProgressChanged, AddressOf ShowDownloadProgress
-                AddHandler client.DownloadFileCompleted, AddressOf DownloadFileCompleted
-
-                Dim streamLinkDownloadLink As New Uri("https://github.com/streamlink/streamlink/releases/download/1.3.1/streamlink-1.3.1.exe")
-
-                client.DownloadFileAsync(streamLinkDownloadLink, Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\MacSG\streamlink-1.3.1.exe")
-            ElseIf boolStreamlink = DialogResult.No Then
-                Dim fd As OpenFileDialog = New OpenFileDialog()
-
-                fd.Title = "Select a file..."
-                fd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86)
-                fd.Filter = "Streamlink executable (*.exe)|*.exe"
-                fd.RestoreDirectory = True
-
-                If fd.ShowDialog = DialogResult.OK Then
-                    My.Settings.streamlinkDir = fd.FileName.ToString
-                Else
-                    For Each ctrl As Control In Controls
-                        ctrl.Enabled = False
-                    Next
-                End If
             End If
         End If
     End Sub
+    Public Function getLatestStreamlinkVersion() As String
+        Dim client As New WebClient()
+        client.Headers("User-Agent") = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:85.0) Gecko/20100101 Firefox/85.0"
 
+        Dim streamlinkJson As Newtonsoft.Json.Linq.JObject = Newtonsoft.Json.Linq.JObject.Parse(client.DownloadString("https://api.github.com/repos/streamlink/streamlink/releases/latest"))
+        Dim streamlinkLatestVersion As String = streamlinkJson.SelectToken("tag_name").ToString
+        Console.WriteLine(streamlinkLatestVersion)
+        Return streamlinkLatestVersion
+
+    End Function
     'Handler for Streamlink download progress bar
     Private Sub ShowDownloadProgress(ByVal sender As Object, ByVal e As DownloadProgressChangedEventArgs)
         ProgressBar1.Visible = True
@@ -120,9 +135,11 @@ Public Class frmMain
 
     'Runs Streamlink after it has finished downloading; throws error if download fails.
     Public Sub DownloadFileCompleted(ByVal sender As Object, ByVal e As AsyncCompletedEventArgs)
+        Dim streamlinkLatestVersion As String = getLatestStreamlinkVersion()
+
         If Not e.Cancelled AndAlso e.Error Is Nothing Then
             ProgressBar1.Visible = False
-            Process.Start(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\MacSG\streamlink-1.3.1.exe")
+            Process.Start(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\MacSG\streamlink-" + streamlinkLatestVersion + ".exe")
             Me.Close()
 
         Else
@@ -468,7 +485,7 @@ Public Class frmMain
     End Function
 
     Private Sub tsmiSeason5_Click(sender As Object, e As EventArgs) Handles tsmiCondorRaces.Click
-        Process.Start("https://condor.host/schedule")
+        Process.Start("https://condor.live/schedule")
 
         'Dim frmSchedule As New frmSchedule()
         'frmSchedule.Show()
@@ -527,4 +544,7 @@ Public Class frmMain
         End If
     End Sub
 
+    Private Sub UpdateStreamlinkToolStripMenuItem_Click_1(sender As Object, e As EventArgs) Handles UpdateStreamlinkToolStripMenuItem.Click
+        doStreamlinkCheck()
+    End Sub
 End Class
