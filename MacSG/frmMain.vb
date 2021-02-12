@@ -261,7 +261,11 @@ Public Class frmMain
 
     'Unattached subs
     Public Sub genStream(streamer As String, quality As String, source As String, windowTitle As String, configFile As String, racerNumber As String)
-        Dim runningProcess = "/c title " & windowTitle & " & " & source & "-a "" --config %AppData%\MacSG\vlcrc --width 877 --height 518 -"" " & " --title " & racerNumber & " twitch.tv/" & streamer & quality
+        Dim disableAds = ""
+        If adsDisabled.Checked Then
+            disableAds = " --twitch-disable-ads"
+        End If
+        Dim runningProcess = "/c title " & windowTitle & " & " & source & "-a "" --config %AppData%\MacSG\vlcrc --width 877 --height 518 -"" " & " --title " & racerNumber & disableAds & " twitch.tv/" & streamer & quality
         Dim strLivestreamerProcess As New ProcessStartInfo("cmd.exe", runningProcess)
 
         strLivestreamerProcess.WindowStyle = ProcessWindowStyle.Hidden
@@ -546,5 +550,9 @@ Public Class frmMain
 
     Private Sub UpdateStreamlinkToolStripMenuItem_Click_1(sender As Object, e As EventArgs) Handles UpdateStreamlinkToolStripMenuItem.Click
         doStreamlinkCheck()
+    End Sub
+
+    Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles adsDisabled.CheckedChanged
+
     End Sub
 End Class
