@@ -66,11 +66,12 @@ Partial Class frmMain
         Me.StreamlinkToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmiEditStreamlinkConfig = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmiResetStreamlinkPath = New System.Windows.Forms.ToolStripMenuItem()
+        Me.UpdateStreamlinkToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.statusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.UpdateStreamlinkToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.adsDisabled = New System.Windows.Forms.CheckBox()
         Me.stream1Group.SuspendLayout()
         CType(Me.updStream1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.trkbrStream1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -489,15 +490,21 @@ Partial Class frmMain
         'tsmiEditStreamlinkConfig
         '
         Me.tsmiEditStreamlinkConfig.Name = "tsmiEditStreamlinkConfig"
-        Me.tsmiEditStreamlinkConfig.Size = New System.Drawing.Size(180, 22)
+        Me.tsmiEditStreamlinkConfig.Size = New System.Drawing.Size(171, 22)
         Me.tsmiEditStreamlinkConfig.Text = "Edit config file..."
         '
         'tsmiResetStreamlinkPath
         '
         Me.tsmiResetStreamlinkPath.BackColor = System.Drawing.SystemColors.Control
         Me.tsmiResetStreamlinkPath.Name = "tsmiResetStreamlinkPath"
-        Me.tsmiResetStreamlinkPath.Size = New System.Drawing.Size(180, 22)
+        Me.tsmiResetStreamlinkPath.Size = New System.Drawing.Size(171, 22)
         Me.tsmiResetStreamlinkPath.Text = "Reset path"
+        '
+        'UpdateStreamlinkToolStripMenuItem
+        '
+        Me.UpdateStreamlinkToolStripMenuItem.Name = "UpdateStreamlinkToolStripMenuItem"
+        Me.UpdateStreamlinkToolStripMenuItem.Size = New System.Drawing.Size(171, 22)
+        Me.UpdateStreamlinkToolStripMenuItem.Text = "Update Streamlink"
         '
         'ProgressBar1
         '
@@ -528,17 +535,24 @@ Partial Class frmMain
         Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(0, 17)
         Me.ToolStripStatusLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
-        'UpdateStreamlinkToolStripMenuItem
+        'adsDisabled
         '
-        Me.UpdateStreamlinkToolStripMenuItem.Name = "UpdateStreamlinkToolStripMenuItem"
-        Me.UpdateStreamlinkToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
-        Me.UpdateStreamlinkToolStripMenuItem.Text = "Update Streamlink"
+        Me.adsDisabled.AutoSize = True
+        Me.adsDisabled.Checked = True
+        Me.adsDisabled.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.adsDisabled.Location = New System.Drawing.Point(259, 137)
+        Me.adsDisabled.Name = "adsDisabled"
+        Me.adsDisabled.Size = New System.Drawing.Size(82, 17)
+        Me.adsDisabled.TabIndex = 22
+        Me.adsDisabled.Text = "Disable Ads"
+        Me.adsDisabled.UseVisualStyleBackColor = True
         '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(373, 342)
+        Me.Controls.Add(Me.adsDisabled)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.ProgressBar1)
         Me.Controls.Add(Me.menuStrip1)
@@ -627,4 +641,5 @@ Partial Class frmMain
     Friend WithEvents ToolStripStatusLabel1 As ToolStripStatusLabel
     Friend WithEvents ConfigureToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents UpdateStreamlinkToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents adsDisabled As CheckBox
 End Class
