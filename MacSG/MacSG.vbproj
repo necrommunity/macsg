@@ -152,13 +152,13 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApplicationEvents.vb" />
-    <Compile Include="frmConfigure.Designer.vb">
-      <DependentUpon>frmConfigure.vb</DependentUpon>
+    <Compile Include="frmAbout.Designer.vb">
+      <DependentUpon>frmAbout.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmConfigure.vb">
+    <Compile Include="frmAbout.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ApplicationEvents.vb" />
     <Compile Include="frmMain.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -189,8 +189,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="frmConfigure.resx">
-      <DependentUpon>frmConfigure.vb</DependentUpon>
+    <EmbeddedResource Include="frmAbout.resx">
+      <DependentUpon>frmAbout.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.vb</DependentUpon>

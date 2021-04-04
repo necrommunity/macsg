@@ -17,6 +17,9 @@ Public Class frmMain
     Private btnArray As Button()
     Private chkArray As CheckBox()
 
+    ' Reset files to 1-1
+
+
     Dim appdataFolder As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\macsg"
 
     Public Event StartupNextInstance(sender As Object, e As StartupNextInstanceEventArgs)
@@ -41,8 +44,8 @@ Public Class frmMain
             My.Settings.strPathToStreamerFile = appdataFolder + "\streamerlist.conf"
         End If
 
-        Dim x As Integer = Screen.PrimaryScreen.WorkingArea.Width - Height
-        Dim y As Integer = Screen.PrimaryScreen.WorkingArea.Height - Width
+        Dim x As Integer = Screen.PrimaryScreen.WorkingArea.Width - Width
+        Dim y As Integer = Screen.PrimaryScreen.WorkingArea.Height - Height
         Location = New Point(x, y)
 
         setupLivestreamerCheck()
@@ -123,7 +126,6 @@ Public Class frmMain
 
         Dim streamlinkJson As Newtonsoft.Json.Linq.JObject = Newtonsoft.Json.Linq.JObject.Parse(client.DownloadString("https://api.github.com/repos/streamlink/streamlink/releases/latest"))
         Dim streamlinkLatestVersion As String = streamlinkJson.SelectToken("tag_name").ToString
-        Console.WriteLine(streamlinkLatestVersion)
         Return streamlinkLatestVersion
 
     End Function
@@ -305,6 +307,27 @@ Public Class frmMain
         Using swScore As New StreamWriter(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\MacSG\score" & updIndex & ".txt")
             swScore.Write(DirectCast(sender, NumericUpDown).Value)
         End Using
+
+    End Sub
+    Sub updFlagControls_Changed(sender As Object, e As EventArgs) Handles updFlag1.ValueChanged, updFlag2.ValueChanged, updFlag3.ValueChanged, updFlag4.ValueChanged
+
+        Dim flagIndex As String = DirectCast(sender, Control).Name.Remove(0, 7)
+        Dim flagPlant As Integer = Decimal.ToInt32(DirectCast(sender, NumericUpDown).Value)
+        Dim floor As Integer
+        Dim depth As Integer
+        depth = Convert.ToInt32(Math.Floor(flagPlant / 4)) + 1
+        floor = Convert.ToInt32(flagPlant Mod 4) + 1
+
+        If (flagPlant > 19) Then
+            depth = 5
+            floor = 5
+        End If
+
+        Using swFlag As New StreamWriter(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\MacSG\flag" & flagIndex & ".txt")
+            swFlag.Write(Convert.ToString(depth) + "-" + Convert.ToString(floor))
+        End Using
+
+
 
     End Sub
 
@@ -552,7 +575,40 @@ Public Class frmMain
         doStreamlinkCheck()
     End Sub
 
-    Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles adsDisabled.CheckedChanged
+    Private Sub adsDisabled_CheckedChanged(sender As Object, e As EventArgs) Handles adsDisabled.CheckedChanged
 
     End Sub
+
+    Private Sub secretLabel_Click(sender As Object, e As EventArgs) Handles secretLabel.Click
+        frmAbout.Show()
+    End Sub
+
+    Private Sub resetFlagplants_Click(sender As Object, e As EventArgs) Handles resetFlagplants.Click
+        updFlag1.Value = 0
+        updFlag2.Value = 0
+        updFlag3.Value = 0
+        updFlag4.Value = 0
+
+        For index = 1 To 4
+            Using swFlag As New StreamWriter(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\MacSG\flag" & index & ".txt")
+                swFlag.Write("1-1")
+            End Using
+        Next
+
+    End Sub
+
+    Private Sub resetScores_Click(sender As Object, e As EventArgs) Handles resetScores.Click
+        updStream1.Value = 0
+        updStream2.Value = 0
+        updStream3.Value = 0
+        updStream4.Value = 0
+
+        For index = 1 To 4
+            Using swFlag As New StreamWriter(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\MacSG\score" & index & ".txt")
+                swFlag.Write("0")
+            End Using
+        Next
+
+    End Sub
+
 End Class
