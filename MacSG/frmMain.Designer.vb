@@ -535,7 +535,7 @@ Partial Class frmMain
         'updStream4
         '
         Me.updStream4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.updStream4.Cursor = System.Windows.Forms.Cursors.NoMoveVert
+        Me.updStream4.Cursor = System.Windows.Forms.Cursors.Default
         Me.updStream4.Location = New System.Drawing.Point(252, 9)
         Me.updStream4.Name = "updStream4"
         Me.updStream4.Size = New System.Drawing.Size(38, 20)
