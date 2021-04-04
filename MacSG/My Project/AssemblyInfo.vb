@@ -9,11 +9,11 @@ Imports System.Runtime.InteropServices
 ' Review the values of the assembly attributes
 
 <Assembly: AssemblyTitle("MacSG")>
-<Assembly: AssemblyDescription("A Streamlink GUI for manging tournament captures")>
+<Assembly: AssemblyDescription("A Streamlink GUI for manging tournament captures.")>
 <Assembly: AssemblyCompany("CoNDOR")>
 <Assembly: AssemblyProduct("MacSG")>
-<Assembly: AssemblyCopyright("")>
-<Assembly: AssemblyTrademark("")>
+<Assembly: AssemblyCopyright("This is a copyright message")>
+<Assembly: AssemblyTrademark("This is a trademark message")>
 
 <Assembly: ComVisible(False)>
 
@@ -31,4 +31,4 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("0.9.3.7")>
+<Assembly: AssemblyVersion("0.9.3.8")>
