@@ -81,19 +81,13 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_4A9D21D21F42409DB5F7D79E2D3338E9"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_4BCD8F4CA5C645398659FFBECDE47C78"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_514CDFC03FD742DA8C60513086262019"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_708E5EA652664E0EA070E6A5987440F2"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -123,6 +117,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_93F422C0D3B74089821EC175EE836F8A"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_A0979EB16222FCA7DCE90395BCB87641"
         "OwnerKey" = "8:_A38FA8D2B5B2481A94686E5F29DF5CC7"
         "MsmSig" = "8:_UNDEFINED"
@@ -135,14 +135,14 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_A845F341817341166EE7CA6B7547A538"
-        "OwnerKey" = "8:_A38FA8D2B5B2481A94686E5F29DF5CC7"
+        "MsmKey" = "8:_A645F8DB761A45ACA7A26CA09867537C"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_AFF95DA5E5D04A31A53AB011BC0295E2"
-        "OwnerKey" = "8:_UNDEFINED"
+        "MsmKey" = "8:_A845F341817341166EE7CA6B7547A538"
+        "OwnerKey" = "8:_A38FA8D2B5B2481A94686E5F29DF5CC7"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -177,7 +177,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_E09EE345524E4266B577AF162D6036A8"
+        "MsmKey" = "8:_F2D6631CF1C64820898DA21EF8005D01"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -574,50 +574,30 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4A9D21D21F42409DB5F7D79E2D3338E9"
+            {
+            "SourcePath" = "8:..\\installer_files\\flag3.txt"
+            "TargetName" = "8:flag3.txt"
+            "Tag" = "8:"
+            "Folder" = "8:_2DD3CA1AFA814DD8B2F35074342525E5"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4BCD8F4CA5C645398659FFBECDE47C78"
             {
             "SourcePath" = "8:..\\installer_files\\score4.txt"
             "TargetName" = "8:score4.txt"
-            "Tag" = "8:"
-            "Folder" = "8:_2DD3CA1AFA814DD8B2F35074342525E5"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_514CDFC03FD742DA8C60513086262019"
-            {
-            "SourcePath" = "8:C:\\Users\\qwarps\\AppData\\Roaming\\MacSG\\flag2.txt"
-            "TargetName" = "8:flag2.txt"
-            "Tag" = "8:"
-            "Folder" = "8:_2DD3CA1AFA814DD8B2F35074342525E5"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_708E5EA652664E0EA070E6A5987440F2"
-            {
-            "SourcePath" = "8:C:\\Users\\qwarps\\AppData\\Roaming\\MacSG\\flag4.txt"
-            "TargetName" = "8:flag4.txt"
             "Tag" = "8:"
             "Folder" = "8:_2DD3CA1AFA814DD8B2F35074342525E5"
             "Condition" = "8:"
@@ -747,6 +727,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_93F422C0D3B74089821EC175EE836F8A"
+            {
+            "SourcePath" = "8:..\\installer_files\\flag1.txt"
+            "TargetName" = "8:flag1.txt"
+            "Tag" = "8:"
+            "Folder" = "8:_2DD3CA1AFA814DD8B2F35074342525E5"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_A0979EB16222FCA7DCE90395BCB87641"
             {
             "AssemblyRegister" = "3:1"
@@ -778,6 +778,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A645F8DB761A45ACA7A26CA09867537C"
+            {
+            "SourcePath" = "8:..\\installer_files\\flag4.txt"
+            "TargetName" = "8:flag4.txt"
+            "Tag" = "8:"
+            "Folder" = "8:_2DD3CA1AFA814DD8B2F35074342525E5"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_A845F341817341166EE7CA6B7547A538"
             {
             "AssemblyRegister" = "3:1"
@@ -807,26 +827,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_AFF95DA5E5D04A31A53AB011BC0295E2"
-            {
-            "SourcePath" = "8:C:\\Users\\qwarps\\AppData\\Roaming\\MacSG\\flag1.txt"
-            "TargetName" = "8:flag1.txt"
-            "Tag" = "8:"
-            "Folder" = "8:_2DD3CA1AFA814DD8B2F35074342525E5"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_C390329531C0B22C89FDA327A6422A63"
@@ -922,10 +922,10 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E09EE345524E4266B577AF162D6036A8"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F2D6631CF1C64820898DA21EF8005D01"
             {
-            "SourcePath" = "8:C:\\Users\\qwarps\\AppData\\Roaming\\MacSG\\flag3.txt"
-            "TargetName" = "8:flag3.txt"
+            "SourcePath" = "8:..\\installer_files\\flag2.txt"
+            "TargetName" = "8:flag2.txt"
             "Tag" = "8:"
             "Folder" = "8:_2DD3CA1AFA814DD8B2F35074342525E5"
             "Condition" = "8:"
@@ -1641,7 +1641,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_A38FA8D2B5B2481A94686E5F29DF5CC7"
             {
-            "SourcePath" = "8:..\\MacSG\\obj\\Debug\\MacSG.exe"
+            "SourcePath" = "8:..\\MacSG\\obj\\Release\\MacSG.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_EC4AA43B10F54FB5878F7CBE3982D4DF"
