@@ -156,7 +156,7 @@ Partial Class frmMain
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(216, 50)
+        Me.Label2.Location = New System.Drawing.Point(210, 44)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(30, 13)
         Me.Label2.TabIndex = 25
@@ -164,7 +164,7 @@ Partial Class frmMain
         '
         'updFlag1
         '
-        Me.updFlag1.Location = New System.Drawing.Point(251, 48)
+        Me.updFlag1.Location = New System.Drawing.Point(246, 42)
         Me.updFlag1.Maximum = New Decimal(New Integer() {25, 0, 0, 0})
         Me.updFlag1.Minimum = New Decimal(New Integer() {1, 0, 0, -2147483648})
         Me.updFlag1.Name = "updFlag1"
@@ -174,7 +174,7 @@ Partial Class frmMain
         'labelScore1
         '
         Me.labelScore1.AutoSize = True
-        Me.labelScore1.Location = New System.Drawing.Point(208, 12)
+        Me.labelScore1.Location = New System.Drawing.Point(202, 14)
         Me.labelScore1.Name = "labelScore1"
         Me.labelScore1.Size = New System.Drawing.Size(38, 13)
         Me.labelScore1.TabIndex = 23
@@ -192,7 +192,7 @@ Partial Class frmMain
         '
         'updStream1
         '
-        Me.updStream1.Location = New System.Drawing.Point(252, 10)
+        Me.updStream1.Location = New System.Drawing.Point(245, 12)
         Me.updStream1.Name = "updStream1"
         Me.updStream1.Size = New System.Drawing.Size(39, 20)
         Me.updStream1.TabIndex = 4
@@ -265,7 +265,7 @@ Partial Class frmMain
         'labelFlag2
         '
         Me.labelFlag2.AutoSize = True
-        Me.labelFlag2.Location = New System.Drawing.Point(219, 51)
+        Me.labelFlag2.Location = New System.Drawing.Point(213, 44)
         Me.labelFlag2.Name = "labelFlag2"
         Me.labelFlag2.Size = New System.Drawing.Size(27, 13)
         Me.labelFlag2.TabIndex = 26
@@ -274,7 +274,7 @@ Partial Class frmMain
         'labelScore2
         '
         Me.labelScore2.AutoSize = True
-        Me.labelScore2.Location = New System.Drawing.Point(208, 11)
+        Me.labelScore2.Location = New System.Drawing.Point(202, 13)
         Me.labelScore2.Name = "labelScore2"
         Me.labelScore2.Size = New System.Drawing.Size(38, 13)
         Me.labelScore2.TabIndex = 25
@@ -282,7 +282,7 @@ Partial Class frmMain
         '
         'updFlag2
         '
-        Me.updFlag2.Location = New System.Drawing.Point(252, 49)
+        Me.updFlag2.Location = New System.Drawing.Point(246, 42)
         Me.updFlag2.Maximum = New Decimal(New Integer() {25, 0, 0, 0})
         Me.updFlag2.Minimum = New Decimal(New Integer() {1, 0, 0, -2147483648})
         Me.updFlag2.Name = "updFlag2"
@@ -301,7 +301,7 @@ Partial Class frmMain
         '
         'updStream2
         '
-        Me.updStream2.Location = New System.Drawing.Point(252, 9)
+        Me.updStream2.Location = New System.Drawing.Point(246, 11)
         Me.updStream2.Name = "updStream2"
         Me.updStream2.Size = New System.Drawing.Size(38, 20)
         Me.updStream2.TabIndex = 5
@@ -374,7 +374,7 @@ Partial Class frmMain
         'labelFlag3
         '
         Me.labelFlag3.AutoSize = True
-        Me.labelFlag3.Location = New System.Drawing.Point(216, 51)
+        Me.labelFlag3.Location = New System.Drawing.Point(210, 41)
         Me.labelFlag3.Name = "labelFlag3"
         Me.labelFlag3.Size = New System.Drawing.Size(30, 13)
         Me.labelFlag3.TabIndex = 27
@@ -383,7 +383,7 @@ Partial Class frmMain
         'labelScore3
         '
         Me.labelScore3.AutoSize = True
-        Me.labelScore3.Location = New System.Drawing.Point(208, 18)
+        Me.labelScore3.Location = New System.Drawing.Point(202, 13)
         Me.labelScore3.Name = "labelScore3"
         Me.labelScore3.Size = New System.Drawing.Size(38, 13)
         Me.labelScore3.TabIndex = 26
@@ -391,7 +391,7 @@ Partial Class frmMain
         '
         'updFlag3
         '
-        Me.updFlag3.Location = New System.Drawing.Point(253, 49)
+        Me.updFlag3.Location = New System.Drawing.Point(247, 39)
         Me.updFlag3.Maximum = New Decimal(New Integer() {25, 0, 0, 0})
         Me.updFlag3.Minimum = New Decimal(New Integer() {1, 0, 0, -2147483648})
         Me.updFlag3.Name = "updFlag3"
@@ -400,7 +400,7 @@ Partial Class frmMain
         '
         'updStream3
         '
-        Me.updStream3.Location = New System.Drawing.Point(252, 16)
+        Me.updStream3.Location = New System.Drawing.Point(247, 11)
         Me.updStream3.Name = "updStream3"
         Me.updStream3.Size = New System.Drawing.Size(38, 20)
         Me.updStream3.TabIndex = 6
@@ -483,7 +483,7 @@ Partial Class frmMain
         'labelFlag4
         '
         Me.labelFlag4.AutoSize = True
-        Me.labelFlag4.Location = New System.Drawing.Point(216, 45)
+        Me.labelFlag4.Location = New System.Drawing.Point(210, 45)
         Me.labelFlag4.Name = "labelFlag4"
         Me.labelFlag4.Size = New System.Drawing.Size(30, 13)
         Me.labelFlag4.TabIndex = 28
@@ -491,7 +491,7 @@ Partial Class frmMain
         '
         'updFlag4
         '
-        Me.updFlag4.Location = New System.Drawing.Point(253, 43)
+        Me.updFlag4.Location = New System.Drawing.Point(247, 43)
         Me.updFlag4.Maximum = New Decimal(New Integer() {25, 0, 0, 0})
         Me.updFlag4.Minimum = New Decimal(New Integer() {1, 0, 0, -2147483648})
         Me.updFlag4.Name = "updFlag4"
@@ -525,7 +525,7 @@ Partial Class frmMain
         'labelScore4
         '
         Me.labelScore4.AutoSize = True
-        Me.labelScore4.Location = New System.Drawing.Point(211, 11)
+        Me.labelScore4.Location = New System.Drawing.Point(205, 13)
         Me.labelScore4.Name = "labelScore4"
         Me.labelScore4.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.labelScore4.Size = New System.Drawing.Size(38, 13)
@@ -536,7 +536,7 @@ Partial Class frmMain
         '
         Me.updStream4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.updStream4.Cursor = System.Windows.Forms.Cursors.Default
-        Me.updStream4.Location = New System.Drawing.Point(252, 9)
+        Me.updStream4.Location = New System.Drawing.Point(247, 11)
         Me.updStream4.Name = "updStream4"
         Me.updStream4.Size = New System.Drawing.Size(38, 20)
         Me.updStream4.TabIndex = 7

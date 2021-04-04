@@ -44,8 +44,8 @@ Public Class frmMain
             My.Settings.strPathToStreamerFile = appdataFolder + "\streamerlist.conf"
         End If
 
-        Dim x As Integer = Screen.PrimaryScreen.WorkingArea.Width - Height
-        Dim y As Integer = Screen.PrimaryScreen.WorkingArea.Height - Width
+        Dim x As Integer = Screen.PrimaryScreen.WorkingArea.Width - Width
+        Dim y As Integer = Screen.PrimaryScreen.WorkingArea.Height - Height
         Location = New Point(x, y)
 
         setupLivestreamerCheck()
@@ -126,7 +126,6 @@ Public Class frmMain
 
         Dim streamlinkJson As Newtonsoft.Json.Linq.JObject = Newtonsoft.Json.Linq.JObject.Parse(client.DownloadString("https://api.github.com/repos/streamlink/streamlink/releases/latest"))
         Dim streamlinkLatestVersion As String = streamlinkJson.SelectToken("tag_name").ToString
-        Console.WriteLine(streamlinkLatestVersion)
         Return streamlinkLatestVersion
 
     End Function
@@ -323,8 +322,6 @@ Public Class frmMain
             depth = 5
             floor = 5
         End If
-
-        Console.WriteLine(Convert.ToString(depth) + "-" + Convert.ToString(floor))
 
         Using swFlag As New StreamWriter(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\MacSG\flag" & flagIndex & ".txt")
             swFlag.Write(Convert.ToString(depth) + "-" + Convert.ToString(floor))
@@ -613,4 +610,5 @@ Public Class frmMain
         Next
 
     End Sub
+
 End Class
