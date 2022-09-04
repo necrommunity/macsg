@@ -195,6 +195,9 @@ Public Class frmMain
         btnStream3Gen.PerformClick()
         btnStream4Gen.PerformClick()
 
+        If My.Settings.strWindowSize <> "" Then
+            btnMoveResize.PerformClick()
+        End If
     End Sub
 
 
