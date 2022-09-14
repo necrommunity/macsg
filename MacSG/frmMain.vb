@@ -11,10 +11,10 @@ Public Class frmMain
     Dim strColAutoCompleteList As New AutoCompleteStringCollection
 
     Private txtArray As TextBox()
+    Private pronounsArray As TextBox()
     Private switchArray As JCS.ToggleSwitch()
     Private trkbrArray As TrackBar()
     Private btnArray As Button()
-    Private chkArray As CheckBox()
 
     Dim appdataFolder As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\macsg"
 
@@ -61,9 +61,9 @@ Public Class frmMain
 
     Public Sub ControlArrayItems()
         txtArray = {txtStream1, txtStream2, txtStream3, txtStream4}
+        pronounsArray = {txtPronouns1, txtPronouns2, txtPronouns3, txtPronouns4}
         trkbrArray = {trkbrStream1, trkbrStream2, trkbrStream3, trkbrStream4}
         btnArray = {btnStream1Gen, btnStream2Gen, btnStream3Gen, btnStream4Gen}
-        chkArray = {chkStream1, chkStream2, chkStream3, chkStream4}
     End Sub
 
     'Check that livestreamer is installed in the Program Files (x86) folder
@@ -195,6 +195,9 @@ Public Class frmMain
         btnStream3Gen.PerformClick()
         btnStream4Gen.PerformClick()
 
+        If My.Settings.strWindowSize <> "" Then
+            btnMoveResize.PerformClick()
+        End If
     End Sub
 
 
@@ -238,7 +241,7 @@ Public Class frmMain
     Public Sub genStream(streamer As String, quality As String, source As String, windowTitle As String, configFile As String, racerNumber As String)
         Dim runningProcess = "/c title " & windowTitle & " & " & source & "-a "" --config %AppData%\MacSG\vlcrc --width 877 --height 518 -"" " & " --title " & racerNumber & " --hls-live-edge 1 twitch.tv/" & streamer & quality
         Dim strLivestreamerProcess As New ProcessStartInfo("cmd.exe", runningProcess)
-        
+
         strLivestreamerProcess.WindowStyle = ProcessWindowStyle.Hidden
         Process.Start(strLivestreamerProcess)
 
@@ -253,7 +256,15 @@ Public Class frmMain
         swstreamer.Close()
 
     End Sub
+    Public Sub writePronounsToFile(pronouns As String, file As String)
 
+        Dim strPathtoName As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\MacSG\streamer-pronouns" & file & ".txt"
+        Dim swstreamer As System.IO.StreamWriter
+        swstreamer = My.Computer.FileSystem.OpenTextFileWriter(strPathtoName, False)
+        swstreamer.WriteLine(pronouns.ToLower)
+        swstreamer.Close()
+
+    End Sub
     Public Sub writeNameToAutocomplete(streamer As String)
 
         Dim streamers = File.ReadLines(My.Settings.strPathToStreamerFile)
@@ -289,21 +300,12 @@ Public Class frmMain
             Dim splitArgs As String() = args(0).Split(New Char() {","c})
             splitArgs(0) = splitArgs(0).Replace("macsg:", "")
 
+            'DO NOT SUBMIT rework this completely?
             If splitArgs.Length > 5 Then
                 ReDim Preserve splitArgs(4)
             End If
 
-            If splitArgs(0) = "twitch" Then
-                For i = 0 To (splitArgs.Length - 2)
-                    chkArray(i).Checked = True
-                Next
-
-            ElseIf splitArgs(0) = "rtmp" Then
-                For i = 0 To (splitArgs.Length - 2)
-                    chkArray(i).Checked = False
-                Next
-
-            Else
+            If splitArgs(0) <> "twitch" Then
                 MsgBox("Invalid command line arguments, exiting...")
                 Application.Exit()
                 Exit Sub
@@ -311,7 +313,15 @@ Public Class frmMain
 
             For i = 1 To (splitArgs.Length - 1)
                 If splitArgs(i) <> Nothing Then
-                    txtArray(i - 1).Text = splitArgs(i).ToLower
+                    Dim splitRacer As String() = splitArgs(i).ToLower.Split(New Char() {"|"c})
+                    If splitRacer.Length = 2 Then
+                        pronounsArray(i - 1).Text = splitRacer(1).ToLower
+                    ElseIf splitRacer.Length <> 1 Then
+                        MsgBox("Invalid command line arguments, exiting...")
+                        Application.Exit()
+                        Exit Sub
+                    End If
+                    txtArray(i - 1).Text = splitRacer(0).ToLower
                     btnArray(i - 1).PerformClick()
                 End If
             Next
@@ -348,53 +358,23 @@ Public Class frmMain
                 Dim strSource As String = ""
                 Dim strQuality As String = ""
 
-                If chkArray(ctrlIndex - 1).Checked = True Then
-                    Select Case trkbrArray(ctrlIndex - 1).Value
-                        Case 1
-                            strQuality = " low "
-                        Case 2
-                            strQuality = " medium "
-                        Case 3
-                            strQuality = " high "
-                        Case 4
-                            strQuality = " best "
-                    End Select
-                    strSource = "streamlink "
-
-                ElseIf chkArray(ctrlIndex - 1).Checked = False Then
-                    strQuality = "/live best "
-                    strSource = "streamlink rtmp://condor.live/"
-                End If
+                Select Case trkbrArray(ctrlIndex - 1).Value
+                    Case 1
+                        strQuality = " low "
+                    Case 2
+                        strQuality = " medium "
+                    Case 3
+                        strQuality = " high "
+                    Case 4
+                        strQuality = " best "
+                End Select
+                strSource = "streamlink "
 
                 genStream(streamer:=txtArray(ctrlIndex - 1).Text.ToLower, quality:=strQuality, source:=strSource, windowTitle:=strWindowTitle, configFile:=ctrlIndex.ToString(), racerNumber:=vlcWindowTitle)
                 writeNameToFile(streamer:=txtArray(ctrlIndex - 1).Text, file:=ctrlIndex.ToString())
+                writePronounsToFile(pronouns:=pronounsArray(ctrlIndex - 1).Text, file:=ctrlIndex.ToString())
                 writeNameToAutocomplete(streamer:=txtArray(ctrlIndex - 1).Text.ToLower)
             End If
-        End If
-
-    End Sub
-
-    Private Sub chkStream_CheckChanged(sender As Object, e As EventArgs) Handles chkStream1.CheckedChanged, chkStream2.CheckedChanged, chkStream3.CheckedChanged, chkStream4.CheckedChanged
-
-        If DirectCast(sender, CheckBox).Checked = True Then
-            Try
-                Dim ctrlIndex = Integer.Parse(Regex.Replace(DirectCast(sender, CheckBox).Name, "[^1-4]", ""))
-                trkbrArray(ctrlIndex - 1).Enabled = True
-                chkArray(ctrlIndex - 1).BackColor = Color.FromArgb(100, 65, 165)
-                chkArray(ctrlIndex - 1).Text = "Twitch"
-            Catch ex As Exception
-                MessageBox.Show(ex.Message)
-            End Try
-
-        ElseIf DirectCast(sender, CheckBox).Checked = False Then
-            Try
-                Dim ctrlIndex = Integer.Parse(Regex.Replace(DirectCast(sender, CheckBox).Name, "[^1-4]", ""))
-                trkbrArray(ctrlIndex - 1).Enabled = False
-                chkArray(ctrlIndex - 1).BackColor = Color.FromArgb(59, 123, 179)
-                chkArray(ctrlIndex - 1).Text = "RTMP"
-            Catch ex As Exception
-                MessageBox.Show(ex.Message)
-            End Try
         End If
 
     End Sub
@@ -518,5 +498,4 @@ Public Class frmMain
             setupLivestreamerCheck()
         End If
     End Sub
-
 End Class

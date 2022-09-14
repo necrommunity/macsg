@@ -27,29 +27,29 @@ Partial Class frmMain
         Me.btnKillVLC = New System.Windows.Forms.Button()
         Me.btnMoveResize = New System.Windows.Forms.Button()
         Me.stream1Group = New System.Windows.Forms.GroupBox()
+        Me.txtPronouns1 = New System.Windows.Forms.TextBox()
         Me.btnReplay1 = New System.Windows.Forms.Button()
         Me.updStream1 = New System.Windows.Forms.NumericUpDown()
         Me.trkbrStream1 = New System.Windows.Forms.TrackBar()
         Me.txtStream1 = New System.Windows.Forms.TextBox()
-        Me.chkStream1 = New System.Windows.Forms.CheckBox()
         Me.btnStream1Gen = New System.Windows.Forms.Button()
         Me.stream2Group = New System.Windows.Forms.GroupBox()
+        Me.txtPronouns2 = New System.Windows.Forms.TextBox()
         Me.btnReplay2 = New System.Windows.Forms.Button()
         Me.updStream2 = New System.Windows.Forms.NumericUpDown()
         Me.txtStream2 = New System.Windows.Forms.TextBox()
-        Me.chkStream2 = New System.Windows.Forms.CheckBox()
         Me.trkbrStream2 = New System.Windows.Forms.TrackBar()
         Me.btnStream2Gen = New System.Windows.Forms.Button()
         Me.stream3Group = New System.Windows.Forms.GroupBox()
+        Me.txtPronouns3 = New System.Windows.Forms.TextBox()
         Me.updStream3 = New System.Windows.Forms.NumericUpDown()
         Me.btnReplay3 = New System.Windows.Forms.Button()
-        Me.chkStream3 = New System.Windows.Forms.CheckBox()
         Me.txtStream3 = New System.Windows.Forms.TextBox()
         Me.trkbrStream3 = New System.Windows.Forms.TrackBar()
         Me.btnStream3Gen = New System.Windows.Forms.Button()
         Me.stream4Group = New System.Windows.Forms.GroupBox()
+        Me.txtPronouns4 = New System.Windows.Forms.TextBox()
         Me.btnReplay4 = New System.Windows.Forms.Button()
-        Me.chkStream4 = New System.Windows.Forms.CheckBox()
         Me.updStream4 = New System.Windows.Forms.NumericUpDown()
         Me.txtStream4 = New System.Windows.Forms.TextBox()
         Me.trkbrStream4 = New System.Windows.Forms.TrackBar()
@@ -61,6 +61,7 @@ Partial Class frmMain
         Me.tsmiChangeVLCWindowSize = New System.Windows.Forms.ToolStripMenuItem()
         Me.InstallMacsgHandlerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmiOpenAppData = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ConfigureToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmiCondorRaces = New System.Windows.Forms.ToolStripMenuItem()
         Me.StreamlinkToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmiEditStreamlinkConfig = New System.Windows.Forms.ToolStripMenuItem()
@@ -69,7 +70,14 @@ Partial Class frmMain
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.statusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.ConfigureToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
         Me.stream1Group.SuspendLayout()
         CType(Me.updStream1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.trkbrStream1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -88,7 +96,7 @@ Partial Class frmMain
         '
         'btnGenAll
         '
-        Me.btnGenAll.Location = New System.Drawing.Point(259, 67)
+        Me.btnGenAll.Location = New System.Drawing.Point(310, 69)
         Me.btnGenAll.Name = "btnGenAll"
         Me.btnGenAll.Size = New System.Drawing.Size(101, 29)
         Me.btnGenAll.TabIndex = 17
@@ -97,7 +105,7 @@ Partial Class frmMain
         '
         'btnKillVLC
         '
-        Me.btnKillVLC.Location = New System.Drawing.Point(259, 101)
+        Me.btnKillVLC.Location = New System.Drawing.Point(310, 103)
         Me.btnKillVLC.Name = "btnKillVLC"
         Me.btnKillVLC.Size = New System.Drawing.Size(101, 29)
         Me.btnKillVLC.TabIndex = 16
@@ -106,7 +114,7 @@ Partial Class frmMain
         '
         'btnMoveResize
         '
-        Me.btnMoveResize.Location = New System.Drawing.Point(259, 32)
+        Me.btnMoveResize.Location = New System.Drawing.Point(310, 34)
         Me.btnMoveResize.Name = "btnMoveResize"
         Me.btnMoveResize.Size = New System.Drawing.Size(101, 29)
         Me.btnMoveResize.TabIndex = 15
@@ -115,23 +123,35 @@ Partial Class frmMain
         '
         'stream1Group
         '
+        Me.stream1Group.Controls.Add(Me.Label2)
+        Me.stream1Group.Controls.Add(Me.Label1)
+        Me.stream1Group.Controls.Add(Me.txtPronouns1)
         Me.stream1Group.Controls.Add(Me.btnReplay1)
         Me.stream1Group.Controls.Add(Me.updStream1)
         Me.stream1Group.Controls.Add(Me.trkbrStream1)
         Me.stream1Group.Controls.Add(Me.txtStream1)
-        Me.stream1Group.Controls.Add(Me.chkStream1)
         Me.stream1Group.Controls.Add(Me.btnStream1Gen)
         Me.stream1Group.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.stream1Group.Location = New System.Drawing.Point(12, 27)
         Me.stream1Group.Name = "stream1Group"
-        Me.stream1Group.Size = New System.Drawing.Size(238, 69)
+        Me.stream1Group.Size = New System.Drawing.Size(292, 69)
         Me.stream1Group.TabIndex = 11
         Me.stream1Group.TabStop = False
         Me.stream1Group.Text = "Stream 1"
         '
+        'txtPronouns1
+        '
+        Me.txtPronouns1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append
+        Me.txtPronouns1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource
+        Me.txtPronouns1.Location = New System.Drawing.Point(63, 42)
+        Me.txtPronouns1.Name = "txtPronouns1"
+        Me.txtPronouns1.Size = New System.Drawing.Size(67, 20)
+        Me.txtPronouns1.TabIndex = 23
+        Me.txtPronouns1.WordWrap = False
+        '
         'btnReplay1
         '
-        Me.btnReplay1.Location = New System.Drawing.Point(143, 43)
+        Me.btnReplay1.Location = New System.Drawing.Point(200, 43)
         Me.btnReplay1.Name = "btnReplay1"
         Me.btnReplay1.Size = New System.Drawing.Size(20, 21)
         Me.btnReplay1.TabIndex = 22
@@ -140,7 +160,7 @@ Partial Class frmMain
         '
         'updStream1
         '
-        Me.updStream1.Location = New System.Drawing.Point(179, 44)
+        Me.updStream1.Location = New System.Drawing.Point(236, 44)
         Me.updStream1.Name = "updStream1"
         Me.updStream1.Size = New System.Drawing.Size(39, 20)
         Me.updStream1.TabIndex = 8
@@ -149,11 +169,11 @@ Partial Class frmMain
         '
         Me.trkbrStream1.Enabled = False
         Me.trkbrStream1.LargeChange = 1
-        Me.trkbrStream1.Location = New System.Drawing.Point(169, 13)
+        Me.trkbrStream1.Location = New System.Drawing.Point(226, 13)
         Me.trkbrStream1.Maximum = 4
         Me.trkbrStream1.Minimum = 1
         Me.trkbrStream1.Name = "trkbrStream1"
-        Me.trkbrStream1.Size = New System.Drawing.Size(60, 42)
+        Me.trkbrStream1.Size = New System.Drawing.Size(60, 45)
         Me.trkbrStream1.TabIndex = 3
         Me.trkbrStream1.TabStop = False
         Me.trkbrStream1.Value = 4
@@ -162,27 +182,14 @@ Partial Class frmMain
         '
         Me.txtStream1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append
         Me.txtStream1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource
-        Me.txtStream1.Location = New System.Drawing.Point(6, 16)
+        Me.txtStream1.Location = New System.Drawing.Point(63, 16)
         Me.txtStream1.Name = "txtStream1"
         Me.txtStream1.Size = New System.Drawing.Size(157, 20)
         Me.txtStream1.TabIndex = 0
         '
-        'chkStream1
-        '
-        Me.chkStream1.AutoSize = True
-        Me.chkStream1.BackColor = System.Drawing.Color.FromArgb(CType(CType(59, Byte), Integer), CType(CType(123, Byte), Integer), CType(CType(179, Byte), Integer))
-        Me.chkStream1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.chkStream1.ForeColor = System.Drawing.SystemColors.HighlightText
-        Me.chkStream1.Location = New System.Drawing.Point(8, 45)
-        Me.chkStream1.Name = "chkStream1"
-        Me.chkStream1.Size = New System.Drawing.Size(61, 17)
-        Me.chkStream1.TabIndex = 22
-        Me.chkStream1.Text = "RTMP"
-        Me.chkStream1.UseVisualStyleBackColor = False
-        '
         'btnStream1Gen
         '
-        Me.btnStream1Gen.Location = New System.Drawing.Point(79, 43)
+        Me.btnStream1Gen.Location = New System.Drawing.Point(136, 43)
         Me.btnStream1Gen.Name = "btnStream1Gen"
         Me.btnStream1Gen.Size = New System.Drawing.Size(60, 21)
         Me.btnStream1Gen.TabIndex = 1
@@ -191,22 +198,34 @@ Partial Class frmMain
         '
         'stream2Group
         '
+        Me.stream2Group.Controls.Add(Me.Label3)
+        Me.stream2Group.Controls.Add(Me.txtPronouns2)
+        Me.stream2Group.Controls.Add(Me.Label4)
         Me.stream2Group.Controls.Add(Me.btnReplay2)
         Me.stream2Group.Controls.Add(Me.updStream2)
         Me.stream2Group.Controls.Add(Me.txtStream2)
-        Me.stream2Group.Controls.Add(Me.chkStream2)
         Me.stream2Group.Controls.Add(Me.trkbrStream2)
         Me.stream2Group.Controls.Add(Me.btnStream2Gen)
         Me.stream2Group.Location = New System.Drawing.Point(12, 102)
         Me.stream2Group.Name = "stream2Group"
-        Me.stream2Group.Size = New System.Drawing.Size(238, 69)
+        Me.stream2Group.Size = New System.Drawing.Size(292, 69)
         Me.stream2Group.TabIndex = 12
         Me.stream2Group.TabStop = False
         Me.stream2Group.Text = "Stream 2"
         '
+        'txtPronouns2
+        '
+        Me.txtPronouns2.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append
+        Me.txtPronouns2.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource
+        Me.txtPronouns2.Location = New System.Drawing.Point(63, 42)
+        Me.txtPronouns2.Name = "txtPronouns2"
+        Me.txtPronouns2.Size = New System.Drawing.Size(67, 20)
+        Me.txtPronouns2.TabIndex = 24
+        Me.txtPronouns2.WordWrap = False
+        '
         'btnReplay2
         '
-        Me.btnReplay2.Location = New System.Drawing.Point(143, 42)
+        Me.btnReplay2.Location = New System.Drawing.Point(200, 42)
         Me.btnReplay2.Name = "btnReplay2"
         Me.btnReplay2.Size = New System.Drawing.Size(20, 21)
         Me.btnReplay2.TabIndex = 23
@@ -215,7 +234,7 @@ Partial Class frmMain
         '
         'updStream2
         '
-        Me.updStream2.Location = New System.Drawing.Point(180, 43)
+        Me.updStream2.Location = New System.Drawing.Point(237, 43)
         Me.updStream2.Name = "updStream2"
         Me.updStream2.Size = New System.Drawing.Size(38, 20)
         Me.updStream2.TabIndex = 11
@@ -224,40 +243,27 @@ Partial Class frmMain
         '
         Me.txtStream2.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append
         Me.txtStream2.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource
-        Me.txtStream2.Location = New System.Drawing.Point(6, 16)
+        Me.txtStream2.Location = New System.Drawing.Point(63, 16)
         Me.txtStream2.Name = "txtStream2"
-        Me.txtStream2.Size = New System.Drawing.Size(150, 20)
+        Me.txtStream2.Size = New System.Drawing.Size(157, 20)
         Me.txtStream2.TabIndex = 0
-        '
-        'chkStream2
-        '
-        Me.chkStream2.AutoSize = True
-        Me.chkStream2.BackColor = System.Drawing.Color.FromArgb(CType(CType(59, Byte), Integer), CType(CType(123, Byte), Integer), CType(CType(179, Byte), Integer))
-        Me.chkStream2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.chkStream2.ForeColor = System.Drawing.SystemColors.HighlightText
-        Me.chkStream2.Location = New System.Drawing.Point(8, 44)
-        Me.chkStream2.Name = "chkStream2"
-        Me.chkStream2.Size = New System.Drawing.Size(61, 17)
-        Me.chkStream2.TabIndex = 23
-        Me.chkStream2.Text = "RTMP"
-        Me.chkStream2.UseVisualStyleBackColor = False
         '
         'trkbrStream2
         '
         Me.trkbrStream2.Enabled = False
         Me.trkbrStream2.LargeChange = 1
-        Me.trkbrStream2.Location = New System.Drawing.Point(169, 13)
+        Me.trkbrStream2.Location = New System.Drawing.Point(226, 13)
         Me.trkbrStream2.Maximum = 4
         Me.trkbrStream2.Minimum = 1
         Me.trkbrStream2.Name = "trkbrStream2"
-        Me.trkbrStream2.Size = New System.Drawing.Size(60, 42)
+        Me.trkbrStream2.Size = New System.Drawing.Size(60, 45)
         Me.trkbrStream2.TabIndex = 3
         Me.trkbrStream2.TabStop = False
         Me.trkbrStream2.Value = 4
         '
         'btnStream2Gen
         '
-        Me.btnStream2Gen.Location = New System.Drawing.Point(79, 42)
+        Me.btnStream2Gen.Location = New System.Drawing.Point(136, 42)
         Me.btnStream2Gen.Name = "btnStream2Gen"
         Me.btnStream2Gen.Size = New System.Drawing.Size(60, 21)
         Me.btnStream2Gen.TabIndex = 1
@@ -266,73 +272,72 @@ Partial Class frmMain
         '
         'stream3Group
         '
+        Me.stream3Group.Controls.Add(Me.Label5)
+        Me.stream3Group.Controls.Add(Me.txtPronouns3)
+        Me.stream3Group.Controls.Add(Me.Label6)
         Me.stream3Group.Controls.Add(Me.updStream3)
         Me.stream3Group.Controls.Add(Me.btnReplay3)
-        Me.stream3Group.Controls.Add(Me.chkStream3)
         Me.stream3Group.Controls.Add(Me.txtStream3)
         Me.stream3Group.Controls.Add(Me.trkbrStream3)
         Me.stream3Group.Controls.Add(Me.btnStream3Gen)
         Me.stream3Group.Location = New System.Drawing.Point(12, 177)
         Me.stream3Group.Name = "stream3Group"
-        Me.stream3Group.Size = New System.Drawing.Size(238, 69)
+        Me.stream3Group.Size = New System.Drawing.Size(292, 69)
         Me.stream3Group.TabIndex = 13
         Me.stream3Group.TabStop = False
         Me.stream3Group.Text = "Stream 3"
         '
+        'txtPronouns3
+        '
+        Me.txtPronouns3.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append
+        Me.txtPronouns3.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource
+        Me.txtPronouns3.Location = New System.Drawing.Point(63, 42)
+        Me.txtPronouns3.Name = "txtPronouns3"
+        Me.txtPronouns3.Size = New System.Drawing.Size(67, 20)
+        Me.txtPronouns3.TabIndex = 25
+        Me.txtPronouns3.WordWrap = False
+        '
         'updStream3
         '
-        Me.updStream3.Location = New System.Drawing.Point(180, 43)
+        Me.updStream3.Location = New System.Drawing.Point(237, 43)
         Me.updStream3.Name = "updStream3"
         Me.updStream3.Size = New System.Drawing.Size(38, 20)
         Me.updStream3.TabIndex = 12
         '
         'btnReplay3
         '
-        Me.btnReplay3.Location = New System.Drawing.Point(143, 42)
+        Me.btnReplay3.Location = New System.Drawing.Point(200, 42)
         Me.btnReplay3.Name = "btnReplay3"
         Me.btnReplay3.Size = New System.Drawing.Size(20, 21)
         Me.btnReplay3.TabIndex = 24
         Me.btnReplay3.Text = "R"
         Me.btnReplay3.UseVisualStyleBackColor = True
         '
-        'chkStream3
-        '
-        Me.chkStream3.AutoSize = True
-        Me.chkStream3.BackColor = System.Drawing.Color.FromArgb(CType(CType(59, Byte), Integer), CType(CType(123, Byte), Integer), CType(CType(179, Byte), Integer))
-        Me.chkStream3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.chkStream3.ForeColor = System.Drawing.SystemColors.HighlightText
-        Me.chkStream3.Location = New System.Drawing.Point(8, 44)
-        Me.chkStream3.Name = "chkStream3"
-        Me.chkStream3.Size = New System.Drawing.Size(61, 17)
-        Me.chkStream3.TabIndex = 24
-        Me.chkStream3.Text = "RTMP"
-        Me.chkStream3.UseVisualStyleBackColor = False
-        '
         'txtStream3
         '
         Me.txtStream3.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append
         Me.txtStream3.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource
-        Me.txtStream3.Location = New System.Drawing.Point(6, 16)
+        Me.txtStream3.Location = New System.Drawing.Point(63, 16)
         Me.txtStream3.Name = "txtStream3"
-        Me.txtStream3.Size = New System.Drawing.Size(150, 20)
+        Me.txtStream3.Size = New System.Drawing.Size(157, 20)
         Me.txtStream3.TabIndex = 0
         '
         'trkbrStream3
         '
         Me.trkbrStream3.Enabled = False
         Me.trkbrStream3.LargeChange = 1
-        Me.trkbrStream3.Location = New System.Drawing.Point(169, 13)
+        Me.trkbrStream3.Location = New System.Drawing.Point(226, 13)
         Me.trkbrStream3.Maximum = 4
         Me.trkbrStream3.Minimum = 1
         Me.trkbrStream3.Name = "trkbrStream3"
-        Me.trkbrStream3.Size = New System.Drawing.Size(60, 42)
+        Me.trkbrStream3.Size = New System.Drawing.Size(60, 45)
         Me.trkbrStream3.TabIndex = 3
         Me.trkbrStream3.TabStop = False
         Me.trkbrStream3.Value = 4
         '
         'btnStream3Gen
         '
-        Me.btnStream3Gen.Location = New System.Drawing.Point(79, 42)
+        Me.btnStream3Gen.Location = New System.Drawing.Point(136, 42)
         Me.btnStream3Gen.Name = "btnStream3Gen"
         Me.btnStream3Gen.Size = New System.Drawing.Size(60, 21)
         Me.btnStream3Gen.TabIndex = 1
@@ -341,44 +346,43 @@ Partial Class frmMain
         '
         'stream4Group
         '
+        Me.stream4Group.Controls.Add(Me.Label7)
+        Me.stream4Group.Controls.Add(Me.txtPronouns4)
+        Me.stream4Group.Controls.Add(Me.Label8)
         Me.stream4Group.Controls.Add(Me.btnReplay4)
-        Me.stream4Group.Controls.Add(Me.chkStream4)
         Me.stream4Group.Controls.Add(Me.updStream4)
         Me.stream4Group.Controls.Add(Me.txtStream4)
         Me.stream4Group.Controls.Add(Me.trkbrStream4)
         Me.stream4Group.Controls.Add(Me.btnStream4Gen)
         Me.stream4Group.Location = New System.Drawing.Point(12, 252)
         Me.stream4Group.Name = "stream4Group"
-        Me.stream4Group.Size = New System.Drawing.Size(238, 69)
+        Me.stream4Group.Size = New System.Drawing.Size(292, 69)
         Me.stream4Group.TabIndex = 14
         Me.stream4Group.TabStop = False
         Me.stream4Group.Text = "Stream 4"
         '
+        'txtPronouns4
+        '
+        Me.txtPronouns4.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append
+        Me.txtPronouns4.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource
+        Me.txtPronouns4.Location = New System.Drawing.Point(63, 42)
+        Me.txtPronouns4.Name = "txtPronouns4"
+        Me.txtPronouns4.Size = New System.Drawing.Size(67, 20)
+        Me.txtPronouns4.TabIndex = 25
+        Me.txtPronouns4.WordWrap = False
+        '
         'btnReplay4
         '
-        Me.btnReplay4.Location = New System.Drawing.Point(143, 44)
+        Me.btnReplay4.Location = New System.Drawing.Point(200, 42)
         Me.btnReplay4.Name = "btnReplay4"
         Me.btnReplay4.Size = New System.Drawing.Size(20, 21)
         Me.btnReplay4.TabIndex = 25
         Me.btnReplay4.Text = "R"
         Me.btnReplay4.UseVisualStyleBackColor = True
         '
-        'chkStream4
-        '
-        Me.chkStream4.AutoSize = True
-        Me.chkStream4.BackColor = System.Drawing.Color.FromArgb(CType(CType(59, Byte), Integer), CType(CType(123, Byte), Integer), CType(CType(179, Byte), Integer))
-        Me.chkStream4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.chkStream4.ForeColor = System.Drawing.SystemColors.HighlightText
-        Me.chkStream4.Location = New System.Drawing.Point(8, 46)
-        Me.chkStream4.Name = "chkStream4"
-        Me.chkStream4.Size = New System.Drawing.Size(61, 17)
-        Me.chkStream4.TabIndex = 25
-        Me.chkStream4.Text = "RTMP"
-        Me.chkStream4.UseVisualStyleBackColor = False
-        '
         'updStream4
         '
-        Me.updStream4.Location = New System.Drawing.Point(180, 45)
+        Me.updStream4.Location = New System.Drawing.Point(237, 43)
         Me.updStream4.Name = "updStream4"
         Me.updStream4.Size = New System.Drawing.Size(38, 20)
         Me.updStream4.TabIndex = 13
@@ -387,27 +391,27 @@ Partial Class frmMain
         '
         Me.txtStream4.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append
         Me.txtStream4.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource
-        Me.txtStream4.Location = New System.Drawing.Point(6, 18)
+        Me.txtStream4.Location = New System.Drawing.Point(63, 16)
         Me.txtStream4.Name = "txtStream4"
-        Me.txtStream4.Size = New System.Drawing.Size(150, 20)
+        Me.txtStream4.Size = New System.Drawing.Size(157, 20)
         Me.txtStream4.TabIndex = 0
         '
         'trkbrStream4
         '
         Me.trkbrStream4.Enabled = False
         Me.trkbrStream4.LargeChange = 1
-        Me.trkbrStream4.Location = New System.Drawing.Point(169, 15)
+        Me.trkbrStream4.Location = New System.Drawing.Point(226, 13)
         Me.trkbrStream4.Maximum = 4
         Me.trkbrStream4.Minimum = 1
         Me.trkbrStream4.Name = "trkbrStream4"
-        Me.trkbrStream4.Size = New System.Drawing.Size(60, 42)
+        Me.trkbrStream4.Size = New System.Drawing.Size(60, 45)
         Me.trkbrStream4.TabIndex = 3
         Me.trkbrStream4.TabStop = False
         Me.trkbrStream4.Value = 4
         '
         'btnStream4Gen
         '
-        Me.btnStream4Gen.Location = New System.Drawing.Point(79, 44)
+        Me.btnStream4Gen.Location = New System.Drawing.Point(136, 42)
         Me.btnStream4Gen.Name = "btnStream4Gen"
         Me.btnStream4Gen.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.btnStream4Gen.Size = New System.Drawing.Size(60, 21)
@@ -464,6 +468,13 @@ Partial Class frmMain
         Me.tsmiOpenAppData.Size = New System.Drawing.Size(210, 22)
         Me.tsmiOpenAppData.Text = "Open AppData folder..."
         '
+        'ConfigureToolStripMenuItem
+        '
+        Me.ConfigureToolStripMenuItem.Enabled = False
+        Me.ConfigureToolStripMenuItem.Name = "ConfigureToolStripMenuItem"
+        Me.ConfigureToolStripMenuItem.Size = New System.Drawing.Size(210, 22)
+        Me.ConfigureToolStripMenuItem.Text = "Configure..."
+        '
         'tsmiCondorRaces
         '
         Me.tsmiCondorRaces.AutoToolTip = True
@@ -502,10 +513,10 @@ Partial Class frmMain
         'StatusStrip1
         '
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.statusLabel1, Me.ToolStripStatusLabel1})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 331)
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 320)
         Me.StatusStrip1.Name = "StatusStrip1"
         Me.StatusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
-        Me.StatusStrip1.Size = New System.Drawing.Size(373, 22)
+        Me.StatusStrip1.Size = New System.Drawing.Size(418, 22)
         Me.StatusStrip1.TabIndex = 21
         '
         'statusLabel1
@@ -520,18 +531,83 @@ Partial Class frmMain
         Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(0, 17)
         Me.ToolStripStatusLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
-        'ConfigureToolStripMenuItem
+        'Label1
         '
-        Me.ConfigureToolStripMenuItem.Enabled = False
-        Me.ConfigureToolStripMenuItem.Name = "ConfigureToolStripMenuItem"
-        Me.ConfigureToolStripMenuItem.Size = New System.Drawing.Size(210, 22)
-        Me.ConfigureToolStripMenuItem.Text = "Configure..."
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(6, 19)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(53, 13)
+        Me.Label1.TabIndex = 22
+        Me.Label1.Text = "username"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(6, 45)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(51, 13)
+        Me.Label2.TabIndex = 24
+        Me.Label2.Text = "pronouns"
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(6, 45)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(51, 13)
+        Me.Label3.TabIndex = 26
+        Me.Label3.Text = "pronouns"
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(6, 19)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(53, 13)
+        Me.Label4.TabIndex = 25
+        Me.Label4.Text = "username"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(6, 45)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(51, 13)
+        Me.Label5.TabIndex = 28
+        Me.Label5.Text = "pronouns"
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(6, 19)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(53, 13)
+        Me.Label6.TabIndex = 27
+        Me.Label6.Text = "username"
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(6, 45)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(51, 13)
+        Me.Label7.TabIndex = 30
+        Me.Label7.Text = "pronouns"
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(6, 19)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(53, 13)
+        Me.Label8.TabIndex = 29
+        Me.Label8.Text = "username"
         '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(373, 353)
+        Me.ClientSize = New System.Drawing.Size(418, 342)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.ProgressBar1)
         Me.Controls.Add(Me.menuStrip1)
@@ -604,10 +680,6 @@ Partial Class frmMain
     Friend WithEvents InstallMacsgHandlerToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents StatusStrip1 As StatusStrip
     Friend WithEvents statusLabel1 As ToolStripStatusLabel
-    Friend WithEvents chkStream1 As CheckBox
-    Friend WithEvents chkStream2 As CheckBox
-    Friend WithEvents chkStream3 As CheckBox
-    Friend WithEvents chkStream4 As CheckBox
     Friend WithEvents tsmiCondorRaces As ToolStripMenuItem
     Friend WithEvents btnReplay1 As Button
     Friend WithEvents btnReplay2 As Button
@@ -619,4 +691,16 @@ Partial Class frmMain
     Friend WithEvents tsmiResetStreamlinkPath As ToolStripMenuItem
     Friend WithEvents ToolStripStatusLabel1 As ToolStripStatusLabel
     Friend WithEvents ConfigureToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents txtPronouns1 As TextBox
+    Friend WithEvents txtPronouns2 As TextBox
+    Friend WithEvents txtPronouns3 As TextBox
+    Friend WithEvents txtPronouns4 As TextBox
+    Friend WithEvents Label1 As Label
+    Friend WithEvents Label2 As Label
+    Friend WithEvents Label3 As Label
+    Friend WithEvents Label4 As Label
+    Friend WithEvents Label5 As Label
+    Friend WithEvents Label6 As Label
+    Friend WithEvents Label7 As Label
+    Friend WithEvents Label8 As Label
 End Class
