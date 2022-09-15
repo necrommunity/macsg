@@ -276,9 +276,15 @@ Public Class frmMain
     Public Sub writeNameAndPronounsToFile(streamer As String, pronouns As String, file As String)
 
         Dim strPathtoName As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\MacSG\streamer" & file & ".txt"
+
+
         Dim swstreamer As System.IO.StreamWriter
         swstreamer = My.Computer.FileSystem.OpenTextFileWriter(strPathtoName, False)
-        swstreamer.WriteLine(streamer + " (" + pronouns.ToLower + ")")
+        If Not String.IsNullOrEmpty(pronouns) Then
+            swstreamer.WriteLine(streamer + " (" + pronouns.ToLower + ")")
+        Else
+            swstreamer.WriteLine(streamer)
+        End If
         swstreamer.Close()
 
     End Sub
@@ -390,13 +396,17 @@ Public Class frmMain
 
                 genStream(streamer:=txtArray(ctrlIndex - 1).Text.ToLower, quality:=strQuality, source:=strSource, windowTitle:=strWindowTitle, configFile:=ctrlIndex.ToString(), racerNumber:=vlcWindowTitle)
                 writeNameToAutocomplete(streamer:=txtArray(ctrlIndex - 1).Text.ToLower)
+                Dim pronouns As String = pronounsArray(ctrlIndex - 1).Text
 
-                If Not String.IsNullOrEmpty(pronounsArray(ctrlIndex - 1).Text) Then
-                    writePronounsToFile(pronouns:=pronounsArray(ctrlIndex - 1).Text, file:=ctrlIndex.ToString())
+                If Not String.IsNullOrEmpty(pronouns) Then
+                    writePronounsToFile(pronouns:=pronouns, file:=ctrlIndex.ToString())
+                Else
+                    writePronounsToFile(pronouns:="", file:=ctrlIndex.ToString())
                 End If
 
+
                 If My.Settings.boolCombinedStreamerPronounFile Then
-                    writeNameAndPronounsToFile(streamer:=txtArray(ctrlIndex - 1).Text, pronouns:=pronounsArray(ctrlIndex - 1).Text, file:=ctrlIndex.ToString())
+                    writeNameAndPronounsToFile(streamer:=txtArray(ctrlIndex - 1).Text, pronouns:=pronouns, file:=ctrlIndex.ToString())
                 Else
                     writeNameToFile(streamer:=txtArray(ctrlIndex - 1).Text, file:=ctrlIndex.ToString())
                 End If
