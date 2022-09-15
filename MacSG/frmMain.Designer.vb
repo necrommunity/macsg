@@ -27,6 +27,8 @@ Partial Class frmMain
         Me.btnKillVLC = New System.Windows.Forms.Button()
         Me.btnMoveResize = New System.Windows.Forms.Button()
         Me.stream1Group = New System.Windows.Forms.GroupBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.txtPronouns1 = New System.Windows.Forms.TextBox()
         Me.btnReplay1 = New System.Windows.Forms.Button()
         Me.updStream1 = New System.Windows.Forms.NumericUpDown()
@@ -34,21 +36,27 @@ Partial Class frmMain
         Me.txtStream1 = New System.Windows.Forms.TextBox()
         Me.btnStream1Gen = New System.Windows.Forms.Button()
         Me.stream2Group = New System.Windows.Forms.GroupBox()
+        Me.Label3 = New System.Windows.Forms.Label()
         Me.txtPronouns2 = New System.Windows.Forms.TextBox()
+        Me.Label4 = New System.Windows.Forms.Label()
         Me.btnReplay2 = New System.Windows.Forms.Button()
         Me.updStream2 = New System.Windows.Forms.NumericUpDown()
         Me.txtStream2 = New System.Windows.Forms.TextBox()
         Me.trkbrStream2 = New System.Windows.Forms.TrackBar()
         Me.btnStream2Gen = New System.Windows.Forms.Button()
         Me.stream3Group = New System.Windows.Forms.GroupBox()
+        Me.Label5 = New System.Windows.Forms.Label()
         Me.txtPronouns3 = New System.Windows.Forms.TextBox()
+        Me.Label6 = New System.Windows.Forms.Label()
         Me.updStream3 = New System.Windows.Forms.NumericUpDown()
         Me.btnReplay3 = New System.Windows.Forms.Button()
         Me.txtStream3 = New System.Windows.Forms.TextBox()
         Me.trkbrStream3 = New System.Windows.Forms.TrackBar()
         Me.btnStream3Gen = New System.Windows.Forms.Button()
         Me.stream4Group = New System.Windows.Forms.GroupBox()
+        Me.Label7 = New System.Windows.Forms.Label()
         Me.txtPronouns4 = New System.Windows.Forms.TextBox()
+        Me.Label8 = New System.Windows.Forms.Label()
         Me.btnReplay4 = New System.Windows.Forms.Button()
         Me.updStream4 = New System.Windows.Forms.NumericUpDown()
         Me.txtStream4 = New System.Windows.Forms.TextBox()
@@ -61,8 +69,8 @@ Partial Class frmMain
         Me.tsmiChangeVLCWindowSize = New System.Windows.Forms.ToolStripMenuItem()
         Me.InstallMacsgHandlerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmiOpenAppData = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ConfigureToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.tsmiCondorRaces = New System.Windows.Forms.ToolStripMenuItem()
+        Me.tsmiCombineNamesPronouns = New System.Windows.Forms.ToolStripMenuItem()
+        Me.tsmiCondorSchedule = New System.Windows.Forms.ToolStripMenuItem()
         Me.StreamlinkToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmiEditStreamlinkConfig = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmiResetStreamlinkPath = New System.Windows.Forms.ToolStripMenuItem()
@@ -70,14 +78,6 @@ Partial Class frmMain
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.statusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.Label8 = New System.Windows.Forms.Label()
         Me.stream1Group.SuspendLayout()
         CType(Me.updStream1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.trkbrStream1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -138,6 +138,24 @@ Partial Class frmMain
         Me.stream1Group.TabIndex = 11
         Me.stream1Group.TabStop = False
         Me.stream1Group.Text = "Stream 1"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(6, 45)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(52, 13)
+        Me.Label2.TabIndex = 24
+        Me.Label2.Text = "Pronouns"
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(6, 19)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(55, 13)
+        Me.Label1.TabIndex = 22
+        Me.Label1.Text = "Username"
         '
         'txtPronouns1
         '
@@ -213,6 +231,15 @@ Partial Class frmMain
         Me.stream2Group.TabStop = False
         Me.stream2Group.Text = "Stream 2"
         '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(6, 45)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(52, 13)
+        Me.Label3.TabIndex = 26
+        Me.Label3.Text = "Pronouns"
+        '
         'txtPronouns2
         '
         Me.txtPronouns2.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append
@@ -222,6 +249,15 @@ Partial Class frmMain
         Me.txtPronouns2.Size = New System.Drawing.Size(67, 20)
         Me.txtPronouns2.TabIndex = 24
         Me.txtPronouns2.WordWrap = False
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(6, 19)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(55, 13)
+        Me.Label4.TabIndex = 25
+        Me.Label4.Text = "Username"
         '
         'btnReplay2
         '
@@ -287,6 +323,15 @@ Partial Class frmMain
         Me.stream3Group.TabStop = False
         Me.stream3Group.Text = "Stream 3"
         '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(6, 45)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(52, 13)
+        Me.Label5.TabIndex = 28
+        Me.Label5.Text = "Pronouns"
+        '
         'txtPronouns3
         '
         Me.txtPronouns3.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append
@@ -296,6 +341,15 @@ Partial Class frmMain
         Me.txtPronouns3.Size = New System.Drawing.Size(67, 20)
         Me.txtPronouns3.TabIndex = 25
         Me.txtPronouns3.WordWrap = False
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(6, 19)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(55, 13)
+        Me.Label6.TabIndex = 27
+        Me.Label6.Text = "Username"
         '
         'updStream3
         '
@@ -361,6 +415,15 @@ Partial Class frmMain
         Me.stream4Group.TabStop = False
         Me.stream4Group.Text = "Stream 4"
         '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(6, 45)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(52, 13)
+        Me.Label7.TabIndex = 30
+        Me.Label7.Text = "Pronouns"
+        '
         'txtPronouns4
         '
         Me.txtPronouns4.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append
@@ -370,6 +433,15 @@ Partial Class frmMain
         Me.txtPronouns4.Size = New System.Drawing.Size(67, 20)
         Me.txtPronouns4.TabIndex = 25
         Me.txtPronouns4.WordWrap = False
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(6, 19)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(55, 13)
+        Me.Label8.TabIndex = 29
+        Me.Label8.Text = "Username"
         '
         'btnReplay4
         '
@@ -421,7 +493,7 @@ Partial Class frmMain
         '
         'menuStrip1
         '
-        Me.menuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.fileToolStripMenuItem1, Me.tsmiCondorRaces, Me.StreamlinkToolStripMenuItem})
+        Me.menuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.fileToolStripMenuItem1, Me.tsmiCondorSchedule, Me.StreamlinkToolStripMenuItem})
         Me.menuStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow
         Me.menuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.menuStrip1.MaximumSize = New System.Drawing.Size(470, 24)
@@ -433,7 +505,7 @@ Partial Class frmMain
         '
         'fileToolStripMenuItem1
         '
-        Me.fileToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmiSelectAutocompleteFile, Me.tsmiEditAutocompleteFile, Me.tsmiChangeVLCWindowSize, Me.InstallMacsgHandlerToolStripMenuItem, Me.tsmiOpenAppData, Me.ConfigureToolStripMenuItem})
+        Me.fileToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmiSelectAutocompleteFile, Me.tsmiEditAutocompleteFile, Me.tsmiChangeVLCWindowSize, Me.InstallMacsgHandlerToolStripMenuItem, Me.tsmiOpenAppData, Me.tsmiCombineNamesPronouns})
         Me.fileToolStripMenuItem1.Name = "fileToolStripMenuItem1"
         Me.fileToolStripMenuItem1.Size = New System.Drawing.Size(37, 20)
         Me.fileToolStripMenuItem1.Text = "File"
@@ -441,46 +513,46 @@ Partial Class frmMain
         'tsmiSelectAutocompleteFile
         '
         Me.tsmiSelectAutocompleteFile.Name = "tsmiSelectAutocompleteFile"
-        Me.tsmiSelectAutocompleteFile.Size = New System.Drawing.Size(210, 22)
+        Me.tsmiSelectAutocompleteFile.Size = New System.Drawing.Size(240, 22)
         Me.tsmiSelectAutocompleteFile.Text = "Select autocomplete file..."
         '
         'tsmiEditAutocompleteFile
         '
         Me.tsmiEditAutocompleteFile.Name = "tsmiEditAutocompleteFile"
-        Me.tsmiEditAutocompleteFile.Size = New System.Drawing.Size(210, 22)
+        Me.tsmiEditAutocompleteFile.Size = New System.Drawing.Size(240, 22)
         Me.tsmiEditAutocompleteFile.Text = "Edit autocomplete file..."
         '
         'tsmiChangeVLCWindowSize
         '
         Me.tsmiChangeVLCWindowSize.Name = "tsmiChangeVLCWindowSize"
-        Me.tsmiChangeVLCWindowSize.Size = New System.Drawing.Size(210, 22)
+        Me.tsmiChangeVLCWindowSize.Size = New System.Drawing.Size(240, 22)
         Me.tsmiChangeVLCWindowSize.Text = "Change window size..."
         '
         'InstallMacsgHandlerToolStripMenuItem
         '
         Me.InstallMacsgHandlerToolStripMenuItem.Name = "InstallMacsgHandlerToolStripMenuItem"
-        Me.InstallMacsgHandlerToolStripMenuItem.Size = New System.Drawing.Size(210, 22)
+        Me.InstallMacsgHandlerToolStripMenuItem.Size = New System.Drawing.Size(240, 22)
         Me.InstallMacsgHandlerToolStripMenuItem.Text = "Install macsg: protocol"
         '
         'tsmiOpenAppData
         '
         Me.tsmiOpenAppData.Name = "tsmiOpenAppData"
-        Me.tsmiOpenAppData.Size = New System.Drawing.Size(210, 22)
+        Me.tsmiOpenAppData.Size = New System.Drawing.Size(240, 22)
         Me.tsmiOpenAppData.Text = "Open AppData folder..."
         '
-        'ConfigureToolStripMenuItem
+        'tsmiCombineNamesPronouns
         '
-        Me.ConfigureToolStripMenuItem.Enabled = False
-        Me.ConfigureToolStripMenuItem.Name = "ConfigureToolStripMenuItem"
-        Me.ConfigureToolStripMenuItem.Size = New System.Drawing.Size(210, 22)
-        Me.ConfigureToolStripMenuItem.Text = "Configure..."
+        Me.tsmiCombineNamesPronouns.CheckOnClick = True
+        Me.tsmiCombineNamesPronouns.Name = "tsmiCombineNamesPronouns"
+        Me.tsmiCombineNamesPronouns.Size = New System.Drawing.Size(240, 22)
+        Me.tsmiCombineNamesPronouns.Text = "Combine Names and Pronouns"
         '
-        'tsmiCondorRaces
+        'tsmiCondorSchedule
         '
-        Me.tsmiCondorRaces.AutoToolTip = True
-        Me.tsmiCondorRaces.Name = "tsmiCondorRaces"
-        Me.tsmiCondorRaces.Size = New System.Drawing.Size(100, 20)
-        Me.tsmiCondorRaces.Text = "CoNDOR Races"
+        Me.tsmiCondorSchedule.AutoToolTip = True
+        Me.tsmiCondorSchedule.Name = "tsmiCondorSchedule"
+        Me.tsmiCondorSchedule.Size = New System.Drawing.Size(118, 20)
+        Me.tsmiCondorSchedule.Text = "CoNDOR Schedule"
         '
         'StreamlinkToolStripMenuItem
         '
@@ -531,78 +603,6 @@ Partial Class frmMain
         Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(0, 17)
         Me.ToolStripStatusLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(6, 19)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(53, 13)
-        Me.Label1.TabIndex = 22
-        Me.Label1.Text = "username"
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(6, 45)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(51, 13)
-        Me.Label2.TabIndex = 24
-        Me.Label2.Text = "pronouns"
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(6, 45)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(51, 13)
-        Me.Label3.TabIndex = 26
-        Me.Label3.Text = "pronouns"
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(6, 19)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(53, 13)
-        Me.Label4.TabIndex = 25
-        Me.Label4.Text = "username"
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(6, 45)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(51, 13)
-        Me.Label5.TabIndex = 28
-        Me.Label5.Text = "pronouns"
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(6, 19)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(53, 13)
-        Me.Label6.TabIndex = 27
-        Me.Label6.Text = "username"
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(6, 45)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(51, 13)
-        Me.Label7.TabIndex = 30
-        Me.Label7.Text = "pronouns"
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(6, 19)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(53, 13)
-        Me.Label8.TabIndex = 29
-        Me.Label8.Text = "username"
-        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -622,6 +622,7 @@ Partial Class frmMain
         Me.MaximumSize = New System.Drawing.Size(600, 381)
         Me.MinimumSize = New System.Drawing.Size(381, 381)
         Me.Name = "frmMain"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "MacSG"
         Me.stream1Group.ResumeLayout(False)
         Me.stream1Group.PerformLayout()
@@ -680,7 +681,7 @@ Partial Class frmMain
     Friend WithEvents InstallMacsgHandlerToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents StatusStrip1 As StatusStrip
     Friend WithEvents statusLabel1 As ToolStripStatusLabel
-    Friend WithEvents tsmiCondorRaces As ToolStripMenuItem
+    Friend WithEvents tsmiCondorSchedule As ToolStripMenuItem
     Friend WithEvents btnReplay1 As Button
     Friend WithEvents btnReplay2 As Button
     Friend WithEvents btnReplay3 As Button
@@ -690,7 +691,6 @@ Partial Class frmMain
     Friend WithEvents tsmiEditStreamlinkConfig As ToolStripMenuItem
     Friend WithEvents tsmiResetStreamlinkPath As ToolStripMenuItem
     Friend WithEvents ToolStripStatusLabel1 As ToolStripStatusLabel
-    Friend WithEvents ConfigureToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents txtPronouns1 As TextBox
     Friend WithEvents txtPronouns2 As TextBox
     Friend WithEvents txtPronouns3 As TextBox
@@ -703,4 +703,5 @@ Partial Class frmMain
     Friend WithEvents Label6 As Label
     Friend WithEvents Label7 As Label
     Friend WithEvents Label8 As Label
+    Friend WithEvents tsmiCombineNamesPronouns As ToolStripMenuItem
 End Class

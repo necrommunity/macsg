@@ -40,8 +40,8 @@ Public Class frmMain
             My.Settings.strPathToStreamerFile = appdataFolder + "\streamerlist.conf"
         End If
 
-        Dim x As Integer = Screen.PrimaryScreen.WorkingArea.Width - Height
-        Dim y As Integer = Screen.PrimaryScreen.WorkingArea.Height - Width
+        Dim x As Integer = Screen.PrimaryScreen.WorkingArea.Width - Me.Width
+        Dim y As Integer = Screen.PrimaryScreen.WorkingArea.Height - Me.Height
         Location = New Point(x, y)
 
         setupLivestreamerCheck()
@@ -56,6 +56,8 @@ Public Class frmMain
         End If
 
         ToolStripStatusLabel1.Text = "Version " + [GetType].Assembly.GetName.Version.ToString
+
+        tsmiCombineNamesPronouns.Checked = My.Settings.boolCombinedStreamerPronounFile
 
     End Sub
 
@@ -236,6 +238,11 @@ Public Class frmMain
     End Sub
 
 
+    'Combined streamer name and pronouns file
+    Public Sub tsmiFileConfigure_Click(sender As Object, e As EventArgs) Handles tsmiCombineNamesPronouns.Click
+        My.Settings.boolCombinedStreamerPronounFile = tsmiCombineNamesPronouns.Checked
+    End Sub
+
 
     'Unattached subs
     Public Sub genStream(streamer As String, quality As String, source As String, windowTitle As String, configFile As String, racerNumber As String)
@@ -265,6 +272,17 @@ Public Class frmMain
         swstreamer.Close()
 
     End Sub
+
+    Public Sub writeNameAndPronounsToFile(streamer As String, pronouns As String, file As String)
+
+        Dim strPathtoName As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\MacSG\streamer" & file & ".txt"
+        Dim swstreamer As System.IO.StreamWriter
+        swstreamer = My.Computer.FileSystem.OpenTextFileWriter(strPathtoName, False)
+        swstreamer.WriteLine(streamer + " (" + pronouns.ToLower + ")")
+        swstreamer.Close()
+
+    End Sub
+
     Public Sub writeNameToAutocomplete(streamer As String)
 
         Dim streamers = File.ReadLines(My.Settings.strPathToStreamerFile)
@@ -371,12 +389,20 @@ Public Class frmMain
                 strSource = "streamlink "
 
                 genStream(streamer:=txtArray(ctrlIndex - 1).Text.ToLower, quality:=strQuality, source:=strSource, windowTitle:=strWindowTitle, configFile:=ctrlIndex.ToString(), racerNumber:=vlcWindowTitle)
-                writeNameToFile(streamer:=txtArray(ctrlIndex - 1).Text, file:=ctrlIndex.ToString())
-                writePronounsToFile(pronouns:=pronounsArray(ctrlIndex - 1).Text, file:=ctrlIndex.ToString())
                 writeNameToAutocomplete(streamer:=txtArray(ctrlIndex - 1).Text.ToLower)
+
+                If Not String.IsNullOrEmpty(pronounsArray(ctrlIndex - 1).Text) Then
+                    writePronounsToFile(pronouns:=pronounsArray(ctrlIndex - 1).Text, file:=ctrlIndex.ToString())
+                End If
+
+                If My.Settings.boolCombinedStreamerPronounFile Then
+                    writeNameAndPronounsToFile(streamer:=txtArray(ctrlIndex - 1).Text, pronouns:=pronounsArray(ctrlIndex - 1).Text, file:=ctrlIndex.ToString())
+                Else
+                    writeNameToFile(streamer:=txtArray(ctrlIndex - 1).Text, file:=ctrlIndex.ToString())
+                End If
+
             End If
         End If
-
     End Sub
 
     Private Sub InstallMacsgHandlerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles InstallMacsgHandlerToolStripMenuItem.Click
@@ -439,47 +465,8 @@ Public Class frmMain
 
     End Function
 
-    Private Sub tsmiSeason5_Click(sender As Object, e As EventArgs) Handles tsmiCondorRaces.Click
-        Process.Start("https://condor.host/schedule")
-
-        'Dim frmSchedule As New frmSchedule()
-        'frmSchedule.Show()
-    End Sub
-
-    Private Sub btnReplay1_Click(sender As Object, e As EventArgs) Handles btnReplay1.Click
-        Dim strQuality = "/live best "
-        Dim strSource = "streamlink rtmp://condor.live/"
-        Dim strWindowTitle = "REPLAY_First"
-        Dim configFile = "r1"
-        Dim racerNumber = "First"
-        genStream(streamer:=txtStream1.Text.ToLower, quality:=strQuality, source:=strSource, windowTitle:=strWindowTitle, configFile:=configFile, racerNumber:=racerNumber)
-    End Sub
-
-    Private Sub btnReplay2_Click(sender As Object, e As EventArgs) Handles btnReplay2.Click
-        Dim strQuality = "/live best "
-        Dim strSource = "streamlink rtmp://condor.live/"
-        Dim strWindowTitle = "REPLAY_Second"
-        Dim configFile = "r2"
-        Dim racerNumber = "Second"
-        genStream(streamer:=txtStream2.Text.ToLower, quality:=strQuality, source:=strSource, windowTitle:=strWindowTitle, configFile:=configFile, racerNumber:=racerNumber)
-    End Sub
-
-    Private Sub btnReplay3_Click(sender As Object, e As EventArgs) Handles btnReplay3.Click
-        Dim strQuality = "/live best "
-        Dim strSource = "streamlink rtmp://condor.live/"
-        Dim strWindowTitle = "REPLAY_Third"
-        Dim configFile = "r3"
-        Dim racerNumber = "Third"
-        genStream(streamer:=txtStream3.Text.ToLower, quality:=strQuality, source:=strSource, windowTitle:=strWindowTitle, configFile:=configFile, racerNumber:=racerNumber)
-    End Sub
-
-    Private Sub btnReplay4_Click(sender As Object, e As EventArgs) Handles btnReplay4.Click
-        Dim strQuality = "/live best "
-        Dim strSource = "streamlink rtmp://condor.live/"
-        Dim strWindowTitle = "REPLAY_Fourth"
-        Dim configFile = "r4"
-        Dim racerNumber = "Fourth"
-        genStream(streamer:=txtStream4.Text.ToLower, quality:=strQuality, source:=strSource, windowTitle:=strWindowTitle, configFile:=configFile, racerNumber:=racerNumber)
+    Private Sub tsmiCondorSchedule_Click(sender As Object, e As EventArgs) Handles tsmiCondorSchedule.Click
+        Process.Start("https://condor.live/schedule")
     End Sub
 
     Private Sub tsmiOpenAppData_Click(sender As Object, e As EventArgs) Handles tsmiOpenAppData.Click
