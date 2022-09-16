@@ -68,11 +68,13 @@ Public Class frmMain
         btnArray = {btnStream1Gen, btnStream2Gen, btnStream3Gen, btnStream4Gen}
     End Sub
 
-    'Check that livestreamer is installed in the Program Files (x86) folder
+    'Check that livestreamer is installed in the Program Files (x86) or Program Files folder
     Public Sub setupLivestreamerCheck()
 
         If File.Exists("C:\Program Files (x86)\Streamlink\bin\streamlink.exe") Then
             My.Settings.streamlinkDir = "C:\Program Files (x86)\Streamlink\bin\streamlink.exe"
+        ElseIf File.Exists("C:\Program Files\Streamlink\bin\streamlink.exe") Then
+            My.Settings.streamlinkDir = "C:\Program Files\Streamlink\bin\streamlink.exe"
         End If
 
         If Not File.Exists(My.Settings.streamlinkDir) Then
@@ -86,7 +88,7 @@ Public Class frmMain
                 AddHandler client.DownloadProgressChanged, AddressOf ShowDownloadProgress
                 AddHandler client.DownloadFileCompleted, AddressOf DownloadFileCompleted
 
-                client.DownloadFileAsync(New Uri("https://github.com/streamlink/streamlink/releases/download/1.1.1/streamlink-1.1.1.exe"), Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\MacSG\streamlink-1.1.1.exe")
+                client.DownloadFileAsync(New Uri("https://github.com/streamlink/windows-builds/releases/download/4.3.0-1/streamlink-4.3.0-1-py310-x86.exe"), Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\MacSG\streamlink-1.1.1.exe")
             ElseIf boolStreamlink = DialogResult.No Then
                 Dim fd As OpenFileDialog = New OpenFileDialog()
 
@@ -146,8 +148,8 @@ Public Class frmMain
     Private Sub moveResize_Click(sender As Object, e As EventArgs) Handles btnMoveResize.Click
 
         If My.Settings.strWindowSize = "" Then
-            My.Settings.strWindowSize = InputBox("You must define a window size for VLC - the default (for 1920x1080 ) is already entered below.  Enter the resolution as ""width height"".", "Define window size...", "877 518")
-            If My.Settings.strWindowSize = "" Then My.Settings.strWindowSize = "877 518"
+            My.Settings.strWindowSize = InputBox("You must define a window size for VLC - the default (for 1920x1080) is already entered below.  Enter the resolution as ""width height"".", "Define window size...", "882 520")
+            If My.Settings.strWindowSize = "" Then My.Settings.strWindowSize = "882 520"
         End If
 
         Dim strXPos = My.Settings.strWindowSize.Split(" "c)(0)
@@ -259,7 +261,7 @@ Public Class frmMain
         Dim strPathtoName As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\MacSG\streamer" & file & ".txt"
         Dim swstreamer As System.IO.StreamWriter
         swstreamer = My.Computer.FileSystem.OpenTextFileWriter(strPathtoName, False)
-        swstreamer.WriteLine(streamer.ToLower)
+        swstreamer.WriteLine(streamer)
         swstreamer.Close()
 
     End Sub
@@ -268,7 +270,7 @@ Public Class frmMain
         Dim strPathtoName As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\MacSG\streamer-pronouns" & file & ".txt"
         Dim swstreamer As System.IO.StreamWriter
         swstreamer = My.Computer.FileSystem.OpenTextFileWriter(strPathtoName, False)
-        swstreamer.WriteLine(pronouns.ToLower)
+        swstreamer.WriteLine(pronouns)
         swstreamer.Close()
 
     End Sub
@@ -281,7 +283,7 @@ Public Class frmMain
         Dim swstreamer As System.IO.StreamWriter
         swstreamer = My.Computer.FileSystem.OpenTextFileWriter(strPathtoName, False)
         If Not String.IsNullOrEmpty(pronouns) Then
-            swstreamer.WriteLine(streamer + " (" + pronouns.ToLower + ")")
+            swstreamer.WriteLine(streamer + " (" + pronouns + ")")
         Else
             swstreamer.WriteLine(streamer)
         End If
@@ -324,29 +326,26 @@ Public Class frmMain
             Dim splitArgs As String() = args(0).Split(New Char() {","c})
             splitArgs(0) = splitArgs(0).Replace("macsg:", "")
 
+            MsgBox(splitArgs(0).ToString)
+            MsgBox(splitArgs(1).ToString)
+
             'DO NOT SUBMIT rework this completely?
-            If splitArgs.Length > 5 Then
-                ReDim Preserve splitArgs(4)
+            If splitArgs.Length > 4 Then
+                ReDim Preserve splitArgs(3)
             End If
 
-            If splitArgs(0) <> "twitch" Then
-                MsgBox("Invalid command line arguments, exiting...")
-                Application.Exit()
-                Exit Sub
-            End If
-
-            For i = 1 To (splitArgs.Length - 1)
+            For i = 0 To (splitArgs.Length - 1)
                 If splitArgs(i) <> Nothing Then
-                    Dim splitRacer As String() = splitArgs(i).ToLower.Split(New Char() {"|"c})
+                    Dim splitRacer As String() = splitArgs(i).Split(New Char() {";"c})
                     If splitRacer.Length = 2 Then
-                        pronounsArray(i - 1).Text = splitRacer(1).ToLower
+                        pronounsArray(i).Text = splitRacer(1)
                     ElseIf splitRacer.Length <> 1 Then
                         MsgBox("Invalid command line arguments, exiting...")
                         Application.Exit()
                         Exit Sub
                     End If
-                    txtArray(i - 1).Text = splitRacer(0).ToLower
-                    btnArray(i - 1).PerformClick()
+                    txtArray(i).Text = splitRacer(0)
+                    btnArray(i).PerformClick()
                 End If
             Next
         End If
@@ -494,5 +493,29 @@ Public Class frmMain
             My.Settings.streamlinkDir = "Not set"
             setupLivestreamerCheck()
         End If
+    End Sub
+
+    Private Sub CheckForUpdatesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CheckForUpdatesToolStripMenuItem.Click
+        Dim githubApiUrl As String = "https://api.github.com/repos/necrommunity/macsg/releases/latest"
+        Dim githubHeaders As String = "Accept:  application/vnd.github+json"
+        Dim webClient As WebClient = New WebClient()
+        webClient.Headers.Add(githubHeaders)
+
+        Dim githubResponse As String
+
+        Try
+            githubResponse = webClient.DownloadString(New Uri(githubApiUrl))
+        Catch ex As WebException
+            If ex.Status = WebExceptionStatus.ProtocolError AndAlso ex.Response IsNot Nothing Then
+                Dim response = DirectCast(ex.Response, HttpWebResponse)
+                If response.StatusCode = HttpStatusCode.NotFound Then
+                    MsgBox("Error checking for latest MacSG releases")
+                End If
+            End If
+            Throw
+        End Try
+
+        MsgBox(githubResponse)
+
     End Sub
 End Class

@@ -30,7 +30,6 @@ Partial Class frmMain
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txtPronouns1 = New System.Windows.Forms.TextBox()
-        Me.btnReplay1 = New System.Windows.Forms.Button()
         Me.updStream1 = New System.Windows.Forms.NumericUpDown()
         Me.trkbrStream1 = New System.Windows.Forms.TrackBar()
         Me.txtStream1 = New System.Windows.Forms.TextBox()
@@ -39,7 +38,6 @@ Partial Class frmMain
         Me.Label3 = New System.Windows.Forms.Label()
         Me.txtPronouns2 = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.btnReplay2 = New System.Windows.Forms.Button()
         Me.updStream2 = New System.Windows.Forms.NumericUpDown()
         Me.txtStream2 = New System.Windows.Forms.TextBox()
         Me.trkbrStream2 = New System.Windows.Forms.TrackBar()
@@ -49,7 +47,6 @@ Partial Class frmMain
         Me.txtPronouns3 = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.updStream3 = New System.Windows.Forms.NumericUpDown()
-        Me.btnReplay3 = New System.Windows.Forms.Button()
         Me.txtStream3 = New System.Windows.Forms.TextBox()
         Me.trkbrStream3 = New System.Windows.Forms.TrackBar()
         Me.btnStream3Gen = New System.Windows.Forms.Button()
@@ -57,7 +54,6 @@ Partial Class frmMain
         Me.Label7 = New System.Windows.Forms.Label()
         Me.txtPronouns4 = New System.Windows.Forms.TextBox()
         Me.Label8 = New System.Windows.Forms.Label()
-        Me.btnReplay4 = New System.Windows.Forms.Button()
         Me.updStream4 = New System.Windows.Forms.NumericUpDown()
         Me.txtStream4 = New System.Windows.Forms.TextBox()
         Me.trkbrStream4 = New System.Windows.Forms.TrackBar()
@@ -70,6 +66,7 @@ Partial Class frmMain
         Me.InstallMacsgHandlerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmiOpenAppData = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmiCombineNamesPronouns = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CheckForUpdatesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmiCondorSchedule = New System.Windows.Forms.ToolStripMenuItem()
         Me.StreamlinkToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmiEditStreamlinkConfig = New System.Windows.Forms.ToolStripMenuItem()
@@ -126,7 +123,6 @@ Partial Class frmMain
         Me.stream1Group.Controls.Add(Me.Label2)
         Me.stream1Group.Controls.Add(Me.Label1)
         Me.stream1Group.Controls.Add(Me.txtPronouns1)
-        Me.stream1Group.Controls.Add(Me.btnReplay1)
         Me.stream1Group.Controls.Add(Me.updStream1)
         Me.stream1Group.Controls.Add(Me.trkbrStream1)
         Me.stream1Group.Controls.Add(Me.txtStream1)
@@ -167,15 +163,6 @@ Partial Class frmMain
         Me.txtPronouns1.TabIndex = 23
         Me.txtPronouns1.WordWrap = False
         '
-        'btnReplay1
-        '
-        Me.btnReplay1.Location = New System.Drawing.Point(200, 43)
-        Me.btnReplay1.Name = "btnReplay1"
-        Me.btnReplay1.Size = New System.Drawing.Size(20, 21)
-        Me.btnReplay1.TabIndex = 22
-        Me.btnReplay1.Text = "R"
-        Me.btnReplay1.UseVisualStyleBackColor = True
-        '
         'updStream1
         '
         Me.updStream1.Location = New System.Drawing.Point(236, 44)
@@ -207,9 +194,9 @@ Partial Class frmMain
         '
         'btnStream1Gen
         '
-        Me.btnStream1Gen.Location = New System.Drawing.Point(136, 43)
+        Me.btnStream1Gen.Location = New System.Drawing.Point(136, 42)
         Me.btnStream1Gen.Name = "btnStream1Gen"
-        Me.btnStream1Gen.Size = New System.Drawing.Size(60, 21)
+        Me.btnStream1Gen.Size = New System.Drawing.Size(84, 21)
         Me.btnStream1Gen.TabIndex = 1
         Me.btnStream1Gen.Text = "Generate"
         Me.btnStream1Gen.UseVisualStyleBackColor = True
@@ -219,7 +206,6 @@ Partial Class frmMain
         Me.stream2Group.Controls.Add(Me.Label3)
         Me.stream2Group.Controls.Add(Me.txtPronouns2)
         Me.stream2Group.Controls.Add(Me.Label4)
-        Me.stream2Group.Controls.Add(Me.btnReplay2)
         Me.stream2Group.Controls.Add(Me.updStream2)
         Me.stream2Group.Controls.Add(Me.txtStream2)
         Me.stream2Group.Controls.Add(Me.trkbrStream2)
@@ -259,15 +245,6 @@ Partial Class frmMain
         Me.Label4.TabIndex = 25
         Me.Label4.Text = "Username"
         '
-        'btnReplay2
-        '
-        Me.btnReplay2.Location = New System.Drawing.Point(200, 42)
-        Me.btnReplay2.Name = "btnReplay2"
-        Me.btnReplay2.Size = New System.Drawing.Size(20, 21)
-        Me.btnReplay2.TabIndex = 23
-        Me.btnReplay2.Text = "R"
-        Me.btnReplay2.UseVisualStyleBackColor = True
-        '
         'updStream2
         '
         Me.updStream2.Location = New System.Drawing.Point(237, 43)
@@ -301,7 +278,7 @@ Partial Class frmMain
         '
         Me.btnStream2Gen.Location = New System.Drawing.Point(136, 42)
         Me.btnStream2Gen.Name = "btnStream2Gen"
-        Me.btnStream2Gen.Size = New System.Drawing.Size(60, 21)
+        Me.btnStream2Gen.Size = New System.Drawing.Size(84, 21)
         Me.btnStream2Gen.TabIndex = 1
         Me.btnStream2Gen.Text = "Generate"
         Me.btnStream2Gen.UseVisualStyleBackColor = True
@@ -312,7 +289,6 @@ Partial Class frmMain
         Me.stream3Group.Controls.Add(Me.txtPronouns3)
         Me.stream3Group.Controls.Add(Me.Label6)
         Me.stream3Group.Controls.Add(Me.updStream3)
-        Me.stream3Group.Controls.Add(Me.btnReplay3)
         Me.stream3Group.Controls.Add(Me.txtStream3)
         Me.stream3Group.Controls.Add(Me.trkbrStream3)
         Me.stream3Group.Controls.Add(Me.btnStream3Gen)
@@ -358,15 +334,6 @@ Partial Class frmMain
         Me.updStream3.Size = New System.Drawing.Size(38, 20)
         Me.updStream3.TabIndex = 12
         '
-        'btnReplay3
-        '
-        Me.btnReplay3.Location = New System.Drawing.Point(200, 42)
-        Me.btnReplay3.Name = "btnReplay3"
-        Me.btnReplay3.Size = New System.Drawing.Size(20, 21)
-        Me.btnReplay3.TabIndex = 24
-        Me.btnReplay3.Text = "R"
-        Me.btnReplay3.UseVisualStyleBackColor = True
-        '
         'txtStream3
         '
         Me.txtStream3.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append
@@ -393,7 +360,7 @@ Partial Class frmMain
         '
         Me.btnStream3Gen.Location = New System.Drawing.Point(136, 42)
         Me.btnStream3Gen.Name = "btnStream3Gen"
-        Me.btnStream3Gen.Size = New System.Drawing.Size(60, 21)
+        Me.btnStream3Gen.Size = New System.Drawing.Size(84, 21)
         Me.btnStream3Gen.TabIndex = 1
         Me.btnStream3Gen.Text = "Generate"
         Me.btnStream3Gen.UseVisualStyleBackColor = True
@@ -403,7 +370,6 @@ Partial Class frmMain
         Me.stream4Group.Controls.Add(Me.Label7)
         Me.stream4Group.Controls.Add(Me.txtPronouns4)
         Me.stream4Group.Controls.Add(Me.Label8)
-        Me.stream4Group.Controls.Add(Me.btnReplay4)
         Me.stream4Group.Controls.Add(Me.updStream4)
         Me.stream4Group.Controls.Add(Me.txtStream4)
         Me.stream4Group.Controls.Add(Me.trkbrStream4)
@@ -443,15 +409,6 @@ Partial Class frmMain
         Me.Label8.TabIndex = 29
         Me.Label8.Text = "Username"
         '
-        'btnReplay4
-        '
-        Me.btnReplay4.Location = New System.Drawing.Point(200, 42)
-        Me.btnReplay4.Name = "btnReplay4"
-        Me.btnReplay4.Size = New System.Drawing.Size(20, 21)
-        Me.btnReplay4.TabIndex = 25
-        Me.btnReplay4.Text = "R"
-        Me.btnReplay4.UseVisualStyleBackColor = True
-        '
         'updStream4
         '
         Me.updStream4.Location = New System.Drawing.Point(237, 43)
@@ -486,7 +443,7 @@ Partial Class frmMain
         Me.btnStream4Gen.Location = New System.Drawing.Point(136, 42)
         Me.btnStream4Gen.Name = "btnStream4Gen"
         Me.btnStream4Gen.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.btnStream4Gen.Size = New System.Drawing.Size(60, 21)
+        Me.btnStream4Gen.Size = New System.Drawing.Size(84, 21)
         Me.btnStream4Gen.TabIndex = 1
         Me.btnStream4Gen.Text = "Generate"
         Me.btnStream4Gen.UseVisualStyleBackColor = True
@@ -505,7 +462,7 @@ Partial Class frmMain
         '
         'fileToolStripMenuItem1
         '
-        Me.fileToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmiSelectAutocompleteFile, Me.tsmiEditAutocompleteFile, Me.tsmiChangeVLCWindowSize, Me.InstallMacsgHandlerToolStripMenuItem, Me.tsmiOpenAppData, Me.tsmiCombineNamesPronouns})
+        Me.fileToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmiSelectAutocompleteFile, Me.tsmiEditAutocompleteFile, Me.tsmiChangeVLCWindowSize, Me.InstallMacsgHandlerToolStripMenuItem, Me.tsmiOpenAppData, Me.tsmiCombineNamesPronouns, Me.CheckForUpdatesToolStripMenuItem})
         Me.fileToolStripMenuItem1.Name = "fileToolStripMenuItem1"
         Me.fileToolStripMenuItem1.Size = New System.Drawing.Size(37, 20)
         Me.fileToolStripMenuItem1.Text = "File"
@@ -547,6 +504,13 @@ Partial Class frmMain
         Me.tsmiCombineNamesPronouns.Size = New System.Drawing.Size(240, 22)
         Me.tsmiCombineNamesPronouns.Text = "Combine Names and Pronouns"
         '
+        'CheckForUpdatesToolStripMenuItem
+        '
+        Me.CheckForUpdatesToolStripMenuItem.Enabled = False
+        Me.CheckForUpdatesToolStripMenuItem.Name = "CheckForUpdatesToolStripMenuItem"
+        Me.CheckForUpdatesToolStripMenuItem.Size = New System.Drawing.Size(240, 22)
+        Me.CheckForUpdatesToolStripMenuItem.Text = "Check for updates"
+        '
         'tsmiCondorSchedule
         '
         Me.tsmiCondorSchedule.AutoToolTip = True
@@ -578,7 +542,7 @@ Partial Class frmMain
         '
         Me.ProgressBar1.Location = New System.Drawing.Point(12, 22)
         Me.ProgressBar1.Name = "ProgressBar1"
-        Me.ProgressBar1.Size = New System.Drawing.Size(348, 4)
+        Me.ProgressBar1.Size = New System.Drawing.Size(399, 4)
         Me.ProgressBar1.TabIndex = 19
         Me.ProgressBar1.Visible = False
         '
@@ -682,10 +646,6 @@ Partial Class frmMain
     Friend WithEvents StatusStrip1 As StatusStrip
     Friend WithEvents statusLabel1 As ToolStripStatusLabel
     Friend WithEvents tsmiCondorSchedule As ToolStripMenuItem
-    Friend WithEvents btnReplay1 As Button
-    Friend WithEvents btnReplay2 As Button
-    Friend WithEvents btnReplay3 As Button
-    Friend WithEvents btnReplay4 As Button
     Friend WithEvents tsmiOpenAppData As ToolStripMenuItem
     Friend WithEvents StreamlinkToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents tsmiEditStreamlinkConfig As ToolStripMenuItem
@@ -704,4 +664,5 @@ Partial Class frmMain
     Friend WithEvents Label7 As Label
     Friend WithEvents Label8 As Label
     Friend WithEvents tsmiCombineNamesPronouns As ToolStripMenuItem
+    Friend WithEvents CheckForUpdatesToolStripMenuItem As ToolStripMenuItem
 End Class
