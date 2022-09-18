@@ -326,9 +326,6 @@ Public Class frmMain
             Dim splitArgs As String() = args(0).Split(New Char() {","c})
             splitArgs(0) = splitArgs(0).Replace("macsg:", "")
 
-            MsgBox(splitArgs(0).ToString)
-            MsgBox(splitArgs(1).ToString)
-
             'DO NOT SUBMIT rework this completely?
             If splitArgs.Length > 4 Then
                 ReDim Preserve splitArgs(3)
